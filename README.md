@@ -1,4 +1,4 @@
-# SaladDaiso
+# SaladDaiso(샐러드다이소)
 Spring Project Salad
 
 프로젝트명 : SaladDaiso(샐러드다이소)
