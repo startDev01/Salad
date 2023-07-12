@@ -2,21 +2,43 @@
 
 <div align='center'>
   
-  프로젝트명 : SaladDaiso(샐러드다이소)
+  <h1>SaladDaiso(샐러드다이소)</h1>
   
-  조원 : 김동혁, 조상현, 서승희, 하유리
-  
-  - 진행도
-  1. 초기 디자인 설정
-  2. 유스케이스 다이어그램, 시퀀스 다이어그램 설계
-  3. 개발스택 및 개발도구 설정
-    - HTML & CSS & Javascript
-    - Spring Framework
-    - MyBatis
-    - Oracle(DB)
-    - JSP & JQuery & JSTL
-  
-  
-  프로젝트 생성일 : 2023-07-10
+  <h3>🌟조원🌟</h3>
+  <p>
+    김동혁 조상현 서승희 하유리
+  </p><br>
 
 </div>
+<div align='center'>
+  
+   <h3>📚개발스택 및 언어📚</h3>
+   <div>
+      <div align="center">
+      	<img src="https://img.shields.io/badge/Java-007396?style=flat&logo=Conda-Forge&logoColor=white" />
+      	<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" />
+      	<img src="https://img.shields.io/badge/CSS-1572B6?style=flat&logo=CSS3&logoColor=white" />
+      	<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=JavaScript&logoColor=white" />
+      	<img src="https://img.shields.io/badge/jQuery-0769AD?style=flat&logo=jQuery&logoColor=white" />
+      	<br>
+      	<img src="https://img.shields.io/badge/Spring-6DB33F?style=flat&logo=Spring&logoColor=white" />
+      	<img src="https://img.shields.io/badge/Bootstrap-7952B3?style=flat&logo=Bootstrap&logoColor=white" />
+      	<img src="https://img.shields.io/badge/Mybatis-000000?style=flat&logo=Fluentd&logoColor=white" />
+      	<img src="https://img.shields.io/badge/Oracle-F80000?style=flat&logo=Oracle&logoColor=white" />
+     </div>
+   </div>
+    <br>
+   <h3>🛠개발도구🛠</h3>
+   <img src="https://img.shields.io/badge/IntelliJ-DC143C?style=flat&logo=intellijidea&logoColor=white" />
+   <img src="https://img.shields.io/badge/Eclipse%20IDE-2C2255?style=flat&logo=EclipseIDE&logoColor=white" />
+   <br>
+   <img src="https://img.shields.io/badge/Tomcat-F8DC75?style=flat&logo=ApacheTomcat&logoColor=white" />
+   <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white" />
+   <img src="https://img.shields.io/badge/Notion-333317?style=flat&logo=Notion&logoColor=white" />
+</div>
+<br>
+<div align='center'>
+  <h3>:new_moon:프로젝트 생성일:new_moon:</h3>
+  <p>2023 - 07 - 10</p>
+</div>
+
