@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+.header_outside {
+	width: 100%;
+	/* 너비: 위+좌우 여백 없애기 */
+	position: relative;
+	left: 0;
+	top: 0;
+	/* auto: 가로 중앙 정렬 */
+	margin: 0 auto;
+}
+
+.header_inside {
+	/* 여백 */
+	padding: 10px 100px;
+}
+
+.header_top_content {
+	/* padding: 10px 100px; */
+	/* 로고+메뉴 양쪽 끝 정렬 */
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	/* 로고+메뉴 수직 중앙 정렬 */
+	align-items: center;
+}
+
+.list1, .list2 {
+	list-style: none;	/* <ul> 말머리기호 제거 */
+}
+
+.list1 li, .list2 li {
+	display: inline-block;	/* <li> 1줄로 배열 */
+}	
+
+.list1 li a, .list2 li a {
+	text-decoration: none;
+	color: #000;
+}
+
+.list1 li {
+	/* 요소 간 간격 지정 */
+	float: left;
+}
+
+.list2 {
+	/* 요소간 간격 지정 */
+	display: flex;
+	justify-content: space-between;
+	padding: 20px 0px;
+	/* margin: 0 auto; */
+}
+
+/* 메뉴에 구분선 넣기 */
+.list1 li::before {
+	padding-left: 5px;
+	content: " | ";
+}
+
+/* 첫번째 구분선만 안보이게 처리  */
+.list1 > li:first-child::before {
+	content:" ";
+}		
+
+.mainMenu {
+	font-size: 19px;
+	font-weight: bold;
+}
+
+.header_image{
+	width: 100%;
+}

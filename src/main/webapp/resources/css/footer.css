@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+/* css 초기화 코드 적용 */
+@import "reset.css";
+
+.footer_info{
+	font-family: 'Pretendard-Regular';
+	font-size: 16px;
+	color: #fff;
+	padding: 30px 0;
+}

@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+/* 하유리 */
+
+/* css 초기화 코드 적용 */
+@import "reset.css";
+
+.content1 {
+	font-family: 'Pretendard-Regular';	
+	font-size: 19px;
+	font-weight: bold;
+	margin: 20px 0 100px 0;
+}
