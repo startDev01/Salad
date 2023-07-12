@@ -1,4 +1,6 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:EEFF00,100:ADFF2F&height=200&section=header&text=샐러드다이소&fontSize=90" />
+<div align='center'>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:EEFF00,100:ADFF2F&height=200&section=header&text=샐러드다이소&fontSize=90" />
+</div>
 
 <div align='center'>
   
