@@ -41,4 +41,9 @@
   <h3>:new_moon:프로젝트 생성일:new_moon:</h3>
   <p>2023 - 07 - 10</p>
 </div>
+<br>
+<div align='center'>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=startDev01&layout=compact">
+</div>
+<br><br>
 
