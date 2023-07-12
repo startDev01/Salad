@@ -1,7 +1,8 @@
 # SaladDaiso(샐러드다이소)
 Spring Project Salad
 
-프로젝트명 : SaladDaiso(샐러드다이소)\n
+프로젝트명 : SaladDaiso(샐러드다이소)
+
 조원 : 김동혁, 조상현, 서승희, 하유리
 
 - 진행도
