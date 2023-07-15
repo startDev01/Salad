@@ -10,17 +10,26 @@
         <result property="prodName" column="prodName" />
         <result property="prodPrice" column="prodPrice" />
         <result property="prodDescription" column="prodDescription" />
-        <result property="prodImageUrl" column="prodImageUrl" />
         <result property="prodBrand" column="prodBrand" />
         <result property="prodCreateTimestamp" column="prodCreateTimestamp" />
         <result property="prodDelieryPrice" column="prodDelieryPrice" />
+        <result property="prodImageUrl" column="prodImageUrl" />
+        <result property="prodImageName" column="prodImageName" />
+        <result property="prodImageDate" column="prodImageDate"/>
     </resultMap>
 
     <!-- 상품 select -->
-    <select id="selectProdList" resultMap="prodResult">
+    <!--<select id="selectProdList" resultMap="prodResult">
             select *
             from shop_product
             order by shop_product.prodNum
+    </select>-->
+    <select id="selectProdList" resultMap="prodResult">
+        select  a.*,
+                b.prodImageName, b.prodImageUrl, b.prodImageDate
+        from SHOP_PRODUCT a, prod_image b
+        where a.PRODNUM = b.prodNum
+        order by a.prodNum asc
     </select>
 
 </mapper>

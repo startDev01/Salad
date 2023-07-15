@@ -11,3 +11,8 @@
 	font-weight: bold;
 	margin: 20px 0 100px 0;
 }
+
+/* 하유리: 타이틀(23.07.14.) */
+.content1 h3{
+	font-size: 28px;
+}
