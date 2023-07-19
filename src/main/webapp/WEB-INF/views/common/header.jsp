@@ -53,14 +53,24 @@
 						<li><a href="#" class="">위치</a></li>
 					</ul>
 				</div>
-			
+
 				<!-- 회원메뉴 -->
 				<div class="memberMenu">
 					<ul class="list1">
-						<li><a href="#" class="">로그인</a></li>
-						<li><a href="#" class="">회원가입</a></li>
-						<li><a href="#" class="">마이페이지</a></li>
-						<li><a href="#" class="">장바구니</a></li>
+						<!-- 서승희 수정(23.07.16) -->
+						<c:choose>
+							<c:when test="${isLogOn==true && user != null }">
+								<h3>환영합니다. ${user.userName }님!</h3>
+								<li><a href="${contextPath}/user/logout.do">로그아웃</a></li>
+								<li><a href="#" class="">장바구니</a></li>
+								<li><a href="#" class="">마이페이지</a></li>
+							</c:when>
+							<c:otherwise>
+								<li><a href="${contextPath}/user/loginForm.do">로그인</a></li>
+								<li><a href="${contextPath}/user/userForm.do">회원가입</a></li>
+								<li><a href="#" class="">마이페이지</a></li>
+							</c:otherwise>
+						</c:choose>
 					</ul>
 				</div>
 			</div>

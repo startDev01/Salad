@@ -6,7 +6,7 @@
 @import "reset.css";
 
 .content1 {
-	font-family: 'Pretendard-Regular';	
+	font-family: 'Pretendard-Regular';
 	font-size: 19px;
 	font-weight: bold;
 	margin: 20px 0 100px 0;
@@ -15,4 +15,72 @@
 /* 하유리: 타이틀(23.07.14.) */
 .content1 h3{
 	font-size: 28px;
+}
+
+/* 하유리: 슬라이드배너 슬라이드효과 추가(23.07.15.)  */
+.section [id*="slide"] {	/* input 숨김 */
+	display:none;
+}
+.section .slideWrap {	/* 슬라이드 영역 */
+	max-width:100%;
+	margin:0 auto;
+	overflow:hidden;
+	position:relative;
+}
+.section .slideBannerList {
+	white-space:nowrap;		/* inline 요소의 자동 줄바꿈 제거 */
+}
+.section .slideBannerList > li {
+	display:inline-block;
+	vertical-align:middle;
+	width: 100%;
+	transition:all .5s;
+}
+
+.section .slideControl {	/* 좌우로 넘기는 label버튼 스타일 지정 */
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:10;
+	width:100%;	/* 좌우 버튼 간격 */
+	height:100%;	/* 좌우 버튼 높이 */
+}
+.section .slideControl label {
+	position:absolute;
+	z-index:1;
+	top:50%;
+	transform:translateY(-50%);
+	padding:10px;	/* 좌우 버튼 크기 */
+	cursor:pointer;
+}
+.section .slideControl .left {
+	left:30px;		/* 왼쪽 버튼 위치 */
+	background:url('../image/main/slideBanner_back.png') center center / 100% no-repeat;
+}
+.section .slideControl .right {
+	right:30px;		/* 왼쪽 버튼 위치 */
+	background:url('../image/main/slideBanner_next.png') center center / 100% no-repeat;
+}
+.section .slideControl [class*="control"] {
+	display:none;
+}
+
+.section [id="slide1"]:checked ~ .slideWrap .slideBannerList > li {	/* input 체크 시, 변화값이 li까지 전달 */
+	transform:translateX(0%);
+}
+.section [id="slide2"]:checked ~ .slideWrap .slideBannerList > li {
+	transform:translateX(-100%);
+}
+.section [id="slide3"]:checked ~ .slideWrap .slideBannerList > li {
+	transform:translateX(-200%);
+}
+
+.section [id="slide1"]:checked ~ .slideWrap .control1 {	/*  input 체크 시, 변화값이 좌우 슬라이드 버튼을 담고 있는 div까지 전달 */
+	display:block;
+}
+.section [id="slide2"]:checked ~ .slideWrap .control2 {
+	display:block;
+}
+.section [id="slide3"]:checked ~ .slideWrap .control3 {
+	display:block;
 }

@@ -11,6 +11,8 @@
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>
 
+
+
    <!-- 타일즈 jsp 연결 / 김동혁 수정 (23.07.14) -->
    <definition name="/main" extends="baseLayout">
       <put-attribute name="title" value="메인페이지" />
@@ -18,7 +20,11 @@
    </definition>
    <definition name="/menu" extends="baseLayout">
       <put-attribute name="title" value="메뉴페이지" />
-      <put-attribute name="body" value="/WEB-INF/views/menu.jsp" />
+      <put-attribute name="body" value="/WEB-INF/views/menu/menu.jsp" />
+   </definition>
+   <definition name="/cart" extends="baseLayout">
+      <put-attribute name="title" value="메뉴페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/cart.jsp" />
    </definition>
 
 

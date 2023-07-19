@@ -5,6 +5,9 @@
 <configuration>
 	 <typeAliases>
 		 <!-- 김동혁  -->
-		<typeAlias type="com.proj.salad.vo.ProdVO"  alias="prodVO" />
+		 <!-- NutrientVO 추가 (23.07.17) -->
+		 <typeAlias type="com.proj.salad.prod.vo.ProdVO" alias="prodVO" />
+		 <typeAlias type="com.proj.salad.prod.vo.NutrientVO" alias="nutrientVO" />
+		 <typeAlias type="com.proj.salad.user.vo.UserVO" alias="userVO" />
 	</typeAliases>
 </configuration>
