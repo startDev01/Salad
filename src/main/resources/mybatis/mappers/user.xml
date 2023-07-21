@@ -16,6 +16,9 @@
    		<result property="userPhone" column="userPhone"/>
    		<result property="userAddress1" column="userAddress1"/>
    		<result property="userAddress2" column="userAddress2"/>
+   		<!-- SMS,Email 수신동의 여부 관련(23.07.20 추가) -->
+   		<result property="smssts_yn" column="smssts_yn"/>
+   		<result property="emailsts_yn" column="emailsts_yn"/>
    	 </resultMap>
    
    <!-- 로그인 -->
@@ -29,6 +32,7 @@
    </select>
    
    <!-- 회원가입 -->
+   <!-- SMS,Email 수신동의 여부 관련(23.07.20 추가) -->
    <insert id="insertNewUser" parameterType="userVO">
      <![CDATA[
     	insert into  shop_user(userId,
@@ -36,10 +40,12 @@
                                     			 userName,
                                     			 userGender,
                                     			 userEmail,
-                                     			userBirth,
-                                     			userPhone,
-                                     			userAddress1,
-                                     			userAddress2)
+                                     			 userBirth,
+                                     			 userPhone,
+                                     			 userAddress1,
+                                     			 userAddress2,
+                                     			 smssts_yn,
+                                     			 emailsts_yn)
 							 values(#{userId},
 										  #{userPwd},
 									 	  #{userName},
@@ -48,7 +54,9 @@
                                  	 	  #{userBirth},
                                    	      #{userPhone},
                                    	      #{userAddress1},
-                                    	  #{userAddress2})
+                                    	  #{userAddress2},
+                                    	  #{smssts_yn},
+                                    	  #{emailsts_yn})
            ]]>
    </insert>
 
@@ -61,10 +69,5 @@
 	   where userId = #{id}
 	      ]]>      
 	</select>
-
-   
-   
-   
-   
-   
+	
    </mapper>

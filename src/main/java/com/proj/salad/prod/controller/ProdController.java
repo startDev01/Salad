@@ -60,7 +60,6 @@ public class ProdController {
     @ResponseBody
     public String detailPage(@RequestParam int prodNum,
             HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String viewName = getViewName(request);
 
         System.out.println("shopdetail");
 
@@ -78,15 +77,16 @@ public class ProdController {
         return jsonData;
     }
 
-    @RequestMapping(value = "/cart", method = RequestMethod.GET)
-    public ModelAndView cartPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String viewName = getViewName(request);
-
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName(viewName);
-
-        return mav;
-    }
+    // 필수 비활성화!!
+//    @RequestMapping(value = "/cart", method = RequestMethod.GET)
+//    public ModelAndView cartPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
+//        String viewName = getViewName(request);
+//
+//        ModelAndView mav = new ModelAndView();
+//        mav.setViewName(viewName);
+//
+//        return mav;
+//    }
 
     private String getViewName(HttpServletRequest request) throws Exception {
         String contextPath = request.getContextPath();

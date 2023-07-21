@@ -60,8 +60,9 @@
 						<li><a href="${contextPath}/menu">메뉴</a></li>
 						<!-- 하유리: 메뉴 위치 수정(23.07.14.) -->
 						<li><a href="#" class="">리뷰</a></li>
-						<li><a href="#" class="">공지사항</a></li>
+						<li><a href="#" class="">공지</a></li>
 						<li><a href="#" class="">위치</a></li>
+						<li><a href="#" class="">이벤트</a></li>
 					</ul>
 				</div>
 			
@@ -71,18 +72,18 @@
 					<ul class="list1">
 						<!-- 서승희 수정(23.07.16) -->
 					 <c:choose>
-		    		 	<c:when test="${isLogOn==true && user != null }">
-		    		 		<h3>환영합니다. ${user.userName }님!</h3>
-			   				<li><a href="${contextPath}/user/logout.do">로그아웃</a></li>
-			   				<li><a href="#" class="">장바구니</a></li>
-			   				<li><a href="#" class="">마이페이지</a></li>
-			   				 </c:when>
-			 		<c:otherwise>
-			   				<li><a href="${contextPath}/user/loginForm.do">로그인</a></li>
-			   				<li><a href="${contextPath}/user/userForm.do">회원가입</a></li> 
-			   				<li><a href="#" class="">마이페이지</a></li>
-			 		</c:otherwise>
-					</c:choose>
+							<c:when test="${isLogOn==true && user != null }">
+								<h3> <img src="${contextPath}/resources/image/person.png" size=10px/>${user.userName }님!</h3>
+								<li><a href="${contextPath}/user/logout.do">로그아웃</a></li>
+								<li><a href="${contextPath}/mypage/myDetailInfo.do">마이페이지</a></li>
+								<li><a href="#" class="">장바구니</a></li>
+							</c:when>
+							<c:otherwise>
+								<li><a href="${contextPath}/user/loginForm.do">로그인</a></li>
+								<li><a href="${contextPath}/user/userForm.do">회원가입</a></li>
+								<li><a href="#" class="">장바구니</a></li>
+							</c:otherwise>
+						</c:choose>
 				  </ul>
 				</div> --%>
 				

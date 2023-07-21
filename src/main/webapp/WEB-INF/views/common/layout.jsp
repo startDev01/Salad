@@ -54,7 +54,7 @@
 	        width: 100%;
 			}
 	    </style>
-	    
+
 	    <title><tiles:insertAttribute name="title" /></title>
 	</head>
 	

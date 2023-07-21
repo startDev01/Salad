@@ -50,4 +50,10 @@
         where prodNum = #{prodNum}
     </select>
 
+    <!-- 재료 Select 문 / 김동혁 추가 (23.07.19) -->
+    <select id="selectProdOne" resultMap="prodResult" parameterType="int">
+        select * from shop_product
+        where prodNum = #{prodNum}
+    </select>
+
 </mapper>

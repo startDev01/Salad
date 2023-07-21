@@ -9,5 +9,7 @@
 		 <typeAlias type="com.proj.salad.prod.vo.ProdVO" alias="prodVO" />
 		 <typeAlias type="com.proj.salad.prod.vo.NutrientVO" alias="nutrientVO" />
 		 <typeAlias type="com.proj.salad.user.vo.UserVO" alias="userVO" />
+		 <typeAlias type="com.proj.salad.cart.vo.CartVO" alias="cartVO" />
+		 <typeAlias type="com.proj.salad.cart.vo.CartListVO" alias="cartListVO" />
 	</typeAliases>
 </configuration>

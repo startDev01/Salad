@@ -19,9 +19,7 @@
 	<style>
 	.user-form {
            display: inline-block;
-           /*  justify-content: center;
-            align-items: center; */
-            padding: 30px;
+           padding: 30px;
         }
      .fixed_join{
      	 justify-content: center;
@@ -30,7 +28,7 @@
          } 
 	</style>
 <script>
-/* //주소검색(우편번호 사용시)
+//주소검색(서승희 추가 23.07.19)
 function execDaumPostcode() {
   new daum.Postcode({
     oncomplete: function(data) {
@@ -38,7 +36,7 @@ function execDaumPostcode() {
 
       // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
       // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-      var fullRoadAddr = data.userAddress1; // 도로명 주소 변수
+      var fullRoadAddr = data.roadAddress;  // 도로명 주소 변수
       var extraRoadAddr = ''; // 도로명 조합형 주소 변수
 
       // 법정동명이 있을 경우 추가한다. (법정리는 제외)
@@ -58,22 +56,11 @@ function execDaumPostcode() {
       if(fullRoadAddr !== ''){
         fullRoadAddr += extraRoadAddr;
       }
-
       // 우편번호와 주소 정보를 해당 필드에 넣는다.
       document.getElementById('userAddress1').value = fullRoadAddr;
-
-      // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-      if(data.autoUserAddress1) {
-        //예상되는 도로명 주소에 조합형 주소를 추가한다.
-        var expRoadAddr = data.autoUserAddress1 + extraRoadAddr;
-        document.getElementById('guide').innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
-
-      } else {
-          document.getElementById('guide').innerHTML = '';
-      }
     }
   }).open();
-} */
+} 
 //ID 중복검사
 function fn_overlapped(){
     var _id=$("#_user_id").val();
@@ -117,6 +104,7 @@ function fn_overlapped(){
 				<tr class="dot_line">
 					<td class="fixed_join" width="120" ><p align="right">아이디</td>
 					<td align="left"><input type="text" name="_user_id"  id="_user_id"  size="20" placeholder="ID(2자-10자)" />
+					<!-- ID 중복검사 기능 구현(23.07.18) -->
 					  <input type="hidden" name="userId"  id="userId" />
 					  <input type="button"  id="btnOverlapped" value="중복체크" onClick="fn_overlapped()" />
 					</td>
@@ -139,7 +127,7 @@ function fn_overlapped(){
 				<tr class="dot_line">
 					<td class="fixed_join" width="120"><p align="right">이메일<br>(e-mail)</td>
 					<td align="left"><input size="30px"   type="email" name="userEmail" id="userEmail" placeholder="E-mail 입력" /> 
-							<br> <input type="checkbox" name="userEmail" /> 쇼핑몰에서 발송하는 e-mail을 수신합니다.</td>
+							<br> <input type="checkbox" name="emailsts_yn" value="Y" checked /> 쇼핑몰에서 발송하는 e-mail을 수신합니다.</td> <!-- 23.07.20 email 수신동의 수정 -->
 				</tr>
 				<tr class="dot_line">
 					<td class="fixed_join" width="120"><p align="right">생년월일</td>
@@ -176,7 +164,7 @@ function fn_overlapped(){
 							<option value="0508">0508</option>
 							<option value="070">070</option>
 						</select>  -->
-					<br> <input type="checkbox"	name="userPhone"  /> 쇼핑몰에서 발송하는 SMS 소식을 수신합니다.
+					<br> <input type="checkbox"	name="smssts_yn" value="Y" checked  /> 쇼핑몰에서 발송하는 SMS 소식을 수신합니다. <!-- 23.07.20 sms 수신동의 수정 -->
 					</td>
 				</tr>
 			
@@ -184,8 +172,10 @@ function fn_overlapped(){
 					<td class="fixed_join" width="120"><p align="right">주소</td>
 					<td align="left">
 					  <p> 
-					  기본 주소: <input type="text" id="userAddress1" name="userAddress1" size="30" placeholder="기본주소" ><br><br>
-					  상세 주소: <input type="text" id="userAddress2"  name="userAddress2" size="30" placeholder="상세주소"  />
+					  기본 주소: <input type="text" id="userAddress1" name="userAddress1" size="30" placeholder="기본주소" /><br><br>
+					  상세 주소: <input type="text" id="userAddress2"  name="userAddress2" size="30" placeholder="상세주소" /><br><br>
+					  <!-- 서승희 주소검색 부분 추가 23.07.19 -->
+					  <input class="addBtn" type="button" onClick="location.href='javascript:execDaumPostcode()'"value="주소검색" style="width:88.5%; "/><br><br>
 					   </p>
 					</td>
 				</tr>

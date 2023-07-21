@@ -33,7 +33,7 @@
             float: left;
             height: 100px;
             width: 380px;
-            /*background-color: #f9f9f9;*/
+            background-color: white;
             border: 1px solid gray;
             border-radius: 5px;
             margin: 20px;
@@ -167,8 +167,15 @@
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
                 </select>
-                <button type="button" class="btn btn-default" data-dismiss="modal">담기</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="modal-addcart">담기</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal" id="modal-close">닫기</button>
             </div>
         </div>
@@ -176,13 +183,30 @@
 </div> <%-- 모달 end --%>
 
 <script>
-    /* 모달 Ajax 스크립트 / 김동혁 추가 (23.07.18) */
+    /* Ajax 스크립트 / 김동혁 추가 (23.07.18) */
     $(document).ready(function() {
         let selectedProdNum;
 
         // 모달 버튼 클릭시 값 대입
         $('.modal-nutrient').on('click', function() {
             selectedProdNum = $(this).data('prodnum') + 1;
+        });
+
+        $('#modal-addcart').on('click', function() {
+            var prodCount = $('#prod-count').val();
+
+            $.ajax({
+                url: '${contextPath}/addCart',
+                type: 'POST',
+                data: {prodNum : selectedProdNum, cartCount : prodCount},
+                dataType: 'json',
+                success: function (response) {
+                    alert('성공했습니다.');
+                },
+                error: function () {
+                    alert('실패했습니다.');
+                }
+            });
         });
 
         $('#modal-close').on('click', function () {
