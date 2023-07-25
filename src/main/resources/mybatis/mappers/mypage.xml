@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+      <mapper namespace="mapper.mypage"> <!-- DAOImpl에 매퍼 가져올때 사용할 고유이름 -->
+  	    	 
+  	 <!-- 리절트 맵 정의 -->
+
+    
+    
+  	   
+   	 <!-- 회원정보상세 -->
+   	 <select id="selectMyDetailInfo" resultType="userVO" parameterType="String">
+   	 	<![CDATA[
+   	 	select *  from shop_user
+   	 	where userId=#{userId}
+   	 	]]>
+   	 </select>
+   	 
+   	 <!-- 회원정보수정 -->
+   	 <update id="updateMyInfo" parameterType="java.util.HashMap">
+   
+	   update shop_user
+			   <set>
+			      <if test="userPwd!='' and userPwd!=null">
+			        userPwd=#{userPwd},
+			      </if>
+			      <if test="userName!='' and userName!=null">
+			        userName=#{userName},
+			      </if>
+			      <if test=" userGender!='' and userGender!=null">
+			         userGender=#{userGender},
+			      </if>
+			      <if test=" userEmail!='' and userEmail!=null">
+			         userEmail=#{userEmail},
+			      </if>
+			        <if test=" emailsts_yn!='' and emailsts_yn!=null">
+			         emailsts_yn=#{emailsts_yn},
+			      </if>  
+			       <if test=" userBirth!='' and userBirth!=null">
+			         userBirth=#{userBirth},
+			      </if>
+			      <if test=" userPhone!='' and userPhone!=null">
+			         userPhone=#{userPhone},
+			      </if>
+			        <if test=" smssts_yn!='' and smssts_yn!=null">
+			         smssts_yn=#{smssts_yn},
+			      </if>	
+			      <if test=" userAddress1!='' and userAddress1!=null">
+			         userAddress1=#{userAddress1},
+			      </if>
+			      <if test=" userAddress2!='' and userAddress2!=null">
+			         userAddress2=#{userAddress2}
+			      </if>	   
+			   </set>
+		where  userId=#{userId}
+	
+	</update>
+	
+	<!-- 회원정보탈퇴 -->
+	<delete id="deleteUser" parameterType="String">
+	<![CDATA[
+		delete from shop_user
+		where userId=#{userId}
+		]]>  
+	</delete>
+   	 
+   	 
+   	  </mapper>

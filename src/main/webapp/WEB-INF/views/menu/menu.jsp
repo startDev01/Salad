@@ -201,10 +201,11 @@
                 data: {prodNum : selectedProdNum, cartCount : prodCount},
                 dataType: 'json',
                 success: function (response) {
-                    alert('성공했습니다.');
+                    alert('추가 성공했습니다.');
                 },
                 error: function () {
-                    alert('실패했습니다.');
+                    alert('비회원 상태입니다.\n로그인 창으로 넘어갑니다.');
+                    location.href = '${contextPath}/user/loginForm.do';
                 }
             });
         });

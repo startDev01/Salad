@@ -24,6 +24,15 @@
       <put-attribute name="title" value="메뉴페이지" />
       <put-attribute name="body" value="/WEB-INF/views/cart/cart.jsp" />
    </definition>
+   <definition name="/order" extends="baseLayout">
+      <put-attribute name="title" value="주문페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/order/order.jsp" />
+   </definition>
+   <definition name="/orderDone" extends="baseLayout">
+      <put-attribute name="title" value="주문페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/order/orderDone.jsp" />
+   </definition>
+
 
 
 </tiles-definitions>

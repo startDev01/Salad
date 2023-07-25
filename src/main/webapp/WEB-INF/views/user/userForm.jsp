@@ -19,7 +19,7 @@
 	<style>
 	.user-form {
            display: inline-block;
-           padding: 30px;
+            padding: 30px;
         }
      .fixed_join{
      	 justify-content: center;
@@ -85,13 +85,36 @@ function fn_overlapped(){
           }
        },
        error:function(data,textStatus){
-          alert("에러가 발생했습니다.");ㅣ
+          alert("다시 시도 부탁드립니다.");ㅣ
        },
        complete:function(data,textStatus){
-          //alert("작업을완료 했습니다");
+          //alert("작업을 완료 했습니다");
        }
     });  //end ajax	 
- }	
+}
+  //23.07.23 서승희 이메일 수신여부 추가
+    function checkBoxValue(){
+   	 var checkbox =document.getElementById("emailsts_y");
+   	 var hiddenInput  =document.getElementById("emailsts_n");
+   	 
+   	 if (checkbox.checked) {
+   	      hiddenInput.value = "true";
+   	    } else {
+   	      hiddenInput.value = "false";
+   	    }
+    }
+    	//23.07.23 서승희 연락처 수신여부 추가
+   	 function checkBoxValue1(){
+   		 var checkbox =document.getElementById("smssts_y");
+   		 var hiddenInput  =document.getElementById("smssts_n");
+   		 
+   		 if (checkbox.checked) {
+   		      hiddenInput.value = "true";
+   		    } else {
+   		      hiddenInput.value = "false";
+   		    }
+   	  } 
+ 
 </script>
 </head>
 
@@ -103,7 +126,7 @@ function fn_overlapped(){
 			<tbody>
 				<tr class="dot_line">
 					<td class="fixed_join" width="120" ><p align="right">아이디</td>
-					<td align="left"><input type="text" name="_user_id"  id="_user_id"  size="20" placeholder="ID(2자-10자)" />
+					<td align="left"><input type="text" name="_user_id"  id="_user_id"  size="20" minlength="2" maxlength="10" required  placeholder="ID(2자-10자)" />
 					<!-- ID 중복검사 기능 구현(23.07.18) -->
 					  <input type="hidden" name="userId"  id="userId" />
 					  <input type="button"  id="btnOverlapped" value="중복체크" onClick="fn_overlapped()" />
@@ -111,31 +134,35 @@ function fn_overlapped(){
 				</tr>
 				<tr class="dot_line">
 					<td class="fixed_join" width="120"><p align="right">비밀번호</td>
-					<td align="left"><input name="userPwd" type="password" size="20" placeholder="비밀번호(4-12자)"/></td>
+					<td align="left"><input name="userPwd" type="password" size="20"  minlength="4" maxlength="12" required  placeholder="비밀번호(4-12자)"/></td>
 				</tr>
 				<tr class="dot_line">
 					<td class="fixed_join" width="120"><p align="right">이름</td>
-					<td align="left"><input name="userName" type="text" size="20" placeholder="이름(2-10자)" /></td>
+					<td align="left"><input name="userName" type="text" size="20"  minlength="2" maxlength="10" required placeholder="이름(2-10자)" /></td>
 				</tr>
 				<tr class="dot_line">
 					<td class="fixed_join" width="120"><p align="right">성별</td>
 					<td align="left"><input type="radio" name="userGender" value="여" />여성
-							<span style="padding-left:20px"></span>
+						<span style="padding-left:20px"></span>
 						 <input type="radio" name="userGender" value="남"  />남성
 					</td>
 				</tr>
 				<tr class="dot_line">
 					<td class="fixed_join" width="120"><p align="right">이메일<br>(e-mail)</td>
 					<td align="left"><input size="30px"   type="email" name="userEmail" id="userEmail" placeholder="E-mail 입력" /> 
-							<br> <input type="checkbox" name="emailsts_yn" value="Y" checked /> 쇼핑몰에서 발송하는 e-mail을 수신합니다.</td> <!-- 23.07.20 email 수신동의 수정 -->
+						<br> 
+						<!-- 23.07.23 서승희 이메일 수신여부 수정 -->
+						<input type="checkbox" name="emailsts_yn" id="emailsts_y"   value="Y"  onclick="checkBoxValue();" checked/> 쇼핑몰에서 발송하는 e-mail을 수신합니다.  <!-- 23.07.20 email 수신동의 수정 -->
+						<input type="hidden" name="emailsts_yn" id="emailsts_n"  onclick="checkBoxValue();" />
+						</td>
 				</tr>
 				<tr class="dot_line">
 					<td class="fixed_join" width="120"><p align="right">생년월일</td>
-					<td align="left"><input name="userBirth" type="text" size="40px" placeholder="생년월일 입력 8자리(숫자만 입력)" /></td>
+					<td align="left"><input name="userBirth" type="text" size="40px"  minlength="8" maxlength="8" required  placeholder="생년월일 입력 8자리(숫자만 입력)" /></td>
 				</tr>
 				<tr class="dot_line">
 					<td class="fixed_join" width="120"><p align="right">연락처</td>
-					<td align="left"> <input size="40px"  type="text" name="userPhone" placeholder="전화번호 입력(숫자만 입력)">
+					<td align="left"> <input size="40px"  type="text" name="userPhone"  minlength="10" maxlength="12" required  placeholder="연락처 입력(숫자만 입력)">
 						<!-- <select  name="userPhone" id="userPhone">
 							<option>없음</option>
 							<option selected value="010">010</option>
@@ -164,7 +191,10 @@ function fn_overlapped(){
 							<option value="0508">0508</option>
 							<option value="070">070</option>
 						</select>  -->
-					<br> <input type="checkbox"	name="smssts_yn" value="Y" checked  /> 쇼핑몰에서 발송하는 SMS 소식을 수신합니다. <!-- 23.07.20 sms 수신동의 수정 -->
+					<br> 
+						<!-- 23.07.23 서승희 연락처 수신여부 수정 --> 
+						<input type="checkbox"	name="smssts_yn" id="smssts_y"  value="Y" onclick="checkBoxValue1();" checked/> 쇼핑몰에서 발송하는 SMS 소식을 수신합니다. <!-- 23.07.20 sms 수신동의 수정 -->
+						<input type="hidden" name="smssts_yn" id="smssts_n" onclick="checkBoxValue1();" />
 					</td>
 				</tr>
 			
@@ -185,10 +215,10 @@ function fn_overlapped(){
 		
 		<br>
 		<div class="clear">
-		<input type="submit"  value="회원 가입">
-		<input  type="reset"  value="다시입력">
-		<input type="button" onclick="location.href='${contextPath}/main.do'" value="메인" />
-	</div>
+			<input type="submit"  value="회원 가입">
+			<input  type="reset"  value="다시입력">
+			<input type="button" onclick="location.href='${contextPath}/main.do'" value="메인" />
+		</div>
 </form>	
 </body>
 </html>

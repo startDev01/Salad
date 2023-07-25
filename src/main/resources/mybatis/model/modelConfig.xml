@@ -3,13 +3,31 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+	<!-- Null 값 허용해주는 Settings 필수!!!! -->
+	<!-- settings는 항상 configuration 상단에 올라올 수 있도록 선언 -->
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
 	 <typeAliases>
-		 <!-- 김동혁  -->
+		 <!-- 김동혁, 조상현  -->
 		 <!-- NutrientVO 추가 (23.07.17) -->
 		 <typeAlias type="com.proj.salad.prod.vo.ProdVO" alias="prodVO" />
 		 <typeAlias type="com.proj.salad.prod.vo.NutrientVO" alias="nutrientVO" />
-		 <typeAlias type="com.proj.salad.user.vo.UserVO" alias="userVO" />
 		 <typeAlias type="com.proj.salad.cart.vo.CartVO" alias="cartVO" />
 		 <typeAlias type="com.proj.salad.cart.vo.CartListVO" alias="cartListVO" />
+		 <typeAlias type="com.proj.salad.order.vo.OrderVO" alias="orderVO" />
+		 <typeAlias type="com.proj.salad.order.vo.OrderMenuVO" alias="orderMenuVO" />
+
+
+		 <!-- 서승희 -->
+		 <typeAlias type="com.proj.salad.user.vo.UserVO" alias="userVO" />
+		 <typeAlias type="com.proj.salad.mypage.vo.MyPageVO" alias="mypageVO" />
+
+
+		 <!-- 하유리  -->
+		 <typeAlias type="com.proj.salad.review.vo.ReviewVO"  alias="reviewVO" />
+
+		 <!-- 하유리(23.07.24.)  -->
+		 <typeAlias type="com.proj.salad.notice.vo.NoticeVO"  alias="noticeVO" />
 	</typeAliases>
 </configuration>

@@ -79,7 +79,9 @@
               <fmt:formatNumber value="${sum}" pattern="#,###" />
             </span>
               <span> + </span>
-              <span>2,500</span>
+              <c:if test="${not empty cartList}">
+                <span>3,000</span>
+              </c:if>
               <span> + </span>
               <span>
               <fmt:formatNumber value="${sum + 2500}" pattern="#,###" /> 원
@@ -95,7 +97,7 @@
       </div>
 
       <div class="order cart-stuff">
-        <button class="button-order">
+        <button onclick="location.href='${contextPath}/order'" class="button-order">
           주문하기
         </button>
       </div>
@@ -146,8 +148,8 @@
       // 배송비 제외한 가격 추가
       $(".cart-sum-res span:first-child").text(sum.toLocaleString());
 
-      // 배송비 추가 (여기서는 하드코딩으로 2500을 사용합니다.)
-      sum += 2500;
+      // 배송비 추가 (여기서는 하드코딩으로 3000을 사용합니다.)
+      sum += 3000;
 
       // 총 가격 출력
       $(".cart-sum-res span:last-child").text(sum.toLocaleString() + " 원");

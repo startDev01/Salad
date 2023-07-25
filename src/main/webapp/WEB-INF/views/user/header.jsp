@@ -81,7 +81,6 @@
 							<c:otherwise>
 								<li><a href="${contextPath}/user/loginForm.do">로그인</a></li>
 								<li><a href="${contextPath}/user/userForm.do">회원가입</a></li>
-								<li><a href="#" class="">장바구니</a></li>
 							</c:otherwise>
 						</c:choose>
 				  </ul>

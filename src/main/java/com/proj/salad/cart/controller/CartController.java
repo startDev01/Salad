@@ -52,8 +52,12 @@ public class CartController {
             cartVO.setUserId(userId);
         } else {
             System.out.println("비로그인 상태");
+            // 로그인 안됐을시 로그인폼(login.jsp)으로 리다이렉트
+            response.sendRedirect("/user/loginForm.do");
+            return null; // 리턴값이 필요 없으므로 null 반환
         }
 
+        System.out.println("남아있는 userId 확인 : " + cartVO.getUserId());
         System.out.println("cartVO 값 확인 : " + cartVO);
 
 

@@ -69,7 +69,7 @@ public class UserControllerImpl implements UserController {
 																
 		ModelAndView mav = new ModelAndView();
 		
-		HttpSession session=request.getSession();  //세션사용
+		HttpSession session = request.getSession();  //세션사용
 		session.setAttribute("isLogOn", false);  //조회한 회원정보를 가져와 isLogOn 속성을 false로 설정하고 
 		session.removeAttribute("user");  //user 속성으로 회원정보를 지워 로그아웃 시킴
 		mav.setViewName("redirect:/main.do");  //메인페이지로 표시
