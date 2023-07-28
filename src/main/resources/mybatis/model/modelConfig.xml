@@ -18,6 +18,10 @@
 		 <typeAlias type="com.proj.salad.order.vo.OrderVO" alias="orderVO" />
 		 <typeAlias type="com.proj.salad.order.vo.OrderMenuVO" alias="orderMenuVO" />
 
+		 <!-- 추가부분! -->
+		 <typeAlias type="com.proj.salad.mypage.vo.OrderListVO" alias="orderListVO" />
+		 <typeAlias type="com.proj.salad.mypage.vo.OrderInfoVO" alias="orderInfoVO" />
+
 
 		 <!-- 서승희 -->
 		 <typeAlias type="com.proj.salad.user.vo.UserVO" alias="userVO" />

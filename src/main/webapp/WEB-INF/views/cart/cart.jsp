@@ -62,13 +62,16 @@
           </ul>
         </div>
         <div class="cart-sum">
-          <div id="cart-sum-title cart-margin">
-            <span>상품 가격</span>
-            <span> + </span>
-            <span>배송비</span>
-            <span> + </span>
-            <span>총 가격</span>
-          </div>
+          <c:if test="${not empty cartList}">
+            <div id="cart-sum-title cart-margin">
+              <span>상품 가격</span>
+              <span> + </span>
+              <span>배송비</span>
+              <span> + </span>
+              <span>총 가격</span>
+            </div>
+          </c:if>
+
           <c:if test="${not empty cartList}">
             <div class="cart-sum-res cart-margin">
             <span>
@@ -79,9 +82,7 @@
               <fmt:formatNumber value="${sum}" pattern="#,###" />
             </span>
               <span> + </span>
-              <c:if test="${not empty cartList}">
                 <span>3,000</span>
-              </c:if>
               <span> + </span>
               <span>
               <fmt:formatNumber value="${sum + 2500}" pattern="#,###" /> 원
@@ -90,7 +91,7 @@
           </c:if>
           <c:if test="${empty cartList}">
             <div class="cart-sum-res cart-margin">
-              <span>0 원</span>
+              <span hidden>0 원</span>
             </div>
           </c:if>
         </div>
@@ -149,6 +150,7 @@
       $(".cart-sum-res span:first-child").text(sum.toLocaleString());
 
       // 배송비 추가 (여기서는 하드코딩으로 3000을 사용합니다.)
+      // sum += $(".delivery-price").value;
       sum += 3000;
 
       // 총 가격 출력

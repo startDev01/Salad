@@ -1,0 +1,82 @@
+.test-h1 {
+    font-size: 30px;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 600;
+}
+
+head {
+    font-family: 'Noto Sans KR', sans-serif !important;
+    font-weight: 600 !important;
+}
+
+.odl-container {
+    display: flex;
+    flex-direction: row;
+    width: 1200px;
+}
+
+.odl-box {
+    /*border: 5px solid indianred;*/
+    /*height: 1000px;*/
+    width: 900px;
+}
+
+.odl-box2 {
+    border: 5px solid indigo;
+    height: 1000px;
+    width: 200px;
+}
+
+.odl-1box {
+    /*border-top: 2px solid #b6b57a;*/
+    /*border-bottom: 2px solid #0056b3;*/
+    /*padding-top: 5px;*/
+    /*padding-bottom: 5px;*/
+    /*margin-top: 10px;*/
+    /*margin-bottom: 10px;*/
+}
+
+#odl-underbar {
+    width: 100%;
+    border-bottom: 2px solid purple;
+    margin-bottom: 10px;
+}
+
+.odl-table {
+    width: 100%;
+}
+
+.odl-table-th {
+    vertical-align: middle;
+    height: 50px;
+    background: #36DDA6;
+}
+
+.odl-table-td {
+    vertical-align: middle;
+    height: 50px;
+}
+
+.odl-td-pointer:hover {
+    cursor: pointer;
+    color: #128853;
+}
+
+.odl-table-del {
+    height: 35px;
+    width: 75px;
+    border: none;
+    /*font-family: 'nanumsquare', sans-serif;*/
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.odl-table-del:hover {
+    cursor: pointer;
+    background: #36DDA6;
+    color: white;
+}

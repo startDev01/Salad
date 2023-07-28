@@ -19,7 +19,5 @@ public interface MyPageController {
                                        HttpServletRequest request, HttpServletResponse response)  throws Exception;
 	//회원정보탈퇴
 	public ModelAndView removeUser(@RequestParam("userId") String userId, HttpServletRequest request, HttpServletResponse response) throws Exception;
-	
-	
-	
+
 }

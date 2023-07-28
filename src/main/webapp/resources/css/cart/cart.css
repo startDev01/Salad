@@ -8,7 +8,7 @@
 
 /* 장바구니 Container */
 .cart-container {
-    background-color: aliceblue;
+    /*background-color: aliceblue;*/
     height: 1000px;
     width: 1000px;
     display: flex;
@@ -104,7 +104,7 @@
 
 .cart-list-del:hover {
     cursor: pointer;
-    background-color: #36DDA6;
+    background-color: #128853;
     color: white;
 }
 
@@ -152,7 +152,7 @@
 
 /* 주문하기 버튼 부분 */
 .button-order {
-    background-color: #36DDA6;
+    background-color: #128853;
     color: white;
     border: none;
     height: 60px;

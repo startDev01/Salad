@@ -67,7 +67,7 @@
 							<c:otherwise>
 								<li><a href="${contextPath}/user/loginForm.do">로그인</a></li>
 								<li><a href="${contextPath}/user/userForm.do">회원가입</a></li> 
-								<li><a href="${contextPath}/mypage/myDetailInfo.do" class="">마이페이지</a></li>
+<%--								<li><a href="${contextPath}/mypage/myDetailInfo.do" class="">마이페이지</a></li>--%>
 							</c:otherwise>
 						</c:choose>
 					</ul>

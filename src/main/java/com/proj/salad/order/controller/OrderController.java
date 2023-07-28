@@ -104,7 +104,9 @@ public class OrderController {
 			String prodPrice = request.getParameter("CL_prodPrice" + String.valueOf(i));
 
 			// orderMenuVO에 값 저장
-			orderMenuVO.setOrderNum(orderVO.getOrderNum());
+			
+			// 현재 안쓰는 코드 임시 비활성화
+//			orderMenuVO.setOrderNum(orderVO.getOrderNum());
 			orderMenuVO.setMenuName(prodName);
 			orderMenuVO.setMenuCount(cartCount);
 			orderMenuVO.setUserId(userId);

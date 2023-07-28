@@ -30,7 +30,8 @@
 		<h3>주문내역</h3>
 		<br>
 		<ul>
-			<li><a href="${contextPath}/mypage/listMyOrderHistory.do">주문내역/배송 조회</a></li><br>
+			<%-- listOrder로 경로 수정 --%>
+			<li><a href="${contextPath}/mypage/orderList">주문내역/배송 조회</a></li><br>
 			<li><a href="#">반품/교환 신청 및 조회</a></li><br>
 			<li><a href="#">취소 주문 내역</a></li><br>
 			<!-- <li><a href="#">세금 계산서</a></li><br> -->

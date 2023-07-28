@@ -1,0 +1,15 @@
+.order-info-table > tr > td {
+    height: 20px;
+    width: 100px;
+    font-size: 20px;
+}
+
+.order-info-table {
+    /*border: 1px solid black;*/
+}
+
+td {
+    width: 150px;
+    height: 100px;
+    vertical-align: middle;
+}

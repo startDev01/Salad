@@ -106,6 +106,7 @@ public class MyPageControllerImpl implements MyPageController {
 		return mav;
 	}
 
+
 	private String getViewName(HttpServletRequest request) throws Exception {
 		String contextPath = request.getContextPath();
 		String uri = (String) request.getAttribute("javax.servlet.include.request_uri");
