@@ -21,13 +21,18 @@
 
     <style>
         /* css 적용 부분 */
-
+	.odl-container{   /* 임시 */
+         padding-top: 178px;   /* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
+      }
+      .order-info-table{
+      font-size:13px;
+      }
     </style>
     <title>주문 상세 정보</title>
 
 </head>
 <body>
-    <div>
+    <div class="odl-container">
         <table class="order-info-table" border="1px" align="center">
             <tr>
                 <td>주문번호</td>

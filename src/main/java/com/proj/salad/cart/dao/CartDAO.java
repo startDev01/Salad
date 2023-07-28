@@ -6,7 +6,6 @@ import org.springframework.dao.DataAccessException;
 
 import java.util.List;
 
-/* CartDAO 김동혁 추가(23.07.19) */
 public interface CartDAO {
     public void addCart(CartVO cartVO) throws DataAccessException;
     public List<CartListVO> cartById(String userId) throws DataAccessException;

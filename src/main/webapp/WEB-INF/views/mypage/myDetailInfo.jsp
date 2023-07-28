@@ -1,24 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"
 	isELIgnored="false"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><!-- jstl 사용하기 위해 라이브러리 추가  -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>	<!-- 하유리: Tiles가 제공하는 태그 라이브러리 추가(23.07.25.) -->
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
-<%-- <c:set var="user" value="${userMap}"/> --%>
+
 <!DOCTYPE html >
 <html>
 <head>
-<meta charset="utf-8">
-<!-- Daum에서 제공하는 주소 검색을 사용하기 위해 포함 -->
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<meta charset="utf-8">
+	<!-- Daum에서 제공하는 주소 검색을 사용하기 위해 포함 -->
+	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+	
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
      <!-- css 적용 -->
    <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
  	<link href="../resources/css/header.css" rel="stylesheet" type="text/css" >
 	<link href="../resources/css/footer.css" rel="stylesheet" type="text/css" >
+	<link href="../resources/css/mypage/userForm.css" rel="stylesheet" type="text/css" >	<!-- 하유리: css 적용(23.07.25.) -->
 	<style>
-	#login_table{
+	  h1 {   /* 임시 */
+         padding-top: 178px;   /* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
+      }
+      
+	/* #login_table{
 	width:100%;
 	 display: flex;
 	 justify-content: center;
@@ -26,15 +32,182 @@
 	.user-form {
            display: inline-block;
            padding: 30px;
-        }
-     .fixed_join{
+        } */
+   /*  .fixed_join{
      	 justify-content: center;
          padding-top:12px;
          padding-right:15px;
-         } 
+         }  */
 	</style>
+
+</head>
+
+<body>
+	<div class="total">															<!-- 하유리: div 추가(23.07.25.) -->
+		<div class="join_sub">													<!-- 하유리: div 추가(23.07.25.) -->
+			<p class="text_center">회원 상세 정보</p>						<!-- 하유리: style 태그 적용하기 위해 <p>태그로 수정, 텍스트 수정(23.07.25.) -->
+		</div>
+		<div class="lineAndForm">											<!-- 하유리: div 추가(23.07.25.) -->
+			<!-- 하유리: 구분선 및 텍스트 추가(23.07.25.) -->
+			<div class="top_line">		
+				<span class="basic">정보입력</span>	
+				<span class="essential">*</span>
+				<span>필수입력사항</span>
+			</div>
+			<!-- 하유리: div 추가(23.07.25.) -->
+			<div class="userForm">
+				<form name="frm_mod_user">
+									<!-- 하유리: <div id="login_table"> 삭제 -->
+					<table>	<!-- 하유리: align="center" 삭제(23.07.25.) -->
+						<tbody>
+							<tr class="dot_line">
+								<td class="fixed_join">
+									<p class="join_label">아이디<span class="essential">*</span>	<!-- 하유리: <span> 추가, align속성 삭제(23.07.25.) -->
+								</td>	
+								<td align="left"><!-- 하유리: class, </td> 추가(23.07.25.) -->
+									<input class="join_input" style="width: 65%;" type="text" name="userId"  id="userId"   minlength="2" maxlength="10" required  value="${user.userId }" disabled/>								
+								</td>
+							</tr>
+							<tr class="dot_line">
+								<td class="fixed_join">
+									<p class="join_label">비밀번호<span class="essential">*</span>						<!-- 하유리: align속성, class, </p><span> 추가(23.07.25.) -->
+								</td>
+								<td><input class="join_input" name="userPwd" id="userPwd" type="password" minlength="4" maxlength="12" required  value="${user.userPwd }" /></td>	<!-- 하유리: align속성, size 삭제(23.07.25.) -->
+								<td  class="btn_modify"><input type="button"  value="수정하기" onClick="fn_modify_user_info('userPwd')"/></td>
+							</tr>
+							<tr class="dot_line">
+								<td class="fixed_join">
+									<p class="join_label">비밀번호 확인<span class="essential">*</span></td>				<!-- 하유리: align속성, class, </p><span> 추가(23.07.25.) -->
+								<!-- 23.07.27 서승희 비밀번호 확인 추가 -->
+								<!-- onkeyup="JS function" 입력이 되었을 때, -->
+								<td><input class="join_input"  type="password" name="userPwdConfirm" id="userPwdConfirm" placeholder="비밀번호 확인" onkeyup="passConfirm()"></td><td><span id ="confirmMsg"></span></td>
+							</tr>
+							
+							<tr class="dot_line">
+								<td class="fixed_join">
+									<p class="join_label">이름<span class="essential">*</span>																	<!-- 하유리: align속성 삭제(23.07.25.) -->
+								</td>
+								<td><input class="join_input" name="userName" type="text" minlength="2" maxlength="10" required  value="${user.userName }" /></td>				<!-- 하유리: align속성, size 삭제(23.07.25.) -->
+								<td><input type="button" value="수정하기" onClick="fn_modify_user_info('userName')"/></td>
+							</tr>
+							<tr class="dot_line">
+								<td class="fixed_join">
+									<p class="join_label">성별<span class="essential">*</span>																	<!-- 하유리: <span> 태그 추가, align속성 삭제(23.07.25.) -->
+								</td>
+								<td class="userGender" align="left">
+									<c:choose>
+					  					<c:when test="${user.userGender=='남' }">
+						 					<input type="radio" name="userGender" value="여" />여성
+												<span class="genderTxt"></span>							
+						 					<input type="radio" name="userGender" value="남"  checked style="margin-left:40px" />남성
+										</c:when>
+						 			<c:otherwise>
+						 				 <input type="radio" name="userGender" value="여" checked  />여성
+											<span class="genderTxt"></span>
+						 				<input type="radio" name="userGender" value="남" />남성
+						 			</c:otherwise>
+								 </c:choose>
+								</td>
+								<td><input type="button" value="수정하기" onClick="fn_modify_user_info('userGender')"/></td>
+							</tr>
+							<tr class="dot_line">
+								<td class="fixed_join"><p class="join_label" id="label_email">이메일<span class="essential">*</span></td>	<!-- 하유리: align속성, <br>(e-mail) 삭제(23.07.25.) -->
+								<td>
+									<input class="join_input " type="email" name="userEmail" id="userEmail" value="${user.userEmail }" style="margin-bottom: 10px;"/>			<!-- 하유리: align속성, size 삭제(23.07.25.) -->
+								 <!-- 23.07.23 서승희 이메일 수신여부 수정 -->
+								<c:choose> 
+					    		<c:when test="${user.emailsts_yn=='true' || user.emailsts_yn=='Y,'}">
+					      			<input  class="email_chk"  type="checkbox" name="emailsts_yn"   id="emailsts_y"   value="Y,"  checked /><span class="email_chk_text" >쇼핑몰에서 발송하는 e-mail을 수신합니다.</span>	<!-- 23.07.20 email 수신동의 수정 -->
+								</c:when>
+								<c:otherwise>
+						  			<input  class="email_chk"  type="checkbox" name="emailsts_yn"   id="emailsts_n"   value="N" /><span class="email_chk_text" >쇼핑몰에서 발송하는 e-mail을 수신합니다.</span>
+								</c:otherwise>
+					 			</c:choose>
+								</td>
+								<td><input type="button" value="수정하기" onClick="fn_modify_user_info('email')"/></td> 
+						</tr>
+							<tr class="dot_line">
+								<td class="fixed_join">
+									<p class="join_label">생년월일<span class="essential">*</span>							<!-- 하유리: align속성 삭제, <span>추가(23.07.25.) -->
+								</td>
+								<td><input class="join_input" name="userBirth" type="text" minlength="8" maxlength="8" required  value="${user.userBirth }" /></td>	<!-- 하유리: align속성, size, <br>(e-mail) 삭제(23.07.25.) -->
+								<td><input type="button" value="수정하기" onClick="fn_modify_user_info('userBirth')"/></td>
+							</tr>
+							<tr class="dot_line">
+								<td class="fixed_join">
+									<p class="join_label" id="label_phone">연락처<span class="essential">*</span>	<!-- 하유리: align속성 삭제, <span>추가(23.07.25.) -->
+								</td>
+								<td> <input class="join_input" type="text" name="userPhone" minlength="10" maxlength="12" required  value="${user.userPhone }" style="margin-bottom: 10px;"/>	<!-- 하유리: align속성, size삭제, <style> 추가(23.07.25.) -->
+									<!-- <select  name="userPhone" id="userPhone">
+										<option>없음</option>
+										<option selected value="010">010</option>
+										<option value="02">02</option>
+										<option value="031">031</option>
+										<option value="032">032</option>
+										<option value="033">033</option>
+										<option value="041">041</option>
+										<option value="042">042</option>
+										<option value="043">043</option>
+										<option value="044">044</option>
+										<option value="051">051</option>
+										<option value="052">052</option>
+										<option value="053">053</option>
+										<option value="054">054</option>
+										<option value="055">055</option>
+										<option value="061">061</option>
+										<option value="062">062</option>
+										<option value="063">063</option>
+										<option value="064">064</option>
+										<option value="0502">0502</option>
+										<option value="0503">0503</option>
+										<option value="0505">0505</option>
+										<option value="0506">0506</option>
+										<option value="0507">0507</option>
+										<option value="0508">0508</option>
+										<option value="070">070</option>
+									</select>  -->
+					<!-- 23.07.23 서승희 연락처 수신여부 수정 -->
+					<c:choose> 
+					   <c:when test="${user.smssts_yn=='true' || user.smssts_yn=='Y,'}">
+					     <input class="sms_chk" type="checkbox"  name="smssts_yn"  id="smssts_y"  value="Y,"  checked /><span class="sms_chk_text" >쇼핑몰에서 발송하는 SMS를 수신합니다.</span> <!-- 23.07.20 sms 수신동의 수정 -->
+					   </c:when>
+					   <c:otherwise>
+						  <input class="sms_chk" type="checkbox"  name="smssts_yn" id="smssts_n"  value="N" /><span class="sms_chk_text" >쇼핑몰에서 발송하는 SMS를 수신합니다.</span>		
+							</c:otherwise>
+					 	</c:choose>	
+					 	</td>
+						<td><input type="button" value="수정하기" onClick="fn_modify_user_info('phone')"/></td>
+						</tr>
+							<tr class="dot_line">
+								<td class="fixed_join">
+									<p class="join_label">주소<span class="essential">*</span>	<!-- 하유리: align속성 삭제, <span>추가(23.07.25.) -->
+								</td>
+								<td>																								<!-- 하유리: align속성 삭제(23.07.25.) -->
+									<p class="addressTxt"> 
+									  	<input class="addBtn" type="button" onClick="location.href='javascript:execDaumPostcode()'"value="주소 검색" style="width:100%; "/><br><br>
+									  	<!-- 서승희 주소검색 부분 추가 23.07.19 --><!-- 하유리: 기본주소: , 상세주소: 텍스트 삭제 + placeholder 수정 + 버튼 윗부분으로 이동(23.07.25.) -->
+										<!-- 기본 주소:  --><input class="join_input" type="text" id="userAddress1" name="userAddress1" size="30" value="${user.userAddress1 }" placeholder="기본주소 입력" /><br><br>
+									  	<!-- 상세 주소:  --><input class="join_input" type="text" id="userAddress2"  name="userAddress2" size="30" value="${user.userAddress2 }" placeholder="상세주소 입력" /><br><br>
+								   </p>
+								  </td>
+								<td><input type="button" value="수정하기" onClick="fn_modify_user_info('address')"/></td>
+							</tr>
+						</tbody>
+					</table>	
+		
+					<div class="clear" align="center">
+						<input type="hidden" name="command"  value="modify_my_info" /> 
+						<!-- <input name="btn_cancel_member" type="button"  value="수정 취소"> -->
+						<%-- <input name="btn_modify_user" type="button" onclick="fn_modify_user_info('modify_all')"  value="수정하기"> --%>
+						<input name="btn_cancel_user" type="reset"  value="수정취소">
+						<input type="button" onclick="location.href='${contextPath}/mypage/removeUser.do?userId=${user.userId}'" value="회원탈퇴"/><br><br>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 	
-<script>
+	<script>
 //주소검색
 function execDaumPostcode() {
   new daum.Postcode({
@@ -137,126 +310,30 @@ function execDaumPostcode() {
 		}
 	}); //end ajax
 }
+
+  //비밀번호 확인 
+  //23.07.27 서승희 비밀번호 확인 추가
+	function passConfirm() {
+	/* 비밀번호, 비밀번호 확인 입력창에 입력된 값을 비교해서 같다면 비밀번호 일치, 그렇지 않으면 불일치 라는 텍스트 출력.*/
+	/* document : 현재 문서를 의미함. 작성되고 있는 문서를 뜻함. */
+	/* getElementByID('아이디') : 아이디에 적힌 값을 가진 id의 value를 get을 해서 password 변수 넣기 */
+	var password = document.getElementById('userPwd');					//비밀번호 
+	var passwordConfirm = document.getElementById('userPwdConfirm');	//비밀번호 확인 값
+	var confirmMsg = document.getElementById('confirmMsg');				//확인 메세지
+	var correctColor = "#32cd32";	//맞았을 때 출력되는 색깔.
+	var wrongColor ="#ff0000";	//틀렸을 때 출력되는 색깔
+	
+	if(password.value == passwordConfirm.value){//password 변수의 값과 passwordConfirm 변수의 값과 동일하다.
+		confirmMsg.style.color = correctColor;/* span 태그의 ID(confirmMsg) 사용  */
+		confirmMsg.innerHTML ="일치";/* innerHTML : HTML 내부에 추가적인 내용을 넣을 때 사용하는 것. */
+	}else{
+		confirmMsg.style.color= wrongColor;
+		confirmMsg.innerHTML ="불일치";
+		}
+	}
+    
+
 </script>
-</head>
-
-<body>
-<h1  class="text_center" align="center">회원 상세 정보</h1>
-<form name="frm_mod_user">	
-	<div id="login_table">
-		<table  align="center">
-			<tbody>
-				<tr class="dot_line">
-					<td class="fixed_join" width="120" ><p align="right">아이디</td>
-					<td align="left"><input type="text" name="userId"  id="userId"  size="20" minlength="2" maxlength="10" required  value="${user.userId }" disabled/>
-					</td>
-				</tr>
-				<tr class="dot_line">
-					<td class="fixed_join" width="120"><p align="right">비밀번호</td>
-					<td align="left"><input name="userPwd" type="password" size="20" minlength="4" maxlength="12" required  value="${user.userPwd }" /></td>
-					<td><input type="button" value="수정하기" onClick="fn_modify_user_info('userPwd')"/></td>
-				</tr>
-				<tr class="dot_line">
-					<td class="fixed_join" width="120"><p align="right">이름</td>
-					<td align="left"><input name="userName" type="text" size="20" minlength="2" maxlength="10" required  value="${user.userName }"/></td>
-					<td><input type="button" value="수정하기" onClick="fn_modify_user_info('userName')"/></td>
-				</tr>
-				<tr class="dot_line">
-					<td class="fixed_join" width="120"><p align="right">성별</td>
-					<td align="left">
-					 <c:choose>
-					  <c:when test="${user.userGender=='남' }">
-						 <input type="radio" name="userGender" value="여" />여성
-							<span style="padding-left:20px"></span>
-						 <input type="radio" name="userGender" value="남"  checked  />남성
-						 </c:when>
-						 <c:otherwise>
-						  <input type="radio" name="userGender" value="여" checked  />여성
-							<span style="padding-left:20px"></span>
-						 <input type="radio" name="userGender" value="남" />남성
-						 </c:otherwise>
-						 </c:choose>
-					</td>
-					<td><input type="button" value="수정하기" onClick="fn_modify_user_info('userGender')"/></td>
-				</tr>
-				<tr class="dot_line">
-					<td class="fixed_join" width="120"><p align="right">이메일<br>(e-mail)</td>
-					<td align="left"><input size="30px"   type="email" name="userEmail" id="userEmail" value="${user.userEmail }" /> 
-					<br> 
-					<!-- 23.07.23 서승희 이메일 수신여부 수정 -->
-					<c:choose> 
-					    <c:when test="${user.emailsts_yn=='true' || user.emailsts_yn=='Y,'}">
-					      <input type="checkbox" name="emailsts_yn"   id="emailsts_y"   value="Y,"  checked /> 쇼핑몰에서 발송하는 e-mail을 수신합니다.
-						</c:when>
-						<c:otherwise>
-						  <input type="checkbox" name="emailsts_yn"   id="emailsts_n"   value="N" /> 쇼핑몰에서 발송하는 e-mail을 수신합니다.
-						</c:otherwise>
-					 </c:choose>
-					</td>
-					<td><input type="button" value="수정하기" onClick="fn_modify_user_info('email')"/></td>
-				</tr>
-				<tr class="dot_line">
-					<td class="fixed_join" width="120"><p align="right">생년월일</td>
-					<td align="left"><input name="userBirth" type="text" size="40px" minlength="8" maxlength="8" required  value="${user.userBirth }"/></td>
-					<td><input type="button" value="수정하기" onClick="fn_modify_user_info('userBirth')"/></td>
-				</tr>
-				<tr class="dot_line">
-					<td class="fixed_join" width="120"><p align="right">연락처</td>
-					<td align="left"> <input size="40px"  type="text" name="userPhone" minlength="10" maxlength="12" required  value="${user.userPhone }"/>
-						<!-- <select  name="userPhone" id="userPhone">
-							<option>없음</option>
-							<option value="010">010</option>
-							<option value="011">011</option>
-							<option value="016">016</option>
-							<option value="017">017</option>
-							<option value="018">018</option>
-							<option value="019">019</option>
-							<option value="0502">0502</option>
-							<option value="0503">0503</option>
-							<option value="0505">0505</option>
-							<option value="0506">0506</option>
-							<option value="0507">0507</option>
-							<option value="0508">0508</option>
-							<option value="070">070</option>
-						</select>  -->
-					<br> 
-					<!-- 23.07.23 서승희 연락처 수신여부 수정 -->
-					<c:choose> 
-					   <c:when test="${user.smssts_yn=='true' || user.smssts_yn=='Y,'}">
-					     <input type="checkbox"  name="smssts_yn"  id="smssts_y"  value="Y,"  checked /> 쇼핑몰에서 발송하는 SMS 소식을 수신합니다.
-						</c:when>
-						<c:otherwise>
-						  <input type="checkbox"  name="smssts_yn" id="smssts_n"  value="N" /> 쇼핑몰에서 발송하는 SMS 소식을 수신합니다.
-						</c:otherwise>
-					 </c:choose>	
-					 </td>
-					<td><input type="button" value="수정하기" onClick="fn_modify_user_info('phone')"/></td>
-				</tr>
-			
-				<tr class="dot_line">
-					<td class="fixed_join" width="120"><p align="right">주소지</td>
-					<td align="left">
-					  <p> 
-					  기본 주소: <input type="text" id="userAddress1" name="userAddress1" size="30" value="${user.userAddress1 }"/ ><br><br>
-					  상세 주소: <input type="text" id="userAddress2"  name="userAddress2" size="30" value="${user.userAddress2 }"  /><br><br>
-					   <input class="addBtn" type="button" onClick="location.href='javascript:execDaumPostcode()'"value="주소검색" style="width:88.5%; "/><br><br>
-					   </p>
-					</td>
-					<td><input type="button" value="수정하기" onClick="fn_modify_user_info('address')"/></td>
-				</tr>
-			</tbody>
-		</table>
-		</div>
-		<br>
-		<div class="clear" align="center">
-		<input type="hidden" name="command"  value="modify_my_info" /> 
-		<!-- <input name="btn_cancel_member" type="button"  value="수정 취소"> -->
-		<%-- <input name="btn_modify_user" type="button" onclick="fn_modify_user_info('modify_all')"  value="수정하기"> --%>
-		<input name="btn_cancel_user" type="reset"  value="수정취소">
-		<input type="button" onclick="location.href='${contextPath}/mypage/removeUser.do?userId=${user.userId}'" value="회원탈퇴"/><br><br>
-		</div>
-</form>	
-
-
+	
 </body>
 </html>

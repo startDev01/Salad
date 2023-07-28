@@ -1,12 +1,7 @@
 package com.proj.salad.review.vo;
 
-import lombok.Data;
-import org.springframework.stereotype.Component;
-
 import java.util.Date;
 
-@Data
-@Component
 public class Review_imageVO {
 	private int re_imgNO;						//이미지파일 번호(기본키)
 	private int re_articleNO;					//리뷰게시판 게시물 번호(참조키)

@@ -1,6 +1,9 @@
 package com.proj.salad.mypage.controller;
 
+import java.text.DecimalFormat;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.proj.salad.order.vo.OrderVO;
 import com.proj.salad.mypage.service.MyPageService;
 import com.proj.salad.user.vo.UserVO;
 
@@ -49,8 +53,6 @@ public class MyPageControllerImpl implements MyPageController {
             																@RequestParam("value")  String value, 
             																HttpServletRequest request,
             																HttpServletResponse response) throws Exception {
-		
-		//System.out.println("modifyMyInfo");
 		
 		Map<String, String> userMap = new HashMap<String, String>();
 		String val[]=null; //배열 초기화
@@ -106,6 +108,166 @@ public class MyPageControllerImpl implements MyPageController {
 		return mav;
 	}
 
+	//마이페이지 메인
+	@Override
+	@RequestMapping(value="/mypage/myPageMain.do",method=RequestMethod.GET)
+	public ModelAndView myPageMain(@RequestParam(required = false,value="message") String message, 
+																			HttpServletRequest request, HttpServletResponse response)
+																			throws Exception {
+		
+		HttpSession session=request.getSession();
+		session=request.getSession();
+		session.setAttribute("side_menu", "my_page"); //마이페이지 사이드 메뉴로 설정한다.
+		
+		String viewName = getViewName(request);
+		ModelAndView mav = new ModelAndView(viewName);
+		System.out.println(viewName);
+		
+		userVO=(UserVO)session.getAttribute("user");
+		String userId=userVO.getUserId();
+		
+		List<OrderVO> myOrderList=myPageService.listMyOrderGoods(userId);
+		
+		mav.addObject("message", message);
+		mav.addObject("myOrderList", myOrderList);
+
+		return mav;
+	}
+
+	//주문내역 리스트
+	@Override
+	@RequestMapping(value="/mypage/listMyOrderHistory.do" ,method = RequestMethod.GET)
+	public ModelAndView listMyOrderHistory(@RequestParam Map<String, String> dateMap, 
+																						HttpServletRequest request,HttpServletResponse response) throws Exception {
+		
+		String viewName = getViewName(request);
+		ModelAndView mav = new ModelAndView(viewName);
+		System.out.println(viewName);
+		
+		HttpSession session=request.getSession(); //세션사용
+		userVO=(UserVO)session.getAttribute("user");
+		String  userId=userVO.getUserId();
+		
+		//제품주문리스트 myOrderList에 결과값 저장
+		List<OrderVO> myOrderList=myPageService.listMyOrderGoods(userId);
+		
+		//userVO에 model 값 넘기기
+		mav.addObject("userVO", userVO);
+		//myOrderList에 model 값 넘기기
+		mav.addObject("myOrderList", myOrderList);
+	
+		//주문검색 년월일 조회
+		  String fixedSearchPeriod = dateMap.get("fixedSearchPeriod"); 
+		  String beginDate=null,endDate=null;
+	  
+		  String [] tempDate=calcSearchPeriod(fixedSearchPeriod).split(",");
+		  beginDate=tempDate[0]; 
+		  endDate=tempDate[1]; 
+		  dateMap.put("beginDate",beginDate); 
+		  dateMap.put("endDate", endDate); 
+		  dateMap.put("userId", userId);
+	  
+		 //제품주문리스트 myOrderHistList에 결과값 저장
+		  List<OrderVO> myOrderHistList=myPageService.listMyOrderHistory(dateMap);
+		  
+		  String beginDate1[]=beginDate.split("-"); //검색일자를 년,월,일로 분리해서 화면에 전달합니다.
+		  String endDate1[]=endDate.split("-");
+		  mav.addObject("beginYear",beginDate1[0]);
+		  mav.addObject("beginMonth",beginDate1[1]);
+		  mav.addObject("beginDay",beginDate1[2]);
+		  mav.addObject("endYear",endDate1[0]); 
+		  mav.addObject("endMonth",endDate1[1]);
+		  mav.addObject("endDay",endDate1[2]); 
+	  	  mav.addObject("myOrderHistList",myOrderHistList); 
+		  
+		  return mav; 
+		  
+		  }
+		  
+			//주문검색 년월일 계산코드
+		  protected String calcSearchPeriod(String fixedSearchPeriod){ 
+			  String beginDate=null; 
+			  String endDate=null; 
+			  String endYear=null; 
+			  String endMonth=null; 
+			  String endDay=null; 
+			  String beginYear=null; 
+			  String beginMonth=null; 
+			  String beginDay=null; 
+			  
+			  DecimalFormat df = new DecimalFormat("00"); 
+			  
+			  Calendar cal=Calendar.getInstance();
+		  
+			  endYear = Integer.toString(cal.get(Calendar.YEAR)); 
+			  endMonth =df.format(cal.get(Calendar.MONTH) + 1); 
+			  endDay =df.format(cal.get(Calendar.DATE)); 
+			  endDate = endYear +"-"+ endMonth+"-"+endDay;
+		  
+		  if(fixedSearchPeriod == null) { 
+			  cal.add(cal.MONTH,-4); 
+		  }else if(fixedSearchPeriod.equals("one_week")) { 
+			  cal.add(Calendar.DAY_OF_YEAR, -7);
+		  }else if(fixedSearchPeriod.equals("two_week")) {
+			  cal.add(Calendar.DAY_OF_YEAR, -14); 
+		  }else if(fixedSearchPeriod.equals("one_month")) { 
+			  cal.add(cal.MONTH,-1); 
+		  }else if(fixedSearchPeriod.equals("two_month")) { 
+			  cal.add(cal.MONTH,-2); 
+		  }else if(fixedSearchPeriod.equals("three_month")) { 
+			  cal.add(cal.MONTH,-3); 
+		  }else if(fixedSearchPeriod.equals("four_month")) { 
+			  cal.add(cal.MONTH,-4);
+		  }
+		  
+		  beginYear = Integer.toString(cal.get(Calendar.YEAR)); 
+		  beginMonth =df.format(cal.get(Calendar.MONTH) + 1); 
+		  beginDay =df.format(cal.get(Calendar.DATE)); 
+		  beginDate = beginYear +"-"+ beginMonth+"-"+beginDay;
+		  
+		  return beginDate+","+endDate;
+		 
+	}
+	
+	//주문상세
+	@Override
+	@RequestMapping(value="/mypage/myOrderDetail.do" ,method = RequestMethod.GET)
+	public ModelAndView myOrderDetail(@RequestParam("orderNum")int orderNum, HttpServletRequest request, HttpServletResponse response)
+																			throws Exception {
+
+		String viewName = getViewName(request);
+		/* String viewName=(String)request.getAttribute("viewName"); */
+		ModelAndView mav = new ModelAndView(viewName);
+		
+		HttpSession session=request.getSession();  //세션사용
+		UserVO orderer=(UserVO)session.getAttribute("user");
+		
+		//제품정보 myOrderList에 결과값 저장
+		List<OrderVO> myOrderList=myPageService.findMyOrderInfo(orderNum);
+		mav.addObject("orderer", orderer);
+		mav.addObject("myOrderList",myOrderList);
+		
+		return mav;
+	}
+
+	//주문취소
+	@Override
+	@RequestMapping(value="/mypage/cancelMyOrder.do" ,method = RequestMethod.POST)
+	public ModelAndView cancelMyOrder(@RequestParam("orderNum") int orderNum, 
+																				HttpServletRequest request, HttpServletResponse response)
+																				throws Exception {
+
+		String viewName = getViewName(request);
+		
+		ModelAndView mav = new ModelAndView(viewName);
+		
+		myPageService.cancelOrder(orderNum);
+		mav.addObject("message", "cancel_order");
+		mav.setViewName("redirect:/mypage/myPageMain.do");
+		
+		return mav;
+		
+	}
 
 	private String getViewName(HttpServletRequest request) throws Exception {
 		String contextPath = request.getContextPath();

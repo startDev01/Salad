@@ -22,7 +22,7 @@ public interface NoticeDAO {
 	public String selectNotice(NoticeVO noticeVO);
 	
 	//하유리: 파일 업로드(23.07.20.)
-	public void insertImage(Map<String, Object> map) throws Exception;
+	public void insertImage(Map<String, Object>map) throws Exception;
 	
 	//하유리: 3-1. 게시물 상세보기(23.07.16.)
 	public NoticeVO detailNotice(int articleNO);

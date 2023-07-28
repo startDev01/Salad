@@ -28,10 +28,5 @@ public class ProdDAOImpl implements ProdDAO {
         return nutrientVO;
     }
 
-    /* 재료 Select DAO / 김동혁 추가 (23.07.19) */
-    @Override
-    public ProdVO selectProdOne(int prodNum) throws DataAccessException {
-        ProdVO prodVO = sqlSession.selectOne("mapper.prod.selectProdOne", prodNum);
-        return prodVO;
-    }
+
 }

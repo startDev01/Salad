@@ -32,6 +32,7 @@
 		.subject {
 			font-size: 24px;
 			margin-bottom: 20px;
+			padding-top: 178px;	/* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
 		}
 		
 		/* 중앙정렬 */

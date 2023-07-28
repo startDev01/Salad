@@ -15,6 +15,33 @@
    .no-underline{
       text-decoration:none;
    }
+   .list_order{
+   	 background-color : lightgray;
+ 	 border-radius: 3px;
+ 	 width: 100px;
+ 	 height: auto;
+ 	 display: inline-block;
+     padding:5px;
+ 	 margin-bottom: 15px; 
+   }
+   .list_info{
+   	 background-color : lightgray;
+ 	 border-radius: 3px;
+ 	 width: 100px;
+ 	 height: auto;
+ 	 display: inline-block;
+     padding:5px;
+ 	 margin-bottom: 15px; 
+   }
+/*    .mynotice{
+   	 background-color : lightgray;
+ 	 border-radius: 3px;
+ 	 width: 100px;
+ 	 height: auto;
+ 	 display: inline-block;
+     padding:5px;
+ 	 margin-bottom: 15px; 
+   } */
  </style>
 </head>
 <body>
@@ -24,21 +51,19 @@
 <ul>
 <c:choose>
   <c:when test="${side_menu=='my_page' }">
-  </c:when>
-  <c:otherwise>
-	<li>
-		<h3>주문내역</h3>
+<li>
+		<h3 class="list_order">주문내역</h3>
 		<br>
 		<ul>
-			<%-- listOrder로 경로 수정 --%>
-			<li><a href="${contextPath}/mypage/orderList">주문내역/배송 조회</a></li><br>
-			<li><a href="#">반품/교환 신청 및 조회</a></li><br>
+			<li><a href="${contextPath}/mypage/orderList">주문 내역</a></li><br>
+			<%-- <li><a href="${contextPath}/mypage/myOrderDetail.do">반품/교환 신청 및 조회</a></li><br> --%>
+			<li><a href="#">주문 상세 내역</a></li><br>
 			<li><a href="#">취소 주문 내역</a></li><br>
 			<!-- <li><a href="#">세금 계산서</a></li><br> -->
 		</ul>
 	</li><br>
 	<li>
-		<h3>정보내역</h3>
+		<h3 class="list_info">정보내역</h3>
 		<br>
 		<ul>
 			<li><a href="${contextPath}/mypage/myDetailInfo.do">회원정보관리</a></li><br>
@@ -47,27 +72,50 @@
 			<li><a href="#">회원탈퇴</a></li><br> -->
 		</ul>
 	</li>
+  </c:when>
+  <c:otherwise>
+	<%-- <li>
+		<h3 class="list_order">주문내역</h3>
+		<br>
+		<ul>
+			<li><a href="${contextPath}/mypage/listMyOrderHistory.do">주문내역/배송 조회</a></li><br>
+			<li><a href="#">반품/교환 신청 및 조회</a></li><br>
+			<li><a href="#">취소 주문 내역</a></li><br>
+			<!-- <li><a href="#">세금 계산서</a></li><br> -->
+		</ul>
+	</li><br>
+	<li>
+		<h3 class="list_info">정보내역</h3>
+		<br>
+		<ul>
+			<li><a href="${contextPath}/mypage/myDetailInfo.do">회원정보관리</a></li><br>
+			<!-- <li><a href="#">나의 주소록</a></li><br>
+			<li><a href="#">개인정보 동의내역</a></li><br>
+			<li><a href="#">회원탈퇴</a></li><br> -->
+		</ul>
+	</li> --%>
   </c:otherwise>
 </c:choose>	
 </ul>
 </nav><br>
-<div class="clear"></div>
-<div id="banner">
-	<a href="${contextPath}/event/eventPage"><img width="190" height="163" src="${contextPath}/resources/image/n-pay.jpg"> </a>
-</div><br>
-<div id="notice">
-	<h2>공지</h2>
+<%-- <div>
+	<h2 class="mynotice">공지</h2>
 	<br>
 	<ul>
 	<c:forEach  var="i" begin="1" end="3" step="1">
-		<li><a href="${contextPath}/review">공지사항${ i}</a></li><br>
+		<li><p><a href="${contextPath}/notice/list">[안내] 샐러드다이소 서비스 시스템 점검 안내${ i}</a></p></li>
+		
 	</c:forEach>
 	</ul>
 </div>
-<br>
+<br> --%>
+<%-- <div class="clear"></div>
 <div id="banner">
+	<a href="${contextPath}/event/eventPage"><img width="190" height="163" src="${contextPath}/resources/image/n-pay.jpg"> </a>
+</div><br> --%>
+<%-- <div id="banner">
 	<a href="#"><img width="190" height="104" src="${contextPath}/resources/image/call_center_logo.jpg"></a>
-</div>
+</div> --%>
 
 <!-- <body>
 	<h1>사이드 메뉴</h1>

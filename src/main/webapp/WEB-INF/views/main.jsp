@@ -7,6 +7,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<meta charset="UTF-8">
   	<title>메인 페이지</title>
   	<script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -42,9 +44,9 @@
 		.prodP:hover {
 			transform: scale(1.2);
 		}
-	</style>
-  	
+	</style>  	
 </head>
+
 <body>
 <!-- 하유리: 슬라이드 배너(23.07.14.) -->
 <!-- 하유리: 슬라이드 효과(23.07.15.) -->
@@ -77,28 +79,240 @@
 </div>
 <div class="content1">
 	<!-- 하유리: 태그 수정(<p> → <h3>)(23.07.14.) -->
-	<h3>추천식단</h3><br>
 
 	<%-- 김동혁 수정 ( 리스트 출력 )(23.07.14.)--%>
-	<div class="listBox">
-		<!-- <p>list 출력부분</p><br> --><!-- 하유리: 주석처리(23.07.14) -->
-		<c:forEach var="prod" items="${prodList}" varStatus="prodNum">
-			<c:if test="${prodNum.index mod 3 == 0}">
-				<br>
-			</c:if>
-			<div class="prodBox">
-				<div class="prodP">
-					<p>이미지 :
-							<%--<c:if test="${prod.prodImageUrl == null}">
-								NULL
-							</c:if>--%>
-					</p>
-					<p>제목 : ${prod.prodName}</p>
-					<p>가격 : ${prod.prodPrice} ₩  </p>
+	<div class="mainProd_wrap">
+		<div class="margin">
+		
+			<!-- 1번째 열 -->
+			<h3 class="prod_sub">판매량이 증명하는 추천상품🏆️</h3><br>
+			<div class="prodRow">		
+				<!-- 추천상품01 -->
+				<div class="prod" name="13">
+					<div class="prod_img">		<!-- 추천상품01 이미지 -->
+						<img src="${contextPath}/resources/image/main/main_prod01.png" />
+					</div>
+					<div class="prod_content">	<!-- 추천상품01 이름 -->
+						<p class="prod_content_sub">닭가슴살 옥수수 톡톡 샐러드</p>
+						<div>																			<!-- 하유리: 할인율 추가(23.07.27.) -->
+							<span class="content_discount">20%</span>			
+							<span class="content_price">₩11,900</span>			<!-- 하유리: 가격 추가(23.07.27.) -->						
+						</div>																			
+						<div class="content_cost">						
+							<span>₩14,280</span>											<!-- 하유리: 원 판매가 추가(23.07.27.) -->	
+						</div>
+					</div>
+					<div class="mainBtn">
+						<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" />
+						<p class="addToCart">담기</p>
+					</div>
+				</div>
+				
+				<!-- 추천상품02 -->
+				<div class="prod" name="14">
+					<div class="prod_img">		<!-- 추천상품02 이미지 -->
+						<img src="${contextPath}/resources/image/main/main_prod04.png" />
+					</div>
+					<div class="prod_content">	<!-- 추천상품02 이름 -->
+						<p class="prod_content_sub">단백질+단백질 샐러드</p>
+						<div>																			<!-- 하유리: 할인율 추가(23.07.27.) -->
+							<span class="content_discount">20%</span>			
+							<span class="content_price">₩11,900</span>			<!-- 하유리: 가격 추가(23.07.27.) -->						
+						</div>																			
+						<div class="content_cost">						
+							<span>₩14,280</span>											<!-- 하유리: 원 판매가 추가(23.07.27.) -->	
+						</div>
+					</div>
+					<div class="mainBtn">
+						<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" />
+						<p class="addToCart">담기</p>
+					</div>
+				</div>
+				
+				<!-- 추천상품03 -->
+				<div class="prod" name="15">
+					<div class="prod_img">		<!-- 추천상품03 이미지 -->
+						<img src="${contextPath}/resources/image/main/main_prod06.png" />
+					</div>
+					<div class="prod_content">	<!-- 추천상품03 이름 -->
+						<p class="prod_content_sub">칠리빈 두부샐러드</p>
+						<div>																			<!-- 하유리: 할인율 추가(23.07.27.) -->
+							<span class="content_discount">20%</span>			
+							<span class="content_price">₩11,900</span>			<!-- 하유리: 가격 추가(23.07.27.) -->						
+						</div>																			
+						<div class="content_cost">						
+							<span>₩14,280</span>											<!-- 하유리: 원 판매가 추가(23.07.27.) -->	
+						</div>
+					</div>
+					<div class="mainBtn">
+						<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" />
+						<p class="addToCart">담기</p>
+					</div>
 				</div>
 			</div>
-		</c:forEach>
+			
+			<!-- 2번째 열 -->
+			<h3 class="prod_sub padding">단백질 듬뿍! 닭가슴살 샐러드🐔</h3><br>
+			<div class="prodRow">
+				<!-- 추천상품04 -->
+				<div class="prod" name="16">
+					<div class="prod_img">		<!-- 추천상품04 이미지 -->
+						<img src="${contextPath}/resources/image/main/main_prod02.png" />
+					</div>
+					<div class="prod_content">	<!-- 추천상품04 이름 -->
+						<p class="prod_content_sub">훈제 닭가슴살 토마토 샐러드</p>
+						<div>																			<!-- 하유리: 할인율 추가(23.07.27.) -->
+							<span class="content_discount">20%</span>			
+							<span class="content_price">₩11,900</span>			<!-- 하유리: 가격 추가(23.07.27.) -->						
+						</div>																			
+						<div class="content_cost">						
+							<span>₩14,280</span>											<!-- 하유리: 원 판매가 추가(23.07.27.) -->	
+						</div>
+					</div>
+					<div class="mainBtn">
+						<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" />
+						<p class="addToCart">담기</p>
+					</div>
+				</div>
+				
+				<!-- 추천상품05 -->
+				<div class="prod" name="17">
+					<div class="prod_img">		<!-- 추천상품05 이미지 -->
+						<img src="${contextPath}/resources/image/main/main_prod09.png" />
+					</div>
+					<div class="prod_content">	<!-- 추천상품05 이름 -->
+						<p class="prod_content_sub">닭가슴살 에그 샐러드</p>
+						<div>																			<!-- 하유리: 할인율 추가(23.07.27.) -->
+							<span class="content_discount">20%</span>			
+							<span class="content_price">₩11,900</span>			<!-- 하유리: 가격 추가(23.07.27.) -->						
+						</div>																			
+						<div class="content_cost">						
+							<span>₩14,280</span>											<!-- 하유리: 원 판매가 추가(23.07.27.) -->	
+						</div>
+					</div>
+					<div class="mainBtn">
+						<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" />
+						<p class="addToCart">담기</p>
+					</div>
+				</div>				
+				
+				<!-- 추천상품06 -->
+				<div class="prod" name="18">
+					<div class="prod_img">		<!-- 추천상품06 이미지 -->
+						<img src="${contextPath}/resources/image/main/main_prod03.png" />
+					</div>
+					<div class="prod_content">	<!-- 추천상품06 이름 -->
+						<p class="prod_content_sub">닭가슴살 두부 샐러드</p>
+						<div>																			<!-- 하유리: 할인율 추가(23.07.27.) -->
+							<span class="content_discount">20%</span>			
+							<span class="content_price">₩11,900</span>			<!-- 하유리: 가격 추가(23.07.27.) -->						
+						</div>																			
+						<div class="content_cost">						
+							<span>₩14,280</span>											<!-- 하유리: 원 판매가 추가(23.07.27.) -->	
+						</div>		
+					</div>
+					<div class="mainBtn">
+						<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" />
+						<p class="addToCart">담기</p>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 3번째 열 -->
+			<h3 class="prod_sub padding">색다른 샐러드를 원한다면?🥦</h3><br>
+			<div class="prodRow">
+				<!-- 추천상품07 -->
+				<div class="prod" name="19">
+					<div class="prod_img">		<!-- 추천상품07 이미지 -->
+						<img src="${contextPath}/resources/image/main/main_prod07.png" />
+					</div>
+					<div class="prod_content">	<!-- 추천상품07 이름 -->
+						<p class="prod_content_sub">에그베이컨 샐러드</p>
+						<div>																			<!-- 하유리: 할인율 추가(23.07.27.) -->	
+							<span class="content_discount">20%</span>			
+							<span class="content_price">₩11,900</span>			<!-- 하유리: 가격 추가(23.07.27.) -->						
+						</div>
+						<div class="content_cost">
+							<span>₩14,280</span>											<!-- 하유리: 원 판매가 추가(23.07.27.) -->	
+						</div>
+					</div>
+					<div class="mainBtn">
+						<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" />
+						<p class="addToCart">담기</p>
+					</div>
+				</div>
+				
+				<!-- 추천상품08 -->
+				<div class="prod" name="20">
+					<div class="prod_img">		<!-- 추천상품08 이미지 -->
+						<img src="${contextPath}/resources/image/main/main_prod08.png" />
+					</div>
+					
+					<div class="prod_content">	<!-- 추천상품08 이름 -->
+						<p class="prod_content_sub">새우 없는 쉬림프 샐러드</p>
+						<div>																			<!-- 하유리: 할인율 추가(23.07.27.) -->
+							<span class="content_discount">20%</span>			
+							<span class="content_price">₩11,900</span>			<!-- 하유리: 가격 추가(23.07.27.) -->						
+						</div>																			
+						<div class="content_cost">						
+							<span>₩14,280</span>											<!-- 하유리: 원 판매가 추가(23.07.27.) -->	
+						</div>
+					</div>
+					<div class="mainBtn">
+						<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" />
+						<p class="addToCart">담기</p>
+					</div>
+				</div>
+				
+				<!-- 추천상품09 -->
+				<div class="prod" name="21">
+					<div class="prod_img">		<!-- 추천상품09 이미지 -->
+						<img src="${contextPath}/resources/image/main/main_prod05.png" />
+					</div>
+					<div class="prod_content">	<!-- 추천상품09 이름 -->
+						<p class="prod_content_sub">훈제연어 샐러드</p>
+						<div>																			<!-- 하유리: 할인율 추가(23.07.27.) -->
+							<span class="content_discount">20%</span>			
+							<span class="content_price">₩11,900</span>			<!-- 하유리: 가격 추가(23.07.27.) -->						
+						</div>																			
+						<div class="content_cost">						
+							<span>₩14,280</span>											<!-- 하유리: 원 판매가 추가(23.07.27.) -->	
+						</div>
+					</div>
+					<div class="mainBtn">
+						<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" />
+						<p class="addToCart">담기</p>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
+<script>
+    $(document).ready(function () {
+        $(".mainBtn").on("click", function () {
+            var prodName = $(this).closest(".prod").attr("name");
+            $.ajax({
+                url: '${contextPath}/mainAddCart',
+                type: "post",
+                data: { prodNum: prodName },
+                success: function (response) {
+                    if (response === "success") {
+                        alert("장바구니에 성공적으로 담았습니다.");
+                    } else if (response === "login_fail") {
+                    	alert('비회원 상태입니다.\n로그인 창으로 넘어갑니다.');
+                        location.href = '${contextPath}/user/loginForm.do';
+                    } else {
+                        alert("담기 실패");
+                    }
+                },
+                error: function () {
+                	alert('비회원 상태입니다.\n로그인 창으로 넘어갑니다.');
+                    location.href = '${contextPath}/user/loginForm.do';
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>

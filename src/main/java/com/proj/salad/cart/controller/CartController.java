@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-/* Controller - 김동혁 추가(23.07.19) */
 @Controller
 public class CartController {
     @Autowired
@@ -29,7 +28,6 @@ public class CartController {
     @Autowired
     CartVO cartVO;
 
-    /* /addCart 컨트롤러 구현(장바구니 추가 기능) - 김동혁 추가 (23.07.19) */
     @RequestMapping(value = "/addCart", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
     public String addCart(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -43,21 +41,20 @@ public class CartController {
 
         // 로그인 값 확인 후 String에 유저 아이디 저장하기
         String userId = null;
+        UserVO userVO = null;
         HttpSession session = request.getSession();
+
         // 세션 형변환을 boolean이 아닌 Boolean으로 형변환
         if((Boolean) session.getAttribute("isLogOn")) {
-            UserVO userVO = (UserVO) session.getAttribute("user");
+            userVO = (UserVO) session.getAttribute("user");
             userId = userVO.getUserId();
             System.out.println("userId : " + userId);
-            cartVO.setUserId(userId);
         } else {
             System.out.println("비로그인 상태");
-            // 로그인 안됐을시 로그인폼(login.jsp)으로 리다이렉트
-            response.sendRedirect("/user/loginForm.do");
-            return null; // 리턴값이 필요 없으므로 null 반환
         }
 
-        System.out.println("남아있는 userId 확인 : " + cartVO.getUserId());
+        cartVO.setUserId(userId);
+        System.out.println("남아있는 userId 확인 : " + cartVO.getUserId() + ", " + userId);
         System.out.println("cartVO 값 확인 : " + cartVO);
 
 
@@ -71,7 +68,6 @@ public class CartController {
         return jsonData;
     }
 
-    /* /cart 컨트롤러 구현 - 김동혁 추가 (23.07.18) */
     @RequestMapping(value = "/cart", method = RequestMethod.GET)
     public ModelAndView cartList(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String viewName = getViewName(request);
@@ -107,6 +103,7 @@ public class CartController {
     }
 
 
+
     private String getViewName(HttpServletRequest request) throws Exception {
         String contextPath = request.getContextPath();
         String uri = (String) request.getAttribute("javax.servlet.include.request_uri");
@@ -138,7 +135,6 @@ public class CartController {
         return viewName;
     }
 
-    /* /delCart 컨트롤러 구현(장바구니 삭제 기능) - 김동혁 추가 (23.07.19) */
     @RequestMapping(value = "/delCart", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public String delCart(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -156,7 +152,6 @@ public class CartController {
         return jsonData;
     }
 
-    /* /updateCart 컨트롤러 구현(장바구니 수정 기능) - 김동혁 추가 (23.07.21) */
     @RequestMapping(value = "/updateCart", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public String updateCart(HttpServletRequest request, HttpServletResponse response) throws Exception {

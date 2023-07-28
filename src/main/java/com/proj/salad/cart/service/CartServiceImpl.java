@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/* 김동혁 ServiceImpl 추가 (23.07.19) */
+/* 김동혁 Service 추가 (23.07.19) */
 @Service
 public class CartServiceImpl implements CartService {
     @Autowired

@@ -5,10 +5,105 @@
    
       <mapper namespace="mapper.mypage"> <!-- DAOImpl에 매퍼 가져올때 사용할 고유이름 -->
   	    	 
-  	 <!-- 리절트 맵 정의 -->
-
+  	 <!-- 제품 주문 Map 정의 -->
+	<resultMap id="orderGoodsResult" type="orderVO">
+    	<result property="orderNum" column="orderNum" />
+		<result property="userId" column="userId" />
+		<result property="orderStatus" column="orderStatus" />
+		<result property="orderCreateTimestamp" column="orderCreateTimestamp" />
+		<result property="orderUpdateTimestamp" column="orderUpdateTimestamp" />
+		
+		<result property="ordererName" column="ordererName" />
+		<result property="ordererPhone" column="ordererPhone" />
+		<result property="ordererEmail" column="ordererEmail" />
+		<result property="destName" column="destName" />
+		<result property="destPhone" column="destPhone" />
+		<result property="destLoc1" column="destLoc1" />
+		<result property="destLoc2" column="destLoc2" />
+		
+		<result property="totalPrice" column="totalPrice" />
+		<result property="prodDeliveryDate" column="prodDeliveryDate" />
+	</resultMap>
+	
+		<!--  결제 
+		<resultMap id="order_accountResult" type="order_accountVO">
+			<result property="orderAccountNum " column="orderAccountNum" />
+			<result property="accountNumber " column="accountNumber " />
+			<result property="accountPeriod " column="accountPeriod " />
+			<result property="accountCVC " column="accountCVC " />
+			<result property="accountName " column="accountName " />
+			<result property="purchaseType " column="purchaseType " />
+		 </resultMap> 
+		 
+		 주문메뉴
+		<resultMap id="orderMenuResult" type="OrderMenuVO">
+			<result property="orderMenuNum" column="orderMenuNum" />
+			<result property="menuName" column="menuName" />
+			<result property="menuCount" column="menuCount" />
+		</resultMap> 
     
-    
+    	제품 Map
+    	<resultMap id="prodResult" type="prodVO"> 
+        	<result property="prodNum" column="prodNum" />
+        	<result property="prodName" column="prodName" />
+        	<result property="prodPrice" column="prodPrice" />
+        	<result property="prodDescription" column="prodDescription" />
+        	<result property="prodBrand" column="prodBrand" />
+        	<result property="prodCreateTimestamp" column="prodCreateTimestamp" />
+        	<result property="prodDelieryPrice" column="prodDelieryPrice" />
+        	<result property="prodImageUrl" column="prodImageUrl" />
+        	<result property="prodImageName" column="prodImageName" />
+       		<result property="prodImageDate" column="prodImageDate"/>
+    	</resultMap>
+    	
+    	장바구니 Map
+    	<resultMap id="cartListResult" type="cartListVO">
+        	<result property="cartNum" column="cartNum" />
+        	<result property="userId" column="userId" />
+        	<result property="prodNum" column="prodNum" />
+        	<result property="prodName" column="prodName" />
+        	<result property="prodPrice" column="prodPrice" />
+        	<result property="prodDescription" column="prodDescription" />
+       	 	<result property="prodBrand" column="prodBrand" />
+        	<result property="prodCreateTimestamp" column="prodCreateTimestamp" />
+        	<result property="prodDeliveryPrice" column="prodDeliveryPrice" />
+        	<result property="cartCount" column="cartCount" />
+	    </resultMap> -->
+  	   
+  	   <!-- 주문내역 리스트 -->
+  	   <select id="selectMyOrderHistoryList" resultMap="orderGoodsResult"   parameterType="java.util.Map"  >
+	    <![CDATA[
+		  select * from shop_order
+          where userId=#{userId}
+          and  to_char(orderCreateTimestamp,'yyyy-mm-dd')  between #{beginDate} and #{endDate}
+          order by orderCreateTimestamp desc
+    	]]>
+	</select>	
+	
+	<!-- 주문제품 리스트 -->
+	<!--  order by accountDate desc -->
+	<select id="selectMyOrderGoodsList" resultMap="orderGoodsResult"  parameterType="String"  >
+	    <![CDATA[
+			select * from shop_order
+            where userId=#{userId}
+            order by orderCreateTimestamp desc
+		]]>
+	</select>
+	
+	<!-- 주문상세 -->
+	<select id="selectMyOrderInfo" resultMap="orderGoodsResult"   parameterType="String"  >
+	    <![CDATA[
+		    select * from shop_order
+            where orderNum=#{orderNum}
+    	]]>
+	</select>
+  	   
+  	   <!-- 주문취소 표시 -->
+  	   <update id="updateMyOrderCancel" parameterType="int">
+	   		update shop_order
+	 	  	set orderStatus='cancel_order'
+	   		where orderNum=#{orderNum}
+		</update>
   	   
    	 <!-- 회원정보상세 -->
    	 <select id="selectMyDetailInfo" resultType="userVO" parameterType="String">

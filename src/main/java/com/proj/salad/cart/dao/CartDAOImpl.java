@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/* CartDAOImpl 김동혁 추가(23.07.19) */
 @Repository
 public class CartDAOImpl implements CartDAO {
     @Autowired

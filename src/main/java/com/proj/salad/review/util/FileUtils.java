@@ -52,7 +52,7 @@ public class FileUtils {
         		listMap = new HashMap<String,Object>();
         		listMap.put("USERID", reviewVO.getUserId());
         		listMap.put("RE_ARTICLENO", re_articleNO);
-        		listMap.put("RE_ORIGINALFILENAME", re_originalFileName);
+        		listMap.put("RE_ORGINALFILENAME", re_originalFileName);
         		listMap.put("RE_STOREDFILENAME", re_storedFileName);
         		listMap.put("RE_FILESIZE", multipartFile.getSize());
         		list.add(listMap);

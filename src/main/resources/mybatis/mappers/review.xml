@@ -44,12 +44,12 @@
 		]]>
 	</insert>
 	
-	<!-- 2-2. 파일 업로드(23.07.20.) -->
-	<insert id="insertReviewImg" parameterType="java.util.Map">
+   <!-- 2-2. 파일 업로드(23.07.20.) -->
+   <insert id="insertReviewImg" parameterType="java.util.Map">
       <![CDATA[
-		INSERT INTO review_image(re_imgNo, userId, re_articleNO, RE_ORIGINALFILENAME, re_storedFileName, re_fileSize)
-		VALUES(RE_IMG_SEQ.NEXTVAL, #{USERID}, #{RE_ARTICLENO}, #{RE_ORIGINALFILENAME}, #{RE_STOREDFILENAME}, #{RE_FILESIZE})
-		]]>
+         INSERT INTO review_image(re_imgNo, userId, re_articleNO, re_originalFileName, re_storedFileName, re_fileSize)
+         VALUES(RE_IMG_SEQ.NEXTVAL, #{USERID}, #{RE_ARTICLENO}, #{RE_ORGINALFILENAME}, #{RE_STOREDFILENAME}, #{RE_FILESIZE})
+      ]]>
    </insert>
 	
 	<!-- 2-3. 파일업로드 DB 저장 시, 게시물 번호 가져오기(23.07.20.) -->
@@ -114,4 +114,5 @@
 			(SELECT MAX(re_articleNO)+1 from shop_review), #{re_articleNO}, #{re_title}, #{userId}, #{re_content}, SYSDATE, #{re_viewCnt})
 		]]>
 	</insert>
+	
 </mapper>

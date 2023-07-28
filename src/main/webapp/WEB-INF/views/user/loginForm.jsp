@@ -13,56 +13,67 @@
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
  	<link href="../resources/css/header.css" rel="stylesheet" type="text/css" >
 	<link href="../resources/css/footer.css" rel="stylesheet" type="text/css" >
-	<style>
-		.login-form {
-           display: inline-block;
-            justify-content: center;
-            align-items: center;
-            margin: 30px;
-        }
-         .fixed_join{
-         padding:5px;
-         }
-        .btnCen{
-        margin-top:30px;
-        }
-   
-	</style>
-<c:if test='${result==not empty message }'>
-<script>
-window.onload=function()
-{
-	alert("아이디나  비밀번호가 틀립니다. 다시 로그인해주세요");
-}
-
-</script>
-</c:if>
-
+	<link href="${contextPath}/resources/css/userForm/loginForm.css" rel="stylesheet" type="text/css" >	<!-- 하유리: login -->
+	
+	<c:if test='${result==not empty message }'>
+	<script>
+		window.onload=function()
+		{
+			alert("아이디나  비밀번호가 틀립니다. 다시 로그인해주세요");
+		}
+	</script>
+	</c:if>
 </head>
 
 <body>
-<h1 align="center">회원 로그인 </h1>
-<div id="login_table">
- 	<!-- 로그인 클릭 시 /user/login.do로 요청  -->
-	<form action="${contextPath}/user/login.do" method="post" class="login-form">
-		<table border="1" >
-			<tbody>
-				<tr class="dot_line"  align="center">
-					<td class="fixed_join">아이디</td>
-					<td><input name="userId" type="text" size="20" /></td>
-				</tr>
-				<tr class="solid_line"  align="center">
-					<td class="fixed_join">비밀번호</td>
-					<td><input name="userPwd" type="password" size="20" /></td>
-				</tr>
-			</tbody>
-		</table>
-		<div class="btnCen">
-			<input type="submit" value="로그인" class="btnLogin"/> 
-			<input type="reset" value="다시입력" class="btnCancel"/>
-			<input type="button" onclick="location.href='${contextPath}/user/userForm.do'" value="회원가입" />
+	<div class="loginForm">			<!-- 하유리: <div> 추가(23.07.26.) -->
+		<div class="login_wrap">		<!-- 하유리: <div> 추가(23.07.26.) -->
+			<a href="${contextPath}/main.do">	<!-- 하유리: 로고 이미지 클릭 시 메인 이동 링크 추가(23.07.26.) -->
+				<img src="${contextPath}/resources/image/user/logo.png"/>	<!-- 하유리: 로고 이미지 추가(23.07.26.) -->
+			</a>
+			<!-- <h1 align="center">회원 로그인 </h1> -->				<!-- 하유리: 해당 태그 주석처리(23.07.26.) -->
+			<div id="login_table">
+			 	<!-- 로그인 클릭 시 /user/login.do로 요청  -->
+				<form action="${contextPath}/user/login.do" method="post" class="login-form">
+					<!-- 하유리: table border="1", <tbody>, <tr> 속성, <td> 주석처리(23.07.26.) -->
+					<table class="login_input">
+						<!-- <tbody> -->
+							<tr><!-- <tr class="dot_line"  align="center"> -->	
+								<!-- <td class="fixed_join">아이디</td> -->	
+								<td><input class="userId" name="userId" type="text" size="20" placeholder="아이디" autocomplete="off"/></td>
+							</tr>
+							<tr>
+							<!-- <tr class="solid_line"  align="center"> -->
+								<!-- <td class="fixed_join">비밀번호</td> -->
+								<td><input name="userPwd" type="password" size="20" placeholder="비밀번호" autocomplete="off"/></td>
+							</tr>
+						<!-- </tbody> -->
+					</table>
+					<div class="btnCen">
+						<input type="submit" value="로그인" class="btnLogin"/>
+						<br> 
+						<!-- <input type="reset" value="다시입력" class="btnCancel"/> -->		<!-- 하유리: 주석처리(23.07.26.) -->
+						<input type="button" onclick="location.href='${contextPath}/user/userForm.do'" value="회원가입" />
+					</div>
+				</form>	
+			</div>
+			
+			<!-- 하유리: footer 추가(23.07.26.) -->
+			<div class="login_footer">
+				<div class="serviceList">
+					<a href="#">이용약관</a>
+					<a href="#">개인정보</a>
+					<a href="#">처리방침</a>
+					<a href="#">운영정책</a>
+					<a href="#">고객센터</a>
+					<a href="#">공지사항</a>
+				</div>
+				<div class="copyright">
+					Copyright © saladdaiso Corp. All rights reserved.
+				</div>
+			</div>
+			<!-- footer-end -->
 		</div>
-	</form>	
-</div>
+	</div>
 </body>
 </html>

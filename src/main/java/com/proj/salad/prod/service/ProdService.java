@@ -9,5 +9,4 @@ import java.util.List;
 public interface ProdService {
     public List<ProdVO> selectProdList() throws DataAccessException;
     public NutrientVO selectProdNutrient(int prodNum) throws DataAccessException;
-    public ProdVO selectProdOne(int prodNum) throws DataAccessException;
 }

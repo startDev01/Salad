@@ -33,9 +33,4 @@ public class ProdServiceImpl {
         NutrientVO nutrientVO = prodDAOImpl.selectProdNutrient(prodNum);
         return nutrientVO;
     }
-
-    public ProdVO selectProdOne(int prodNum) throws DataAccessException {
-        ProdVO prodVO = selectProdOne(prodNum);
-        return prodVO;
-    }
 }

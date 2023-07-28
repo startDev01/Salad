@@ -11,9 +11,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="resources/css/style.css" rel="stylesheet" type="text/css">
     <link href="resources/css/main.css" rel="stylesheet" type="text/css">
+    <link href="resources/css/menu.css" rel="stylesheet" type="text/css">
     <style>
         /* 김동혁 - css 임시 추가(23.07.13.) */
         /* 김동혁 css 수정 (23.07.18) */
+        
+        .menu-h1 {
+        	padding-top: 178px;	/* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
+        }
+        
         .listBox {
             display: inline-block;
         }
@@ -103,11 +109,11 @@
     <%-- 김동혁 수정 ( 리스트 출력 )(23.07.14.)--%>
     <div class="listBox">
         <c:forEach var="prod" items="${prodList}" varStatus="prodNum">
+        <c:if test="${prodNum.index >= 0 && prodNum.index <= 8 || prodNum.index >= 9 && prodNum.index <= 11}">
             <%-- 채소 타이틀 출력 --%>
             <c:if test="${prodNum.index == 0}">
                 <h2 class="menu-h2">채소</h2>
             </c:if>
-
             <%-- 육류 타이틀 출력 --%>
             <c:if test="${prodNum.index == 9}">
                 <h2 class="menu-h2">육류</h2>
@@ -118,8 +124,7 @@
             <button type="button" class="prodBox modal-nutrient" data-prodnum="${prodNum.index}" data-toggle="modal" data-target="#myModal">
                 <div class="prodP">
                     <div class="prodP_imgBox">
-                        <img class="prodP_img" src="${prod.prodImageUrl}${prod.prodImageName}">
-                        </img>
+                        <img class="prodP_img" src="${prod.prodImageUrl}${prod.prodImageName}"/>
                     </div>
                     <div class="prodTextBox">
                         <p class="prodPText">${prod.prodName}</p>
@@ -136,6 +141,7 @@
                     </div> -->
                 </div>
             </button>
+            </c:if>
         </c:forEach>
     </div>
 </div>
@@ -145,7 +151,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">DB 조회 결과</h4>
+                <h4 class="modal-title" id="myModalLabel">영양 정보</h4>
             </div>
             <div class="modal-body">
                 <table class="table">
@@ -167,15 +173,8 @@
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
                 </select>
-                <button type="button" class="btn btn-default" data-dismiss="modal" id="modal-addcart">담기</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="modal-addcart">장바구니 담기</button>	<!-- 하유리: 텍스트 수정(23.07.27.) -->          
                 <button type="button" class="btn btn-default" data-dismiss="modal" id="modal-close">닫기</button>
             </div>
         </div>
@@ -183,7 +182,7 @@
 </div> <%-- 모달 end --%>
 
 <script>
-    /* Ajax 스크립트 / 김동혁 추가 (23.07.18) */
+    /* 모달 Ajax 스크립트 / 김동혁 추가 (23.07.18) */
     $(document).ready(function() {
         let selectedProdNum;
 
@@ -201,7 +200,7 @@
                 data: {prodNum : selectedProdNum, cartCount : prodCount},
                 dataType: 'json',
                 success: function (response) {
-                    alert('추가 성공했습니다.');
+                    alert('장바구니에 담았습니다.');
                 },
                 error: function () {
                     alert('비회원 상태입니다.\n로그인 창으로 넘어갑니다.');

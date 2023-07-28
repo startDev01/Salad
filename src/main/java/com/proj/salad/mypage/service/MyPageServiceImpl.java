@@ -1,5 +1,6 @@
 package com.proj.salad.mypage.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.proj.salad.mypage.dao.MyPageDAO;
+import com.proj.salad.order.vo.OrderVO;
 import com.proj.salad.user.vo.UserVO;
 
 @Service("myPageService")
@@ -37,6 +39,30 @@ public class MyPageServiceImpl implements MyPageService {
 	@Override
 	public int removeUser(String userId) throws DataAccessException {
 		return myPageDAO.deleteUser(userId);  //찾은 userId를 삭제
+	}
+
+	//주문내역 리스트
+	@Override
+	public List<OrderVO> listMyOrderHistory(Map dateMap) throws Exception {
+		return myPageDAO.selectMyOrderHistoryList(dateMap);
+	}
+
+	//주문제품 리스트
+	@Override
+	public List<OrderVO> listMyOrderGoods(String userId) throws Exception {
+		return myPageDAO.selectMyOrderGoodsList(userId);
+	}
+
+	//주문상세	
+	@Override
+	public List findMyOrderInfo(int orderNum) throws Exception {
+		return myPageDAO.selectMyOrderInfo(orderNum);
+	}
+
+	//주문취소
+	@Override
+	public void cancelOrder(int orderNum) throws Exception {
+		myPageDAO.updateMyOrderCancel(orderNum);
 	}
 
 	

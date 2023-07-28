@@ -28,7 +28,7 @@
 			
 			/* 주석: 하유리 *//* 23.07.25 서승희 주석해제 및 수정 */
  			#sidebar-left {
-	        width: 17%;
+	        width: 18%;
 	        /*  height:700px; */
 	       /*  padding: 5px;
 	         margin-right: 5px;
@@ -38,12 +38,13 @@
 	        border: 0px solid #bcbcbc;
 	        font-family: Pretendard-Regular;
 	        font-size:15px;
+	        padding-top:178px;
 			}
 			
 			#content {
 	       /*  width: 100%; */
-	        width: 63%;  /* 23.07.25 서승희 수정 */
-	       padding-top: 80px;/* 23.07.25 서승희 수정 */
+	        width: 65%;  /* 23.07.27 서승희 수정 */
+	      /*  padding-top: 80px; *//* 23.07.25 서승희 수정 */
 	        /* margin-right: 5px; */	/* 주석: 하유리 */
 	       float: left;
 	        border: 0px solid #bcbcbc;

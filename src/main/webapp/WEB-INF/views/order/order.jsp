@@ -20,10 +20,11 @@
             padding: 0;
         }
 
-        main {
+       main {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            padding-top: 178px;   /* 하유리: 헤더 영역만큼 아래로 내림(23.07.27.) */
         }
 
         h2, h3 {
@@ -57,7 +58,7 @@
         }
 
         .line-content {
-            width: 300px;
+            /*width: 300px;*/
         }
 
         input[type="text"] {
@@ -117,7 +118,7 @@
 <main>
     <h2>주문 / 결제</h2>
 
-    <form action="${contextPath}/orderDone" method="post">
+    <form action="${contextPath}/payment" method="post">
         <h3>구매자 정보</h3>
         <div class="info-block to">
             <div class="line">
@@ -130,7 +131,7 @@
             <div class="line">
                 <div class="line-title"><label for="address">배송주소</label></div>
                 <div class="line-content"><input type="text" name="useraddress" id="useraddress"
-                                                 value="${userVO.userAddress1}"${uservo.userAddress2}" required>
+                                                 value="${userVO.userAddress1} ${userVO.userAddress2}" required>
                 </div>
             </div>
             <div class="line">
@@ -153,7 +154,7 @@
             </div>
             <div class="line">
                 <div class="line-title"><label for="address">배송주소</label></div>
-                <div class="line-content"><input type="text" name="destLoc1" id="address" placeholder="배송 주소를 입력하세요"
+                <div class="line-content"><input type="text" name="destLoc" id="address" placeholder="배송 주소를 입력하세요"
                                                  required>
                 </div>
             </div>
@@ -169,7 +170,7 @@
                 </div>
             </div>
         </div>
-
+<h3>결제 상품 목록</h3>
         <div class="item-box">
             <c:forEach items="${orderList}" var="cartList" varStatus="listStatus">
                 <div class="info-block">
@@ -196,7 +197,6 @@
                     <%-- 최대 반복수(listCount) Controller로 넘기기 --%>
                     <c:if test="${listStatus.last}">
                         <c:set var="listCount" value="${listStatus.index + 1}"></c:set>
-                        <h2>반복수 ${listCount}</h2>
                         <input type="text" name="listCount" value="${listCount}" hidden>
                     </c:if>
                 </div>
@@ -204,7 +204,6 @@
             </c:forEach>
             <input type="text" value="${totalPrice + 3000}" name="totalPrice" hidden>
         </div>
-        <h3>결제 상품 목록</h3>
 
         <h3>결제 정보</h3>
         <div class="info-block">
@@ -251,17 +250,21 @@
                             <input type="text" name="cardNum3" size="2" minlength="4" maxlength="4" required>
                             <input type="text" name="cardNum4" size="2" minlength="4" maxlength="4" required>
                         </div>
+                        
                         <div class="form-label">
                             <label for="period">유효기간</label>
                         </div>
+                        
                         <div class="form-input">
-                            <input type="text" id="period" name="period[]" size="2" maxlength="2" placeholder="mm"
+                            <input type="text" id="period" name="period1" size="2" minlength="2" maxlength="2" placeholder="mm"
                                    required> /
-                            <input type="text" name="period[]" size="2" maxlength="2" placeholder="yy" required>
+                            <input type="text" name="period2" size="2" minlength="2" maxlength="2" placeholder="yy" required>
                         </div>
+                        
                         <div class="form-label">
                             <label for="cvc">CVC</label>
                         </div>
+                        
                         <div class="form-input">
                             <input type="text" id="cvc" name="cvc" minlength="3" maxlength="3" required>
                         </div>
