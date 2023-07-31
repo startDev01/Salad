@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+  .no-underline{  
+      text-decoration:none;
+   }
+   
+   /* 사이드: 왼쪽고정 하려고 했는데 footer 부분 겹침..23.07.30 서승희 추가 */
+ /*   nav{
+    position: fixed;		
+  	list-style-type: none;
+  	padding: 0px;
+  	margin-bottom: 0px;
+  	width: 18%;
+  	bottom: 0px;
+   } */
+   
+   /* 주문관리 주제목 부분 */
+   .list_order{  
+   	 background-color : lightgray;
+ 	 border-radius: 3px;
+ 	 width: 100px;
+ 	 height: auto;
+ 	 display: inline-block;
+     padding:5px;
+ 	 margin-bottom: 15px; 
+ 	 margin-top:15px;
+   }
+   /* 정보관리 주제목 부분 */
+   .list_info{
+   	 background-color : lightgray;
+ 	 border-radius: 3px;
+ 	 width: 100px;
+ 	 height: auto;
+ 	 display: inline-block;
+     padding:5px;
+ 	 margin-bottom: 15px; 
+ 	 margin-top:15px;
+   }
+   /* 공지게시판 주제목 부분 */
+   .mynotice{
+   	 background-color : lightgray;
+ 	 border-radius: 3px;
+ 	 width: 100px;
+ 	 height: auto;
+ 	 display: inline-block;
+     padding:5px;
+ 	 margin-bottom: 15px; 
+ 	 margin-top:15px;
+   } 
+   /* 공지게시물 너비, 높이 */
+   .notice_hid{
+    width:80%;
+  	height: 50px;
+   display: inline-block;
+   /* margin-left:20px; */
+   font-size:16px;
+   }

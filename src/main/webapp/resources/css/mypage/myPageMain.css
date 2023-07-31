@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+body { /* 마이페이지 글씨체 폰트 맞추기 23.07.30 서승희 추가*/
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 600;
+}
+
+head { /* 마이페이지 글씨체 폰트 맞추기 23.07.30 서승희 추가*/
+    font-family: 'Noto Sans KR', sans-serif !important;
+    font-weight: 600 !important;
+}
+ 		
+ .myinfo{   /* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
+     padding-top: 178px;   
+     font-size:25px;
+     padding-left:30px;
+  }
+
+.myinfo_table{  /* jsp css 적은거 옮김 23.07.30 서승희 */
+	border: 1px solid #000;
+	 width:55%; 
+	 display:inline-table;
+	
+ }      
+
+.myinfo_td_title{
+	border: 1px solid #000;
+	text-align:center;
+}  
+  
+ .myinfo_td{
+	border: 1px solid #000;
+ 	text-align:center;
+ }    
+
+.new_order{
+      padding-top:15px;
+      font-size:25px;
+ 	  padding-left:20px;
+ } 
+#orderhis_Form{
+     width:100%;
+	 display: flex;
+	 justify-content: center;
+	 padding-left:20px;
+ }
+a { 
+	text-decoration:none
+ }
+.list_order_view{
+     display: flex;
+	 justify-content: center;
+ }

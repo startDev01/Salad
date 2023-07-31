@@ -46,11 +46,12 @@
                 </div>--%>
             <table border="1" class="odl-table">
                 <th class="odl-table-th" width="20%">주문일자</th>
-                <th class="odl-table-th" width="10%">주문번호</th>
-                <th class="odl-table-th" width="20%">주문자이름</th>
-                <th class="odl-table-th" width="20%">결제금액</th>
+                <th class="odl-table-th" width="15%">주문번호</th>
+                <th class="odl-table-th" width="10%">주문자이름</th>
+                <th class="odl-table-th" width="15%">결제금액</th>
                 <th class="odl-table-th" width="20%">배송상태</th>
                 <th class="odl-table-th" width="10%">주문수정</th>
+                <th class="odl-table-th" width="10%">리뷰작성</th>
 
                 <c:forEach var="list" items="${orderList}" varStatus="listStatus">
                     <tr>
@@ -64,6 +65,7 @@
                                 <button class="odl-table-del" onclick="showConfirmation('${list.orderNum}')">주문취소</button>
                             </c:if>
                         </td>
+                        <td class="odl-table-td">주문취소란</td>
                     </tr>
                 </c:forEach>
             </table><br>
