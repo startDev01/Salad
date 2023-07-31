@@ -127,6 +127,7 @@ public class MyPageControllerImpl implements MyPageController {
 	}
 	
 	/*
+	 * 회원탈퇴
 	 * @RequestMapping(value="/mypage/removeUser.do",method=RequestMethod.GET)
 	 * public ModelAndView removeUser(@RequestParam("userId")String userId,
 	 * HttpServletRequest request, HttpServletResponse response) throws Exception {
