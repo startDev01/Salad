@@ -19,6 +19,12 @@ public class CartListVO {
     private Date prodCreateTimestamp;
     private int prodDeliveryPrice;
     private int cartCount;
+
+	// 이미지 테이블 Join 용 추가 - 김동혁
+	private String prodImageUrl;
+	private String prodImageName;
+	private Date prodImageDate;
+
 	public int getCartNum() {
 		return cartNum;
 	}
@@ -79,14 +85,47 @@ public class CartListVO {
 	public void setCartCount(int cartCount) {
 		this.cartCount = cartCount;
 	}
-	
+
+	public String getProdImageUrl() {
+		return prodImageUrl;
+	}
+
+	public void setProdImageUrl(String prodImageUrl) {
+		this.prodImageUrl = prodImageUrl;
+	}
+
+	public String getProdImageName() {
+		return prodImageName;
+	}
+
+	public void setProdImageName(String prodImageName) {
+		this.prodImageName = prodImageName;
+	}
+
+	public Date getProdImageDate() {
+		return prodImageDate;
+	}
+
+	public void setProdImageDate(Date prodImageDate) {
+		this.prodImageDate = prodImageDate;
+	}
+
 	@Override
 	public String toString() {
-		return "CartListVO [cartNum=" + cartNum + ", userId=" + userId + ", prodNum=" + prodNum + ", prodName="
-				+ prodName + ", prodPrice=" + prodPrice + ", prodDescription=" + prodDescription + ", prodBrand="
-				+ prodBrand + ", prodCreateTimestamp=" + prodCreateTimestamp + ", prodDeliveryPrice="
-				+ prodDeliveryPrice + ", cartCount=" + cartCount + "]";
+		return "CartListVO{" +
+				"cartNum=" + cartNum +
+				", userId='" + userId + '\'' +
+				", prodNum=" + prodNum +
+				", prodName='" + prodName + '\'' +
+				", prodPrice=" + prodPrice +
+				", prodDescription='" + prodDescription + '\'' +
+				", prodBrand='" + prodBrand + '\'' +
+				", prodCreateTimestamp=" + prodCreateTimestamp +
+				", prodDeliveryPrice=" + prodDeliveryPrice +
+				", cartCount=" + cartCount +
+				", prodImageUrl='" + prodImageUrl + '\'' +
+				", prodImageName='" + prodImageName + '\'' +
+				", prodImageDate=" + prodImageDate +
+				'}';
 	}
-    
-    
 }

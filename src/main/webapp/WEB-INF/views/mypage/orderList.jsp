@@ -74,7 +74,7 @@
                 <td class="odl-table-td">
                     <c:if test="${list.orderStatus == '결제완료'}">
                         <c:set var="orderNum" value="${list.orderNum}"/>
-                        <button class="odl-table-del" onclick="redirectToReviewPage()">리뷰작성</button>
+                        <button class="odl-table-del" data-orderNum="${orderNum}" onclick="redirectToReviewPage()">리뷰작성</button>
                     </c:if>
                 </td>		<!-- 하유리: <td> 추가(23.07.31.) -->
             </tr>
@@ -117,7 +117,7 @@
     }
 
     function redirectToReviewPage() {
-        const orderNum = '${orderNum}'; // orderNum 변수에 값을 할당 (서버에서 렌더링할 때 해당 값으로 대체됩니다.)
+        var orderNum = event.target.getAttribute('data-orderNum'); // orderNum 변수에 값을 할당 (서버에서 렌더링할 때 해당 값으로 대체됩니다.)
         const contextPath = '${contextPath}'; // contextPath 변수에 값을 할당 (서버에서 렌더링할 때 해당 값으로 대체됩니다.)
         const url = contextPath + '/review/insert/?orderNum=' + orderNum; // URL에 orderNum 파라미터를 추가하여 완성
 

@@ -41,6 +41,7 @@
             <%-- 장바구니 테이블 목록 출력 --%>
             <c:forEach var="cart" items="${cartList}" varStatus="cartStatus" >
               <li class="cart-list-li">
+                <img id="cart-image" src="${cart.prodImageUrl}${cart.prodImageName}" />
                 <span class="cart-list-span">${cart.prodName}</span>
                 <input type="number" class="cart-count" value="${cart.cartCount}" min="1" max="10">
                 <input type="button" class="cart-list-del" data-cartnum="${cart.cartNum}" value="삭제">

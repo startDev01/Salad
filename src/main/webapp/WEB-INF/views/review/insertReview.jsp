@@ -140,7 +140,7 @@
 			<form action="<c:url value='/review/insert'/>" method="POST"  enctype="multipart/form-data">
 				<table>
 					<tr>
-						<th>주문상품</th>
+						<th>주문번호</th>
 						<td>	<input class="insert_input" name="orderList" required autocomplete="off" width="440px" value="${orderInfo.fakeOrderNum}" disabled/></td>
 					</tr>
 				
