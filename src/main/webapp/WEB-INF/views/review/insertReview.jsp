@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="../resources/css/header.css" rel="stylesheet" type="text/css">
     <link href="../resources/css/footer.css" rel="stylesheet" type="text/css">
+	<link href="../../resources/css/header.css" rel="stylesheet" type="text/css">
+	<link href="../../resources/css/footer.css" rel="stylesheet" type="text/css">
 	<style>
 	
 		/* 폰트 */
