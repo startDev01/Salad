@@ -12,7 +12,7 @@
     <link href="../resources/css/header.css" rel="stylesheet" type="text/css">
     <link href="../resources/css/footer.css" rel="stylesheet" type="text/css">
     <link href="../resources/css/mypage/orderList.css" rel="stylesheet" type="text/css">
-	
+
     <%-- 폰트 적용 --%>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,9 @@
 
     <style>
         /* css 적용 부분 */
-
+	 .odl-container{   /* 임시 */
+         padding-top: 178px;   /* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
+      }
     </style>
     <title>주문 내역</title>
 
@@ -45,18 +47,18 @@
                     </div>
                 </div>--%>
             <table border="1" class="odl-table">
-                <th class="odl-table-th" width="20%">주문일자</th>
-                <th class="odl-table-th" width="15%">주문번호</th>
-                <th class="odl-table-th" width="10%">주문자이름</th>
+                <th class="odl-table-th" width="15%">주문일자</th>
+                <th class="odl-table-th" width="20%">주문번호</th>
+                <th class="odl-table-th" width="15%">주문자이름</th>
                 <th class="odl-table-th" width="15%">결제금액</th>
-                <th class="odl-table-th" width="20%">배송상태</th>
+                <th class="odl-table-th" width="15%">배송상태</th>
                 <th class="odl-table-th" width="10%">주문수정</th>
                 <th class="odl-table-th" width="10%">리뷰작성</th>
 
                 <c:forEach var="list" items="${orderList}" varStatus="listStatus">
                     <tr>
                         <td class="odl-table-td">${list.orderCreateTimestamp}</td>
-                        <td class="odl-table-td odl-td-pointer" onclick="location.href='${contextPath}/mypage/orderInfo/${list.orderNum}'">${list.orderNum}</td>
+                        <td class="odl-table-td odl-td-pointer" onclick="location.href='${contextPath}/mypage/orderInfo/${list.orderNum}'">${list.fakeOrderNum}</td>
                         <td class="odl-table-td">${list.ordererName}</td>
                         <td class="odl-table-td"><fmt:formatNumber value="${list.totalPrice}" pattern="#,###" /> 원</td>
                         <td class="odl-table-td">${list.orderStatus}</td>
@@ -65,10 +67,14 @@
                                 <button class="odl-table-del" onclick="showConfirmation('${list.orderNum}')">주문취소</button>
                             </c:if>
                         </td>
-                        <td class="odl-table-td">주문취소란</td>
+                        <td class="odl-table-td">
+                            <c:if test="${list.orderStatus == '결제완료'}">
+                                <button class="odl-table-review-btn" onclick="location.href='${contextPath}/review/insert'">리뷰작성</button>
+                            </c:if>
+                        </td>
                     </tr>
                 </c:forEach>
-            </table><br>
+            </table>
     </div>
 <%--    <div class="odl-box2">--%>
 
@@ -76,6 +82,7 @@
 </div>
 
 <script>
+    /* 주문 취소 버튼 스크립트 - 김동혁 추가(23.07.27) */
     function showConfirmation(orderNum) {
         // 주문수정 버튼을 눌렀을 때 실행될 함수
         var confirmation = confirm("주문번호 " + orderNum + "를 취소하시겠습니까?");
@@ -103,6 +110,23 @@
             // 사용자가 취소를 눌렀을 경우
             // alert("주문 취소가 취소되었습니다.");
         }
+    }
+
+    /* 리뷰작성 버튼 스크립트 - 김동혁 추가(23.07.28) */
+    function showReviewForm(orderNum) {
+        // 먼저 로그인 상태인지 확인할 것(if문)
+
+        $.ajax({
+            type: "POST",
+            url: "${contextPath}/review/insertP",
+            data: {orderNum: orderNum},
+            success: function (response) {
+                location.href = "${contextPath}/review/insert";
+            },
+            error: function (fail) {
+                alert("리뷰폼 요청에 실패했습니다. 다시 시도해주세요.")
+            }
+        });
     }
 </script>
 </body>
