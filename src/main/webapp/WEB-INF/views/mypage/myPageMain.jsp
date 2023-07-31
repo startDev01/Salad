@@ -26,7 +26,8 @@
 
 </head>
 <body>
-<h1 class="myinfo">나의 정보</h1><br>
+<div class="myinfo_container">
+<h1 class="myinfo">#나의 정보</h1><br>
 <table class="myinfo_table">
   <tr>
   <td class="myinfo_td_title">
@@ -62,9 +63,10 @@
    </td>
    </tr>
 </table>
-<br><br>
+</div >
 
-<h1 class="new_order">최근주문내역</h1><br>
+<div class="new_order_container">
+<h1 class="new_order">#최근주문내역</h1>
 	<form method="post" id="orderhis_Form">
 		<table>
 			<tbody>
@@ -110,7 +112,7 @@
 					</td> --%>
 					</tr>
 					<tr>
-						<td>
+						<td class="my_a">
 							<a href="javascript:search_order_history('today')"> 
 							<img src="${contextPath}/resources/image/search/btn_search_one_day.jpg">
 							</a> 
@@ -141,13 +143,13 @@
 <table class="list_order_view">
 		<tbody align="center" >
 			<tr style="background:lightgray" >
-				<td  width="120px">주문번호</td>
-				<td  width="120px">주문일자</td>
+				<td class="list_order_title"  width="120px">주문번호</td>
+				<td class="list_order_title"   width="120px">주문일자</td>
 				<!-- <td  width="120px">주문상품/수량</td> -->
-				<td  width="120px">주문자</td>
-				<td  width="120px">주문가격</td>
-				<td  width="120px">주문상태</td>
-				<td  width="120px">주문취소</td>
+				<td class="list_order_title"  width="120px">주문자</td>
+				<td class="list_order_title"  width="120px">주문가격</td>
+				<td class="list_order_title"  width="120px">주문상태</td>
+				<td class="list_order_title"  width="120px">주문취소</td>
 			</tr>
 	<%-- 주문내역이 비어있을 경우 --%>
 	<c:choose>
@@ -178,6 +180,7 @@
     </c:choose> 	   
 </tbody>
 </table>
+</div>
 <br><br>	
 <!-- <h1>계좌내역</h1><br>
 <div class="pay_form" align="center">

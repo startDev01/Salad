@@ -12,7 +12,25 @@ head { /* 마이페이지 글씨체 폰트 맞추기 23.07.30 서승희 추가*/
     font-family: 'Noto Sans KR', sans-serif !important;
     font-weight: 600 !important;
 }
-		
+
+button{  /* 23.07.31 수정하기 아이콘으로 변경 서승희 */
+	border:none;
+	background-color:#fff;
+}
+
+.btn_modify_email{ /* 23.07.31 메일 수정하기 아이콘 위치 변경 서승희 */
+	padding-bottom:24px;
+}
+
+.btn_modify_phone{ /* 23.07.31 폰 수정하기 아이콘 위치 변경 서승희 */
+	padding-bottom:22px;
+}
+
+.btn_modify_address{ /* 23.07.31 주소 수정하기 아이콘 위치 변경 서승희 */
+	padding-bottom:18px;
+}
+
+
 /* 하유리: '회원가입' 텍스트를 포함한 전체(23.07.25.) */
 .total {
 	width: 100%;
