@@ -2,7 +2,7 @@
 
 /* 하유리: 헤더(배너 포함)(23.07.12.) */
 .header_outside {
-	width: 100%;
+	width: 1519.2px									/* 하유리: 창 축소 시 요소 안 밀리게 너비 지정(23.07.29.) */
 	left: 0;
 	top: 0;
 	margin: 0 auto;									/* auto: 가로 중앙 정렬 */
@@ -94,14 +94,19 @@
 	float: left;	/* 요소 간 간격 지정(23.07.12.) */
 }
 
-.list1 li::before {	/* 메뉴 사이에 구분선 넣기(23.07.12.) */
+.list1 {
+	width: 127.35px;		/* 하유리: 창 크기 줄여도 요소가 아래로 내려오지 않게 너비 지정(23.07.30.) */
+}
+
+/* 하유리: 주석처리(23.07.30.) */
+/* .list1 li::before {	메뉴 사이에 구분선 넣기(23.07.12.)
 	padding-left: 5px;
 	content: " | ";
 }
 
-.list1 > li:first-child::before {	/* 첫번째 구분선만 안보이게 처리  */
+.list1 > li:first-child::before {	첫번째 구분선만 안보이게 처리 
 	content:" ";
-}		
+}	 */	
 
 /* 하유리: 메뉴2(23.07.12.) */
 .mainMenu {
@@ -116,6 +121,7 @@
 }
 
 .list2 {	/* 하유리: 메인메뉴 요소 간 간격조정(23.07.14.) */
+	width: 780.74px;			/* 하유리: 창 크기 줄여도 요소가 아래로 내려오지 않게 너비 지정(23.07.30.) */
 	display: flex;
 	justify-content: space-between;
 }
@@ -129,4 +135,29 @@
 .slideBanner {
 	width: 100%;
 	height: 100%;
+}
+
+/* 하유리: 로그인ID, 로그아웃버튼(23.07.30.) */
+.userMenu {
+	display: flex;			/* 1줄로 배열 */
+	margin-top: 5px;
+}
+
+/* 하유리: 로그아웃 버튼(23.07.30.) */
+.userMenu img {
+	/* width: 51px; */
+	width: 65px;
+	margin: 1px 0 0 3px;
+}
+
+/* 하유리: 페이지 이동버튼(23.07.30.) */
+.functionMenu ul {
+	margin-top: 15px;
+	display: flex;
+    justify-content: space-between;	/* 일정간격으로 배열 */
+}
+
+/* 하유리: 장바구니 아이콘(23.07.30.) */
+.functionMenu .cart_icon {
+	margin-top: -2px;
 }

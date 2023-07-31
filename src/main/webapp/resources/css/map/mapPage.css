@@ -5,22 +5,25 @@
 
 /* 하유리: 전체 div(23.07.27.) */
 .map_wrap {
+	font-family: 'Noto Sans KR', sans-serif;
 	margin: 0 201px 100px 201px;
 }
 
 /* 하유리: '위치' 텍스트(23.07.27.) */
 .map_sub {
-	margin: 50px 0;
-	padding-top: 178px;		/* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
+	padding: 178px 0 24px 0;			/* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
+													/* 하유리: 제목 주변 여백 수정(23.07.29.)  */
+	margin: 50px 0;							/* 하유리: 제목 주변 여백 수정(23.07.29.)  */
 }
 
 /* 하유리: 이벤트페이지 제목1(23.07.27.)  */
+/* 하유리: 수정(23.07.29.) */
 .map_text {
- 	font-family: 'Noto Sans KR', sans-serif;
-	font-size: 43px;
-	font-weight: 700;
-	line-height: 1.2;
-  	letter-spacing: -3px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 32px;					/* 하유리: 제목 폰트크기 수정(23.07.28.) */
+    font-weight: 700;
+    line-height: 1.2;		
+    letter-spacing: -1px;			/* 하유리: 제목 자간 수정(23.07.29.) */
  }
  		
 /* 하유리: 지도(23.07.27.) */ 		

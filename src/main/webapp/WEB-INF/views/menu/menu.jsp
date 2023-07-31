@@ -12,113 +12,28 @@
     <link href="resources/css/style.css" rel="stylesheet" type="text/css">
     <link href="resources/css/main.css" rel="stylesheet" type="text/css">
     <link href="resources/css/menu.css" rel="stylesheet" type="text/css">
-    <style>
-        /* 김동혁 - css 임시 추가(23.07.13.) */
-        /* 김동혁 css 수정 (23.07.18) */
-        
-        .menu-h1 {
-        	padding-top: 178px;	/* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
-        }
-        
-        .listBox {
-            display: inline-block;
-        }
-
-        .menu-h1 {
-            font-size: 40px;
-            margin-bottom: 20px;
-        }
-
-        .menu-h2 {
-            font-size: 32px;
-            margin-top: 40px;
-        }
-
-        .prodBox {
-            display: flex;
-            float: left;
-            height: 100px;
-            width: 380px;
-            background-color: white;
-            border: 1px solid gray;
-            border-radius: 5px;
-            margin: 20px;
-            justify-content: left;
-            align-items: center;
-        }
-
-        .prodBox:hover {
-            cursor: pointer;
-        }
-
-        .prodP {
-            display: flex;
-            transition: all 50ms linear;
-        }
-
-        .prodP_imgBox {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-left: 10px;
-        }
-
-        /* !! 이미지 수정 부분 !! */
-        .prodP_img {
-            width: 95px;
-            height: 95px;
-        }
-
-        .prodTextBox {
-            margin-left: 10px;
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .prodModalBox {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            margin-left: 20px;
-        }
-
-        .prodListBox {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .prodPText {
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-
-        .prodP:hover {
-            transform: scale(1.03);
-        }
-    </style>
     <title>메뉴 고르기</title>
 
 </head>
 <body>
 <div class="content1">
-    <h1 class="menu-h1">메뉴 담기</h1>
-
+	<div class="menu_content">										<!-- 하유리: 제목 <div> 추가(23.07.29.) -->
+    	<h1 class="menu-h1">MENU</h1>						<!-- 하유리: 텍스트 수정(23.07.29.) -->
+	</div>
+	
     <%-- 김동혁 수정 ( 리스트 출력 )(23.07.14.)--%>
     <div class="listBox">
         <c:forEach var="prod" items="${prodList}" varStatus="prodNum">
         <c:if test="${prodNum.index >= 0 && prodNum.index <= 8 || prodNum.index >= 9 && prodNum.index <= 11}">
             <%-- 채소 타이틀 출력 --%>
             <c:if test="${prodNum.index == 0}">
-                <h2 class="menu-h2">채소</h2>
+                <h2 class="menu-h2">#채소</h2>				<!-- 하유리: 텍스트 수정(23.07.29.) -->
             </c:if>
             <%-- 육류 타이틀 출력 --%>
             <c:if test="${prodNum.index == 9}">
-                <h2 class="menu-h2">육류</h2>
+                <h2 class="menu-h3">#육류</h2>				<!-- 하유리: 텍스트, 클래스명 수정(23.07.29.) -->
             </c:if>
-            <c:if test="${prodNum.index mod 3 == 0}">
+            <c:if test="${prodNum.index mod 3 == 0}">		
                 <br>
             </c:if>
             <button type="button" class="prodBox modal-nutrient" data-prodnum="${prodNum.index}" data-toggle="modal" data-target="#myModal">

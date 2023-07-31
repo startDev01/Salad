@@ -54,6 +54,18 @@ public class HomeController {
 		return mav;
 	}
 	
+    //하유리: 이용약관 페이지(23.07.29.)
+	@RequestMapping(value="/terms", method=RequestMethod.GET)
+	public String terms() {
+    	return "/common/terms";
+    }
+	
+	//하유리: 개인정보 처리방침(23.07.29.)
+	@RequestMapping(value="/policy", method=RequestMethod.GET)
+	public String policy() {
+    	return "/common/policy";
+    }
+	
 	@RequestMapping(value = "/mainAddCart", method = RequestMethod.POST)
 	@ResponseBody
 	public String mainAddCart(HttpServletRequest request, HttpSession session) throws Exception {

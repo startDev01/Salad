@@ -3,8 +3,27 @@
 /* css 초기화 코드 적용 */
 @import "reset.css";
 
+/* 하유리: 전체<div> (23.07.29.) */
+.content1 {
+	width: 1260px;							/* 하유리: 창 크기 줄여도 요소가 밀리지 않게 너비 지정 */
+	margin: 0 auto;
+	margin-bottom: 100px;				/* 하유리: 페이지 하단 여백 지정 */
+}
+
+/* 하유리: 제목(23.07.29.) */
+.content1 .menu_content {
+	padding: 178px 0 24px 0;			/* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
+													/* 하유리: 제목 주변 여백 수정(23.07.29.)  */
+	margin: 50px 0;							/* 하유리: 제목 주변 여백 수정(23.07.29.)  */
+}
+
 .menu-h1 {
- 	padding-top: 178px;	/* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
+ 	/* 하유리: 아래 내용 추가(23.07.29.) */
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;		
+    letter-spacing: -1px;
 }
 
 /* 김동혁 - css 임시 추가(23.07.13.) */
@@ -15,13 +34,14 @@
 }
 
 /* 메뉴담기 텍스트 */
-.menu-h1 {
+/* 하유리: 주석 처리(23.07.29.) */
+/* .menu-h1 {
     font-size: 40px;
     margin-bottom: 20px;
-}
+} */
 
 /* 채소, 육류 텍스트 */
-.menu-h2 {
+.menu-h2, .menu-h3 {
 	/* 하유리: 기존 코드 주석처리(23.07.27.) */
 /*     font-size: 32px;
     margin-top: 40px; */
@@ -34,6 +54,24 @@
     font-size: 18px;
     background-color: #333A44;
     color: #fff; */
+    
+    background-color: #333;
+    color: #fff;
+    padding: 5px 0;
+	margin: 0 600px;    
+    border-radius: 10px;
+}
+
+/* 하유리: #채소 텍스트(23.07.29.) */
+.menu-h2 {
+	margin-top: -40px;					/* 제목-채소 사이 여백 지정 */
+	margin-bottom: -2px;
+}
+
+/* 하유리: #육류 텍스트(23.07.29.) */
+.menu-h3 {
+ 	margin-top: 395px;					/* 육류 위치 및 높이 지정 */
+    margin-bottom: -3px;
 }
 
 .prodBox {

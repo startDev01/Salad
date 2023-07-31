@@ -31,6 +31,7 @@ public class UserVO {
 	private String userAddress2;
 	private String smssts_yn;        //SMS 수신동의 여부(23.07.20 추가)
 	private String emailsts_yn;    //Email 수신동의 여부(23.07.20 추가)
+	
 	public String getUserId() {
 		return userId;
 	}

@@ -249,7 +249,7 @@
 					</div>
 					
 					<div class="prod_content">	<!-- 추천상품08 이름 -->
-						<p class="prod_content_sub">새우 없는 쉬림프 샐러드</p>
+						<p class="prod_content_sub">새우 듬뿍 쉬림프 샐러드</p>
 						<div>																			<!-- 하유리: 할인율 추가(23.07.27.) -->
 							<span class="content_discount">20%</span>			
 							<span class="content_price">₩11,900</span>			<!-- 하유리: 가격 추가(23.07.27.) -->						

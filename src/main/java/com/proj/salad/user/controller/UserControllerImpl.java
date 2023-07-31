@@ -50,7 +50,7 @@ public class UserControllerImpl implements UserController {
 
 			String action = (String) session.getAttribute("action");
 
-			if (action != null && action.equals("/order.do")) { // 제품 주문 과정에서 로그인 했으면 로그인 후 다시 주문 화면으로 진행
+			if (action != null && action.equals("/order")) { // 제품 주문 과정에서 로그인 했으면 로그인 후 다시 주문 화면으로 진행
 				// mav.setViewName("forward:"+action);
 				mav.setViewName("redirect:" + action);
 			} else {

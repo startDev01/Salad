@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
+import com.proj.salad.mypage.vo.MyPageVO;
 import com.proj.salad.order.vo.OrderVO;
 import com.proj.salad.user.vo.UserVO;
 
@@ -41,31 +42,15 @@ public class MyPageDAOImpl implements MyPageDAO {
 	
 	//주문내역 리스트
 	@Override
-	public List<OrderVO> selectMyOrderHistoryList(Map dateMap) throws DataAccessException {
-		List<OrderVO> myOrderHistList=(List) sql.selectList("mapper.mypage.selectMyOrderHistoryList",dateMap);
+	public List<MyPageVO> selectMyOrderHistoryList(Map dateMap) throws DataAccessException {
+		List<MyPageVO> myOrderHistList=(List) sql.selectList("mapper.mypage.selectMyOrderHistoryList",dateMap);
 		return myOrderHistList;
 	}
 	
-	//주문제품 리스트 
-	@Override
-	public List<OrderVO> selectMyOrderGoodsList(String userId) throws DataAccessException {
-		List<OrderVO> orderGoodsList=(List)sql.selectList("mapper.mypage.selectMyOrderGoodsList",userId);
-		return orderGoodsList;
-	}
-
-	//주문상세	
-	@Override
-	public List selectMyOrderInfo(int orderNum) throws DataAccessException {
-		List myOrderList=(List)sql.selectList("mapper.mypage.selectMyOrderInfo",orderNum);
-		return myOrderList;
-	}
-
 	//주문취소
 	@Override
 	public void updateMyOrderCancel(int orderNum) throws DataAccessException {
 		sql.update("mapper.mypage.updateMyOrderCancel",orderNum);
 	}
-
-	
 	
 }

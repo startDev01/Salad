@@ -17,9 +17,7 @@
 
 <body>		
 	<div class="event_sub">
-		<p class="event_text1">샐러드다이소 이벤트</p>
-		<!-- <p class="event_text2">다양한 이벤트를 확인하고 참여해보세요.</p> -->
-		<img class="" style="width: 50px" src="${contextPath}/resources/image/event/line.png" />
+		<p class="event_text1">EVENT</p>			<!-- 하유리: 텍스트 수정(23.07.29.) -->
 	</div>
 		
 	<div class="eventBanner_wrap">

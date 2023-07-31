@@ -18,10 +18,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.proj.salad.order.vo.OrderVO;
 import com.proj.salad.mypage.service.MyPageService;
+import com.proj.salad.mypage.vo.MyPageVO;
 import com.proj.salad.user.vo.UserVO;
 
 
@@ -98,24 +100,50 @@ public class MyPageControllerImpl implements MyPageController {
 	}
 	
 	//회원정보탈퇴
-	@Override
-	@RequestMapping(value="/mypage/removeUser.do",method=RequestMethod.GET)
+   @RequestMapping(value="/mypage/removeUser.do", method=RequestMethod.GET)
 	public ModelAndView removeUser(@RequestParam("userId")String userId, 
-																				HttpServletRequest request, HttpServletResponse response)
-																				throws Exception {
-		myPageService.removeUser(userId);
-		ModelAndView mav = new ModelAndView("redirect:/user/logout.do"); //로그아웃 하여 메인페이지로 감
+																		HttpServletRequest request, HttpServletResponse response)
+																		throws Exception {
+	   myPageService.removeUser(userId); 
+	   ModelAndView mav = new ModelAndView("redirect:/user/logout.do");  //로그아웃 하여 메인페이지로 감
+	   return mav;
+	}
+   //회원정보탈퇴
+	@RequestMapping(value="/mypage/removeUser.do", method=RequestMethod.POST)
+	public ModelAndView removeUser(UserVO userVO, HttpServletRequest request, 
+																		HttpServletResponse response) throws Exception {
+		
+		String viewName = getViewName(request);
+		ModelAndView mav = new ModelAndView(viewName);
+		System.out.println("viewName:"+viewName);
+		
+		HttpSession session = request.getSession();
+		userVO = (UserVO) session.getAttribute("user");
+		String userId = userVO.getUserId();
+		
+		myPageService.removeUser(userVO.getUserId());
+		mav.setViewName("redirect:/user/loginForm");
 		return mav;
 	}
+	
+	/*
+	 * @RequestMapping(value="/mypage/removeUser.do",method=RequestMethod.GET)
+	 * public ModelAndView removeUser(@RequestParam("userId")String userId,
+	 * HttpServletRequest request, HttpServletResponse response) throws Exception {
+	 * myPageService.removeUser(userVO.getUserId()); ModelAndView mav = new
+	 * ModelAndView("redirect:/user/logout.do"); //로그아웃 하여 메인페이지로 감 return mav; }
+	 */
 
 	//마이페이지 메인
 	@Override
+	@ResponseBody 
 	@RequestMapping(value="/mypage/myPageMain.do",method=RequestMethod.GET)
 	public ModelAndView myPageMain(@RequestParam(required = false,value="message") String message, 
+																		@RequestParam Map<String, String> dateMap,
 																			HttpServletRequest request, HttpServletResponse response)
 																			throws Exception {
 		
-		HttpSession session=request.getSession();
+		HttpSession session=request.getSession();  //세션사용
 		session=request.getSession();
 		session.setAttribute("side_menu", "my_page"); //마이페이지 사이드 메뉴로 설정한다.
 		
@@ -125,38 +153,17 @@ public class MyPageControllerImpl implements MyPageController {
 		
 		userVO=(UserVO)session.getAttribute("user");
 		String userId=userVO.getUserId();
+		System.out.println("userId:"+userId);
 		
-		List<OrderVO> myOrderList=myPageService.listMyOrderGoods(userId);
-		
+		//message에 model 값 넘기기
 		mav.addObject("message", message);
-		mav.addObject("myOrderList", myOrderList);
-
-		return mav;
-	}
-
-	//주문내역 리스트
-	@Override
-	@RequestMapping(value="/mypage/listMyOrderHistory.do" ,method = RequestMethod.GET)
-	public ModelAndView listMyOrderHistory(@RequestParam Map<String, String> dateMap, 
-																						HttpServletRequest request,HttpServletResponse response) throws Exception {
-		
-		String viewName = getViewName(request);
-		ModelAndView mav = new ModelAndView(viewName);
-		System.out.println(viewName);
-		
-		HttpSession session=request.getSession(); //세션사용
-		userVO=(UserVO)session.getAttribute("user");
-		String  userId=userVO.getUserId();
-		
-		//제품주문리스트 myOrderList에 결과값 저장
-		List<OrderVO> myOrderList=myPageService.listMyOrderGoods(userId);
+		System.out.println("message:"+message);
 		
 		//userVO에 model 값 넘기기
 		mav.addObject("userVO", userVO);
-		//myOrderList에 model 값 넘기기
-		mav.addObject("myOrderList", myOrderList);
+		System.out.println("userVO:"+ userVO);
 	
-		//주문검색 년월일 조회
+		//주문검색 년월일 조회(자바스크립트 코드)
 		  String fixedSearchPeriod = dateMap.get("fixedSearchPeriod"); 
 		  String beginDate=null,endDate=null;
 	  
@@ -168,7 +175,7 @@ public class MyPageControllerImpl implements MyPageController {
 		  dateMap.put("userId", userId);
 	  
 		 //제품주문리스트 myOrderHistList에 결과값 저장
-		  List<OrderVO> myOrderHistList=myPageService.listMyOrderHistory(dateMap);
+		  List<MyPageVO> myOrderHistList=myPageService.listMyOrderHistory(dateMap);
 		  
 		  String beginDate1[]=beginDate.split("-"); //검색일자를 년,월,일로 분리해서 화면에 전달합니다.
 		  String endDate1[]=endDate.split("-");
@@ -179,47 +186,43 @@ public class MyPageControllerImpl implements MyPageController {
 		  mav.addObject("endMonth",endDate1[1]);
 		  mav.addObject("endDay",endDate1[2]); 
 	  	  mav.addObject("myOrderHistList",myOrderHistList); 
+	  	  
+		return mav;
+	}
 		  
-		  return mav; 
-		  
-		  }
-		  
-			//주문검색 년월일 계산코드
-		  protected String calcSearchPeriod(String fixedSearchPeriod){ 
-			  String beginDate=null; 
-			  String endDate=null; 
-			  String endYear=null; 
-			  String endMonth=null; 
-			  String endDay=null; 
-			  String beginYear=null; 
-			  String beginMonth=null; 
-			  String beginDay=null; 
+	//주문검색 년월일 계산코드
+	protected String calcSearchPeriod(String fixedSearchPeriod){ 
+		String beginDate=null; 
+		String endDate=null; 
+		String endYear=null; 
+		String endMonth=null; 
+		String endDay=null; 
+		String beginYear=null; 
+		String beginMonth=null; 
+		String beginDay=null; 
 			  
-			  DecimalFormat df = new DecimalFormat("00"); 
+		DecimalFormat df = new DecimalFormat("00"); 
 			  
-			  Calendar cal=Calendar.getInstance();
+		Calendar cal=Calendar.getInstance();
 		  
-			  endYear = Integer.toString(cal.get(Calendar.YEAR)); 
-			  endMonth =df.format(cal.get(Calendar.MONTH) + 1); 
-			  endDay =df.format(cal.get(Calendar.DATE)); 
-			  endDate = endYear +"-"+ endMonth+"-"+endDay;
+		endYear = Integer.toString(cal.get(Calendar.YEAR)); 
+		endMonth =df.format(cal.get(Calendar.MONTH) + 1); 
+		endDay =df.format(cal.get(Calendar.DATE)); 
+		endDate = endYear +"-"+ endMonth+"-"+endDay;
 		  
 		  if(fixedSearchPeriod == null) { 
 			  cal.add(cal.MONTH,-4); 
-		  }else if(fixedSearchPeriod.equals("one_week")) { 
-			  cal.add(Calendar.DAY_OF_YEAR, -7);
-		  }else if(fixedSearchPeriod.equals("two_week")) {
-			  cal.add(Calendar.DAY_OF_YEAR, -14); 
+		  }else if(fixedSearchPeriod.equals("three_day")) { 
+			  cal.add(Calendar.DAY_OF_YEAR, -3);
+		  }else if(fixedSearchPeriod.equals("one_week")) {
+			  cal.add(Calendar.DAY_OF_YEAR, -7); 
 		  }else if(fixedSearchPeriod.equals("one_month")) { 
 			  cal.add(cal.MONTH,-1); 
-		  }else if(fixedSearchPeriod.equals("two_month")) { 
-			  cal.add(cal.MONTH,-2); 
 		  }else if(fixedSearchPeriod.equals("three_month")) { 
 			  cal.add(cal.MONTH,-3); 
-		  }else if(fixedSearchPeriod.equals("four_month")) { 
-			  cal.add(cal.MONTH,-4);
-		  }
-		  
+		  }else if(fixedSearchPeriod.equals("six_month")) { 
+			  cal.add(cal.MONTH,-6); 
+		} 
 		  beginYear = Integer.toString(cal.get(Calendar.YEAR)); 
 		  beginMonth =df.format(cal.get(Calendar.MONTH) + 1); 
 		  beginDay =df.format(cal.get(Calendar.DATE)); 
@@ -227,27 +230,6 @@ public class MyPageControllerImpl implements MyPageController {
 		  
 		  return beginDate+","+endDate;
 		 
-	}
-	
-	//주문상세
-	@Override
-	@RequestMapping(value="/mypage/myOrderDetail.do" ,method = RequestMethod.GET)
-	public ModelAndView myOrderDetail(@RequestParam("orderNum")int orderNum, HttpServletRequest request, HttpServletResponse response)
-																			throws Exception {
-
-		String viewName = getViewName(request);
-		/* String viewName=(String)request.getAttribute("viewName"); */
-		ModelAndView mav = new ModelAndView(viewName);
-		
-		HttpSession session=request.getSession();  //세션사용
-		UserVO orderer=(UserVO)session.getAttribute("user");
-		
-		//제품정보 myOrderList에 결과값 저장
-		List<OrderVO> myOrderList=myPageService.findMyOrderInfo(orderNum);
-		mav.addObject("orderer", orderer);
-		mav.addObject("myOrderList",myOrderList);
-		
-		return mav;
 	}
 
 	//주문취소

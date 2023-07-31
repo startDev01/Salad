@@ -4,7 +4,6 @@
 <%  request.setCharacterEncoding("UTF-8"); %>    
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
-<!DOCTYPE html>
 <html>
 <head>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -17,11 +16,12 @@
 	<link href="resources/css/main.css" rel="stylesheet" type="text/css">
 	<link href="resources/css/map/mapPage.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
 	<div class="map_wrap">
 		<!-- 하유리: 제목 -->
 		<div class="map_sub">
-			<p class="map_text">위치</p>
+			<p class="map_text">LOCATION</p>
 		</div>
 		
 		<!-- 지도 -->

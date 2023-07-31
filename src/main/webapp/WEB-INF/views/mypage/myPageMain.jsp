@@ -2,6 +2,7 @@
     pageEncoding="utf-8"
     isELIgnored="false"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>  
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 <!DOCTYPE html>
@@ -10,99 +11,133 @@
 <meta charset="utf-8">
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
      <!-- css 적용 -->
    <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
  	<link href="../resources/css/header.css" rel="stylesheet" type="text/css" >
 	<link href="../resources/css/footer.css" rel="stylesheet" type="text/css" >
+	<link href="../resources/css/mypage/myPageMain.css" rel="stylesheet" type="text/css" >
 	
-	<style>
-	  .myinfo{   /* 임시 */
-         padding-top: 178px;   /* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
-      }
-	#login_table{
-	width:100%;
-	 display: flex;
-	 justify-content: center;
-	}
-	.user-form {
-         display: inline-block;
-         padding: 30px;
-        }
-     .fixed_join{
-     	 justify-content: center;
-         padding-top:12px;
-         padding-right:15px;
-         } 
-     .list_order_view{
-      	display: flex;
-	 	justify-content: center;
-         }
-	</style>
-	
-<c:if test="${message=='cancel_order'}">
-	<script>
-	window.onload=function()
-	{
-	  init();
-	}
-	
-	function init(){
-		alert("주문을 취소했습니다.");
-	}
-	</script>
-</c:if>
-<script>
-function fn_cancel_order(orderNum){
-	var answer=confirm("주문을 취소하시겠습니까?");
-	if(answer==true){
-		var formObj=document.createElement("form");
-		var i_orderNum = document.createElement("input"); 
-	    
-		i_orderNum.name="orderNum";
-		i_orderNum.value=orderNum;
-		
-	    formObj.appendChild(i_orderNum);
-	    document.body.appendChild(formObj); 
-	    formObj.method="post";
-	    formObj.action="${contextPath}/mypage/cancelMyOrder.do";
-	    formObj.submit();	
-	}
-}
+	<%-- 폰트 적용 --%>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Open+Sans:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
 
-</script>
 </head>
 <body>
 <h1 class="myinfo">나의 정보</h1><br>
-<table border=1 width=70% cellpadding=10 cellspacing=10 align="center">
+<table class="myinfo_table">
   <tr>
-    <td  align="center">
+  <td class="myinfo_td_title">
+	   이름
+   </td>
+    <td  class="myinfo_td">
+	   <strong>${user.userName}</strong>
+   </td>
+    </tr>
+    <tr>
+    <td class="myinfo_td_title">
 	   이메일
    </td>
-    <td  align="center">
+    <td  class="myinfo_td">
 	   <strong>${user.userEmail}</strong>
    </td>
    </tr>
    <tr>
-    <td  align="center">
+    <td  class="myinfo_td_title">
 	   연락처
    </td>
-    <td  align="center">
+    <td  class="myinfo_td">
 	   <strong>${user.userPhone }</strong>
    </td>
    </tr>
    <tr>
-    <td  align="center">
+    <td  class="myinfo_td_title">
 	  주소지 
    </td>
-    <td  align="center">
+    <td  class="myinfo_td">
 		 기본 주소:  &nbsp;&nbsp; <strong>${user.userAddress1 }</strong>  <br>
 		 상세 주소:   &nbsp;&nbsp; <strong>${user.userAddress2 }</strong> 
    </td>
    </tr>
 </table>
 <br><br>
-<h1>최근주문내역</h1><br>
+
+<h1 class="new_order">최근주문내역</h1><br>
+	<form method="post" id="orderhis_Form">
+		<table>
+			<tbody>
+			<!-- 주문일자 검색 추가 23.07.30 서승희 -->
+				<%-- <tr>
+					<td><select name="curYear">
+							<c:forEach var="i" begin="0" end="5">
+								<c:choose>
+									<c:when test="${endYear==endYear-i }">
+										<option value="${endYear}" selected>${endYear}</option>
+									</c:when>
+									<c:otherwise>
+										<option value="${endYear-i }">${endYear-i }</option>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+					</select>년 <select name="curMonth">
+							<c:forEach var="i" begin="1" end="12">
+								<c:choose>
+									<c:when test="${endMonth==i }">
+										<option value="${i }" selected>${i }</option>
+									</c:when>
+									<c:otherwise>
+										<option value="${i }">${i }</option>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+					</select>월 <select name="curDay">
+							<c:forEach var="i" begin="1" end="31">
+								<c:choose>
+									<c:when test="${endDay==i }">
+										<option value="${i }" selected>${i }</option>
+									</c:when>
+									<c:otherwise>
+										<option value="${i }">${i }</option>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+					</select>일
+					&nbsp;이전&nbsp; --%>
+				<%-- 	<td>
+					<input type="button" onClick="search_order_history('${fixedSearchPeriod }') " value="조회" />
+					</td> --%>
+					</tr>
+					<tr>
+						<td>
+							<a href="javascript:search_order_history('today')"> 
+							<img src="${contextPath}/resources/image/search/btn_search_one_day.jpg">
+							</a> 
+							<a href="javascript:search_order_history('three_day')"> 
+							<img src="${contextPath}/resources/image/search/btn_search_3_day.jpg">
+							</a> 
+							<a href="javascript:search_order_history('one_week')"> 
+							<img src="${contextPath}/resources/image/search/btn_search_1_week.jpg">
+							</a> 
+							<a href="javascript:search_order_history('one_month')"> 
+							<img src="${contextPath}/resources/image/search/btn_search_1_month.jpg">
+							</a> 
+							<a href="javascript:search_order_history('three_month')"> 
+							<img src="${contextPath}/resources/image/search/btn_search_3_month.jpg">
+							</a> 
+							<a href="javascript:search_order_history('six_month')"> 
+							<img src="${contextPath}/resources/image/search/btn_search_6_month.jpg">
+							</a> 
+						<!-- 	&nbsp;까지 조회 -->
+						</td>
+				</tr>
+				<br>
+				
+			</tbody>
+		</table>
+		<!-- <div class="clear"></div> -->
+	</form>
 <table class="list_order_view">
 		<tbody align="center" >
 			<tr style="background:lightgray" >
@@ -110,90 +145,41 @@ function fn_cancel_order(orderNum){
 				<td  width="120px">주문일자</td>
 				<!-- <td  width="120px">주문상품/수량</td> -->
 				<td  width="120px">주문자</td>
+				<td  width="120px">주문가격</td>
 				<td  width="120px">주문상태</td>
 				<td  width="120px">주문취소</td>
 			</tr>
 	<%-- 주문내역이 비어있을 경우 --%>
 	<c:choose>
-         <c:when test="${ empty myOrderList  }">
+         <c:when test="${ empty myOrderHistList  }">
 		  <tr>
-		    <td colspan=5 class="fixed">
+		    <td colspan=5 class="fixed" align="center">
 				  <strong>주문한 상품이 없습니다.</strong>
 		    </td>
 		  </tr>
         </c:when>
         <%-- 주문 테이블 목록 출력 --%>
         <c:otherwise>
-	      <c:forEach var="item" items="${myOrderList }"  varStatus="i">
-	       <c:choose> 
-             <c:when test="${ pre_orderNum != item.orderNum}">
-              <%-- <c:choose>
-	              <c:when test="${item.orderStatus=='delivery_prepared' }">
-	                <tr  bgcolor="lightgreen">    
-	              </c:when>
-	              <c:when test="${item.orderStatus=='finished_delivering' }">
-	                <tr  bgcolor="lightgray">    
-	              </c:when>
-	              <c:otherwise>
-	                <tr  bgcolor="orange">
-	              </c:otherwise>
-	            </c:choose> --%>
-            <tr>
-             <td>
-		      <%--  <a href="${contextPath}/mypage/myOrderDetail.do?fakeOrderNum=${item.fakeOrderNum }"> --%>
-		      <span><a href="#">${item.fakeOrderNum } </a></span>
-		     </td>
-		    <td><span>${item.orderCreateTimestamp }</span></td>
-			 <td><span>${item.ordererName }</span></td>
-			 <td><span>${item.orderStatus }</span></td>
-			<%-- <td align="left">
-			   <strong>
-			      <c:forEach var="item2" items="${myOrderList}" varStatus="j">
-			          <c:if  test="${item.orderNum ==item2.orderNum}" >
-			           <a href="${contextPath}/cart?prodNum=${item2.prodNum }"></a>${item2.orderNum }/${item.totalPrice }개<br>
-			         </c:if>
-				 </c:forEach>
-				</strong></td> --%>
-			<%-- <td>
-			  <c:choose>
-			    <c:when test="${item.orderStatus=='delivery_prepared' }">
-			       배송준비중
-			    </c:when>
-			    <c:when test="${item.orderStatus=='delivering' }">
-			       배송중
-			    </c:when>
-			    <c:when test="${item.orderStatus=='finished_delivering' }">
-			       배송완료
-			    </c:when>
-			    <c:when test="${item.orderStatus=='cancel_order' }">
-			       주문취소
-			    </c:when>
-			    <c:when test="${item.orderStatus=='returning_goods' }">
-			       반품완료
-			    </c:when>
-			  </c:choose>
-			</td> --%>
-			<td>
-			  <c:choose>
-			   <c:when test="${item.orderStatus=='delivery_prepared'}" >
-			       <input  type="button" onClick="fn_cancel_order('${item.orderNum}')" value="주문취소"  />
-			   </c:when>
-			   <c:otherwise>
-			      <input  type="button" onClick="fn_cancel_order('${item.orderNum}')" value="주문취소"  />
-			   </c:otherwise>
-			  </c:choose>
-			</td>
-			</tr>
-          <c:set  var="pre_orderNum" value="${item.orderNum}" />
-           </c:when>
-      </c:choose>
-	   </c:forEach>
+	      <c:forEach var="item" items="${myOrderHistList }"  varStatus="i">
+	        <tr>
+               <td class="my_page_td"><a href='${contextPath}/mypage/orderInfo/${item.orderNum}'">${item.fakeOrderNum } </a> </td>
+               <td class="my_page_td">${item.orderCreateTimestamp}</td>
+               <td class="my_page_td">${item.ordererName}</td>
+               <td class="my_page_td"><fmt:formatNumber value="${item.totalPrice}" pattern="#,###" /> 원</td>
+               <td class="my_page_td">${item.orderStatus}</td>
+                <td class="my_page_td">
+                    <c:if test="${item.orderStatus == '결제완료'}">
+                         <input  type="button" class="my_page_cancel" onclick="fn_cancel_order('${item.orderNum}')" value="주문취소"/>
+                    </c:if>
+                </td>
+          </tr>
+         </c:forEach>
 	  </c:otherwise>
-    </c:choose> 	    
+    </c:choose> 	   
 </tbody>
 </table>
 <br><br>	
-<h1>계좌내역</h1><br>
+<!-- <h1>계좌내역</h1><br>
 <div class="pay_form" align="center">
 <table border=1  width=70%  cellpadding=10 cellspacing=10>
   <tr>
@@ -221,8 +207,59 @@ function fn_cancel_order(orderNum){
    </td>
    </tr>
 </table>
-
 </div>
- <br><br>
+ <br><br> -->
+ 
+ <!-- 주문취소 -->
+<c:if test="${message=='cancel_order'}">
+	<script>
+	window.onload=function()
+	{
+	  init();
+	}
+	
+	function init(){
+		alert("주문을 취소했습니다.");  // 사용자가 주문 취소를 눌렀을 경우
+	}
+	</script>
+</c:if>
+
+<script>
+
+//주문취소
+function fn_cancel_order(orderNum){
+	var answer=confirm("주문을 취소하시겠습니까?");
+	if(answer==true){
+		var formObj=document.createElement("form");
+		var i_orderNum = document.createElement("input"); 
+	    
+		i_orderNum.name="orderNum";
+		i_orderNum.value=orderNum;
+		
+	    formObj.appendChild(i_orderNum);
+	    document.body.appendChild(formObj); 
+	    formObj.method="post";
+	    formObj.action="${contextPath}/mypage/cancelMyOrder.do";
+	    formObj.submit();	
+	}
+}
+
+//주문검색일자
+function search_order_history(fixedSearchPeriod) {
+	var formObj = document.createElement("form");
+	var i_fixedSearch_period = document.createElement("input");
+	
+	i_fixedSearch_period.name = "fixedSearchPeriod";
+	i_fixedSearch_period.value = fixedSearchPeriod;
+	
+	formObj.appendChild(i_fixedSearch_period);
+	document.body.appendChild(formObj);
+	formObj.method = "get";
+	formObj.action = "${contextPath}/mypage/myPageMain.do";
+	formObj.submit();
+}
+</script>
+ 
+ 
 </body>
 </html>

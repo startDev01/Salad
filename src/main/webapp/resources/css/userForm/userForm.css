@@ -97,24 +97,27 @@ td {
 
 /* 하유리: 이메일 label(체크박스 때문에 위치 따로 지정)(23.07.25.) */
 #label_email {
-	position: absolute;		/* 절대위치로 지정 */
+	/* position: absolute;	 */	/* 절대위치로 지정 *//* 절대위치 주석 서승희 수정  23.07.28 */
 	top: 740px;
   	color: rgb(51, 51, 51);
+    padding-bottom:30px; /* padding-bottom 서승희 추가  23.07.28 */
 }
 
 /* 하유리: 연락처 label(체크박스 때문에 위치 따로 지정)(23.07.25.) */
 #label_phone {
-	position: absolute;		/* 절대위치로 지정 */
+	/* position: absolute;	 */	/* 절대위치로 지정 *//* 절대위치 주석 서승희 수정  23.07.28 */
 	top: 913px;
   	color: rgb(51, 51, 51);
+    padding-bottom:30px; /* padding-bottom 서승희 추가  23.07.28 */
 }
 
-/* id <input> + 중복체크 button */
-#_user_id, #btnOverlapped {
+/* id <input> + 중복체크 button */ /*  #userPhone, #phoneChk, #phone2, #phoneChk2  서승희 추가 23.07.28 */
+#_user_id, #btnOverlapped, #userPhone, #phoneChk, #phone2, #phoneChk2 {
 	float: left;					/* 나란히 배열 */
 }
 
-#btnOverlapped {
+/*  .btn_pass 서승희 추가 23.07.28 */
+#btnOverlapped, .btn_pass {
 	margin-left: 8px;		/* id <input> + 중복체크 button 간격 */
 }
 
@@ -140,8 +143,8 @@ td {
    	box-sizing: border-box;		/* id inputbox, 중복체크 버튼 나란히 배열 */
 }
 
-/* 중복확인 버튼 */
-#btnOverlapped, .addBtn {
+/* 중복확인 버튼 *//*  .btn_pass 서승희 추가 23.07.28 */
+#btnOverlapped, .addBtn, .btn_pass{
    	padding: 0px 10px;
    	text-align: center;
    	font-family: 'Noto Sans KR', sans-serif;
@@ -154,6 +157,7 @@ td {
    	color: #128853;	
    	background-color: rgb(255, 255, 255);
    	border: 1px solid #128853;	
+   	cursor: pointer; /* 23.07.28 하유리 추가 */
 }
 
 /* 하단 버튼(회원가입, 다시입력, 메인) */

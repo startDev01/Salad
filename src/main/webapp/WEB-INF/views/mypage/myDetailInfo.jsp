@@ -20,10 +20,7 @@
 	<link href="../resources/css/footer.css" rel="stylesheet" type="text/css" >
 	<link href="../resources/css/mypage/userForm.css" rel="stylesheet" type="text/css" >	<!-- 하유리: css 적용(23.07.25.) -->
 	<style>
-	  h1 {   /* 임시 */
-         padding-top: 178px;   /* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
-      }
-      
+	 
 	/* #login_table{
 	width:100%;
 	 display: flex;
@@ -130,14 +127,14 @@
 								<td class="fixed_join">
 									<p class="join_label">생년월일<span class="essential">*</span>							<!-- 하유리: align속성 삭제, <span>추가(23.07.25.) -->
 								</td>
-								<td><input class="join_input" name="userBirth" type="text" minlength="8" maxlength="8" required  value="${user.userBirth }" /></td>	<!-- 하유리: align속성, size, <br>(e-mail) 삭제(23.07.25.) -->
+								<td><input class="join_input" name="userBirth" type="text"  maxlength="8" required  value="${user.userBirth }" /></td>	<!-- 하유리: align속성, size, <br>(e-mail) 삭제(23.07.25.) -->
 								<td><input type="button" value="수정하기" onClick="fn_modify_user_info('userBirth')"/></td>
 							</tr>
 							<tr class="dot_line">
 								<td class="fixed_join">
 									<p class="join_label" id="label_phone">연락처<span class="essential">*</span>	<!-- 하유리: align속성 삭제, <span>추가(23.07.25.) -->
 								</td>
-								<td> <input class="join_input" type="text" name="userPhone" minlength="10" maxlength="12" required  value="${user.userPhone }" style="margin-bottom: 10px;"/>	<!-- 하유리: align속성, size삭제, <style> 추가(23.07.25.) -->
+								<td> <input class="join_input" type="text" name="userPhone" maxlength="12" required  value="${user.userPhone }" style="margin-bottom: 10px;"/>	<!-- 하유리: align속성, size삭제, <style> 추가(23.07.25.) -->
 									<!-- <select  name="userPhone" id="userPhone">
 										<option>없음</option>
 										<option selected value="010">010</option>
@@ -331,8 +328,6 @@ function execDaumPostcode() {
 		confirmMsg.innerHTML ="불일치";
 		}
 	}
-    
-
 </script>
 	
 </body>

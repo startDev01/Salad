@@ -11,17 +11,19 @@ head {
     font-family: 'Noto Sans KR', sans-serif !important;
     font-weight: 600 !important;
 }
-
 .odl-container {
     display: flex;
     flex-direction: row;
     width: 1200px;
+    padding-top: 178px;   /* 하유리: 헤더 영역만큼 아래로 내림(23.07.27.) */
+    padding-left:50px; /* 23.07.29 서승희 추가 */
 }
 
 .odl-box {
     /*border: 5px solid indianred;*/
     /*height: 1000px;*/
     width: 900px;
+ 	
 }
 
 .odl-box2 {
@@ -53,6 +55,7 @@ head {
     vertical-align: middle;
     height: 50px;
     background: #36DDA6;
+    
 }
 
 .odl-table-td {

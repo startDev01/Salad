@@ -16,19 +16,22 @@ public class UserDAOImpl  implements UserDAO{
 	@Autowired   //의존성주입
 	private SqlSession sql;	
 
+	 //로그인
 	@Override
-	public UserVO login(Map loginMap) throws DataAccessException {  //로그인
+	public UserVO login(Map loginMap) throws DataAccessException { 
 		UserVO user=(UserVO)sql.selectOne("mapper.user.login",loginMap);
 		return user;
 	}
 
+	 //회원가입
 	@Override
-	public void insertNewUser(UserVO userVO) throws DataAccessException {  //회원가입
+	public void insertNewUser(UserVO userVO) throws DataAccessException { 
 		sql.insert("mapper.user.insertNewUser",userVO);
 	}
 
+	 //ID 중복검사
 	@Override
-	public String selectOverlappedID(String userId) throws DataAccessException {  //ID 중복검사
+	public String selectOverlappedID(String userId) throws DataAccessException { 
 		String result =  sql.selectOne("mapper.user.selectOverlappedID",userId);
 		return result;
 	}

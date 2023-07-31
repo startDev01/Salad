@@ -48,25 +48,32 @@
 						<!-- 하유리: 메뉴 위치 수정(23.07.14.) -->
 						<li><a href="${contextPath}/review/list">리뷰</a></li>
 						<li><a href="${contextPath}/notice/list" class="">공지</a></li>
+						<li><a href="${contextPath}/event">이벤트</a></li>		<!-- 하유리: 이벤트↔위치 순서 변경(23.07.29.) -->
 						<li><a href="${contextPath}/map">위치</a></li>
-						<li><a href="${contextPath}/event">이벤트</a></li>
 					</ul>
 				</div>
 			
 				<!-- 회원메뉴 -->
 				<div class="memberMenu">
 					<ul class="list1">
-						<!-- 서승희 수정(23.07.16.) -->
+						<!-- 서승희 수정(23.07.16.) 하유리 수정(23.07.30.) -->
 						<c:choose>
 							<c:when test="${isLogOn==true && user != null }">
-								<h3>환영합니다. ${user.userName }님!</h3>
-								<li><a href="${contextPath}/user/logout.do">로그아웃</a></li>
-								<li><a href="${contextPath}/cart">장바구니</a></li>
-								<li><a href="${contextPath}/mypage/myPageMain.do">마이페이지</a></li>
+								<div class="userMenu">
+									<p>${user.userName } 님</p>	<!-- 하유리: userName과 님 사이에 공백 추가(23.07.30.) -->
+									<p><a href="${contextPath}/user/logout.do"><img width="18px" src="${contextPath}/resources/image/common/header/logout3.png"/></a></p>	<!-- 로그아웃 -->
+								</div>
+								<div class="functionMenu">
+									<ul>
+										<li><a href="${contextPath}/mypage/myPageMain.do"><img width="25px" src="${contextPath}/resources/image/common/header/mypage2.png"/></a></li>	<!-- 마이페이지 -->
+										<li><a href="${contextPath}/cart"><img class="cart_icon" width="30px" src="${contextPath}/resources/image/common/header/cart.png"/></a></li>	<!-- 장바구니 -->
+										<li><a href="#"><img width="26px" src="${contextPath}/resources/image/common/header/buyList.png"/></a></li>	<!-- 구매목록 -->
+									</ul>
+								</div>
 							</c:when>
 							<c:otherwise>
-								<li><a href="${contextPath}/user/loginForm.do">로그인</a></li>
-								<li><a href="${contextPath}/user/userForm.do">회원가입</a></li> 
+								<li><a href="${contextPath}/user/loginForm.do">로그인&nbsp;&nbsp;</a></li>		<!-- 하유리: 텍스트 수정(23.07.30.) -->
+								<li><a href="${contextPath}/user/userForm.do">&nbsp;&nbsp;회원가입</a></li> 	<!-- 하유리: 텍스트 수정(23.07.30.) -->
 							</c:otherwise>
 						</c:choose>
 					</ul>

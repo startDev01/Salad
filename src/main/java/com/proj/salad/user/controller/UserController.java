@@ -15,13 +15,14 @@ import com.proj.salad.user.vo.UserVO;
 
 public interface UserController {
 	
-	public ModelAndView login(@RequestParam Map<String, String> loginMap, HttpServletRequest request, HttpServletResponse response) throws Exception;  //로그인
-	
-	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws Exception;  //로그아웃
-
-	public ResponseEntity addUser(@ModelAttribute("userVO") UserVO userVO, HttpServletRequest request, HttpServletResponse response) throws Exception;   //회원가입
-
-	public ResponseEntity overlapped(@RequestParam("id") String id, HttpServletRequest request, HttpServletResponse response) throws Exception;  //ID 중복검사
+	//로그인
+	public ModelAndView login(@RequestParam Map<String, String> loginMap, HttpServletRequest request, HttpServletResponse response) throws Exception;  
+	//로그아웃
+	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws Exception; 
+	 //회원가입
+	public ResponseEntity addUser(@ModelAttribute("userVO") UserVO userVO, HttpServletRequest request, HttpServletResponse response) throws Exception;  
+	//ID 중복검사
+	public ResponseEntity overlapped(@RequestParam("id") String id, HttpServletRequest request, HttpServletResponse response) throws Exception;  
 			
 
 }

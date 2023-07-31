@@ -2,7 +2,17 @@
 
 /* 하유리: 폰트(23.07.25.) */
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
- 		
+
+body {  /* 마이페이지 글씨체 폰트 맞추기 23.07.30 서승희 추가*/
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 600;
+}
+
+head { /* 마이페이지 글씨체 폰트 맞추기 23.07.30 서승희 추가*/
+    font-family: 'Noto Sans KR', sans-serif !important;
+    font-weight: 600 !important;
+}
+		
 /* 하유리: '회원가입' 텍스트를 포함한 전체(23.07.25.) */
 .total {
 	width: 100%;
@@ -10,6 +20,7 @@
 	/* margin: 50px 0; */	
 	padding-top: 178px;		/* 헤더 영역만큼 아래로 내림 */
 	margin-bottom: 100px;
+	margin-left:20px;
 }
 
 /* 하유리: 테이블(23.07.25.) */

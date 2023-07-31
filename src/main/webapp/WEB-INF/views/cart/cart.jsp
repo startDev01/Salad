@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <style>
     /* css 적용 부분 */
-
+	 
   </style>
   <title>장바구니</title>
 </head>

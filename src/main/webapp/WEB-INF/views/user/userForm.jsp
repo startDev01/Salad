@@ -87,7 +87,7 @@
 								<td class="fixed_join">
 									<p class="join_label">생년월일<span class="essential">*</span>							<!-- 하유리: align속성 삭제, <span>추가(23.07.25.) -->
 								</td>
-								<td><input class="join_input" name="userBirth" type="text" minlength="8" maxlength="8" required placeholder="생년월일 입력 8자리(숫자만 입력)" /></td>	<!-- 하유리: align속성, size, <br>(e-mail) 삭제(23.07.25.) -->
+								<td><input class="join_input" name="userBirth" type="text"  maxlength="8" required placeholder="생년월일 입력 8자리(숫자만 입력)" /></td>	<!-- 하유리: align속성, size, <br>(e-mail) 삭제(23.07.25.) -->
 							</tr>
 							<tr class="dot_line">
 								<td class="fixed_join">
@@ -95,18 +95,18 @@
 								</td>
 								<td> 
 								<!-- 23.07.27 문자 api 인증 서승희 수정 -->
-								<input class="join_input" type="text" name="userPhone" id="userPhone" maxlength="12" required value="${user.userPhone }"
-									placeholder="전화번호 입력(숫자만 입력)" style="margin-bottom: 10px;"  autocomplete="off"/><!-- 하유리: align속성, size삭제, <style> 추가(23.07.25.) -->
-								<input class="btn_pass" id="phoneChk" type="button"  value="인증번호발송"  /> <!-- phoneChk 클릭시 함수 발동 -->
-									
-									<!-- 23.07.23 서승희 연락처 수신여부 수정 --> 
-									<input class="sms_chk" type="checkbox" name="smssts_yn" id="smssts_y"  value="Y" onclick="checkBoxValue1();" checked/><span class="sms_chk_text" >쇼핑몰에서 발송하는 SMS 소식을 수신합니다.</span><!-- 23.07.20 sms 수신동의 수정 --> 
-                                 	<input class="sms_chk" type="hidden" name="smssts_yn" id="smssts_n" onclick="checkBoxValue1();" /><span class="sms_chk_text" ></span>
-                                 	
-                                 	<!-- 23.07.27 문자 api 인증 서승희 수정 -->
-                                 	<input class="join_input" type="text" name="phone" id="phone2" maxlength="4" required placeholder="인증번호 4자리 입력" style="margin-top: 10px;" 
-                                 	autocomplete="off"/><!-- 하유리: align속성, size삭제, <style> 추가(23.07.25.) -->
-                                 	<input class="btn_pass" id="phoneChk2" type="button" value="인증번호확인" style="margin-top: 10px;" /> <!--  phoneChk 클릭시 함수 발동 -->
+								<input class="join_input" type="text" style="width: 65%;" name="userPhone" id="userPhone" maxlength="12" required value="${user.userPhone }"
+									placeholder="전화번호 입력(숫자만 입력)"  autocomplete="off"/><!-- 하유리: align속성, size삭제, <style> 추가(23.07.25.) -->
+								<input class="btn_pass" id="phoneChk" type="button" style="width: 33%; margin-bottom: 10px; " value="인증번호발송"  /> <!-- phoneChk 클릭시 함수 발동 -->
+                                 <!-- 23.07.27 문자 api 인증 서승희 수정 -->
+                                 <input class="join_input" type="text" style="width: 65%; margin-bottom: 10px;" name="phone" id="phone2" maxlength="4" required placeholder="인증번호 4자리 입력"
+                                 autocomplete="off"/><!-- 하유리: align속성, size삭제, <style> 추가(23.07.25.) -->
+                                 <input class="btn_pass" id="phoneChk2" type="button" style="width: 33%; margin-bottom: 10px;" value="인증번호확인"  /> <!--  phoneChk 클릭시 함수 발동 -->
+								<br>
+								<!-- 23.07.23 서승희 연락처 수신여부 수정 --> 
+								<input class="sms_chk"  type="checkbox" name="smssts_yn" id="smssts_y"  value="Y" onclick="checkBoxValue1();" checked/><span class="sms_chk_text" >쇼핑몰에서 발송하는 SMS 소식을 수신합니다.</span><!-- 23.07.20 sms 수신동의 수정 --> 
+                                 <input class="sms_chk" type="hidden" name="smssts_yn" id="smssts_n" onclick="checkBoxValue1();" /><span class="sms_chk_text" ></span>
+								
 								</td>
 							</tr>
 						
@@ -130,7 +130,7 @@
 					<div class="clear">
 						<input type="submit"  value="회원가입">
 						<input  type="reset"  value="다시입력">	
-						<input type="button" onclick="location.href='${contextPath}/main.do'" value="메인이동" />	<!-- 하유리: value 수정(23.07.25.) -->
+						<%-- <input type="button" onclick="location.href='${contextPath}/main.do'" value="메인이동" /> --%>	<!-- 하유리: value 수정(23.07.25.) -->
 					</div>
 				</form>
 			</div>
@@ -227,6 +227,7 @@
 	        } 
 	       
 	     /* 인증문자 */
+	     //23.07.27 서승희 핸드폰 문자인증 추가
 	     $(function(){
 		//var code2 = "";  //인증 코드를 저장하기 위해 code2 선언
 		//휴대폰 번호 인증 
@@ -243,7 +244,7 @@
             	if(data === "error"){  //실패시 
             	    alert("휴대폰 번호가 올바르지 않습니다.")
           	  }else{  //성공시        
-             	   alert("휴대폰 인증번호가 전송 되었습니다.")
+             	   alert("인증번호가 전송 되었습니다.")
              	   code2 = data; // 성공하면 데이터저장
             }
         }

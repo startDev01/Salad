@@ -6,8 +6,10 @@
       <mapper namespace="mapper.mypage"> <!-- DAOImpl에 매퍼 가져올때 사용할 고유이름 -->
   	    	 
   	 <!-- 제품 주문 Map 정의 -->
-	<resultMap id="orderGoodsResult" type="orderVO">
+  	 <!-- 반환값 Map(shop_order, order_menu을 Join 한 데이터) 지정 -->
+	<resultMap id="orderGoodsResult" type="mypageVO">
     	<result property="orderNum" column="orderNum" />
+    	<result property="fakeOrderNum" column="fakeOrderNum" />
 		<result property="userId" column="userId" />
 		<result property="orderStatus" column="orderStatus" />
 		<result property="orderCreateTimestamp" column="orderCreateTimestamp" />
@@ -23,53 +25,14 @@
 		
 		<result property="totalPrice" column="totalPrice" />
 		<result property="prodDeliveryDate" column="prodDeliveryDate" />
+	
+		<!-- 주문메뉴 -->
+		<result property="orderMenuNum" column="orderMenuNum" />
+		<result property="menuName" column="menuName" />
+		<result property="menuCount" column="menuCount" />
+	
 	</resultMap>
 	
-		<!--  결제 
-		<resultMap id="order_accountResult" type="order_accountVO">
-			<result property="orderAccountNum " column="orderAccountNum" />
-			<result property="accountNumber " column="accountNumber " />
-			<result property="accountPeriod " column="accountPeriod " />
-			<result property="accountCVC " column="accountCVC " />
-			<result property="accountName " column="accountName " />
-			<result property="purchaseType " column="purchaseType " />
-		 </resultMap> 
-		 
-		 주문메뉴
-		<resultMap id="orderMenuResult" type="OrderMenuVO">
-			<result property="orderMenuNum" column="orderMenuNum" />
-			<result property="menuName" column="menuName" />
-			<result property="menuCount" column="menuCount" />
-		</resultMap> 
-    
-    	제품 Map
-    	<resultMap id="prodResult" type="prodVO"> 
-        	<result property="prodNum" column="prodNum" />
-        	<result property="prodName" column="prodName" />
-        	<result property="prodPrice" column="prodPrice" />
-        	<result property="prodDescription" column="prodDescription" />
-        	<result property="prodBrand" column="prodBrand" />
-        	<result property="prodCreateTimestamp" column="prodCreateTimestamp" />
-        	<result property="prodDelieryPrice" column="prodDelieryPrice" />
-        	<result property="prodImageUrl" column="prodImageUrl" />
-        	<result property="prodImageName" column="prodImageName" />
-       		<result property="prodImageDate" column="prodImageDate"/>
-    	</resultMap>
-    	
-    	장바구니 Map
-    	<resultMap id="cartListResult" type="cartListVO">
-        	<result property="cartNum" column="cartNum" />
-        	<result property="userId" column="userId" />
-        	<result property="prodNum" column="prodNum" />
-        	<result property="prodName" column="prodName" />
-        	<result property="prodPrice" column="prodPrice" />
-        	<result property="prodDescription" column="prodDescription" />
-       	 	<result property="prodBrand" column="prodBrand" />
-        	<result property="prodCreateTimestamp" column="prodCreateTimestamp" />
-        	<result property="prodDeliveryPrice" column="prodDeliveryPrice" />
-        	<result property="cartCount" column="cartCount" />
-	    </resultMap> -->
-  	   
   	   <!-- 주문내역 리스트 -->
   	   <select id="selectMyOrderHistoryList" resultMap="orderGoodsResult"   parameterType="java.util.Map"  >
 	    <![CDATA[
@@ -80,28 +43,10 @@
     	]]>
 	</select>	
 	
-	<!-- 주문제품 리스트 -->
-	<!--  order by accountDate desc -->
-	<select id="selectMyOrderGoodsList" resultMap="orderGoodsResult"  parameterType="String"  >
-	    <![CDATA[
-			select * from shop_order
-            where userId=#{userId}
-            order by orderCreateTimestamp desc
-		]]>
-	</select>
-	
-	<!-- 주문상세 -->
-	<select id="selectMyOrderInfo" resultMap="orderGoodsResult"   parameterType="String"  >
-	    <![CDATA[
-		    select * from shop_order
-            where orderNum=#{orderNum}
-    	]]>
-	</select>
-  	   
   	   <!-- 주문취소 표시 -->
   	   <update id="updateMyOrderCancel" parameterType="int">
 	   		update shop_order
-	 	  	set orderStatus='cancel_order'
+	 	  	set orderStatus='취소완료'
 	   		where orderNum=#{orderNum}
 		</update>
   	   
@@ -161,5 +106,4 @@
 		]]>  
 	</delete>
    	 
-   	 
-   	  </mapper>
+</mapper>

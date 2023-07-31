@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.proj.salad.user.vo.UserVO;
+
 public interface MyPageController {
 	
 	//회원정보상세
@@ -18,16 +20,14 @@ public interface MyPageController {
                                        @RequestParam("value") String value,
                                        HttpServletRequest request, HttpServletResponse response)  throws Exception;
 	//회원정보탈퇴
-	public ModelAndView removeUser(@RequestParam("userId") String userId, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	//public ModelAndView removeUser(@RequestParam("userId") String userId, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView removeUser(UserVO userVO,HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
 	//마이페이지 메인
-	public ModelAndView myPageMain(@RequestParam(required = false,value="message")  String message,HttpServletRequest request, HttpServletResponse response)  throws Exception ;
-	//주문내역 리스트 조회
-	public ModelAndView listMyOrderHistory(@RequestParam Map<String, String> dateMap,HttpServletRequest request, HttpServletResponse response)  throws Exception;
-	//주문상세
-	public ModelAndView myOrderDetail(@RequestParam("orderNum")  int orderNum,HttpServletRequest request, HttpServletResponse response)  throws Exception;
+	public ModelAndView myPageMain(@RequestParam(required = false,value="message")  String message,@RequestParam Map<String, String> dateMap,HttpServletRequest request, HttpServletResponse response)  throws Exception ;
 	//주문취소
 	public ModelAndView cancelMyOrder(@RequestParam("orderNum")  int orderNum,HttpServletRequest request, HttpServletResponse response)  throws Exception;
+	
 	
 	
 	

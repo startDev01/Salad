@@ -12,7 +12,7 @@
     <link href="../resources/css/header.css" rel="stylesheet" type="text/css">
     <link href="../resources/css/footer.css" rel="stylesheet" type="text/css">
     <link href="../resources/css/mypage/orderList.css" rel="stylesheet" type="text/css">
-
+	
     <%-- 폰트 적용 --%>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,9 +21,7 @@
 
     <style>
         /* css 적용 부분 */
-	 .odl-container{   /* 임시 */
-         padding-top: 178px;   /* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
-      }
+
     </style>
     <title>주문 내역</title>
 
@@ -68,7 +66,7 @@
                         </td>
                     </tr>
                 </c:forEach>
-            </table>
+            </table><br>
     </div>
 <%--    <div class="odl-box2">--%>
 

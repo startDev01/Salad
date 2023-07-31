@@ -19,6 +19,7 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    padding-top: 178px;   /* 하유리: 헤더 영역만큼 아래로 내림(23.07.27.) */
   }
 
 #h1{
@@ -27,39 +28,44 @@ font-size:40px;
 margin-top : 70px;
 margin-bottom: 150px;
 }
-  h2, h3 {
-    color: #333;
-    
-  }
-  
-  h2{
-  	font-weight:bold;
-  	font-size:30px;
-  }
+		.h3{
+         display: flex;
+         justify-content: flex-start;
+         align-items: center;
+         font-size:15px;
+         font-weight: bold;
+         margin-left:15px;
+        }
 
-  .info-block {
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    background-color: #f9f9f9;
-  }
+ 			.info-block {
+            margin-bottom: 20px;
+            border: none;
+            padding: 10px;
+            background-color: #f9f9f9;
+ 		 }
 
-  .line {
-    display: flex;
-    align-items: left;
-    margin-bottom: 10px;
-     flex-direction: row;
-  }
+       .line {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-direction: row;
+        }
 
-  .line-title {
-    width: 120px;
-    font-weight: bold;
-    margin-right: 10px;
-  }
+        .line-title {
+            width: 120px;
+            font-weight: bold;
+            margin-right: 10px;
+            padding:10px;
+            background-color: #128853;
+            color: #fff;
+        }
 
-  .line-content {
-    width:300px;
-  }
+        .line-content {
+             flex-grow: 1;
+             text-align: left;
+             padding-left:10px;
+        }
+        
 </style>
 <title>Insert title here</title>
 </head>
@@ -67,7 +73,7 @@ margin-bottom: 150px;
 <main>
 <p id = "h1">결제가 완료되어 주문이 접수됐습니다.<p>
 
-<h3>주문 정보</h3>
+<p class="h3">주문 정보</p>
     <div class="info-block to">
         <div class="line">
           <div class="line-title"><label for="name">이름</label></div>
