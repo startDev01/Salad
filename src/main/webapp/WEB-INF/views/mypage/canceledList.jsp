@@ -24,8 +24,12 @@
 	 .odl-container{   /* 임시 */
          padding-top: 178px;   /* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
       }
+        #canceled-list-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
     </style>
-    <title>주문 내역</title>
+    <title>취소 내역</title>
 
 </head>
 <body>
@@ -46,36 +50,21 @@
                             ${list.menuName}
                     </div>
                 </div>--%>
+        <div id="canceled-list-title">취소목록</div>
             <table border="1" class="odl-table">
                 <th class="odl-table-th" width="15%">주문일자</th>
-                <th class="odl-table-th" width="20%">주문번호</th>
-                <th class="odl-table-th" width="15%">주문자이름</th>
-                <th class="odl-table-th" width="15%">결제금액</th>
+                <th class="odl-table-th" width="30%">주문번호</th>
+                <th class="odl-table-th" width="20%">주문자이름</th>
+                <th class="odl-table-th" width="20%">결제금액</th>
                 <th class="odl-table-th" width="15%">배송상태</th>
-                <th class="odl-table-th" width="10%">주문수정</th>
-                <th class="odl-table-th" width="10%">리뷰작성</th>
 
-                <c:forEach var="list" items="${orderList}" varStatus="listStatus">
+                <c:forEach var="list" items="${canceledList}" varStatus="listStatus">
                     <tr>
                         <td class="odl-table-td">${list.orderCreateTimestamp}</td>
                         <td class="odl-table-td odl-td-pointer" onclick="location.href='${contextPath}/mypage/orderInfo/${list.orderNum}'">${list.fakeOrderNum}</td>
                         <td class="odl-table-td">${list.ordererName}</td>
                         <td class="odl-table-td"><fmt:formatNumber value="${list.totalPrice}" pattern="#,###" /> 원</td>
                         <td class="odl-table-td">${list.orderStatus}</td>
-                        <td class="odl-table-td">
-                            <c:if test="${list.orderStatus == '결제완료'}">
-                                <button class="odl-table-del" onclick="showConfirmation('${list.orderNum}')">주문취소</button>
-                            </c:if>
-                        </td>
-                        <td class="odl-table-td">
-                            <c:if test="${list.orderStatus == '결제완료'}">
-                                <button class="odl-table-review-btn" onclick="location.href='${contextPath}/review/insert/${list.orderNum}'">리뷰작성</button>
-                                <form action="${contextPath}/review/insert" method="post">
-                                    <input type="text" name="orderNum" value="${list.orderNum}" hidden />
-                                    <input type="submit" class="odl-table-review-btn" value="리뷰작성">
-                                </form>
-                            </c:if>
-                        </td>
                     </tr>
                 </c:forEach>
             </table>

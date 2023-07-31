@@ -34,4 +34,9 @@ public class MyPageOrderDAOImpl implements MyPageOrderDAO{
     public int updateOrderStatus(int orderNum) throws DataAccessException {
         return sqlSession.update("mapper.orderList.updateOrderStatus", orderNum);
     }
+
+    @Override
+    public List<OrderListVO> selectCanceledList(String userName) throws DataAccessException {
+        return sqlSession.selectList("mapper.orderList.selectCanceledList",userName);
+    }
 }

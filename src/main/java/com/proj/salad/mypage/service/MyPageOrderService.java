@@ -12,4 +12,5 @@ public interface MyPageOrderService {
     public OrderInfoVO selectOrderOne(int orderNum) throws DataAccessException;
     public List<OrderMenuVO> selectOrderMenu(int orderNum) throws DataAccessException;
     public int updateOrderStatus(int orderNum) throws DataAccessException;
+    public List<OrderListVO> selectCanceledList(String userName) throws DataAccessException;
 }

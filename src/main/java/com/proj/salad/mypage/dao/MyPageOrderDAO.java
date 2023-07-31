@@ -16,4 +16,6 @@ public interface MyPageOrderDAO {
     public List<OrderMenuVO> selectOrderMenu(int orderNum) throws DataAccessException;
     // Ajax 주문 상태 취소로 변경
     public int updateOrderStatus(int orderNum) throws DataAccessException;
+    // 주문 취소 목록 리스트
+    public List<OrderListVO> selectCanceledList(String userName) throws DataAccessException;
 }

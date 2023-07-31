@@ -40,8 +40,146 @@ public class OrderVO {
 //    private String accountName; // 예금주
 //    private Date accountDate; // 결제일
 //    private String purchaseType; // 결제수단
-	
-	
 
 
+    public int getOrderNum() {
+        return orderNum;
+    }
+
+    public void setOrderNum(int orderNum) {
+        this.orderNum = orderNum;
+    }
+
+    public String getFakeOrderNum() {
+        return fakeOrderNum;
+    }
+
+    public void setFakeOrderNum(String fakeOrderNum) {
+        this.fakeOrderNum = fakeOrderNum;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    public Date getOrderCreateTimestamp() {
+        return orderCreateTimestamp;
+    }
+
+    public void setOrderCreateTimestamp(Date orderCreateTimestamp) {
+        this.orderCreateTimestamp = orderCreateTimestamp;
+    }
+
+    public Date getOrderUpdateTimestamp() {
+        return orderUpdateTimestamp;
+    }
+
+    public void setOrderUpdateTimestamp(Date orderUpdateTimestamp) {
+        this.orderUpdateTimestamp = orderUpdateTimestamp;
+    }
+
+    public String getOrdererName() {
+        return ordererName;
+    }
+
+    public void setOrdererName(String ordererName) {
+        this.ordererName = ordererName;
+    }
+
+    public String getOrdererPhone() {
+        return ordererPhone;
+    }
+
+    public void setOrdererPhone(String ordererPhone) {
+        this.ordererPhone = ordererPhone;
+    }
+
+    public String getOrdererEmail() {
+        return ordererEmail;
+    }
+
+    public void setOrdererEmail(String ordererEmail) {
+        this.ordererEmail = ordererEmail;
+    }
+
+    public String getDestName() {
+        return destName;
+    }
+
+    public void setDestName(String destName) {
+        this.destName = destName;
+    }
+
+    public String getDestPhone() {
+        return destPhone;
+    }
+
+    public void setDestPhone(String destPhone) {
+        this.destPhone = destPhone;
+    }
+
+    public String getDestLoc() {
+        return destLoc;
+    }
+
+    public void setDestLoc(String destLoc) {
+        this.destLoc = destLoc;
+    }
+
+    public int getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(int totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public Date getProdDeliveryDate() {
+        return prodDeliveryDate;
+    }
+
+    public void setProdDeliveryDate(Date prodDeliveryDate) {
+        this.prodDeliveryDate = prodDeliveryDate;
+    }
+
+    public String getMemo() {
+        return memo;
+    }
+
+    public void setMemo(String memo) {
+        this.memo = memo;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderVO{" +
+                "orderNum=" + orderNum +
+                ", fakeOrderNum='" + fakeOrderNum + '\'' +
+                ", userId='" + userId + '\'' +
+                ", orderStatus='" + orderStatus + '\'' +
+                ", orderCreateTimestamp=" + orderCreateTimestamp +
+                ", orderUpdateTimestamp=" + orderUpdateTimestamp +
+                ", ordererName='" + ordererName + '\'' +
+                ", ordererPhone='" + ordererPhone + '\'' +
+                ", ordererEmail='" + ordererEmail + '\'' +
+                ", destName='" + destName + '\'' +
+                ", destPhone='" + destPhone + '\'' +
+                ", destLoc='" + destLoc + '\'' +
+                ", totalPrice=" + totalPrice +
+                ", prodDeliveryDate=" + prodDeliveryDate +
+                ", memo='" + memo + '\'' +
+                '}';
+    }
 }

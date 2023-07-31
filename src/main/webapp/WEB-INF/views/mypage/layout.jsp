@@ -39,7 +39,7 @@
 	        font-family: Pretendard-Regular;
 	        font-size:18px;  /* 23.07.29 서승희 주석 */
 	        padding-top:155px; /* 23.07.29 서승희 수정 */
-	        border-right: 2px solid #f7f7f7;
+	        /* border-right: 2px solid #f7f7f7; */			/* 하유리: 주석처리(23.07.31.) */
 			}
 			
 			#content {

@@ -65,6 +65,40 @@ public class MyPageOrderController {
         return mav;
     }
 
+    @RequestMapping(value = "/mypage/canceledList", method = RequestMethod.GET)
+    public ModelAndView cancelList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        HttpSession session = request.getSession();
+
+        String userName = null;
+        List<OrderListVO> canceledList = new ArrayList<>();
+
+        if((Boolean)session.getAttribute("isLogOn") == true) {
+            // 유저 아이디 가져오기
+            System.out.println("로그인 상태");
+
+            userVO = (UserVO) session.getAttribute("user");
+            System.out.println("userVO : " + userVO);
+            userName = userVO.getUserName();
+            System.out.println("userName : " + userName);
+
+            // 주문 목록 리스트 서비스 실행
+            canceledList = myPageOrderService.selectCanceledList(userName);
+            System.out.println("취소 List : " + canceledList);
+        } else {
+            // 비로그인 상태시 로그인 폼 이동
+            System.out.println("비로그인 상태");
+            response.sendRedirect("/user/loginForm.do");
+            return null;
+        }
+
+        String viewName = getViewName(request);
+        ModelAndView mav = new ModelAndView(viewName);
+        mav.addObject("canceledList", canceledList);
+
+        System.out.println(viewName);
+        return mav;
+    }
+
     @RequestMapping(value = "/mypage/orderInfo/{orderNum}", method = RequestMethod.GET)
     public ModelAndView orderInfo(@PathVariable int orderNum,
             HttpServletRequest request, HttpServletResponse response) throws Exception {

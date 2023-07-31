@@ -139,7 +139,7 @@
 				<table>
 					<tr>
 						<th>주문상품</th>
-						<td>	<input class="insert_input" name="orderList" required autocomplete="off" width="440px" disabled/></td>
+						<td>	<input class="insert_input" name="orderList" required autocomplete="off" width="440px" value="${orderInfo.fakeOrderNum}" disabled/></td>
 					</tr>
 				
  					<tr>
