@@ -65,8 +65,8 @@ public class ReviewController extends HttpServlet {
         HttpSession session = request.getSession();
 
         // 파일 업로드(23.07.20.)
-        ModelAndView mav = new ModelAndView("redirect:/review/list");
-    	reviewService.insertReview(reviewVO, request, mRequest);    	
+    	reviewService.insertReview(reviewVO, request, mRequest);    				//글 작성
+    	ModelAndView mav = new ModelAndView("redirect:/review/list");		//페이지 이동
     	return mav;
     }
 
@@ -125,15 +125,15 @@ public class ReviewController extends HttpServlet {
 		return "/review/replyReview";		
 	}
 	
-	//하유리: 6-2. 답변 작성(23.07.18.)
+	//하유리: 6-2. 답변 작성(23.07.18.) 수정(23.07.31.)
 	@RequestMapping(value="/reply", method=RequestMethod.POST)
-	public String replyReview(ReviewVO reviewVO, HttpServletRequest request) {
+	public String replyReview(ReviewVO reviewVO, HttpServletRequest request, MultipartHttpServletRequest mRequest, HttpServletResponse response) throws Exception {
 		
 		// 세션 반환(23.07.18.)
         HttpSession session = request.getSession();
-//        System.out.println("userVO: " + userVO);
-//        System.out.println("userId: " + userId);
-        reviewService.replyReview(reviewVO);
+        
+        // 글 작성
+        reviewService.replyReview(reviewVO, request, mRequest);
         
 		return "redirect:/review/list";
 	}

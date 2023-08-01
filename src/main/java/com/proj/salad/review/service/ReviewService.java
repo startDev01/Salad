@@ -42,6 +42,6 @@ public interface ReviewService {
 	public void deleteReview(int re_articleNO);
 	
 	//하유리: 6-2. 답변 작성(23.07.18.)
-	public void replyReview(ReviewVO reviewVO);
+	public void replyReview(ReviewVO reviewVO, HttpServletRequest request, MultipartHttpServletRequest mRequest) throws Exception;
 
 }

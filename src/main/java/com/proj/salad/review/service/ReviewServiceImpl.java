@@ -52,7 +52,7 @@ public class ReviewServiceImpl implements ReviewService {
 		String ReviewSeq = reviewDao.selectReview(reviewVO);
 		
 		//하유리: 파일 업로드(23.07.20.)
-		List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(reviewVO, mRequest, ReviewSeq, filePath);
+		List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(reviewVO, mRequest, ReviewSeq, filePath);	//DB에 넣을 정보만 list에 담음
 		for(int i=0, size=list.size(); i<size; i++){
 			reviewDao.insertImage(list.get(i));
 		}
@@ -96,7 +96,7 @@ public class ReviewServiceImpl implements ReviewService {
 		// 직접 파일 정보를 변수에 저장해 놨지만, 이 부분이 db에서 읽어왔다고 가정한다.
 		String fileName = re_storedFileName;
 		String saveFileName = filePath + fileName;
-		String contentType = "image/jpg";
+		String contentType = "image/jpg";			//다운받을 파일 형식 지정
             File file = new File(saveFileName);
             long fileLength = file.length();
             //파일의 크기와 같지 않을 경우 프로그램이 멈추지 않고 계속 실행되거나, 잘못된 정보가 다운로드 될 수 있다.
@@ -105,9 +105,9 @@ public class ReviewServiceImpl implements ReviewService {
             response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\";");
             response.setHeader("Content-Transfer-Encoding", "binary");
             response.setHeader("Content-Type", contentType);
-            response.setHeader("Content-Length", "" + fileLength);
-            response.setHeader("Pragma", "no-cache;");
-            response.setHeader("Expires", "-1;");
+            response.setHeader("Content-Length", "" + fileLength);		//파일크기
+            response.setHeader("Pragma", "no-cache;");						
+            response.setHeader("Expires", "-1;");									//이미지 출력시간을 무한대로 지정
 
             try(
             		//파일 읽을 준비
@@ -121,7 +121,7 @@ public class ReviewServiceImpl implements ReviewService {
                         out.write(buffer,0,readCount);
                 }
             }catch(Exception ex){
-                throw new RuntimeException("file Save Error");
+                throw new RuntimeException("file Download Error");
             }
 	}
 
@@ -139,8 +139,17 @@ public class ReviewServiceImpl implements ReviewService {
 
 	//하유리: 6-2. 답변 작성(23.07.18.)
 	@Override
-	public void replyReview(ReviewVO reviewVO) {
+	public void replyReview(ReviewVO reviewVO, HttpServletRequest request, MultipartHttpServletRequest mRequest) throws Exception {
 		reviewDao.replyReview(reviewVO);
+		
+		//하유리: 게시물 번호 가져오기(23.07.31.)
+		String ReviewSeq = reviewDao.selectReview(reviewVO);
+				
+		//하유리: 파일 업로드(23.07.31.)
+		List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(reviewVO, mRequest, ReviewSeq, filePath);	//DB에 넣을 정보만 list에 담음
+		for(int i=0, size=list.size(); i<size; i++){
+			reviewDao.insertImage(list.get(i));
+		}
 	}
 
 
