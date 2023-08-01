@@ -169,7 +169,7 @@
 				</table>
 				
 				<div class="insert_btn">
-					<button class="writeBtn" type="button" onClick="location.href='/board/list'">글목록</button>
+					<button class="writeBtn" type="button" onClick="location.href='${contextPath}/review/list'">글목록</button>
 					<button class="writeBtn" type="reset" >초기화</button>
 					<button class="writeBtn" type="submit">글등록</button>
 				</div>

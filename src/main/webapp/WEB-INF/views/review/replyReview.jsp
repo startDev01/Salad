@@ -138,7 +138,7 @@
 	
 		<!-- 게시판 -->
 		<div class="reply_table">
-			<form action="<c:url value='/review/reply'/>" method="POST">
+			<form action="<c:url value='/review/reply'/>" method="POST" enctype="multipart/form-data">
 				<input name="re_articleNO" type="hidden" value="${review.re_articleNO }">
 				<table>
 					<tr>
