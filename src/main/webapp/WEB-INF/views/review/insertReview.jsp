@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="../resources/css/header.css" rel="stylesheet" type="text/css">
     <link href="../resources/css/footer.css" rel="stylesheet" type="text/css">
+	<link href="../../resources/css/header.css" rel="stylesheet" type="text/css">
+	<link href="../../resources/css/footer.css" rel="stylesheet" type="text/css">
 	<style>
 	
 		/* 폰트 */
@@ -145,8 +147,11 @@
 			<form action="<c:url value='/review/insert'/>" method="POST"  enctype="multipart/form-data">
 				<table>
 					<tr>
-						<th>주문상품</th>
-						<td>	<input class="insert_input" name="orderList" required autocomplete="off" width="440px" disabled/></td>
+						<%-- fakeOrderNum, orderNum 저장 - 김동혁 수정(23.08.01) --%>
+						<th>주문번호</th>
+						<td>	<input class="insert_input" required autocomplete="off" width="440px" value="${orderInfo.fakeOrderNum}" disabled/></td>
+						<input type="text" name="re_orderNum" value="${orderInfo.orderNum}" hidden/>
+						<input type="text" name="re_fakeOrderNum" value="${orderInfo.fakeOrderNum}" hidden/>
 					</tr>
 				
  					<tr>

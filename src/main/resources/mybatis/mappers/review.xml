@@ -36,11 +36,12 @@
 	</select>
 	
 	<!-- 2-1. 리뷰게시판 글쓰기(23.07.16.) -->
+	<!-- fakeOrderNum, orderNum 수정 - 김동혁(23.08.01) -->
 	<insert id="insertReview" parameterType="com.proj.salad.review.vo.ReviewVO">
 		<![CDATA[
-			INSERT INTO shop_review(re_articleNO, re_parentNO, re_title, userId, re_content, re_writeDate, re_viewCnt)
+			INSERT INTO shop_review(re_articleNO, re_parentNO, re_title, userId, re_content, re_writeDate, re_viewCnt, re_fakeOrderNum, re_orderNum)
 			VALUES(
-			(SELECT MAX(re_articleNO)+1 from shop_review), 0, #{re_title}, #{userId}, #{re_content}, SYSDATE, #{re_viewCnt})
+			(SELECT MAX(re_articleNO)+1 from shop_review), 0, #{re_title}, #{userId}, #{re_content}, SYSDATE, #{re_viewCnt}, #{re_fakeOrderNum}, #{re_orderNum})
 		]]>
 	</insert>
 	
@@ -60,9 +61,10 @@
 	</select>
 
 	<!-- 3-1. 게시물 상세조회(23.07.16.) -->
+	<!-- fakeOrderNum, orderNum 수정 - 김동혁(23.08.01) -->
 	<select id="detailReview" resultType="com.proj.salad.review.vo.ReviewVO">
 		<![CDATA[
-			SELECT re_title, userId, re_content, re_writeDate, re_viewCnt, re_articleNO
+			SELECT re_title, userId, re_content, re_writeDate, re_viewCnt, re_articleNO, re_fakeOrderNum, re_orderNum
 			FROM shop_review
 			WHERE re_articleNO = #{re_articleNO}
 		]]>
@@ -112,6 +114,21 @@
 			INSERT INTO shop_review(re_articleNO, re_parentNO, re_title, userId, re_content, re_writeDate, re_viewCnt)
 			VALUES(
 			(SELECT MAX(re_articleNO)+1 from shop_review), #{re_articleNO}, #{re_title}, #{userId}, #{re_content}, SYSDATE, #{re_viewCnt})
+		]]>
+	</insert>
+	
+	<!-- 조상현: ajax 대댓글(23.07.31)  -->
+	<select id="selectComment" parameterType="int" resultType="com.proj.salad.review.vo.ajaxCommentVO">
+	<![CDATA[
+			select * from re_ajaxComment where re_articleNO = #{re_articleNO}
+		]]>
+	</select>
+	
+	<!-- 조상현: ajax 대댓글(23.08.01)  -->
+	<insert id="insertComment" parameterType="com.proj.salad.review.vo.ajaxCommentVO">
+		<![CDATA[
+			INSERT INTO re_ajaxComment(ac_commentNO, re_articleNO, userId, ac_content)
+			VALUES(re_accomment_seq.NEXTVAL, #{re_articleNO}, #{userId}, #{ac_content})
 		]]>
 	</insert>
 	

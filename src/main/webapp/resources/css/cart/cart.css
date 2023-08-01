@@ -94,11 +94,19 @@
 
 }
 
+/* 장바구니 목록 이미지 */
+#cart-image {
+    margin-left: 5px;
+    /*width: 40px;*/
+    height: 40px;
+    margin-right: -100px;
+}
+
 /* 장바구니 제목 부분 */
 .cart-list-span {
     width: 500px;
     text-align: left;
-    margin-left: 20px;
+    margin-left: 5px;
     font-size: 20px;
 }
 
@@ -120,7 +128,8 @@
 .cart-count {
     font-size: 18px;
     text-align: center;
-    width: 50px;
+    width: 20px;
+    border: none;
 }
 
 /* 장바구니 계산 부분 */

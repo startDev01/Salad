@@ -10,6 +10,8 @@
 <html>
 <head>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <link href="resources/css/header.css" rel="stylesheet" type="text/css">
+    <link href="resources/css/footer.css" rel="stylesheet" type="text/css">
     <meta charset="UTF-8">
 	<!-- 하유리: CSS 링크 수정(23.08.01.) -->
    	<link href="resources/css/header.css" rel="stylesheet" type="text/css">

@@ -89,6 +89,13 @@
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
                 </select>
                 <button type="button" class="btn btn-default" data-dismiss="modal" id="modal-addcart">장바구니 담기</button>	<!-- 하유리: 텍스트 수정(23.07.27.) -->          
                 <button type="button" class="btn btn-default" data-dismiss="modal" id="modal-close">닫기</button>

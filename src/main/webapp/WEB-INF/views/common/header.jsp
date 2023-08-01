@@ -12,7 +12,7 @@
 	<!-- 하유리: CSS 링크 수정(23.07.31.) -->
 	<link href="../resources/css/style.css" rel="stylesheet" type="text/css" >
 	<link href="../resources/css/header.css" rel="stylesheet" type="text/css" >
-	
+
 	<meta charset="UTF-8">
 	<title>헤더</title>
 </head>
@@ -67,7 +67,7 @@
 									<ul>
 										<li><a href="${contextPath}/mypage/myPageMain.do"><img width="25px" src="${contextPath}/resources/image/common/header/mypage2.png"/></a></li>	<!-- 마이페이지 -->
 										<li><a href="${contextPath}/cart"><img class="cart_icon" width="30px" src="${contextPath}/resources/image/common/header/cart.png"/></a></li>	<!-- 장바구니 -->
-										<li><a href="#"><img width="26px" src="${contextPath}/resources/image/common/header/buyList.png"/></a></li>	<!-- 구매목록 -->
+										<li><a href="${contextPath}/mypage/orderList"><img width="26px" src="${contextPath}/resources/image/common/header/buyList.png"/></a></li>	<!-- 구매목록 -->
 									</ul>
 								</div>
 							</c:when>

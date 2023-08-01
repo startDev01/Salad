@@ -26,7 +26,9 @@
 
 </head>
 <body>
-<h1 class="myinfo">나의 정보</h1><br>
+<div class=mymain_total">
+<div class="myinfo_container">
+<h1 class="myinfo">#나의 정보</h1><br>
 <table class="myinfo_table">
   <tr>
   <td class="myinfo_td_title">
@@ -53,18 +55,19 @@
    </td>
    </tr>
    <tr>
-    <td  class="myinfo_td_title">
+    <td  class="myinfo_td_title_add">
 	  주소지 
    </td>
-    <td  class="myinfo_td">
+    <td  class="myinfo_td_add">
 		 기본 주소:  &nbsp;&nbsp; <strong>${user.userAddress1 }</strong>  <br>
 		 상세 주소:   &nbsp;&nbsp; <strong>${user.userAddress2 }</strong> 
    </td>
    </tr>
 </table>
-<br><br>
+</div >
 
-<h1 class="new_order">최근주문내역</h1><br>
+<div class="new_order_container">
+<h1 class="new_order">#최근주문내역</h1>
 	<form method="post" id="orderhis_Form">
 		<table>
 			<tbody>
@@ -110,7 +113,7 @@
 					</td> --%>
 					</tr>
 					<tr>
-						<td>
+						<td class="my_a">
 							<a href="javascript:search_order_history('today')"> 
 							<img src="${contextPath}/resources/image/search/btn_search_one_day.jpg">
 							</a> 
@@ -141,19 +144,19 @@
 <table class="list_order_view">
 		<tbody align="center" >
 			<tr style="background:lightgray" >
-				<td  width="120px">주문번호</td>
-				<td  width="120px">주문일자</td>
+				<td class="list_order_title"  width="120px">주문번호</td>
+				<td class="list_order_title"   width="120px">주문일자</td>
 				<!-- <td  width="120px">주문상품/수량</td> -->
-				<td  width="120px">주문자</td>
-				<td  width="120px">주문가격</td>
-				<td  width="120px">주문상태</td>
-				<td  width="120px">주문취소</td>
+				<td class="list_order_title"  width="120px">주문자</td>
+				<td class="list_order_title"  width="120px">주문가격</td>
+				<td class="list_order_title"  width="120px">주문상태</td>
+				<td class="list_order_title"  width="120px">주문취소</td>
 			</tr>
 	<%-- 주문내역이 비어있을 경우 --%>
 	<c:choose>
          <c:when test="${ empty myOrderHistList  }">
 		  <tr>
-		    <td colspan=5 class="fixed" align="center">
+		    <td colspan=6 class="fixed" align="center"> <!-- 23.08.01 colspan 수정 -->
 				  <strong>주문한 상품이 없습니다.</strong>
 		    </td>
 		  </tr>
@@ -165,10 +168,13 @@
                <td class="my_page_td"><a href='${contextPath}/mypage/orderInfo/${item.orderNum}'">${item.fakeOrderNum } </a> </td>
                <td class="my_page_td">${item.orderCreateTimestamp}</td>
                <td class="my_page_td">${item.ordererName}</td>
-               <td class="my_page_td"><fmt:formatNumber value="${item.totalPrice}" pattern="#,###" /> 원</td>
-               <td class="my_page_td">${item.orderStatus}</td>
-                <td class="my_page_td">
-                    <c:if test="${item.orderStatus == '결제완료'}">
+               <td class="my_page_td"><p class="my_page_price"><fmt:formatNumber value="${item.totalPrice}" pattern="#,###" /> 원</p></td>
+               <td class="my_page_td">
+                <c:if test="${item.orderStatus == '결제완료'}">${item.orderStatus}</c:if>
+                <c:if test="${item.orderStatus == '취소완료'}"><p class=" my_page_td_cancel">${item.orderStatus}</p></c:if>
+               </td>
+                 <td class="my_page_td">  
+                 	<c:if test="${item.orderStatus=='결제완료'}">
                          <input  type="button" class="my_page_cancel" onclick="fn_cancel_order('${item.orderNum}')" value="주문취소"/>
                     </c:if>
                 </td>
@@ -178,6 +184,8 @@
     </c:choose> 	   
 </tbody>
 </table>
+</div>
+</div>
 <br><br>	
 <!-- <h1>계좌내역</h1><br>
 <div class="pay_form" align="center">

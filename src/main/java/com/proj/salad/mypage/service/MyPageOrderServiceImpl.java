@@ -33,4 +33,9 @@ public class MyPageOrderServiceImpl implements MyPageOrderService {
     public int updateOrderStatus(int orderNum) throws DataAccessException {
         return myPageOrderDAO.updateOrderStatus(orderNum);
     }
+
+    @Override
+    public List<OrderListVO> selectCanceledList(String userName) throws DataAccessException {
+        return myPageOrderDAO.selectCanceledList(userName);
+    }
 }

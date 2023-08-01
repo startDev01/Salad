@@ -39,7 +39,8 @@ public class MyPageServiceImpl implements MyPageService {
 	//회원정보탈퇴
 	@Override
 	public int removeUser(String userId) throws DataAccessException {
-		return myPageDAO.deleteUser(userId);  //찾은 userId를 삭제
+		int result=myPageDAO.deleteUser(userId);  //찾은 userId를 삭제
+		return  result;
 	}
 
 	//주문내역 리스트

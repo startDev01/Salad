@@ -134,10 +134,13 @@
 			<form action="<c:url value='/review/update'/>" method="POST" enctype="multipart/form-data">
 				<input name="re_articleNO" type="hidden" value="${review.re_articleNO }">
 				<table>
-					<tr>
-						<th>주문상품</th>
-						<td>	<input class="insert_input" name="orderList" required autocomplete="off" width="440px" disabled/></td>
-					</tr>
+					<%-- 답글형은 주문번호 숨기기 - 김동혁(23.08.01) --%>
+					<c:if test="${review.re_fakeOrderNum != null}">
+						<tr>
+							<th>주문상품</th>
+							<td>	<input class="insert_input" name="orderList" required autocomplete="off" width="440px" value="${review.re_fakeOrderNum}" disabled/></td>
+						</tr>
+					</c:if>
 				
  					<tr>
 						<th>작성자</th>
@@ -169,7 +172,7 @@
 				</table>
 				
 				<div class="insert_btn">
-					<button class="writeBtn" type="button" onClick="location.href='/board/list'">글목록</button>
+					<button class="writeBtn" type="button" onClick="location.href='${contextPath}/review/list'">글목록</button>
 					<button class="writeBtn" type="reset" >초기화</button>
 					<button class="writeBtn" type="submit">글등록</button>
 				</div>

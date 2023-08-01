@@ -100,39 +100,30 @@ public class MyPageControllerImpl implements MyPageController {
 	}
 	
 	//회원정보탈퇴
+	//23.07.31  회원정보 및 회원내역 전체 삭제 되게 수정
    @RequestMapping(value="/mypage/removeUser.do", method=RequestMethod.GET)
-	public ModelAndView removeUser(@RequestParam("userId")String userId, 
-																		HttpServletRequest request, HttpServletResponse response)
+	public ModelAndView removeUser(HttpServletRequest request, HttpServletResponse response)
 																		throws Exception {
-	   myPageService.removeUser(userId); 
-	   ModelAndView mav = new ModelAndView("redirect:/user/logout.do");  //로그아웃 하여 메인페이지로 감
-	   return mav;
-	}
-   //회원정보탈퇴
-	@RequestMapping(value="/mypage/removeUser.do", method=RequestMethod.POST)
-	public ModelAndView removeUser(UserVO userVO, HttpServletRequest request, 
-																		HttpServletResponse response) throws Exception {
+	   
+	   ModelAndView mav = new ModelAndView();
+	   
+	   HttpSession session = request.getSession();  //세션 사용
+		userVO = (UserVO)session.getAttribute("user");
 		
-		String viewName = getViewName(request);
-		ModelAndView mav = new ModelAndView(viewName);
-		System.out.println("viewName:"+viewName);
-		
-		HttpSession session = request.getSession();
-		userVO = (UserVO) session.getAttribute("user");
 		String userId = userVO.getUserId();
 		
-		myPageService.removeUser(userVO.getUserId());
-		mav.setViewName("redirect:/user/loginForm");
-		return mav;
+		try {
+			int result=myPageService.removeUser(userId); 
+			
+			if(result == 1) {
+				mav.setViewName("redirect:/user/logout.do");   //로그아웃 하여 메인페이지로 감
+			}
+		}catch(Exception e) {
+				mav.addObject("msg", e.getMessage());  //탈퇴 시 확인 메세지
+		}
+	   
+	   return mav;
 	}
-	
-	/*
-	 * @RequestMapping(value="/mypage/removeUser.do",method=RequestMethod.GET)
-	 * public ModelAndView removeUser(@RequestParam("userId")String userId,
-	 * HttpServletRequest request, HttpServletResponse response) throws Exception {
-	 * myPageService.removeUser(userVO.getUserId()); ModelAndView mav = new
-	 * ModelAndView("redirect:/user/logout.do"); //로그아웃 하여 메인페이지로 감 return mav; }
-	 */
 
 	//마이페이지 메인
 	@Override
