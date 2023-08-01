@@ -78,7 +78,7 @@ margin-bottom: 150px;
 <p class="h3">주문 정보</p>
     <div class="info-block to">
         <div class="line">
-          <div class="line-title"><label for="name">이름</label></div>
+          <div class="line-title"><label for="username">이름</label></div>
           <div class="line-content"><label name="username" id="username" >${userName}</label>
           </div>
         </div>
