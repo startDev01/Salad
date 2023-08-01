@@ -36,7 +36,8 @@ button{  /* 23.07.31 수정하기 아이콘으로 변경 서승희 */
 	width: 100%;
 	font-family: 'Noto Sans KR', sans-serif;
 	/* margin: 50px 0; */	
-	padding-top: 178px;		/* 헤더 영역만큼 아래로 내림 */
+	/* padding-top: 178px;	 */	/* 헤더 영역만큼 아래로 내림 */ /* 23.08.01 서승희 주석 */
+	padding-top: 210px;	 /* 23.08.01 서승희 수정 */
 	margin-bottom: 100px;
 	margin-left:20px;
 }
@@ -54,14 +55,21 @@ td {
 	padding-bottom: 23px;
 }
 
-/*  */
-.join_sub {
-	margin: 50px 0;
+
+.join_sub { 
+/* 	margin: 50px 0; */ /* 23.08.01  서승희 제목부분 주석 */
+	margin: 0px auto;  /* 23.08.01 서승희 수정 */
+    width:640px;  /* 23.08.01 서승희 추가 */
 }
 
 .text_center {
 	font-family: 'Noto Sans KR', sans-serif;
-	font-size: 43px;
+/* 	font-size: 43px; */ /* 23.08.01 서승희 주석 */
+	font-size: 28px; /* 23.08.01 서승희 수정 */
+	color: #128853;  /* 23.08.01 서승희 추가 */
+	padding-bottom: 12px;  /* 23.08.01 서승희 추가 */
+	text-align: left;   /* 23.08.01 서승희 추가 */
+	margin-left: -90px; /* 23.08.01 서승희 추가 */
 	font-weight: 700;
 	line-height: 1.2;
 	letter-spacing: -3px;

@@ -26,6 +26,7 @@
 
 </head>
 <body>
+<div class=mymain_total">
 <div class="myinfo_container">
 <h1 class="myinfo">#나의 정보</h1><br>
 <table class="myinfo_table">
@@ -54,10 +55,10 @@
    </td>
    </tr>
    <tr>
-    <td  class="myinfo_td_title">
+    <td  class="myinfo_td_title_add">
 	  주소지 
    </td>
-    <td  class="myinfo_td">
+    <td  class="myinfo_td_add">
 		 기본 주소:  &nbsp;&nbsp; <strong>${user.userAddress1 }</strong>  <br>
 		 상세 주소:   &nbsp;&nbsp; <strong>${user.userAddress2 }</strong> 
    </td>
@@ -155,7 +156,7 @@
 	<c:choose>
          <c:when test="${ empty myOrderHistList  }">
 		  <tr>
-		    <td colspan=5 class="fixed" align="center">
+		    <td colspan=6 class="fixed" align="center"> <!-- 23.08.01 colspan 수정 -->
 				  <strong>주문한 상품이 없습니다.</strong>
 		    </td>
 		  </tr>
@@ -167,10 +168,13 @@
                <td class="my_page_td"><a href='${contextPath}/mypage/orderInfo/${item.orderNum}'">${item.fakeOrderNum } </a> </td>
                <td class="my_page_td">${item.orderCreateTimestamp}</td>
                <td class="my_page_td">${item.ordererName}</td>
-               <td class="my_page_td"><fmt:formatNumber value="${item.totalPrice}" pattern="#,###" /> 원</td>
-               <td class="my_page_td">${item.orderStatus}</td>
-                <td class="my_page_td">
-                    <c:if test="${item.orderStatus == '결제완료'}">
+               <td class="my_page_td"><p class="my_page_price"><fmt:formatNumber value="${item.totalPrice}" pattern="#,###" /> 원</p></td>
+               <td class="my_page_td">
+                <c:if test="${item.orderStatus == '결제완료'}">${item.orderStatus}</c:if>
+                <c:if test="${item.orderStatus == '취소완료'}"><p class=" my_page_td_cancel">${item.orderStatus}</p></c:if>
+               </td>
+                 <td class="my_page_td">  
+                 	<c:if test="${item.orderStatus=='결제완료'}">
                          <input  type="button" class="my_page_cancel" onclick="fn_cancel_order('${item.orderNum}')" value="주문취소"/>
                     </c:if>
                 </td>
@@ -180,6 +184,7 @@
     </c:choose> 	   
 </tbody>
 </table>
+</div>
 </div>
 <br><br>	
 <!-- <h1>계좌내역</h1><br>
