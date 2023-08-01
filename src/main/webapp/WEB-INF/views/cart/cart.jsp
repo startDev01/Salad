@@ -8,24 +8,22 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <html>
 <head>
-  <%-- 폰트 적용 --%>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<%-- 폰트 적용 --%>
+  	<link rel="preconnect" href="https://fonts.googleapis.com">
+  	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <script src="http://code.jquery.com/jquery-latest.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <!-- css 적용 -->
-    <link href="resources/css/header.css" rel="stylesheet" type="text/css">
-    <link href="resources/css/footer.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="resources/css/cart/cart.css" type="text/css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <style>
-    /* css 적용 부분 */
-	 
-  </style>
-  <title>장바구니</title>
+  	<script src="http://code.jquery.com/jquery-latest.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<!-- 하유리: CSS 링크 수정(23.07.31.) -->
+   	<link href="resources/css/header.css" rel="stylesheet" type="text/css">
+   	<link href="resources/css/footer.css" rel="stylesheet" type="text/css">
+   	<link rel="stylesheet" href="resources/css/cart/cart.css" type="text/css">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  	<!-- 하유리: <style> 태그 비어있어서 삭제(23.08.01.) -->
+  	<title>장바구니</title>
 </head>
+
 <%-- JSP 김동혁 추가 (23-07-21) --%>
 <body>
   <div class="body-container">
