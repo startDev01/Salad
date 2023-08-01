@@ -19,6 +19,7 @@ import com.proj.salad.review.util.FileUtils;
 import com.proj.salad.review.vo.Criteria;
 import com.proj.salad.review.vo.ReviewVO;
 import com.proj.salad.review.vo.Review_imageVO;
+import com.proj.salad.review.vo.ajaxCommentVO;
 
 @Service("reviewService")
 public class ReviewServiceImpl implements ReviewService {
@@ -141,6 +142,17 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public void replyReview(ReviewVO reviewVO) {
 		reviewDao.replyReview(reviewVO);
+	}
+
+	@Override
+	public List<ajaxCommentVO> ajaxComment(int re_articleNO) {
+		return reviewDao.selectComment(re_articleNO);
+	}
+
+	@Override
+	public void ajaxCommentInsert(ajaxCommentVO ajaxCommentVO) {
+		reviewDao.insertCommnet(ajaxCommentVO);
+		
 	}
 
 
