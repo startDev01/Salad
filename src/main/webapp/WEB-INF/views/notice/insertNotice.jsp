@@ -12,24 +12,25 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="../resources/css/header.css" rel="stylesheet" type="text/css">
     <link href="../resources/css/footer.css" rel="stylesheet" type="text/css">
+    <!-- <link href="../resources/css/notice.css" rel="stylesheet" type="text/css"> -->
 	<style>
 	
 		/* 폰트 */
  		@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 	
-		/* 이벤트페이지 제목1+제목2 */
-		.event_sub {
-			margin: 50px 0 ;
-		}
-	
-		/* 이벤트페이지 제목1  */
-		.event_text1 {
-    		font-family: 'Noto Sans KR', sans-serif;
-			font-size: 43px;
+		/* 하유리: 공지페이지 제목 수정(23.07.29.) */
+		.notice_sub {
+			margin: 50px 0;
+			padding: 178px 0 24px 0;			/* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
+		}													/* 하유리: 제목 주변 여백 수정(23.07.29.)  */
+		
+		/* 하유리: 공지페이지 제목 수정(23.07.29.)  */
+		.notice_text {
+		 	font-family: 'Noto Sans KR', sans-serif;
+			font-size: 32px;							/* 하유리: 폰트 크기 수정(23.07.29.) */
 			font-weight: 700;
 			line-height: 1.2;
-    		letter-spacing: -3px;
-    		/* margin-bottom: 20px; */	/* 제목1, 제목2 사이 간격 */
+		  	letter-spacing: -1px;					/* 하유리: 제목 자간 수정(23.07.29.) */
 		}
 	
 		.container {
@@ -40,6 +41,7 @@
 			font-family: 'Noto Sans KR', sans-serif;
  			font-size: 14px;
 			margin: 0 auto;
+			padding-bottom: 10px;				/* 하유리: 수정/삭제 버튼-footer 사이 여백 추가(23.07.30.) */
 		}
 		
 		/* 중앙정렬 */
@@ -54,6 +56,7 @@
 			text-align: left;	/* th 왼쪽정렬 */
 			border-collapse: separate;
 			border-spacing: 10px 20px;
+			margin-top: -21px;						/* 하유리: 테이블 위쪽 여백 줄이기(23.07.30.) */
 		}
 	
 		/* 하유리: 글자-input박스 간 간격(23.07.17.) */
@@ -61,10 +64,18 @@
 			font-weight: normal;
 			flex: left;
 			padding-right: 100px;
+			font-size: 14px;
 		}
 		
-		.insert_table input, textarea {
+		/* 하유리: input box, textarea */
+		.insert_input, textarea {					/* 하유리: 클래스명 수정(23.07.31.) */
 			padding: 5px 5px;
+			font-size: 14px;							/* 하유리: 폰트 크기 추가(23.07.31.) */
+		}
+		
+		/* 하유리: 파일업로드 부분(23.07.31.) */
+		.insert_file {
+			padding: 8px;							/* 하유리: 파일 업로드 input 가운데 배열(23.07.31.) */
 		}
 		
 		/* input, textarea 스타일 지정 */
@@ -104,15 +115,20 @@
 			background-color:#128853;
 			color: #fff;
 			float: right;
-			margin-left: 20px;
+			margin-left: 4px;						/* 하유리: 버튼 사이 간격 수정(23.07.30.) */
 			float: center;
+		}
+		
+		.writeBtn:focus {
+			outline: none;							/* 하유리: 버튼 클릭 시 생기는 테두리 없애기(23..07.31.) */
 		}
 	</style>
 
 	<script>
+		/* 하유리: 파일 업로드 input 가운데 배열(23.07.31.) */
 		var cnt=1;	//파일업로드 name값을 다르게 하는 변수
 		function fn_addFile(){	//파일추가를 클릭하면 동적으로 파일업로드 추가(name의 속성값으로 'file'+cnt를 설정하여 값을 다르게 해줌')
-			$("#d_file").append("<br>"+"<input type='file' name='file"+cnt +"' />");
+			$("#d_file").append("<br>"+"<input style='padding: 8px;' type='file' name='file"+cnt +"' />");
 			cnt++;
 		}
 	</script>
@@ -120,26 +136,23 @@
 </head>
 
 <body>
-	<tiles:insertDefinition name="baseLayout">
-	    <tiles:putAttribute name="title" value="Your Page Title" />
-		<tiles:putAttribute name="body">
-		
+
 	<div class="container mt-3">
 		<!-- 제목: 변경(23.07.21.) -->
-		<div class="event_sub">
-			<p class="event_text1">샐러드다이소 공지게시판</p>
-			<!-- <p class="event_text2">다양한 이벤트를 확인하고 참여해보세요.</p> -->
-			<img style="width: 50px" src="${contextPath}/resources/image/event/line.png" />
+		<!-- 하유리: 필요없는 부분 삭제(23.07.30.) -->
+		<div class="notice_sub">								<!-- 하유리: 클래스명 변경(23.07.30.) -->
+			<p class="notice_text">NOTICE</p>		<!-- 하유리: 클래스명 변경(23.07.30.) -->
 		</div>
 	
 		<!-- 게시판 -->
 		<div class="insert_table">
 			<form action="<c:url value='/notice/insert'/>" method="POST"  enctype="multipart/form-data">
 				<table>
-					<tr>
+				<!-- 하유리: 필요 없는 부분  주석(23.07.30.) -->
+ 					<!-- <tr>
 						<th>주문상품</th>
 						<td>	<input class="insert_input" name="orderList" required autocomplete="off" width="440px" disabled/></td>
-					</tr>
+					</tr> -->
 				
  					<tr>
 						<th>작성자</th>
@@ -165,8 +178,8 @@
 					</tr>
 					
 					<tr>
-						<th class="inputArea">이미지 파일 업로드</th>
-						<td>
+						<th class="inputArea">이미지 업로드</th>
+						<td>	
 								<input type="button" name="file"value="파일 추가" onClick="fn_addFile()">	<!-- 파일추가 클릭 시 동적으로 파일업로드 추가 -->
 								<div id="d_file">	<!-- 자바스크립트를 이용해 <div> 안에 파일 업로드 추가 -->
 								</div>
@@ -182,9 +195,6 @@
 			</form>
 		</div>
 	</div>
-	
-	</tiles:putAttribute>
-</tiles:insertDefinition>	
 	
 </body>
 </html>

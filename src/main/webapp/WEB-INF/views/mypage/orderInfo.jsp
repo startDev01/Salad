@@ -38,37 +38,47 @@
 </head>
 <body>
     <div class="odl-container">
-        <table class="order-info-table" border="1px" align="center">
+        <table class="order-info-table" align="center">
             <tr>
-                <td>주문번호</td>
-                <td>${orderNum}</td>
+                <td class="order-info-td-title" colspan="2">주문번호</td>
+                <td class="order-info-td" colspan="2">${orderInfo.fakeOrderNum}</td>
             </tr>
             <tr>
-                <td>주문일자</td>
-                <td>${orderInfo.orderCreateTimestamp}</td>
+                <td class="order-info-td-title">주문일자</td>
+                <td class="order-info-td">${orderInfo.orderCreateTimestamp}</td>
+                <td class="order-info-td-title">배송 예정 일자</td>
+                <td class="order-info-td">${orderInfo.prodDeliveryDate}</td>
             </tr>
             <tr>
-                <td>배송 예정 일자</td>
-                <td>${orderInfo.prodDeliveryDate}</td>
+                <td class="order-info-td-title">주문자 이름</td>
+                <td class="order-info-td">${orderInfo.ordererName}</td>
+                <td class="order-info-td-title">주문 상태</td>
+                <td class="order-info-td">${orderInfo.orderStatus}</td>
             </tr>
             <tr>
-                <td>주문자 이름</td>
-                <td>${orderInfo.ordererName}</td>
-            </tr>
-            <tr>
-                <td>상품 목록</td>
-                <td>
+                <td class="order-info-td-title length">상품 목록</td>
+                <td class="order-info-td" colspan="3">
                     <c:forEach var="menuList" items="${infoMenuList}" varStatus="listStatus">
+
                         ${menuList.menuName} x ${menuList.menuCount} 개<br>
                     </c:forEach>
                 </td>
             </tr>
-            <tr>
-                <td>주문 상태</td>
-                <td>${orderInfo.orderStatus}</td>
-            </tr>
-
         </table>
+        <c:if test="${orderInfo.orderStatus == '결제완료'}">
+            <button class="orderInfo-review-btn" data-orderNum="${orderNum}" onclick="redirectToReviewPage()">리뷰작성</button>
+        </c:if>
     </div>
+
+<script>
+    function redirectToReviewPage() {
+        var orderNum = event.target.getAttribute('data-orderNum'); // orderNum 변수에 값을 할당 (서버에서 렌더링할 때 해당 값으로 대체됩니다.)
+        const contextPath = '${contextPath}'; // contextPath 변수에 값을 할당 (서버에서 렌더링할 때 해당 값으로 대체됩니다.)
+        const url = contextPath + '/review/insert/?orderNum=' + orderNum; // URL에 orderNum 파라미터를 추가하여 완성
+
+        // 리뷰 작성 페이지로 이동
+        window.location.href = url;
+    }
+</script>
 </body>
 </html>

@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.proj.salad.review.vo.Criteria;
 import com.proj.salad.review.vo.ReviewVO;
 import com.proj.salad.review.vo.Review_imageVO;
+import com.proj.salad.review.vo.ajaxCommentVO;
 
 public interface ReviewService {
 	
@@ -42,6 +43,10 @@ public interface ReviewService {
 	public void deleteReview(int re_articleNO);
 	
 	//하유리: 6-2. 답변 작성(23.07.18.)
-	public void replyReview(ReviewVO reviewVO);
+	public void replyReview(ReviewVO reviewVO, HttpServletRequest request, MultipartHttpServletRequest mRequest) throws Exception;
+
+	public List<ajaxCommentVO> ajaxComment(int re_articleNO);
+
+	public void ajaxCommentInsert(ajaxCommentVO ajaxCommentVO);
 
 }

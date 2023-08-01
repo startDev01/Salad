@@ -48,6 +48,10 @@
 	 <!-- 조상현 추가  -->	
 		<typeAlias type="com.proj.salad.order.vo.AccountVO"
 			alias="accountVO" />
+			
+		<typeAlias type="com.proj.salad.review.vo.ajaxCommentVO"
+			alias="ajaxCommentVO" />
+			
 
 	</typeAliases>
 </configuration>

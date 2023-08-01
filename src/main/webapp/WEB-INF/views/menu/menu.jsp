@@ -9,8 +9,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- css 적용 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="resources/css/style.css" rel="stylesheet" type="text/css">
-    <link href="resources/css/main.css" rel="stylesheet" type="text/css">
+	<!-- 하유리: CSS 링크 수정(23.07.31.) -->
+    <link href="resources/css/header.css" rel="stylesheet" type="text/css">
+    <link href="resources/css/footer.css" rel="stylesheet" type="text/css">
     <link href="resources/css/menu.css" rel="stylesheet" type="text/css">
     <title>메뉴 고르기</title>
 

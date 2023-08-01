@@ -11,9 +11,9 @@
 	<meta charset="UTF-8">
   	<title>메인 페이지</title>
   	<script src="http://code.jquery.com/jquery-latest.js"></script>
-  	<!-- css 적용 -->
-	<link href="resources/css/style.css" rel="stylesheet" type="text/css">
-	<link href="resources/css/main.css" rel="stylesheet" type="text/css">
+  		<!-- 하유리: CSS 링크 수정(23.07.31.) -->
+	<link href="resources/css/header.css" rel="stylesheet" type="text/css">
+	<link href="resources/css/footer.css" rel="stylesheet" type="text/css">
 	<link href="resources/css/map/mapPage.css" rel="stylesheet" type="text/css">
 </head>
 

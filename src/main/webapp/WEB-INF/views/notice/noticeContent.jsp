@@ -16,19 +16,19 @@
 		/* 폰트 */
  		@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
  		
-		/* 이벤트페이지 제목1+제목2 */
-		.event_sub {
-			margin: 50px 0 ;
-		}
-	
-		/* 이벤트페이지 제목1  */
-		.event_text1 {
-    		font-family: 'Noto Sans KR', sans-serif;
-			font-size: 43px;
+		/* 하유리: 공지페이지 제목 수정(23.07.29.) */
+		.notice_sub {
+			margin: 50px 0;
+			padding: 178px 0 24px 0;		/* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
+		}												/* 하유리: 제목 주변 여백 수정(23.07.29.)  */
+		
+		/* 하유리: 공지페이지 제목 수정(23.07.29.)  */
+		.notice_text {
+		 	font-family: 'Noto Sans KR', sans-serif;
+			font-size: 32px;						/* 하유리: 폰트 크기 수정(23.07.29.) */
 			font-weight: 700;
 			line-height: 1.2;
-    		letter-spacing: -3px;
-    		/* margin-bottom: 20px; */	/* 제목1, 제목2 사이 간격 */
+		  	letter-spacing: -1px;				/* 하유리: 제목 자간 수정(23.07.29.) */
 		}
 	
 		.container {
@@ -39,6 +39,7 @@
 			font-family: 'Noto Sans KR', sans-serif;
  			font-size: 14px;
 			margin: 0 auto;
+			padding-bottom: 10px;			/* 하유리: 수정/삭제 버튼-footer 사이 여백 추가(23.07.30.) */
 		}
 
 		/* 중앙정렬 */
@@ -53,6 +54,7 @@
 			text-align: left;	/* th 왼쪽정렬 */
 			border-collapse: separate;
 			border-spacing: 10px 20px;
+			margin-top: -21px;			/* 하유리: 테이블 위쪽 여백 줄이기(23.07.30.) */
 		}
 	
 		/* 하유리: 글자-input박스 간 간격(23.07.17.) */
@@ -124,16 +126,20 @@
 			background-color:#128853;
 			color: #fff;
 		}
+		
+		.contentBtn:focus {
+			outline: none;						/* 하유리: 버튼 클릭 시 생기는 테두리 없애기(23..07.31.) */
+		}
+		
 	</style>
 </head>
 
 <body>		
 	<div class="container mt-3">
-		<!-- 제목: 변경(23.07.21.) -->
-		<div class="event_sub">
-			<p class="event_text1">샐러드다이소 공지게시판</p>
-			<!-- <p class="event_text2">다양한 이벤트를 확인하고 참여해보세요.</p> -->
-			<img style="width: 50px" src="${contextPath}/resources/image/event/line.png" />
+		<!-- 하유리: 제목 변경(23.07.21.)(23.07.30.) -->
+		<!-- 하유리: 필요없는 부분 삭제(23.07.30.) -->
+		<div class="notice_sub">								<!-- 하유리: 클래스명 변경(23.07.30.) -->
+			<p class="notice_text">NOTICE</p>		<!-- 하유리: 클래스명 변경(23.07.30.) -->
 		</div>
 		
 		<!-- 게시판 -->
@@ -141,10 +147,11 @@
 			<form action="<c:url value='/notice/update'/>" method="POST" enctype="multipart/form-data" role="form">
 				<input name="articleNO" type="hidden" value="${notice.articleNO }" disabled>
 				<table>
-					<tr>
+				<!-- 하유리: 필요 없는 부분  주석(23.07.30.) -->
+ 					<!-- <tr>
 						<th>주문상품</th>
 						<td>	<input class="content_input" name="orderList" type="text" disabled/></td>
-					</tr>
+					</tr> -->
 				
  					<tr>
 						<th>작성자</th>
@@ -167,7 +174,7 @@
 					</tr>
 					
 					<tr>
-						<th>이미지 파일 업로드</th>
+						<th>업로드 이미지</th>
 						<td>	
 								<c:choose>
 									<c:when test="${empty notice.imageFileList}">
@@ -199,10 +206,19 @@
 				</table>
 				
 				<!-- 버튼 -->
+				<!-- 하유리: 코드 수정(23.07.31.) -->
 				<div> 
-					<div class="content_btn1">
-						<button type="button" class="contentBtn" onClick="location.href='${contextPath}/notice/list'">목록</button>
-						<button type="button" class="contentBtn" onClick="location.href='${contextPath}/notice/insert'">글쓰기</button>
+					<c:if test="${user.userId == 'admin' }">
+						<div class="content_btn1">
+							<button type="button" class="contentBtn" onClick="location.href='${contextPath}/notice/insert'">글쓰기</button>
+							<button type="button" class="contentBtn" onClick="location.href='${contextPath}/notice/list'">목록</button>
+						</div>
+					</c:if>
+					<c:if test="${user.userId != 'admin' }">
+						<div class="content_btn2">
+							<button type="button" class="contentBtn" onClick="location.href='${contextPath}/notice/list'">목록</button>
+						</div>
+					</c:if>
 					</div>
 					<div class="content_btn2">
 						<!-- 하유리: 작성자(admin)만 게시글만 수정, 삭제할 수 있도록 처리(23.07.18.) -->

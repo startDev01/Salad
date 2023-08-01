@@ -10,6 +10,7 @@ import org.springframework.dao.DataAccessException;
 import com.proj.salad.review.vo.Criteria;
 import com.proj.salad.review.vo.ReviewVO;
 import com.proj.salad.review.vo.Review_imageVO;
+import com.proj.salad.review.vo.ajaxCommentVO;
 
 public interface ReviewDAO {
 	
@@ -45,5 +46,9 @@ public interface ReviewDAO {
 	
 	//하유리: 6-2. 답변 작성(23.07.18.)
 	public void replyReview(ReviewVO reviewVO);
+
+	public List<ajaxCommentVO> selectComment(int re_articleNO);
+
+	public void insertCommnet(ajaxCommentVO ajaxCommentVO);
 
 }

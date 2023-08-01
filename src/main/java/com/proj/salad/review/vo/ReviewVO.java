@@ -18,6 +18,10 @@ public class ReviewVO {
 	private String re_noti;
 	private int re_viewCnt;
 	private List<Review_imageVO> re_imageFileList;
+
+	// 김동혁 VO 추가(23.08.01) - getter, setter, toString도 수정
+	private String re_fakeOrderNum;
+	private int re_orderNum;
 	
 	//getter,setter
 	public int getLevel() {
@@ -99,14 +103,40 @@ public class ReviewVO {
 	public void setRe_imageFileList(List<Review_imageVO> imageFileList) {
 		this.re_imageFileList = imageFileList;
 	}
-	
+
+	public String getRe_fakeOrderNum() {
+		return re_fakeOrderNum;
+	}
+
+	public void setRe_fakeOrderNum(String re_fakeOrderNum) {
+		this.re_fakeOrderNum = re_fakeOrderNum;
+	}
+
+	public int getRe_orderNum() {
+		return re_orderNum;
+	}
+
+	public void setRe_orderNum(int re_orderNum) {
+		this.re_orderNum = re_orderNum;
+	}
+
 	//toString
+
 	@Override
 	public String toString() {
-		return "ReviewVO [level=" + level + ", re_articleNO=" + re_articleNO + ", re_parentNO=" + re_parentNO
-				+ ", userId=" + userId + ", re_title=" + re_title + ", re_content=" + re_content + ", re_writeDate="
-				+ re_writeDate + ", re_noti=" + re_noti + ", re_viewCnt=" + re_viewCnt + ", re_imageFileList="
-				+ re_imageFileList + "]";
+		return "ReviewVO{" +
+				"level=" + level +
+				", re_articleNO=" + re_articleNO +
+				", re_parentNO=" + re_parentNO +
+				", userId='" + userId + '\'' +
+				", re_title='" + re_title + '\'' +
+				", re_content='" + re_content + '\'' +
+				", re_writeDate=" + re_writeDate +
+				", re_noti='" + re_noti + '\'' +
+				", re_viewCnt=" + re_viewCnt +
+				", re_imageFileList=" + re_imageFileList +
+				", re_fakeOrderNum=" + re_fakeOrderNum +
+				", re_orderNum=" + re_orderNum +
+				'}';
 	}
-	
 }

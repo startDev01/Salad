@@ -128,7 +128,8 @@
 .cart-count {
     font-size: 18px;
     text-align: center;
-    width: 50px;
+    width: 20px;
+    border: none;
 }
 
 /* 장바구니 계산 부분 */

@@ -50,21 +50,22 @@
                             ${list.menuName}
                     </div>
                 </div>--%>
-        <div id="canceled-list-title">취소목록</div>
-            <table border="1" class="odl-table">
+        <%--<div id="canceled-list-title">취소목록</div>--%>
+                    <p class="odl_sub">#나의 취소내역</p>
+                    <table class="odl-table">
                 <th class="odl-table-th" width="15%">주문일자</th>
                 <th class="odl-table-th" width="30%">주문번호</th>
                 <th class="odl-table-th" width="20%">주문자이름</th>
                 <th class="odl-table-th" width="20%">결제금액</th>
-                <th class="odl-table-th" width="15%">배송상태</th>
+                <th class="odl-table-th" width="15%">주문상태</th>
 
                 <c:forEach var="list" items="${canceledList}" varStatus="listStatus">
                     <tr>
                         <td class="odl-table-td">${list.orderCreateTimestamp}</td>
                         <td class="odl-table-td odl-td-pointer" onclick="location.href='${contextPath}/mypage/orderInfo/${list.orderNum}'">${list.fakeOrderNum}</td>
                         <td class="odl-table-td">${list.ordererName}</td>
-                        <td class="odl-table-td"><fmt:formatNumber value="${list.totalPrice}" pattern="#,###" /> 원</td>
-                        <td class="odl-table-td">${list.orderStatus}</td>
+                        <td class="odl-table-td old-td-price"><fmt:formatNumber value="${list.totalPrice}" pattern="#,###" /> 원</td>
+                        <td class="odl-table-td orderStatus">${list.orderStatus}</td>
                     </tr>
                 </c:forEach>
             </table>
