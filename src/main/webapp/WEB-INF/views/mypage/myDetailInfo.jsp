@@ -63,7 +63,8 @@
 									<p class="join_label">아이디<span class="essential">*</span>	<!-- 하유리: <span> 추가, align속성 삭제(23.07.25.) -->
 								</td>	
 								<td align="left"><!-- 하유리: class, </td> 추가(23.07.25.) -->
-									<input class="join_input" style="width: 65%;" type="text" name="userId"  id="userId"   minlength="2" maxlength="10" required  value="${user.userId }" disabled/>								
+									<!-- 23.08.01 서승희 style width 없앰 -->
+									<input class="join_input"  type="text" name="userId"  id="userId"   minlength="2" maxlength="10" required  value="${user.userId }" disabled/>								
 								</td>
 							</tr>
 							<tr class="dot_line">
@@ -84,7 +85,7 @@
 								<!-- 23.07.27 서승희 비밀번호 확인 추가 -->
 								<!-- onkeyup="JS function" 입력이 되었을 때, -->
 								<td><input class="join_input"  type="password" name="userPwdConfirm" id="userPwdConfirm" placeholder="비밀번호 확인" onkeyup="passConfirm()"></td>
-								<td><span id ="confirmMsg"></span></td>
+								<td class="btn_modify"><span id ="confirmMsg"></span></td>
 							</tr>
 							
 							<tr class="dot_line">
