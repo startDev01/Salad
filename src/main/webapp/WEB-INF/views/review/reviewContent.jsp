@@ -146,10 +146,13 @@
 			<form action="<c:url value='/review/update'/>" method="POST" enctype="multipart/form-data" role="form">
 				<input name="re_articleNO" type="hidden" value="${review.re_articleNO }" disabled>
 				<table>
-					<tr>
-						<th>주문상품</th>
-						<td>	<input class="content_input" name="orderList" type="text" disabled/></td>
-					</tr>
+					<%-- 답글형은 주문번호 숨기기 - 김동혁(23.08.01) --%>
+					<c:if test="${review.re_fakeOrderNum != null}">
+						<tr>
+							<th>주문번호</th>
+							<td>	<input class="content_input" name="re_fakeOrderNum" type="text" value="${review.re_fakeOrderNum}" disabled/></td>
+						</tr>
+					</c:if>
 				
  					<tr>
 						<th>작성자</th>

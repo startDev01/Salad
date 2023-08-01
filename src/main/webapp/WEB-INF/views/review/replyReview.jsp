@@ -141,10 +141,11 @@
 			<form action="<c:url value='/review/reply'/>" method="POST" enctype="multipart/form-data">
 				<input name="re_articleNO" type="hidden" value="${review.re_articleNO }">
 				<table>
-					<tr>
-						<th>주문상품</th>
+					<%-- 주문번호 input 비활성화 - 김동혁(23.08.01) --%>
+					<%--<tr>
+						<th>주문번호</th>
 						<td>	<input class="insert_input" name="orderList" required autocomplete="off" width="440px" disabled/></td>
-					</tr>
+					</tr>--%>
 				
  					<tr>
 						<th>작성자</th>
