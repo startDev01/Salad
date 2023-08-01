@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> <!-- 날짜 -->
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <% request.setCharacterEncoding("UTF-8"); %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
@@ -16,92 +17,15 @@
   	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 	<!-- 리뷰 css 적용 -->
-	<link href="../resources/css/header.css" rel="stylesheet" type="text/css">
+    <link href="../resources/css/header.css" rel="stylesheet" type="text/css">
     <link href="../resources/css/footer.css" rel="stylesheet" type="text/css">
-	<!-- 파비콘 -->
-	<link rel="icon" href="<c:url value='/resources/image/favicon.ico'/>" type="image/x-icon"/>
-
-	<style>	
-		/* 폰트 */
- 		@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
- 		
-		/* 이벤트페이지 제목1+제목2 */
-		.event_sub {
-			margin: 50px 0 0 0 ;
-			padding-top: 178px;	/* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
-		}
-	
-		/* 이벤트페이지 제목1  */
-		.event_text1 {
-    		font-family: 'Noto Sans KR', sans-serif;
-			font-size: 43px;
-			font-weight: 700;
-			line-height: 1.2;
-    		letter-spacing: -3px;
-    		/* margin-bottom: 20px; */	/* 제목1, 제목2 사이 간격 */
-		}
-	
- 		.container {
-			width: 100%;
-			padding: 0 200px 100px 200px;
-			margin: auto;
-			text-align: center;
-			font-family: 'Noto Sans KR', sans-serif;
- 			font-size: 14px;
-		}
-		
- 		.table {
-			padding: 20px 0;
-			text-align: center;
-		}
-		
-		/* 제목 스타일 */
-		.re_title a {
-			text-decoration: none;
-			color: #000;
-		}
-	
-		/* 페이징 */
-		.pagination {
-			display: inline-block;
-			margin: 20px 0;
-		}		
-		.pagination a {
-			color: black;
-			padding: 8px 16px;
-			text-decoration: none;
-		}		
-		/* 현재페이지 스타일 */
-		.pagination a.active{
-			background-color: #128853;
-			color: #fff;
-			font-weight: bold;
-		}		
-		.pagination a:hover:not(.active){
-			background-color: #ddd;
-		}
-		
-		/* 글쓰기 버튼 */		
-		.writeBtn {
-			margin: 0px 0px 60px 0px;
-			padding: 5px 10px;
-			text-align: center;
-			border-radius: 5px;
-			border-style: none;
-			background-color:#128853;
-			color: #fff;
-			float: right;
-		}
-	</style>
-
+	<link href="../resources/css/review.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 	<!-- 제목: 변경(23.07.21.) -->
-	<div class="event_sub">
-		<p class="event_text1">샐러드다이소 리뷰게시판</p>
-		<!-- <p class="event_text2">다양한 이벤트를 확인하고 참여해보세요.</p> -->
-		<img style="width: 50px" src="${contextPath}/resources/image/event/line.png" />
+	<div class="review_sub">
+		<p class="review_text">REVIEW</p>		<!-- 하유리: 텍스트 수정(23.07.29.) -->
 	</div>
 	
 	<!-- 게시판 -->

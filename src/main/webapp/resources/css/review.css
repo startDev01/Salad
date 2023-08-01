@@ -3,36 +3,49 @@
 /* css 초기화 코드 적용 */
 @import "reset.css";
 
+/* 하유리: 폰트 */
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
-* { 
-		font-family: 'Noto Sans KR', sans-serif;
-		font-size: 14px;
+
+/* 하유리: 리뷰 페이지 제목 수정(23.07.29.) */
+.review_sub {
+	margin: 50px 0;
+	padding: 178px 0 24px 0;		/* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
+												/* 하유리: 제목 주변 여백 수정(23.07.29.)  */
+	width: 1519.2px;						/* 하유리: 창 너비 줄여도 요소 밀리지 않게 너비 지정(23.07.31.) */
+}
+
+/* 하유리: 리뷰페이지 제목(23.07.29.)  */
+.review_text {
+ 	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 32px;						/* 하유리: 폰트 크기 수정(23.07.29.) */
+	font-weight: 700;
+	line-height: 1.2;
+  	letter-spacing: -1px;				/* 하유리: 제목 자간 수정(23.07.29.) */
 }
 
 .container {
 	width: 100%;
-	padding: 0 200px;
+	padding: 0 200px 100px 200px;
 	margin: auto;
 	text-align: center;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 14px;
 }
 
-/* 게시판 제목: 리뷰게시판 */
-.subject {
-	font-size: 24px;
-	margin-bottom: 20px;
-}
-
+/* 하유리: 테이블 */
 .table {
 	padding: 20px 0;
 	text-align: center;
+	width: 920px;				/* 하유리: 창 너비 줄여도 요소 안 밀리게 너비 지정(23.07.31.) */
 }
 
-/* 제목 스타일 */
+/* 하유리: 제목 스타일 */
 .re_title a {
 	text-decoration: none;
 	color: #000;
 }
 
+/* 하유리: 페이징 */
 .pagination {
 	display: inline-block;
 	margin: 20px 0;
@@ -55,9 +68,10 @@
 	background-color: #ddd;
 }
 
+/* 글쓰기 버튼 */
 .writeBtn{
 	margin: 0px 0px 60px 0px;
-	padding: 7px 10px;
+	padding: 5px 10px;					/* 하유리: 버튼 안쪽 여백 수정(23.07.31.) */
 	border-radius: 5px;
 	border-style: none;
 	background-color:#128853;

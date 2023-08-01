@@ -1,69 +1,74 @@
-@charset "EUC-KR";
+@charset "UTF-8";
 
-/* ÆùÆ® */
-	@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+/* í°íŠ¸ */
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 	
-/* ÀÌº¥Æ®ÆäÀÌÁö Á¦¸ñ1+Á¦¸ñ2 */
-.event_sub {
-	margin: 50px 0 0 0 ;
-	padding-top: 178px;	/* ÇÏÀ¯¸®: Çì´õ ¿µ¿ª¸¸Å­ ¾Æ·¡·Î ³»¸²(23.07.25.) */
+/* í•˜ìœ ë¦¬: ê³µì§€í˜ì´ì§€ ì œëª© ìˆ˜ì •(23.07.29.) */
+.notice_sub {
+	margin: 50px 0;
+	padding: 178px 0 24px 0;		/* í•˜ìœ ë¦¬: í—¤ë” ì˜ì—­ë§Œí¼ ì•„ë˜ë¡œ ë‚´ë¦¼(23.07.25.) */
+												/* í•˜ìœ ë¦¬: ì œëª© ì£¼ë³€ ì—¬ë°± ìˆ˜ì •(23.07.29.)  */
+	width: 1519.2px;						/* í•˜ìœ ë¦¬: ì°½ ë„ˆë¹„ ì¤„ì—¬ë„ ìš”ì†Œ ë°€ë¦¬ì§€ ì•Šê²Œ ë„ˆë¹„ ì§€ì •(23.07.31.) */
 }
 
-/* ÀÌº¥Æ®ÆäÀÌÁö Á¦¸ñ1  */
-.event_text1 {
-  		font-family: 'Noto Sans KR', sans-serif;
-	font-size: 43px;
+/* í•˜ìœ ë¦¬: ê³µì§€í˜ì´ì§€ ì œëª© ìˆ˜ì •(23.07.29.)  */
+.notice_text {
+ 	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 32px;						/* í•˜ìœ ë¦¬: í°íŠ¸ í¬ê¸° ìˆ˜ì •(23.07.29.) */
 	font-weight: 700;
 	line-height: 1.2;
-  		letter-spacing: -3px;
-  		/* margin-bottom: 20px; */	/* Á¦¸ñ1, Á¦¸ñ2 »çÀÌ °£°İ */
+  	letter-spacing: -1px;				/* í•˜ìœ ë¦¬: ì œëª© ìê°„ ìˆ˜ì •(23.07.29.) */
 }
 
-	.container {
+.container {
 	width: 100%;
 	padding: 0 200px 100px 200px;
-	margin: auto;
+	margin: 0 auto;						/* í•˜ìœ ë¦¬: ì—¬ë°± ìˆ˜ì •(23.07.31.) */
 	text-align: center;
 	font-family: 'Noto Sans KR', sans-serif;
-		font-size: 14px;
+	font-size: 14px;
 }
 
-	.table {
+/* í•˜ìœ ë¦¬: í…Œì´ë¸” */
+.table {
 	padding: 20px 0;
 	text-align: center;
+	width: 920px;				/* í•˜ìœ ë¦¬: ì°½ ë„ˆë¹„ ì¤„ì—¬ë„ ìš”ì†Œ ì•ˆ ë°€ë¦¬ê²Œ ë„ˆë¹„ ì§€ì •(23.07.31.) */
 }
 
-/* Á¦¸ñ ½ºÅ¸ÀÏ */
-.re_title a {
+/* í•˜ìœ ë¦¬: ì œëª© ìŠ¤íƒ€ì¼ */
+.notice_title a {
 	text-decoration: none;
 	color: #000;
 }
 
-/* ÆäÀÌÂ¡ */
+/* í•˜ìœ ë¦¬: í˜ì´ì§• */
 .pagination {
 	display: inline-block;
 	margin: 20px 0;
 }		
+
 .pagination a {
 	color: black;
 	padding: 8px 16px;
 	text-decoration: none;
 }		
-/* ÇöÀçÆäÀÌÁö ½ºÅ¸ÀÏ */
+
+/* í˜„ì¬í˜ì´ì§€ ìŠ¤íƒ€ì¼ */
 .pagination a.active{
 	background-color: #128853;
 	color: #fff;
 	font-weight: bold;
 }		
+
 .pagination a:hover:not(.active){
 	background-color: #ddd;
 }
 
-/* ±Û¾²±â ¹öÆ° */		
+/* ê¸€ì“°ê¸° ë²„íŠ¼ */		
 .writeBtn {
 	margin: 0px 0px 60px 0px;
-	padding: 5px 10px;
-	text-align: center;
+	padding: 5px 10px;						/* í•˜ìœ ë¦¬: ë²„íŠ¼ ì•ˆìª½ ì—¬ë°± ìˆ˜ì •(23.07.31.) */
 	border-radius: 5px;
 	border-style: none;
 	background-color:#128853;

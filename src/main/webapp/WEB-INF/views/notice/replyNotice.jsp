@@ -18,12 +18,12 @@
  		@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 	
 		/* 이벤트페이지 제목1+제목2 */
-		.event_sub {
+		.notice_sub {
 			margin: 50px 0 ;
 		}
 	
 		/* 이벤트페이지 제목1  */
-		.event_text1 {
+		.notice_text {
     		font-family: 'Noto Sans KR', sans-serif;
 			font-size: 43px;
 			font-weight: 700;
@@ -113,6 +113,10 @@
 			margin-left: 20px;
 			float: center;
 		}
+		
+		.contentBtn:focus {
+			outline: none;						/* 하유리: 버튼 클릭 시 생기는 테두리 없애기(23..07.31.) */
+		}
 	</style>
 
 </head>
@@ -120,10 +124,8 @@
 <body>
 	<div class="container mt-3">
 		<!-- 제목: 변경(23.07.21.) -->
-		<div class="event_sub">
-			<p class="event_text1">샐러드다이소 리뷰게시판</p>
-			<!-- <p class="event_text2">답글 작성</p> -->
-			<img style="width: 50px" src="${contextPath}/resources/image/event/line.png" />
+		<div class="notice_sub">
+			<p class="notice_text">NOTICE</p>
 		</div>
 	
 		<!-- 게시판 -->
@@ -131,10 +133,11 @@
 			<form action="<c:url value='/review/reply'/>" method="POST">
 				<input name="re_articleNO" type="hidden" value="${review.re_articleNO }">
 				<table>
-					<tr>
-						<th>주문상품</th>
-						<td>	<input class="reply_input" name="orderList" required autocomplete="off" width="440px" disabled/></td>
-					</tr>
+				<!-- 하유리: 필요 없는 부분  주석(23.07.30.) -->
+				<!-- <tr>
+					<th>주문상품</th>
+					<td>	<input class="reply_input" name="orderList" required autocomplete="off" width="440px" disabled/></td>
+				</tr> -->
 				
  					<tr>
 						<th>작성자</th>
@@ -160,9 +163,9 @@
 				</table>
 				
 				<div class="reply_btn">
-					<button class="replyBtn" type="submit">답변 등록</button>
-					<button class="replyBtn" type="reset" >초기화</button>
-					<button class="replyBtn" type="button" onClick="location.href='${contextPath}/review/list'">글목록</button>
+					<button class="contentBtn" type="submit">답변 등록</button>
+					<button class="contentBtn" type="reset" >초기화</button>
+					<button class="contentBtn" type="button" onClick="location.href='${contextPath}/review/list'">글목록</button>
 				</div>
 			</form>
 		</div>

@@ -18,88 +18,13 @@
 	<!-- 리뷰 css 적용 -->
 	<link href="../resources/css/header.css" rel="stylesheet" type="text/css">
     <link href="../resources/css/footer.css" rel="stylesheet" type="text/css">
-    <!-- <link href="../resources/css/notice.css" rel="stylesheet" type="text/css"> -->
-    <style>
-    
-/* 폰트 */
-@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
-	
-/* 이벤트페이지 제목1+제목2 */
-.notice_sub {
-	margin: 50px 0 0 0 ;
-	padding-top: 178px;	/* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
-}
-
-/* 이벤트페이지 제목1  */
-.notice_text1 {
- 	font-family: 'Noto Sans KR', sans-serif;
-	font-size: 43px;
-	font-weight: 700;
-	line-height: 1.2;
- 	letter-spacing: -3px;
-  	/* margin-bottom: 20px; */	/* 제목1, 제목2 사이 간격 */
-}
-
-	.container {
-	width: 100%;
-	padding: 0 200px 100px 200px;
-	margin: auto;
-	text-align: center;
-	font-family: 'Noto Sans KR', sans-serif;
-		font-size: 14px;
-}
-
-	.table {
-	padding: 20px 0;
-	text-align: center;
-}
-
-/* 게시물 제목 스타일 */
-.notice_title a {
-	text-decoration: none;
-	color: #000;
-}
-
-/* 페이징 */
-.pagination {
-	display: inline-block;
-	margin: 20px 0;
-}		
-.pagination a {
-	color: black;
-	padding: 8px 16px;
-	text-decoration: none;
-}		
-/* 현재페이지 스타일 */
-.pagination a.active{
-	background-color: #128853;
-	color: #fff;
-	font-weight: bold;
-}		
-.pagination a:hover:not(.active){
-	background-color: #ddd;
-}
-
-/* 글쓰기 버튼 */		
-.writeBtn {
-	margin: 0px 0px 60px 0px;
-	padding: 5px 10px;
-	text-align: center;
-	border-radius: 5px;
-	border-style: none;
-	background-color:#128853;
-	color: #fff;
-	float: right;
-}
-    </style>
+    <link href="../resources/css/notice.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 	<!-- 제목: 변경(23.07.21.) -->
 	<div class="notice_sub">
-		<p class="notice_text1">샐러드다이소 공지게시판</p>
-		<!-- <p class="event_text2">다양한 이벤트를 확인하고 참여해보세요.</p> -->
-		<img style="width: 50px" src="${contextPath}/resources/image/event/line.png" />
+		<p class="notice_text">NOTICE</p>			<!-- 하유리: 텍스트 수정(23.07.29.) -->
 	</div>
 	
 	<!-- 게시판 -->
@@ -189,13 +114,13 @@
 		</div>
 		
 		<!-- 글쓰기 버튼  -->
-		<div class="noticeBtn">
-			<!-- 하유리: id가 admin(관리자)인 사람만 글쓰기 버튼 활성화(23.07.24.) -->
-			<c:set var="userId" value="admin" />
-				<c:if test="${userId eq 'admin'}">
-				    <button class="writeBtn" type="button" onClick="location.href='${contextPath}/notice/insert'">글쓰기</button>
-				</c:if>			
-		</div>
+		<!-- 하유리: id가 admin(관리자)인 사람만 글쓰기 버튼 활성화(23.07.24.) -->
+		<!-- 하유리: 안 돼서 수정(23.07.30.)-->		
+		<c:if test="${user.userId == 'admin' }">
+			<div class="noticeBtn">
+				<button class="writeBtn" type="button" onClick="location.href='${contextPath}/notice/insert'">글쓰기</button>
+			</div>
+		</c:if>
 	</div>
 	
 </body>

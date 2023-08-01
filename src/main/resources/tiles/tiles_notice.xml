@@ -15,6 +15,12 @@
       <put-attribute name="title" value="리뷰페이지" />
       <put-attribute name="body" value="/WEB-INF/views/notice/noticeList.jsp" />
    </definition>
+   
+   <!-- 하유리: 글쓰기 페이지 추가(23.07.31.) -->
+   <definition name="/notice/insertNotice" extends="baseLayout">
+      <put-attribute name="title" value="리뷰페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/notice/insertNotice.jsp" />
+   </definition>
 
     <definition name="/notice/noticeContent" extends="baseLayout">
       <put-attribute name="title" value="리뷰페이지_상세" />
@@ -32,5 +38,3 @@
    </definition>
    
 </tiles-definitions>
-
-

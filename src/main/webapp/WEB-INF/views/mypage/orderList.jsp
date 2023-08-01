@@ -87,6 +87,7 @@
 </div>
 
 <script>
+    /* 주문 취소 버튼 스크립트 - 김동혁 추가(23.07.27) */
     function showConfirmation(orderNum) {
         // 주문수정 버튼을 눌렀을 때 실행될 함수
         var confirmation = confirm("주문번호 " + orderNum + "를 취소하시겠습니까?");
