@@ -51,7 +51,7 @@
         <th class="odl-table-th" width="20%">주문번호</th>
         <th class="odl-table-th" width="13%">주문자이름</th>
         <th class="odl-table-th" width="13%">결제금액</th>
-        <th class="odl-table-th" width="13%">배송상태</th>
+        <th class="odl-table-th" width="13%">주문상태</th>
         <th class="odl-table-th" width="13%">주문수정</th>
         <th class="odl-table-th" width="13%">리뷰작성</th>
 
