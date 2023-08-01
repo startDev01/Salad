@@ -7,6 +7,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+    <link href="resources/css/header.css" rel="stylesheet" type="text/css">
+    <link href="resources/css/footer.css" rel="stylesheet" type="text/css">
 <style>
   body {
     font-family: Arial, sans-serif;

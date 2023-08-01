@@ -10,6 +10,8 @@
 <html>
 <head>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <link href="resources/css/header.css" rel="stylesheet" type="text/css">
+    <link href="resources/css/footer.css" rel="stylesheet" type="text/css">
     <meta charset="UTF-8">
 
     <style>
