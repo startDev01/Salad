@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.proj.salad.review.vo.Criteria;
 import com.proj.salad.review.vo.ReviewVO;
 import com.proj.salad.review.vo.Review_imageVO;
+import com.proj.salad.review.vo.ajaxCommentVO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -87,6 +88,18 @@ public class ReviewDAOImpl implements ReviewDAO {
 	@Override
 	public void replyReview(ReviewVO reviewVO) {
 		sqlSession.insert("review.replyReview", reviewVO);
+	}
+
+	@Override
+	public List<ajaxCommentVO> selectComment(int re_articleNO) {
+		return sqlSession.selectList("review.selectComment", re_articleNO);
+	}
+
+	@Override
+	public void insertCommnet(ajaxCommentVO ajaxCommentVO) {
+		System.out.println("DAO VO 정보!!!!!!!!!!"+ajaxCommentVO);
+		sqlSession.insert("review.insertComment",ajaxCommentVO);
+		
 	}
 	
 }

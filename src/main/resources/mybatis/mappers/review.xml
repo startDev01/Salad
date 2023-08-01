@@ -117,4 +117,19 @@
 		]]>
 	</insert>
 	
+	<!-- 조상현: ajax 대댓글(23.07.31)  -->
+	<select id="selectComment" parameterType="int" resultType="com.proj.salad.review.vo.ajaxCommentVO">
+	<![CDATA[
+			select * from re_ajaxComment where re_articleNO = #{re_articleNO}
+		]]>
+	</select>
+	
+	<!-- 조상현: ajax 대댓글(23.08.01)  -->
+	<insert id="insertComment" parameterType="com.proj.salad.review.vo.ajaxCommentVO">
+		<![CDATA[
+			INSERT INTO re_ajaxComment(ac_commentNO, re_articleNO, userId, ac_content)
+			VALUES(re_accomment_seq.NEXTVAL, #{re_articleNO}, #{userId}, #{ac_content})
+		]]>
+	</insert>
+	
 </mapper>

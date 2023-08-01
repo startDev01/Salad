@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" isELIgnored="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<% request.setCharacterEncoding("UTF-8"); %>
-<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
-<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <html>
 <head>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -21,7 +23,7 @@
 			margin: 50px 0;
 			padding: 178px 0 24px 0;		/* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
 		}												/* 하유리: 제목 주변 여백 수정(23.07.29.)  */
-	
+
 		/* 하유리: 이벤트페이지 제목 수정(23.07.29.)  */
 		.review_text1 {
 		 	font-family: 'Noto Sans KR', sans-serif;
@@ -126,25 +128,27 @@
 			background-color:#128853;
 			color: #fff;
 		}
-		
+
 		.contentBtn:focus {
 			outline: none;						/* 하유리: 버튼 클릭 시 생기는 테두리 없애기(23..07.31.) */
-		}		
+		}
 	</style>
 </head>
 
-<body>		
+<body>
 	<div class="container mt-3">
 		<!-- 제목: 변경(23.07.21.)(23.07.30.) -->
 		<!-- 하유리: 필요없는 부분 삭제(23.07.30.) -->
 		<div class="review_sub">								<!-- 하유리: 클래스명 변경(23.07.30.) -->
 			<p class="review_text1">REVIEW</p>		<!-- 하유리: 클래스명 변경(23.07.30.) -->
 		</div>
-		
+
 		<!-- 게시판 -->
 		<div class="content_table">
-			<form action="<c:url value='/review/update'/>" method="POST" enctype="multipart/form-data" role="form">
-				<input name="re_articleNO" type="hidden" value="${review.re_articleNO }" disabled>
+<%-- 			<form action="<c:url value='/review/update'/>" method="POST"
+				enctype="multipart/form-data" role="form"> --%>
+				<input name="re_articleNO" type="hidden"
+					value="${review.re_articleNO }" disabled>
 				<table>
 					<%-- 답글형은 주문번호 숨기기 - 김동혁(23.08.01) --%>
 					<c:if test="${review.re_fakeOrderNum != null}">
@@ -156,27 +160,25 @@
 				
  					<tr>
 						<th>작성자</th>
-						<td>	
-							<input class="content_input" name="userId" type="text" value="${review.userId }" disabled>
-						</td>
+						<td><input class="content_input" name="userId" type="text"
+							value="${review.userId }" disabled></td>
 					</tr>
-		
+
 					<tr>
 						<th>제목</th>
-						<td>	
-							<input class="content_input" name="review_title" type="text"  value="${review.re_title }" disabled></td>
+						<td><input class="content_input" name="review_title"
+							type="text" value="${review.re_title }" disabled></td>
 					</tr>
-					
+
 					<tr>
 						<th>내용</th>
-						<td>
-							<textarea class="content_text" name="review_content" cols="50" rows="10" disabled>${review.re_content }</textarea>
-						</td>
+						<td><textarea class="content_text" name="review_content"
+								cols="50" rows="10" disabled>${review.re_content }</textarea></td>
 					</tr>
-					
+
 					<tr>
 						<th>업로드 이미지</th>
-						<td>	
+						<td>
 							<c:choose>
 								<c:when test="${empty review.re_imageFileList}">
 									<input class="content_input" name="orderList" type="text" disabled/>
@@ -192,37 +194,133 @@
 							</c:choose>
 						</td>					
 					</tr>
-								
+
 					<tr>
 						<th>조회수</th>
-						<td><input class="content_input" name="review_viewCnt" value="${review.re_viewCnt }" disabled></td>
-					</tr>	
-							
+						<td><input class="content_input" name="review_viewCnt"
+							value="${review.re_viewCnt }" disabled></td>
+					</tr>
+
 					<tr>
 						<th>작성일</th>
-						<td><input class="content_input" name="review_upload" value="${review.re_writeDate }" disabled></td>
-					</tr>		
-						
+						<td><input class="content_input" name="review_upload"
+							value="${review.re_writeDate }" disabled></td>
+					</tr>
+
 				</table>
-				
+
 				<!-- 버튼 -->
-				<div> 
+				<div>
 					<div class="content_btn1">
-						<button type="button" class="contentBtn" onClick="location.href='${contextPath}/review/list'">목록</button>
-						<button type="button" class="contentBtn" onClick="location.href='${contextPath}/review/insert'">글쓰기</button>
+						<button type="button" class="contentBtn"
+							onClick="location.href='${contextPath}/review/list'">목록</button>
+						<button type="button" class="contentBtn"
+							onClick="location.href='${contextPath}/review/insert'">글쓰기</button>
 					</div>
 					<div class="content_btn2">
-						<button type="button" class="contentBtn" onClick="location.href='${contextPath}/review/reply?re_articleNO=${review.re_articleNO }'">답글</button>
+						<button type="button" class="contentBtn"
+							onClick="location.href='${contextPath}/review/reply?re_articleNO=${review.re_articleNO }'">답글</button>
 						<!-- 하유리: 본인 게시글만 수정, 삭제할 수 있도록 처리(23.07.18.) -->
 						<c:if test="${user.userId == review.userId }">
-							<button type="button" class="contentBtn" onClick="location.href='${contextPath}/review/update?re_articleNO=${review.re_articleNO }'">수정</button>
-							<button type="button" class="contentBtn" onClick="location.href='${contextPath}/review/delete?re_articleNO=${review.re_articleNO }'">삭제</button>
+							<button type="button" class="contentBtn"
+								onClick="location.href='${contextPath}/review/update?re_articleNO=${review.re_articleNO }'">수정</button>
+							<button type="button" class="contentBtn"
+								onClick="location.href='${contextPath}/review/delete?re_articleNO=${review.re_articleNO }'">삭제</button>
 						</c:if>
 					</div>
 				</div>
-			</form>
+<!-- 			</form> -->
 		</div>
+		<%-- <form id="commentForm">
+					<input type="text" name="userId" id="userId" placeholder="로그인 후 이용 가능" value="${userVO.userId}" required>
+					<input type="text" name="ac_content" id="ac_content" placeholder="댓글 내용" required>
+					<button type="submit">댓글 작성</button>
+				</form> --%>
+
+		<!-- 댓글 작성 폼 -->
+		<form id="commentForm" method="POST">
+			<input type="text" name="userId" id="userId"
+				placeholder="로그인 후 이용 가능" value="${userVO.userId}" required>
+			<input type="text" name="ac_content" id="ac_content"
+				placeholder="댓글 내용" required>
+			<button type="submit" id="commnetBt">댓글 작성</button>
+
+		<!-- 댓글 목록 테이블 -->
+		<div id="commentList">
+
+		</div>
+		</form>
+
 	</div>
-	
+
+	<script type="text/javascript">
+
+	$(document).ready(function () {
+		 $.ajax({
+	            url: '${contextPath}/review/getCommentList', // 실제 댓글을 추가하는 서버 URL로 대체해주세요
+	            type: 'POST',
+	            data: {},
+	            dataType: 'json',
+	            success: function (response) {
+	             // 서버에서 정상적으로 데이터를 받아왔을 때 실행되는 부분
+	                var commentList = $('#commentList');
+	                commentList.empty(); // 기존 목록을 비웁니다.
+
+	                for (var i = 0; i < response.length; i++) {
+	                    var comment = response[i];
+	                    var newComment = $('<div class="line">');
+	                    newComment.append($('<div class="line-title">').text([i+1]+'번째 댓글 : ' + comment.ac_content));
+	                    newComment.append($('<div class="line-content">').text('아이디 : ' + comment.userId));
+	                    var dateString = new Date(comment.ac_writeDate).toISOString().split('T')[0];
+	                    newComment.append($('<div class="line-content">').text([i+1]+'번째 날짜: ' + dateString));
+	                    commentList.append(newComment);
+	                }
+
+	            },
+	            error: function() {
+	            	alert('비회원 상태입니다.\n로그인 창으로 넘어갑니다.');
+	                location.href = '${contextPath}/user/loginForm.do';
+	            }
+	        });
+	    });
+
+
+
+
+	$('#commentForm').on('submit', function(event) {
+	    event.preventDefault(); // 폼의 기본 동작인 제출을 막습니다.
+
+        var ac_content = $('#ac_content').val(); // 댓글 내용을 가져옵니다.
+        var userId = $('#userId').val();
+
+        // 댓글 추가를 위한 AJAX 요청 보내기
+        $.ajax({
+            url: '${contextPath}/review/addComment', // 실제 댓글을 추가하는 서버 URL로 대체해주세요
+            type: 'POST',
+            data: {ac_content : ac_content, userId : userId},
+            dataType: 'json',
+            success: function (response) {
+             // 서버에서 정상적으로 데이터를 받아왔을 때 실행되는 부분
+                var commentList = $('#commentList');
+                commentList.empty(); // 기존 목록을 비웁니다.
+
+                for (var i = 0; i < response.length; i++) {
+                    var comment = response[i];
+                    var newComment = $('<div class="line">');
+                    newComment.append($('<div class="line-title">').text([i+1]+'번째 댓글 : ' + comment.ac_content));
+                    newComment.append($('<div class="line-content">').text('아이디 : ' + comment.userId));
+                    var dateString = new Date(comment.ac_writeDate).toISOString().split('T')[0];
+                    newComment.append($('<div class="line-content">').text([i+1]+'번째 날짜: ' + dateString));
+                    commentList.append(newComment);
+                }
+
+            },
+            error: function() {
+            	alert('비회원 상태입니다.\n로그인 창으로 넘어갑니다.');
+                location.href = '${contextPath}/user/loginForm.do';
+            }
+        });
+    });
+</script>
 </body>
 </html>
