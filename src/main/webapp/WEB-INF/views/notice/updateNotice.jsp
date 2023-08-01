@@ -71,6 +71,11 @@
 			padding: 5px 5px;			
 		}
 		
+		/* 하유리: 파일업로드 부분(23.08.01.) */
+		.insert_file {
+			padding: 8px;				/* 하유리: 파일 업로드 input 가운데 배열(23.07.31.) */
+		}	
+		
 		/* 하유리: 파일업로드 부분(23.07.31.) */
 		.insert_file {
 			padding: 8px;				/* 하유리: 파일 업로드 input 가운데 배열(23.07.31.) */
@@ -168,7 +173,7 @@
 					
 					<tr>
 						<th>이미지 업로드</th>
-						<td><input type="file" multiple="multiple"></td>
+						<td><input class="insert_file" type="file" multiple="multiple"></td>
 					</tr>			
 				</table>
 				
