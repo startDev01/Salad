@@ -11,204 +11,20 @@
 <head>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <meta charset="UTF-8">
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
-
-       main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            padding-top: 178px;   /* 하유리: 헤더 영역만큼 아래로 내림(23.07.27.) */
-        }
-
-        h2, h3 {
-            color: #333;
-
-        }
-
-        h2 {
-            font-weight: bold;
-            font-size: 30px;
-        }
-
-        .info-block {
-            margin-bottom: 80px;
-            border: none;
-            padding: 10px;
-            background-color: #f9f9f9;
-        }
-
-        .line {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            flex-direction: row;
-        }
-
-        .line-title {
-            width: 120px;
-            font-weight: bold;
-            margin-right: 10px;
-            padding:10px;
-            background-color: #128853;
-            color: #fff;
-        }
-
-        .line-content {
-             flex-grow: 1;
-        }
-
-/*         input[type="text"] {
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            width: 100%;
-            box-sizing: border-box;
-        } */
-
-        button {
-            background-color: #128853;
-            color: #fff;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        button:hover {
-            background-color: #9CCC65;
-            color: #fff;
-        }
-
-        .item-box {
-            border: none;
-            background-color: #f9f9f9;
-        }
-
-        .line input[type="radio"], .line label.radiolabel {
-            display: inline-flex;
-            align-items: center;
-            margin-right: 10px;
-        }
-
-        .h3{
-         margin-left:12px;
-         display: flex;
-         justify-content: flex-start;
-         align-items: center;
-         font-size:20px;
-         font-weight: bold;
-        }
-        
-        #copyButton{
-        margin-left:20px;
-        }
-        
-       input[type="text"] {
-        height: 40px;
-        background-color: #f9f9f9;
-        border: none;
-        padding: 8px;
-        width: 100%;
-        box-sizing: border-box;
-        
-       }
-       .p2{
-       font-weight: bold;
-       font-size:30px;
-       padding-bottom : 50px;
-       }
-       
-       .line-price{
-       height: 20px;
-       box-sizing: border-box;
-       text-align: left;
-       margin-left:20px;
-       }
-       
-       .form-input{
-       display: inline-flex;
-    	align-items: left;
-    }
-    	.form-label{
-   		 text-align: left;
-		 
-    }
-        input[type="text2"] {
-        height: 30px;
-        background-color: #E0E0E0;
-        border: none;
-        width: 100%;
-        box-sizing: border-box;
-        margin-left:5px;
-        margin-right:5px;
-        text-align: center;
-       }
-       input[type="text3"] {
-        height: 30px;
-        background-color: #E0E0E0;
-        border: none;
-        width: 99px;
-        box-sizing: border-box;
-        margin-left:5px;
-        margin-right:5px;
-        text-align: center;
-       }
-        input[type="text4"] {
-        height: 30px;
-        background-color: #E0E0E0;
-        border: none;
-        width: 213px;
-        box-sizing: border-box;
-        margin-left:5px;
-        margin-right:5px;
-        text-align: center;
-       }
-       .line-card{
-       height: 20px;
-       box-sizing: border-box;
-       text-align: left;
-       }
-       #CVC{
-       margin-right:35px;
-       
-       }
-       #payment{
-       border: none;
-       padding:15px 70px 15px 70px;
-       background-color:#128853;
-       cursor: pointer;
-       font-weight: bold;
-       font-size: 15px;
-       margin-bottom:178px;
-       border-radius: 4px;
-       color: #fff;
-       }
-       #radioLine{
-       height: 150px;
-       display: flex;
-   	   align-items: center;
-   	   justify-content: center;
-       }
-        /* 그 외의 스타일링을 추가로 진행합니다. */
-    </style>
-
+	<!-- 하유리: CSS 링크 수정(23.08.01.) -->
+   	<link href="resources/css/header.css" rel="stylesheet" type="text/css">
+   	<link href="resources/css/footer.css" rel="stylesheet" type="text/css">
+   	<link href="resources/css/order/order.css" rel="stylesheet" type="text/css">
     <title>주문하기</title>
 </head>
 <body>
 <main>
     <p class="p2">주문 / 결제</p>
 
+	<!-- 하유리: 배송주소, 연락처, 요청사항 placeholder 띄어쓰기 수정(23.08.01.) -->
     <form action="${contextPath}/payment" method="post">
         <p class="h3">구매자 정보</p>
-        <hr>
+        <!-- <hr> -->								<!-- 하유리: 주석 처리(23.08.01.) -->
         <div class="info-block to">
             <div class="line">
                 <div class="line-title"><label for="name">이름</label></div>
@@ -232,9 +48,9 @@
             </div>
         </div>
         <p class="h3">받는 사람 정보  
-              <button type="button" id="copyButton" class="info-setting">구매자와 동일</button>
+              <button type="button" id="copyButton" class="info-setting">구매자정보와 동일</button>		<!-- 하유리: 텍스트 수정(23.08.01.) -->
         </p>
-        <hr>
+        <!-- <hr> -->								<!-- 하유리: 주석 처리(23.08.01.) -->
         <div class="info-block to">
             <div class="line">
                 <div class="line-title"><label for="name">이름</label></div>
@@ -244,33 +60,34 @@
             </div>
             <div class="line">
                 <div class="line-title"><label for="address">배송주소</label></div>
-                <div class="line-content"><input type="text" name="destLoc" id="address" placeholder="배송 주소를 입력하세요"
+                <div class="line-content"><input type="text" name="destLoc" id="address" placeholder="배송주소를 입력하세요"
                                                  required>
                 </div>
             </div>
             <div class="line">
                 <div class="line-title"><label for="phoneNb">연락처</label></div>
                 <div class="line-content"><input type="text" name="destPhone" id="phoneNb" maxlength="11"
-                                                 placeholder="'-'없이 입력 하세요" required>
+                                                 placeholder="'-' 없이 입력하세요" required>
                 </div>
             </div>
             <div class="line">
                 <div class="line-title"><label for="memo">배송시 요청사항</label></div>
-                <div class="line-content"><input type="text" name="memo" id="memo" placeholder="요청 사항을 입력해주세요" required>
+                <div class="line-content"><input type="text" name="memo" id="memo" placeholder="요청사항을 입력해주세요" required>
                 </div>
             </div>
         </div>
 <p class="h3">결제 상품 목록</p>
-<hr>
+<!-- <hr> -->								<!-- 하유리: 주석 처리(23.08.01.) -->
         <div class="item-box">
             <c:forEach items="${orderList}" var="cartList" varStatus="listStatus">
-                <div class="info-block">
+                <div class="info-block order-list">		<!-- 하유리: 클래스명 추가(23.08.01.) -->
                     <div class="line">
-                        <div class="line-title">상품정보 </div><div class="line-content">${cartList.prodName}</div>
+                        <div class="line-title">상품정보 </div>
+                        <div class="line-content">상품명: <b>${cartList.prodName}</b></div>		<!-- 하유리: '상품명: ' 텍스트, <b> 추가(23.08.01.) -->
                             <%--                        <input type="text" value="${cartList.prodName}" name="" hidden>--%>
-                        <div class="line-content">수량: ${cartList.cartCount}</div>
+                        <div class="line-content">수량: <b>${cartList.cartCount}</b></div>			<!-- 하유리: '상품명: ' 텍스트, <b> 추가(23.08.01.) -->
                             <%--                        <input type="text" value="${cartList.cartCount}" hidden>--%>
-                        <div class="line-content">상품 가격: ${cartList.prodPrice}</div>
+                        <div class="line-content">상품가격: <b>${cartList.prodPrice}원</b></div>	<!-- 하유리: '상품명: ' 텍스트, <b>, '원' 추가(23.08.01.) -->
                             <%--                        <input type="text" value="${cartList.prodPrice}" hidden>--%>
                     </div>
                     <!-- 다른 속성들도 필요하면 여기에 추가 -->
@@ -296,8 +113,8 @@
             <input type="text" value="${totalPrice + 3000}" name="totalPrice" hidden>
         </div>
 
-        <p class="h3">결제 정보</p>
-        <hr>
+        <p class="h3 pay-info">결제 정보</p>		<!-- 하유리: 클래스명 추가(23.08.01.) -->
+        <!-- <hr> -->											<!-- 하유리: 주석 처리(23.08.01.) -->
         <div class="info-block">
             <div class="line">
                 <div class="line-title">총상품가격</div>
@@ -309,13 +126,13 @@
             </div>
             <div class="line">
                 <div class="line-title">총결제금액</div>
-                <div class="line-price"><fmt:formatNumber value="${totalPrice+shippingCost}"
-                                                                  pattern="###,###원"/></div>
-            </div>
+                <div class="line-price" style="color: #d12420;"><fmt:formatNumber value="${totalPrice+shippingCost}"
+                                                                  pattern="###,###원"/></div>	<!-- 하유리: 금액 폰트색 지정(23.07.31.) -->
+            </div>									
             <div class="line">
                 <div id="radioLine"class="line-title">결제방법</div>
                 <div class="line-content">
-                    <div class="line">
+                    <div class="line pay option">		<!-- 하유리: 클래스명 'option' 추가(23.08.01.) -->
                         <input type="radio" id="transfer" name="purchaseType" value="transfer" disabled>
                         <label class="radiolabel" for="transfer">계좌이체</label>
 
@@ -332,29 +149,29 @@
                                disabled>
                         <label class="radiolabel" for="deposit-without-passbook">무통장입금(가상계좌)</label>
                     </div>
-                    <div class="line">
+                    <div class="line pay">
                             <div class="line-card">카드번호</div>
-                        <div class="form-input">
-                            <input type="text2" id="card" name="cardNum1" size="2" minlength="4" maxlength="4" required>
-                            <input type="text2" name="cardNum2" size="2" minlength="4" maxlength="4" required>
-                            <input type="text2" name="cardNum3" size="2" minlength="4" maxlength="4" required>
-                            <input type="text2" name="cardNum4" size="2" minlength="4" maxlength="4" required>
+                        <div class="form-input">		<!-- 하유리: 카드번호 사이 '-', 자동완성 끄기 추가(23.08.01.) -->
+                            <input type="text2" id="card" name="cardNum1" size="2" minlength="4" maxlength="4" required autocomplete='off'>-
+                            <input type="text2" name="cardNum2" size="2" minlength="4" maxlength="4" required autocomplete='off'>-
+                            <input type="text2" name="cardNum3" size="2" minlength="4" maxlength="4" required autocomplete='off'>-
+                            <input type="text2" name="cardNum4" size="2" minlength="4" maxlength="4" required autocomplete='off'>
                         </div>
                         </div>
-                        <div class="line">
+                        <div class="line pay">
                             <div class="line-card">유효기간</div>
                         
-                        <div class="form-input">
-                            <input type="text3" id="period" name="period1" size="2" minlength="2" maxlength="2" placeholder="mm"
-                                   required> /
-                            <input type="text3" name="period2" size="2" minlength="2" maxlength="2" placeholder="yy" required>
+                        <div class="form-input">		<!-- 하유리: 자동완성 끄기 추가(23.08.01.) -->
+                            <input type="text3" id="period" name="period1" size="2" minlength="2" maxlength="2" placeholder="mm" 
+                                   required autocomplete='off'> /
+                            <input type="text3" name="period2" size="2" minlength="2" maxlength="2" placeholder="yy" required autocomplete='off'>
                         </div>
                         </div>
-                        <div class="line">
+                        <div class="line pay cvcNum">
                             <div id="CVC" class="line-card">CVC</div>
                         
-                        <div class="form-input">
-                            <input type="text4" id="cvc" name="cvc" minlength="3" maxlength="3" required placeholder="3자리">
+                        <div class="form-input">		<!-- 하유리: 자동완성 끄기 추가(23.08.01.) -->
+                            <input type="text4" id="cvc" name="cvc" minlength="3" maxlength="3" required placeholder="3자리" autocomplete='off'>
                         </div>
                         </div>
 <%--                        <input type="submit" id="button" hidden>--%>
