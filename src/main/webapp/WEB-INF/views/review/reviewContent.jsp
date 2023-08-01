@@ -132,6 +132,26 @@
 		.contentBtn:focus {
 			outline: none;						/* 하유리: 버튼 클릭 시 생기는 테두리 없애기(23..07.31.) */
 		}
+
+		.line {
+			display: flex;
+			align-items: center;
+			margin-bottom: 10px;
+			flex-direction: row;
+		}
+
+		.line-title {
+			width: 120px;
+			font-weight: bold;
+			margin-right: 10px;
+			padding:10px;
+			background-color: #128853;
+			color: #fff;
+		}
+
+		.line-content {
+			flex-grow: 1;
+		}
 	</style>
 </head>
 
