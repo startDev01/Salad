@@ -153,10 +153,26 @@
 		<div>
 			<!-- 하유리: 로그인한 사용자만 글쓰기 버튼 활성화(23.07.18.) -->
 			<c:if test="${isLogOn==true && user!=null}">
-				<button class="writeBtn" type="button" onClick="location.href='${contextPath}/review/insert'">글쓰기</button>
+				<button class="writeBtn" type="button" onClick="handleButtonClick()">글쓰기</button>
 			</c:if>
 		</div>
 	</div>
+
+<script>
+	function handleButtonClick() {
+		// 경고창 띄우기
+		if (true) {
+			alert("주문하신 상품을 선택해주세요.")
+			// 사용자가 확인 버튼을 누른 경우 페이지 이동
+			const contextPath = '${contextPath}'; // 여기에 원하는 경로를 입력하세요
+			const insertUrl = contextPath + '/mypage/orderList';
+			window.location.href = insertUrl;
+		} else {
+			// 사용자가 취소 버튼을 누른 경우 아무 작업 없음
+			// 필요에 따라 취소 버튼을 눌렀을 때의 동작을 추가할 수 있습니다.
+		}
+	}
+</script>
 	
 </body>
 </html>

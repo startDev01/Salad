@@ -12,7 +12,7 @@
 	<!-- 하유리: CSS 링크 수정(23.07.31.) -->
 	<link href="../resources/css/style.css" rel="stylesheet" type="text/css" >
 	<link href="../resources/css/header.css" rel="stylesheet" type="text/css" >
-	
+
 	<meta charset="UTF-8">
 	<title>헤더</title>
 </head>

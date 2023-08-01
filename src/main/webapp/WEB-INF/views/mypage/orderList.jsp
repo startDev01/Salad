@@ -120,7 +120,7 @@
     function redirectToReviewPage() {
         var orderNum = event.target.getAttribute('data-orderNum'); // orderNum 변수에 값을 할당 (서버에서 렌더링할 때 해당 값으로 대체됩니다.)
         const contextPath = '${contextPath}'; // contextPath 변수에 값을 할당 (서버에서 렌더링할 때 해당 값으로 대체됩니다.)
-        const url = contextPath + '/review/insert/?orderNum=' + orderNum; // URL에 orderNum 파라미터를 추가하여 완성
+        const url = contextPath + '/review/insert?orderNum=' + orderNum; // URL에 orderNum 파라미터를 추가하여 완성
 
         // 리뷰 작성 페이지로 이동
         window.location.href = url;
