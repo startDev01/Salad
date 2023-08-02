@@ -6,7 +6,8 @@ import org.springframework.stereotype.Component;
 
 @Component("ajaxCommentVO")
 public class ajaxCommentVO {
-	
+
+	private int level;
 	private int re_articleNO;
 	private int ac_commentNO;
 	private int ac_parentNO;
@@ -54,10 +55,19 @@ public class ajaxCommentVO {
 		this.ac_parentNO = ac_parentNO;
 	}
 
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
 	@Override
 	public String toString() {
 		return "ajaxCommentVO{" +
-				"re_articleNO=" + re_articleNO +
+				"level=" + level +
+				", re_articleNO=" + re_articleNO +
 				", ac_commentNO=" + ac_commentNO +
 				", ac_parentNO=" + ac_parentNO +
 				", userId='" + userId + '\'' +

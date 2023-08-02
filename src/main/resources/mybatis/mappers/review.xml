@@ -127,9 +127,25 @@
 	<!-- 조상현: ajax 대댓글(23.07.31)  -->
 	<select id="selectComment" parameterType="int" resultType="com.proj.salad.review.vo.ajaxCommentVO">
 	<![CDATA[
-			select * from re_ajaxComment where re_articleNO = #{re_articleNO}
+		SELECT ac_commentNO,
+			   ac_parentNO,
+			   re_articleNO,
+			   userId,
+			   ac_content,
+			   ac_writeDate
+		FROM re_ajaxComment
+				 START WITH ac_parentNO = 0
+		CONNECT BY PRIOR ac_commentNO = ac_parentNO
+		ORDER SIBLINGS BY ac_writeDate
 		]]>
 	</select>
+
+	<!-- 기존 방법 Ajax 대댓글 방법!! 백업용 -->
+	<!--<select id="selectComment" parameterType="int" resultType="com.proj.salad.review.vo.ajaxCommentVO">
+	<![CDATA[
+			select * from re_ajaxComment where re_articleNO = #{re_articleNO}
+		]]>
+	</select>-->
 	
 	<!-- 조상현: ajax 대댓글(23.08.01)  -->
 	<insert id="insertComment" parameterType="com.proj.salad.review.vo.ajaxCommentVO">
