@@ -67,7 +67,7 @@
                     <c:if test="${list.orderStatus == '취소완료'}"><p class="orderStatus">${list.orderStatus}</p></c:if>
                 </td>
                 <td class="odl-table-td">
-                    <c:if test="${list.orderStatus == '결제완료'}">
+                    <c:if test="${list.orderStatus == '결제완료' and list.reviewStatus == 0}">
                         <button class="odl-table-del" onclick="showConfirmation('${list.orderNum}')">주문취소</button>
                     </c:if>
                 </td>

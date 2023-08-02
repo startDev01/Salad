@@ -9,6 +9,7 @@ public class ajaxCommentVO {
 	
 	private int re_articleNO;
 	private int ac_commentNO;
+	private int ac_parentNO;
 	private String userId;
 	private String ac_content;
 	private Date ac_writeDate;
@@ -44,10 +45,24 @@ public class ajaxCommentVO {
 	public void setAc_writeDate(Date ac_writeDate) {
 		this.ac_writeDate = ac_writeDate;
 	}
-	@Override
-	public String toString() {
-		return "ajaxCommetVO [re_articleNO=" + re_articleNO + ", ac_commentNO=" + ac_commentNO + ", userId=" + userId
-				+ ", ac_content=" + ac_content + ", ac_writeDate=" + ac_writeDate + "]";
+
+	public int getAc_parentNO() {
+		return ac_parentNO;
 	}
 
+	public void setAc_parentNO(int ac_parentNO) {
+		this.ac_parentNO = ac_parentNO;
+	}
+
+	@Override
+	public String toString() {
+		return "ajaxCommentVO{" +
+				"re_articleNO=" + re_articleNO +
+				", ac_commentNO=" + ac_commentNO +
+				", ac_parentNO=" + ac_parentNO +
+				", userId='" + userId + '\'' +
+				", ac_content='" + ac_content + '\'' +
+				", ac_writeDate=" + ac_writeDate +
+				'}';
+	}
 }

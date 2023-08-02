@@ -392,143 +392,111 @@
 
 	<script type="text/javascript">
 
-		$(document).ready(function () {
-			$.ajax({
-				url: '${contextPath}/review/getCommentList', // 실제 댓글을 추가하는 서버 URL로 대체해주세요
-				type: 'POST',
-				data: {},
-				dataType: 'json',
-				success: function (response) {
-					// 서버에서 정상적으로 데이터를 받아왔을 때 실행되는 부분
-					var commentList = $('#commentList');
-					commentList.empty(); // 기존 목록을 비웁니다.
+	$(document).ready(function () {
 
-					for (var i = 0; i < response.length; i++) {
-						var comment = response[i];
-						var newComment = $('<div class="line">');                                                                  /* 하유리 변수명 변경(23.08.02.) */
-						newComment.append($('<img src="${contextPath }/resources/image/review/006.png"/>'));            /* 하유리: 이미지 추가(23.08.01.) */
-						newComment.append($('<div class="line-userId">').text(comment.userId));                                     /* 하유리: 변수명+클래스명 변경, '아이디' 텍스트 삭제(23.08.02.) */
-						newComment.append($('<div class="line-title">').text(comment.ac_content));                              /* 하유리: x번째 댓글' 텍스트 삭제(23.08.02.) */
-						var dateString = new Date(comment.ac_writeDate).toISOString().split('T')[0];
-						newComment.append($('<div class="line-content">').text('등록일자: ' + dateString));                     /* 하유리: 텍스트 수정(23.08.02.) */
+		 $.ajax({
+	            url: '${contextPath}/review/getCommentList', // 실제 댓글을 추가하는 서버 URL로 대체해주세요
+	            type: 'POST',
+	            data: {},
+	            dataType: 'json',
+	            success: function (response) {
+	             // 서버에서 정상적으로 데이터를 받아왔을 때 실행되는 부분
+	                var commentList = $('#commentList');
+	                commentList.empty(); // 기존 목록을 비웁니다.
 
-						newComment.append($('<form id="comment_reply_Form" method="POST">'));
-						// ${comment.ac_commentNo} 값을 변수에 저장
-						var ac_commentNoValue = comment.ac_commentNO;
-						console.log('넘버 내용: ' + ac_commentNoValue);
+	                for (var i = 0; i < response.length; i++) {
+	                    var comment = response[i];
+	                    var newComment = $('<div class="line">');																						/* 하유리 변수명 변경(23.08.02.) */
+	                    newComment.append($('<img src="${contextPath }/resources/image/review/006.png"/>'));				/* 하유리: 이미지 추가(23.08.01.) */
+	                    newComment.append($('<div class="line-userId">').text(comment.userId));	       				   				/* 하유리: 변수명+클래스명 변경, '아이디' 텍스트 삭제(23.08.02.) */
+	                    newComment.append($('<div class="line-title">').text(comment.ac_content));										/* 하유리: x번째 댓글' 텍스트 삭제(23.08.02.) */
+	                    var dateString = new Date(comment.ac_writeDate).toISOString().split('T')[0];
+	                    newComment.append($('<div class="line-content">').text('등록일자: ' + dateString));							/* 하유리: 텍스트 수정(23.08.02.) */
+	                    commentList.append(newComment);
+	                }
+	            },
+	            error: function() {
+	            	alert('비회원 상태입니다.\n로그인 창으로 넘어갑니다.');
+	                location.href = '${contextPath}/user/loginForm.do';
+	            }
+	        });
 
-						newComment.append($('<input type="text" id="reply-NO" value="' + ac_commentNoValue + '" >'));
-						newComment.append($('<input type="text" class="comment_text" id="reply-input" placeholder="대댓글을 입력하세요...">'));
-						newComment.append($('<button type="submit" id="commentBt2" class="reply-btn">대댓글달기</button>'));
-						newComment.append($('</form>'));
-						commentList.append(newComment);
-					}
-				},
-				error: function() {
-					alert('비회원 상태입니다.\n로그인 창으로 넘어갑니다.');
-					location.href = '${contextPath}/user/loginForm.do';
-				}
-			});
-		});
 
-		$(document).on('click', '#commentBt2', function(event) {
-			event.preventDefault(); // 폼의 기본 동작인 제출을 막습니다.
-			console.log('대댓글달기 버튼 클릭 이벤트 발생');
-			var ac_commentNoValue = $('#reply-NO').val(); // input 요소에 입력된 댓글 번호 값을 가져옵니다.
-			console.log('댓글 번호: ' + ac_commentNoValue);
-			var replyInput = $('#reply-input').val(); // 입력된 대댓글 내용을 가져옵니다.
-			console.log('대댓글 내용: ' + replyInput);
-			// 이제 대댓글을 서버에 전송하거나 원하는 동작을 수행할 수 있습니다.
-			// ...
-		});
-
-		/* 자식 댓글 입력 폼 추가 및 숨기기 함수 */
-		$(document).on('click', '.line', function() {
-			var parentCommentId = $(this).data('comment_id');
-
-			// 클릭한 댓글에 대한 자식 댓글 입력 폼이 이미 존재하는지 확인
-			var commentForm = $('#commentForm-' + parentCommentId);
-			var isCommentFormVisible = commentForm.is(":visible");
-
-			var ac_commentNoValue =$(this).data('#reply-NO');
-			console.log('222222222222댓글 번호: ' + ac_commentNoValue);
-
-			// 댓글 폼이 보이지 않을 경우에만 폼을 추가
-			if (!isCommentFormVisible) {
-				// 기존에 열려있는 다른 댓글 폼들을 모두 숨김 처리
-				$('.commentForm').hide();
-
-				// 클릭한 댓글의 위치에 자식 댓글 입력 폼 추가
-				var formHTML = `
-               <form id="commentForm-${parentCommentId}" class="commentForm" method="POST">
-                   <input type="hidden" name="parentCommentId" value="${parentCommentId}">
-                   <div class="comment_input">
-                       <img src="${contextPath}/resources/image/review/007.png"/>
-                       <input class="comment_id" type="text" name="userId" id="userId"
-                           placeholder="로그인 후 이용 가능" value="${userVO.userId}" required readOnly>
-                       <input class="comment_text" type="text" name="ac_content" id="ac_content"
-                           placeholder="댓글 내용" required autocomplete="off">
-                       <button type="submit" id="commentBt">댓글 입력</button>
-                   </div>
-               </form>
-           `;
-				$(this).append(formHTML);
-			} else {
-				// 이미 자식 댓글 입력 폼이 열려있다면 해당 폼을 숨깁니다.
-				commentForm.hide();
-			}
-		});
+	    });
 
 
 
 
-		$('#commentForm').on('submit', function(event) {
-			event.preventDefault(); // 폼의 기본 동작인 제출을 막습니다.
+	$('#commentForm').on('submit', function(event) {
+	    event.preventDefault(); // 폼의 기본 동작인 제출을 막습니다.
 
-			var ac_content = $('#ac_content').val(); // 댓글 내용을 가져옵니다.
-			var userId = $('#userId').val();
+        var ac_content = $('#ac_content').val(); // 댓글 내용을 가져옵니다.
+        var userId = $('#userId').val();
 
-			// 댓글 추가를 위한 AJAX 요청 보내기
-			$.ajax({
-				url: '${contextPath}/review/addComment', // 실제 댓글을 추가하는 서버 URL로 대체해주세요
-				type: 'POST',
-				data: {ac_content : ac_content, userId : userId},
-				dataType: 'json',
-				success: function (response) {
-					// 서버에서 정상적으로 데이터를 받아왔을 때 실행되는 부분
-					var commentList = $('#commentList');
-					commentList.empty(); // 기존 목록을 비웁니다.
+        // 댓글 추가를 위한 AJAX 요청 보내기
+        $.ajax({
+            url: '${contextPath}/review/addComment', // 실제 댓글을 추가하는 서버 URL로 대체해주세요
+            type: 'POST',
+            data: {ac_content : ac_content, userId : userId},
+            dataType: 'json',
+            success: function (response) {
+             // 서버에서 정상적으로 데이터를 받아왔을 때 실행되는 부분
+                var commentList = $('#commentList');
+                commentList.empty(); // 기존 목록을 비웁니다.
 
-					for (var i = 0; i < response.length; i++) {
-						var comment = response[i];
-						var newComment = $('<div class="line">');
-						newComment.append($('<img src="${contextPath }/resources/image/review/006.png"/>'));               /* 하유리: 이미지 추가(23.08.01.) */
-						newComment.append($('<div class="line-userId">').text(comment.userId));                                 /* 하유리: '아이디' 텍스트 삭제(23.08.01.)' */
-						newComment.append($('<div class="line-title">').text(comment.ac_content));                                 /* 하유리: x번째 댓글' 텍스트 삭제(23.08.02.) */
-						var dateString = new Date(comment.ac_writeDate).toISOString().split('T')[0];
-						newComment.append($('<div class="line-content">').text('등록일자: ' + dateString));                        /* 하유리: 텍스트 수정(23.08.02.) */
+                for (var i = 0; i < response.length; i++) {
+                    var comment = response[i];
+                    var newComment = $('<div class="line">');
+                    newComment.append($('<img src="${contextPath }/resources/image/review/006.png"/>'));					/* 하유리: 이미지 추가(23.08.01.) */
+                    newComment.append($('<div class="line-userId">').text(comment.userId));											/* 하유리: '아이디' 텍스트 삭제(23.08.01.)' */
+                    newComment.append($('<div class="line-title">').text(comment.ac_content));											/* 하유리: x번째 댓글' 텍스트 삭제(23.08.02.) */
+                    var dateString = new Date(comment.ac_writeDate).toISOString().split('T')[0];
+                    newComment.append($('<div class="line-content">').text('등록일자: ' + dateString));								/* 하유리: 텍스트 수정(23.08.02.) */
+                    commentList.append(newComment);
+                }
 
-						newComment.append($('<form id="comment_reply_Form" method="POST">'));
-						// ${comment.ac_commentNo} 값을 변수에 저장
-						var ac_commentNoValue = comment.ac_commentNO;
-						console.log('넘버 내용: ' + ac_commentNoValue);
+            },
+            error: function() {
+            	alert('비회원 상태입니다.\n로그인 창으로 넘어갑니다.');
+                location.href = '${contextPath}/user/loginForm.do';
+            }
+        });
+    });
 
-						newComment.append($('<input type="text" id="reply-NO' + i +'" value="' + ac_commentNoValue + '" hidden>'));
-						newComment.append($('<input type="text" class="comment_text" id="reply-input' + i +'" placeholder="대댓글을 입력하세요...">'));
-						newComment.append($('<button type="submit" id="commentBt" class="reply-btn' + i +'">대댓글달기</button>'));
-						newComment.append($('</form>'));
-						commentList.append(newComment);
-					}
+	$(document).on('click', '.line', function() {
+		var parentCommentId = $(this).data('comment-id');
+		console.log('test!! ' + parentCommentId);
 
-				},
-				error: function() {
-					alert('비회원 상태입니다.\n로그인 창으로 넘어갑니다.');
-					location.href = '${contextPath}/user/loginForm.do';
-				}
-			});
-		});
+		// 클릭한 댓글에 대한 자식 댓글 입력 폼이 이미 존재하는지 확인
+		var commentForm = $('#commentForm-' + parentCommentId);
+		var isCommentFormVisible = commentForm.is(":visible");
 
+		// 댓글 폼이 보이지 않을 경우에만 폼을 추가
+		if (!isCommentFormVisible) {
+			// 기존에 열려있는 다른 댓글 폼들을 모두 숨김 처리
+			$('.commentForm').hide();
 
-	</script>
+			// 클릭한 댓글의 위치에 자식 댓글 입력 폼 추가
+			var formHTML = `
+            <form id="commentForm-${parentCommentId}" class="commentForm" method="POST">
+                <input type="hidden" name="parentCommentId" value="${parentCommentId}">
+                <div class="comment_input">
+                    <img src="${contextPath}/resources/image/review/007.png"/>
+                    <input class="comment_id" type="text" name="userId" id="userId"
+                        placeholder="로그인 후 이용 가능" value="${userVO.userId}" required readOnly>
+                    <input class="comment_text" type="text" name="ac_content" id="ac_content"
+                        placeholder="댓글 내용" required autocomplete="off">
+                    <button type="submit" id="commentBt">댓글 입력</button>
+                </div>
+            </form>
+        `;
+			$(this).append(formHTML);
+		} else {
+			// 이미 자식 댓글 입력 폼이 열려있다면 해당 폼을 숨깁니다.
+			commentForm.hide();
+		}
+	});
+
+</script>
 </body>
 </html>
