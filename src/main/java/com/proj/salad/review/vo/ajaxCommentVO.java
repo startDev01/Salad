@@ -15,18 +15,6 @@ public class ajaxCommentVO {
 	private String ac_content;
 
 
-	public int getLevel() {
-		return level;
-	}
-	public void setLevel(int level) {
-		this.level = level;
-	}
-	public int getAc_parentNO() {
-		return ac_parentNO;
-	}
-	public void setAc_parentNO(int ac_parentNO) {
-		this.ac_parentNO = ac_parentNO;
-	}
 	private Date ac_writeDate;
 	
 	

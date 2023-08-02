@@ -464,6 +464,9 @@
                 for (var i = 0; i < response.length; i++) {
                     var comment = response[i];
                     var newComment = $('<div class="line">');
+					if (comment.ac_parentNO !== 0) {
+						newComment.addClass('line-child');
+					}
                     newComment.append($('<img src="${contextPath }/resources/image/review/006.png"/>'));					/* 하유리: 이미지 추가(23.08.01.) */
                     newComment.append($('<div class="line-userId">').text(comment.userId));											/* 하유리: '아이디' 텍스트 삭제(23.08.01.)' */
                     newComment.append($('<div class="line-title">').text(comment.ac_content));											/* 하유리: x번째 댓글' 텍스트 삭제(23.08.02.) */
