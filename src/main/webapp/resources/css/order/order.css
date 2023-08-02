@@ -1,223 +1,261 @@
 @charset "UTF-8";
 
-/* ==================== 주문 페이지 ==================== */
+body {
+     /* font-family: Arial, sans-serif; */				/* 하유리: 주석 처리(23.08.01.) */
+     font-family: 'Noto Sans KR', sans-serif !important;
+     font-clor: #333;
+     font-weight: 600;										/* 하유리: 폰트 굵기 지정(23.08.01.) */
+     line-height: 1.6;
+     margin: 0;
+     padding: 0;     
+ }
+
 main {
-  color: var(--black-3);
-  font-size: 1.2rem;
+     max-width: 800px;
+     margin: 0 auto;
+     padding: 20px;
+     padding-top: 178px;   								/* 하유리: 헤더 영역만큼 아래로 내림(23.07.27.) */
 }
 
-main h2,
-main h3 {
-  font-weight: 700;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
-  border-bottom: 1px solid var(--black-3);
+h2, h3 {
+    color: #333;
+
 }
 
-main h2 {
-  font-size: 2rem;
+h2 {
+    font-weight: bold;
+    font-size: 30px;
 }
 
-main h3 {
-  font-size: 1.4rem;
+.info-block {
+    margin-bottom: 80px;
+    border: none;
+    /* padding: 10px; */									/* 하유리: 주석 처리(23.08.01.) */
+    background-color: #fff;								/* 하유리: 내용 들어가는 부분 배경색 변경(23.08.01.) */
+    border-top: 1px solid gray;							/* 하유리: 위/아래 테두리 추가(23.08.01.) */
+    border-bottom: 1px solid gray;					/* 하유리: 위/아래 테두리 추가(23.08.01.) */
 }
 
-/* ==================== 주문 흐름 ==================== */
-main div.flow {
-  font-size: 1.5rem;
-  display: flex;
-  line-height: 70px;
-  background-color: var(--white-f9);
-  margin-bottom: 50px;
+/* 결제상품목록 */
+.order-list {
+	margin-bottom: 10px;
 }
 
-main div.flow p {
-  flex: 1;
-  text-align: center;
+.line {
+    display: flex;
+    align-items: center;
+    /* margin-bottom: 10px; */						/* 하유리: 주석 처리(23.08.01.) */
+    flex-direction: row;
+    border-bottom: 1px solid #e2e2e2;				/* 하유리: 중간 연한 테두리(23.08.01.) */
+    text-align: left;											/* 하유리: 텍스트 좌측 정렬(23.08.01.) */
 }
 
-main div.flow p.arrow {
-  flex: 0 0 40px;
-  position: relative;
-  overflow: hidden;
-  z-index: auto;
+.line-title {   
+    width: 120px;
+    /* margin-right: 10px; */							/* 하유리: 주석 처리(23.08.01.) */
+    padding: 15px;											/* 하유리: 높이 수정(23.08.01.) */
+    /* background-color: #128853; */				/* 하유리: 주석 처리(23.08.01.) */
+    color: #333;												/* 하유리: 폰트 색상 수정(23.08.01.) */
+    font-weight: 500;										/* 하유리: 폰트 굵기 수정(23.08.01.) */
+    background: #F7F7F7;								/* 하유리: 배경색 수정(23.08.01.) */    
+    text-align: left;											/* 하유리: 텍스트 왼쪽 정렬(23.08.01.) */    
+	font-size: 14px;											/* 테이블 1번째열 폰트 크기지정(23.08.01.) */
 }
 
-main div.flow p.arrow::before {
-  content: '';
-  width: 70px;
-  height: 70px;
-  position: absolute;
-  rotate: 45deg;
-  left: -110%;
-  border: 1px solid var(--c-point);
-  box-sizing: border-box;
-  z-index: 1;
+.line-content {
+     flex-grow: 1;
+     font-size: 14px;											/* 하유리: 폰트 크기 수정(23.08.01.) */
+     font-weight: 300;										/* 하유리: 폰트 굵기 수정(23.08.01.)*/
+     padding-left: 15px;									/* 하유리: 좌측 여백 지정(23.08.01.) */
+     width: 180px;											/* 하유리: 결제상품목록 내 상품명 너비 지정(23.08.01.) */
 }
 
-main div.flow p.now.arrow.back,
-main div.flow p.now.arrow.front::before {
-  background-color: var(--c-point);
+.line-content b {
+	font-weight: 500;										/* 하유리: 폰트 굵기 수정(23.08.01.)*/
+    color: #d12420;											/* 하유리: 폰트 색상 지정(23.08.01.) */
 }
 
-main div.flow p.now.arrow.back::before {
-  background-color: var(--white-f9);
+/*        input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        } */
+
+#copyButton{
+    margin-left: 8px;										/* 하유리: 버튼 좌측으로 이동(23.08.01.) */
 }
 
-main div.flow p.now:not(.arrow) {
-  background-color: var(--c-point);
-  color: var(--black-3);
-  font-weight: 900;
+button {
+    background-color: #128853;
+    font-size: 12px;											/* 하유리: 폰트 크기 지정(23.08.01.) */
+    color: #fff;
+    border: none;
+    padding: 3px 3px;										/* 하유리: 버튼 안쪽 여백 수정(23.08.01.) */		
+    /* border-radius: 21px; */							/* 하유리: 주석 처리(23.08.01.) */
+    cursor: pointer;
+    /* font-weight: bold; */								/* 하유리: 폰트 굵기 일반(23.08.01.) */
+    transition: background-color .1s;				/* 하유리: 버튼 트랜지션 추가(23.08.01.) */    
 }
 
-main div.flow p.not-now {
-  color: #888888;
+button:hover {
+    background-color: #e2e2e2;						/* 하유리: 폰트 굵기 일반(23.08.01.) */
+    color: #333;												/* 하유리: 폰트 색상 변경(23.08.01.) */
 }
 
-/* ==================== 구매자 정보 ==================== */
-/* ==================== 받는 사람 정보 ==================== */
-/* ==================== 결제 정보 ==================== */
-
-main div.info-block {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  margin-bottom: 50px;
+.item-box {
+    border: none;
+    background-color: #fff;								/* 하유리: 결제 상품 목록 간 여백(23.08.01.) */
 }
 
-main div.info-block div.line {
-  display: flex;
-  flex-direction: row;
-  gap: 1px;
+.line input[type="radio"], .line label.radiolabel {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 10px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
-div.line div.line-title {
-  flex: 0 150px;
-  display: flex;
-  justify-content: right;
-  align-items: center;
-  padding: 10px;
-  background-color: var(--c-point);
-  color: var(--black-3);
-  font-weight: 700;
+.h3{
+	/* margin-left:12px; */								/* 하유리: 주석 처리(23.08.01.) */
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	padding-bottom: 5px;								/* 하유리: 부제목과 테이블 사이 간격 지정(23.08.01.) */
+	color: #333;												/* 하유리: 폰트 색상 지정(23.08.01.) */
+	font-size:17px;											/* 하유리: 폰트 크기 수정(23.08.01.) */
+	font-weight: bold;
+	letter-spacing: -0.5px;								/* 하유리: 자간 지정(23.08.01.) */
+}
+    
+input[type="text"] {
+    height: 40px;			
+    background-color: #fff;								/* 하유리: 배경색 변경(23.08.01.) */
+    border: none;
+    padding: 15px 0;										/* 하유리: 여백 변경(23.08.01.) */
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;											/* 하유리: 폰트 크기 지정(23.08.01.) */
+    font-family: 'Noto Sans KR', sans-serif;		/* 하유리: 폰트 지정(23.08.01.) */
+    font-weight: 300;   									/* 하유리: 폰트 굵기 지정(23.08.01.) */
 }
 
-div.line div.line-content {
-  padding: 10px;
-  flex: 1;
-  background-color: var(--white-f9);
+/* input box 클릭 시 테두리 */
+input:focus {
+	outline: none;											/* 하유리: 테두리 지정 안 되게(23.08.01.) */
+}
+   
+/* 주문/결제 텍스트 */
+.p2 {
+   	font-weight: 700;										/* 하유리: 폰트 굵기 수정(23.08.01.) */
+   	font-size:30px;
+   	/* padding-bottom : 50px; */						/* 하유리: 주석 처리(23.08.01.) */
+   	margin: 50px 0;											/* 하유리: 텍스트 상하 여백 지정(23.08.01.) */
+}
+   
+.line-price{
+   height: 20px;
+   box-sizing: border-box;
+   text-align: left;
+   /* margin-left:20px; */
+   padding-left: 15px;										/* 하유리: 폰트 좌측 여백 지정(23.08.01.) */
+   font-size: 14px;
+   }
+   
+.form-input{
+    display: flex;												/* 하유리: 변경(23.08.01.) */
+	align-items: center;									/* 하유리: 세로 중앙 정렬(23.08.01.) */
+	padding-left: 10px;										/* 하유리: 좌측 여백 지정(23.08.01.) */
 }
 
-div.line div.line-content button {
-  all: unset;
-  margin-left: 10px;
-  background-color: var(--c-point);
-  color: var(--black-3);
-  padding: 5px 10px;
-  cursor: pointer;
+.form-label{
+	text-align: left;
 }
 
-div.line div.line-content button:hover {
-  background-color: var(--c-point-h);
-  color: white;
+/* <p>결제정보</p> 위 여백 */
+.pay-info {
+    margin-top: 80px;										/* 하유리: 여백 지정(23.08.01.) */
 }
 
-div.line-content div.pay-info {
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: 100px 1fr;
-  align-items: center;
-  gap: 5px;
-  width: 400px;
+/* 결제방법 선택 옵션 */
+.option {
+	margin-left: -3px;										/* 하유리: 위치 앞으로 당기기(23.08.01.) */
 }
 
-div.info-block.pay div.line-content div.form-input {
-  display: flex;
-  align-items: center;
-  gap: 5px;
+/* 카드번호 input */
+input[type="text2"] {
+    height: 30px;
+    background-color: #fff;								/* 하유리: 배경 흰색으로 변경(23.08.01.) */
+    border: 1px solid #999999;							/* 하유리: 테두리 지정(23.08.01.) */
+    width: 100%;
+    box-sizing: border-box;
+    margin-left:5px;
+    margin-right:5px;
+    text-align: center;
 }
 
-div.info-block.pay div.line-content div.form-input input {
-  all: unset;
-  flex: 1;
-  background-color: var(--white-e);
-  padding: 10px;
-  text-align: center;
+/* 유효기간 input */
+input[type="text3"] {
+    height: 30px;		
+    background-color: #fff;								/* 하유리: 배경 흰색으로 변경(23.08.01.) */
+    border: 1px solid #999999;							/* 하유리: 테두리 지정(23.08.01.) */
+    width: 110.4px;											/* 하유리: 너비 수정(23.08.01.) */
+    box-sizing: border-box;
+    margin-left:5px;
+    margin-right:5px;
+    text-align: center;
 }
 
-div.info-block.to div.line .line-content input {
-  border: none;
-  box-sizing: border-box;
-  background-color: var(--white-f9);
-  padding: 10px 0;
-  width: 100%;
-  font-size: 1.2rem;
-  outline: none;
+/* CVC input */
+input[type="text4"] {
+    height: 30px;
+    background-color: #fff;								/* 하유리: 배경 흰색으로 변경(23.08.01.) */
+    border: 1px solid #999999;							/* 하유리: 테두리 지정(23.08.01.) */
+    width: 235.8px;											/* 하유리: 너비 수정(23.08.01.) */
+    box-sizing: border-box;
+    margin-left:5px;
+    margin-right:5px;
+    text-align: center;
 }
 
-div.info-block.to div.line div.line-title label {
-  font-weight: 700;
+/* 하유리: 결제방법 4줄(23.08.01.) */
+.pay {
+	border-bottom: none;
+    padding-bottom: 10px;
 }
 
-/* ==================== 결제 상품 목록 ==================== */
-div.item-box {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 50px;
+/* cvc <div> */
+.cvcNum {
+	padding-bottom: 0px;								/* 하유리: cvc 입력행 아래 여백 제거(23.08.01.) */
+}
+   
+.line-card{
+   height: 20px;
+   box-sizing: border-box;
+   text-align: left;
 }
 
-div.item-box div.list-item {
-  padding: 10px;
-  display: flex;
-  background-color: var(--white-f9);
+#CVC{
+   margin-right: 27px;									/* 하유리: 여백 줄임(23.08.01.) */
 }
 
-div.item-box div.list-item div {
-  display: flex;
-  align-items: center;
-  justify-content: start;
+/* 결제하기 버튼 */
+#payment{
+   border: none;
+   padding:15px 70px 15px 70px;
+   background-color:#128853;
+   cursor: pointer;
+   font-weight: bold;
+   font-size: 15px;
+   margin-bottom:100px;								/* 하유리: 버튼 아래 여백 줄임(23.08.01.) */
+   border-radius: 4px;
+   color: #fff;
 }
-
-div.item-box div.list-item div.name {
-  flex: 1;
+   
+#radioLine{
+   height: 150px;
+   display: flex;
+   align-items: center;
+ /* justify-content: center; */							/* 하유리: 좌측 정렬(23.08.01.) */
 }
-
-div.item-box div.list-item div.amount {
-  margin-right: 50px;
-}
-
-/* ==================== 버튼 ==================== */
-main>form>label {
-  all: unset;
-  display: block;
-  margin: 0 auto;
-  width: 200px;
-  padding: 20px 10px;
-  cursor: pointer;
-  text-align: center;
-  background-color: var(--c-point);
-  color: var(--black-3);
-  font-weight: 700;
-  font-size: 1.5rem;
-}
-
-main>form>label:hover {
-  background-color: var(--c-point-h);
-  color: white;
-}
-
-/* ==================== 구매자 정보와 받는 사람 일치할 경우 누르는 버튼 스타일 ==================== */
-button.info-setting {
-  all: unset;
-  padding: 5px 10px;
-  background-color: var(--c-point);
-  color: var(--black-3);
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-button.info-setting:hover {
-  background-color: var(--c-point-h);
-  color: var(--white-f);
-}
+/* 그 외의 스타일링을 추가로 진행합니다. */}

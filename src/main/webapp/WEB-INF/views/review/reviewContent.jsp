@@ -21,16 +21,16 @@
 		/* 하유리: 리뷰페이지 제목 수정(23.07.29.) */
 		.review_sub {
 			margin: 50px 0;
-			padding: 178px 0 24px 0;		/* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
-		}												/* 하유리: 제목 주변 여백 수정(23.07.29.)  */
+			padding: 178px 0 24px 0;									/* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
+		}																			/* 하유리: 제목 주변 여백 수정(23.07.29.)  */
 
 		/* 하유리: 이벤트페이지 제목 수정(23.07.29.)  */
 		.review_text1 {
 		 	font-family: 'Noto Sans KR', sans-serif;
-			font-size: 32px;						/* 하유리: 폰트 크기 수정(23.07.29.) */
+			font-size: 32px;													/* 하유리: 폰트 크기 수정(23.07.29.) */
 			font-weight: 700;
 			line-height: 1.2;
-		  	letter-spacing: -1px;				/* 하유리: 제목 자간 수정(23.07.29.) */
+		  	letter-spacing: -1px;											/* 하유리: 제목 자간 수정(23.07.29.) */
 		}
 	
 		.container {
@@ -41,13 +41,13 @@
 			font-family: 'Noto Sans KR', sans-serif;
  			font-size: 14px;
 			margin: 0 auto;
-			padding-bottom: 10px;			/* 하유리: 버튼-footer 사이 여백 추가(23.07.30.) */
+			padding-bottom: 10px;										/* 하유리: 버튼-footer 사이 여백 추가(23.07.30.) */
 		}
 
 		/* 중앙정렬 */
 		.content_table {
 			width: 100%;
-			display: flex;
+			/* display: flex; */												/* 하유리: 주석 처리(23.08.01.) */
 			justify-content: center;
 		}
 		
@@ -56,7 +56,8 @@
 			text-align: left;	/* th 왼쪽정렬 */
 			border-collapse: separate;
 			border-spacing: 10px 20px;
-			margin-top: -21px;			/* 하유리: 테이블 위쪽 여백 줄이기(23.07.30.) */
+			margin-top: -21px;												/* 하유리: 테이블 위쪽 여백 줄이기(23.07.30.) */
+			margin: 0 auto;													/* 하유리: 테이블 중앙 정렬(23.08.01.) */
 		}
 	
 		/* 하유리: 글자-input박스 간 간격(23.07.17.) */
@@ -110,14 +111,24 @@
 		}
 		
 		/* 버튼 */
+
+		/* 버튼 <div> */
+		.btn_wrap {
+			display: flex;														/* 하유리: 버튼 테이블 아래쪽에 배치(23.08.01.) */
+    		justify-content: space-between;							/* 하유리: 버튼 테이블 아래쪽에 배치(23.08.01.) */
+    		margin: 0 139px;												/* 하유리: 버튼 좌우 여백 지정(23.08.01.) */
+		}
+
+		/* 좌측 버튼 2개<div> */
 		.content_btn1 {
-			float: left;
-			margin-left: 10px;
+			float: left;															/* 하유리: 버튼 왼쪽 정렬 */
+			/* margin-left: 10px; */										/* 하유리: 주석 처리(23.08.01.) */
 		}
 		
+		/* 우측 버튼 3개<div> */
 		.content_btn2 {
-			float: right;
-			margin-right: 10px;
+			float: right;														/* 하유리: 버튼 우측 정렬 */
+			/* margin-right: 10px; */									/* 하유리: 주석 처리(23.08.01.) */
 		}
 	
 		.contentBtn{
@@ -130,28 +141,131 @@
 		}
 
 		.contentBtn:focus {
-			outline: none;						/* 하유리: 버튼 클릭 시 생기는 테두리 없애기(23..07.31.) */
+			outline: none;													/* 하유리: 버튼 클릭 시 생기는 테두리 없애기(23..07.31.) */
 		}
 
-		.line {
+/* 		.line {
 			display: flex;
 			align-items: center;
 			margin-bottom: 10px;
 			flex-direction: row;
+		} */
+
+		.img img, .line .line-userId {
+			display: inline-block;											/* 하유리: 지금 댓글 틀 맞추려면 필수(23.08.02.) */
 		}
 
+		.img img {
+			display: flex;
+		}
+
+
+		/* 입력댓글 전체<div> */
+		.line {
+			text-align: left;													/* 하유리: 왼쪽 정렬(23.08.01.) */
+    		/* margin-bottom: 30px; */								/* 하유리: 하단 여백 추가(23.08.01.) */
+    		margin-top: 30px;												/* 하유리: 상단 여백 추가(23.08.02.) */
+		}
+
+		/* 입력된 댓글_id */
+		.line-userId {
+			flex-grow: 1;
+    		text-align: left;													/* 하유리: 좌측 정렬(23.08.01.) */
+    		font-weight: 700;												/* 하유리: 폰트 굵기 지정(23.08.01.) */
+    		vertical-align: 9.3px;											/* 하유리: 아이콘-id 세로 중앙정렬(23.08.02.) */
+    		margin-left: 10px;												/* 하유리: 좌측 여백 지정(23.08.02.) */
+    		color: #000;														/* 하유리: 폰트 색상 지정(23.08.02.) */
+		}
+
+		/* 입력된 댓글_내용 */
 		.line-title {
-			width: 120px;
-			font-weight: bold;
-			margin-right: 10px;
-			padding:10px;
-			background-color: #128853;
-			color: #fff;
+			width: 800px;														/* 하유리: 댓글 너비 지정(23.08.01.) */
+			/* font-weight: bold; */										/* 하유리: 주석 처리(23.08.01.) */
+			/* margin-right: 10px; */									/* 하유리: 주석 처리(23.08.01.) */
+			padding:7px 0;													/* 하유리: 상하 여백만 주도록 변경(23.08.01.) */
+			/* background-color: #128853; */						/* 하유리: 배경색 주석 처리(23.08.01.) */
+			color: #333;														/* 하유리: 폰트 색상 변경(23.08.01.) */
+			margin-left: 37px;												/* 하유리: 좌측 여백 지정(23.08.02.) */
+			margin-top: -10px;												/* 하유리: 아이디-댓글 내용 사이 여백 지정(23.08.02.) */
 		}
 
+		/* 입력된 댓글_날짜 부분 */
 		.line-content {
 			flex-grow: 1;
+			color: #b8b8b8;													/* 하유리: 폰트 색상 지정(23.08.02.) */
+    		font-weight: 500;												/* 하유리: 폰트 굵기 지정(23.08.02.) */
+    		font-size: 13px;													/* 하유리: 폰트 크기 지정(23.08.02.) */
+    		margin-left: 37px;												/* 하유리: 좌측 여백 지정(23.08.02.) */
+    		letter-spacing: -0.3px;										/* 하유리: 자간 지정(23.08.02.) */
 		}
+
+		/* 댓글작성 폼 */
+		#commentForm {
+			float: left;
+			margin-left: 139px;												/* 하유리: 좌측 여백 지정(23.08.01.) */
+			margin-bottom: 100px;										/* 하유리: 하단 여백 지정(23.08.01.) */
+		    border-top: 7px solid #eeeeee;							/* 하유리: 글쓰기 테이블 - 댓글 작성폼 사이의 구분선(23.08.01.) */
+    		padding-top: 50px;											/* 하유리: 구분선 - 댓글 작성폼 사이의 여백(23.08.01.) */
+    		width: 832px;														/* 하유리: 너비 지정(23.08.01.) */
+		}
+
+		/* 댓글작성폼 상단 '댓글' 텍스트' */
+		#commentForm p {
+			text-align: left;													/* 하유리: 좌측 정렬(23.08.01.) */
+			font-size: 20px;													/* 하유리: 폰트 크기 지정(23.08.01.) */
+    		font-weight: 700;												/* 하유리: 폰트 굵기 지정(23.08.01.) */
+    		letter-spacing: -1px;											/* 하유리: 자간 지정(23.08.01.) */
+		}
+
+		/* 댓글 입력 부분 */
+		.comment_input {
+    		height: 61px;														/* 하유리: 높이(23.08.01.) */
+    		border-radius: 10px;											/* 하유리: 테두리 가장자리 둥글게 지정(23.08.01.) */
+    		display: flex;														/* 하유리: 요소 일정간격으로 배열(23.08.01.) */
+   	 		justify-content: space-between;
+   	 		align-items: center;											/* 하유리: 세로 중앙 배열(23.08.01.) */
+   	 		margin-bottom: 10px;										/* 하유리: input 외부에 여백 지정(23.08.01.) */
+    	}
+
+		/* 댓글 적는 사람 아이콘 */
+		#commentForm img {
+			height: 28px;														/* 하유리: 크기 지정(23.08.01.) */
+		}
+
+		/* 댓글_id, 내용 입력 input */
+		.comment_id, .comment_text, #commentBt {
+			border: 1px solid #e3e3e3;									/* 하유리: 테두리 지정(23.08.01.) */
+    		height: 35px;														/* 하유리: 높이 지정(23.08.01.) */
+    		border-radius: 8px;											/* 하유리: 테두리 가장자리 둥글게 지정(23.08.01.) */
+    		font-weight: 300;												/* 하유리: 폰트 크기 지정(23.08.01.) */
+    		outline: none;													/* 하유리: 클릭 시 생기는 테두리 없애기(23.08.01.) */
+		}
+
+		/* 댓글_id 입력 input */
+		.comment_id {
+			width: 150px;														/* 하유리: 너비 지정(23.08.01.) */
+			padding: 10px;													/* 하유리: input 내부 여백 지정(23.08.01.) */
+		}
+
+		/* 댓글_내용 입력 input */
+		.comment_text {
+			width: 530px;														/* 하유리: 너비 지정(23.08.01.) */
+			padding: 10px;													/* 하유리: input 내부 여백 지정(23.08.01.) */
+		}
+
+		/* 댓글입력 버튼 */
+		 #commentBt {
+			width: 105px;														/* 하유리: 너비 지정(23.08.01.) */
+			font-weight: 500;												/* 하유리: 폰트 굵기 지정(23.08.01.) */
+		}
+
+		/* 입력된 댓글 전체<div> */
+		#commentList {
+			border: 1px solid #e2e2e2;									/* 하유리: 테두리 지정(23.08.02.) */
+    		border-radius: 15px;											/* 하유리: 모서리 둥글게 지정(23.08.02.) */
+    		padding: 0 20px 30px 20px;								/* 하유리: 안쪽 여백 지정(23.08.02.) */
+		}
+
 	</style>
 </head>
 
@@ -159,8 +273,8 @@
 	<div class="container mt-3">
 		<!-- 제목: 변경(23.07.21.)(23.07.30.) -->
 		<!-- 하유리: 필요없는 부분 삭제(23.07.30.) -->
-		<div class="review_sub">								<!-- 하유리: 클래스명 변경(23.07.30.) -->
-			<p class="review_text1">REVIEW</p>		<!-- 하유리: 클래스명 변경(23.07.30.) -->
+		<div class="review_sub">										<!-- 하유리: 클래스명 변경(23.07.30.) -->
+			<p class="review_text1">REVIEW</p>				<!-- 하유리: 클래스명 변경(23.07.30.) -->
 		</div>
 
 		<!-- 게시판 -->
@@ -230,7 +344,7 @@
 				</table>
 
 				<!-- 버튼 -->
-				<div>
+				<div class="btn_wrap">									<!-- 하유리: 버튼 전체를 감싸는 <div> 추가(23.08.01.) -->
 					<div class="content_btn1">
 						<button type="button" class="contentBtn"
 							onClick="location.href='${contextPath}/review/list'">목록</button>
@@ -258,18 +372,21 @@
 				</form> --%>
 
 		<!-- 댓글 작성 폼 -->
-		<form id="commentForm" method="POST">
-			<input type="text" name="userId" id="userId"
-				placeholder="로그인 후 이용 가능" value="${userVO.userId}" required>
-			<input type="text" name="ac_content" id="ac_content"
-				placeholder="댓글 내용" required>
-			<button type="submit" id="commnetBt">댓글 작성</button>
-
-		<!-- 댓글 목록 테이블 -->
-		<div id="commentList">
-
+		<div class="comment_wrap">																								<!-- 하유리: <div> 추가(23.08.01.) -->
+			<form id="commentForm" method="POST">
+				<p>댓글<p>
+				<div class="comment_input">																						<!-- 하유리: 댓글 입력 부분 <div> 추가(23.08.01.) -->
+					<img src="${contextPath }/resources/image/review/007.png"/>									<!-- 하유리: 아이콘 추가(23.08.01.) -->
+					<input class="comment_id" type="text" name="userId" id="userId"
+						placeholder="로그인 후 이용 가능" value="${userVO.userId}" required readOnly>	<!-- 하유리: 클래스명, reaOnly 추가(23.08.01.) -->
+					<input class="comment_text" type="text" name="ac_content" id="ac_content"
+						placeholder="댓글 내용" required autocomplete="off">										<!-- 하유리: 클래스명, 자동완성 끄기 추가(23.08.01.) -->
+					<button type="submit" id="commentBt">댓글 입력</button>									<!-- 하유리: 오타 및 텍스트 수정(23.08.01.) -->
+				</div>
+				<!-- 댓글 목록 테이블 -->
+				<div id="commentList"></div>
+			</form>
 		</div>
-		</form>
 
 	</div>
 
@@ -288,22 +405,14 @@
 
 	                for (var i = 0; i < response.length; i++) {
 	                    var comment = response[i];
-	                    var newComment = $('<div class="line">');
-	                    newComment.append($('<div class="line-title">').text([i+1]+'번째 댓글 : ' + comment.ac_content));
-	                    newComment.append($('<div class="line-content">').text('아이디 : ' + comment.userId));
+	                    var newComment = $('<div class="line">');																						/* 하유리 변수명 변경(23.08.02.) */
+	                    newComment.append($('<img src="${contextPath }/resources/image/review/006.png"/>'));				/* 하유리: 이미지 추가(23.08.01.) */
+	                    newComment.append($('<div class="line-userId">').text(comment.userId));	       				   				/* 하유리: 변수명+클래스명 변경, '아이디' 텍스트 삭제(23.08.02.) */
+	                    newComment.append($('<div class="line-title">').text(comment.ac_content));										/* 하유리: x번째 댓글' 텍스트 삭제(23.08.02.) */
 	                    var dateString = new Date(comment.ac_writeDate).toISOString().split('T')[0];
-	                    newComment.append($('<div class="line-content">').text([i+1]+'번째 날짜: ' + dateString));
-						<%--newComment.append($('<input type="button" id="name${i}" name="name${i}" value="댓글달기">'));--%>
-
-						// 댓글달기 버튼의 이름에 for 루프 변수인 i를 넣는 방법
-						var commentButton = $('<input type="button" value="댓글달기">');
-						commentButton.attr('id', 'name' + i);
-						commentButton.attr('name', 'name' + i);
-						newComment.append(commentButton);
-
-						commentList.append(newComment);
+	                    newComment.append($('<div class="line-content">').text('등록일자: ' + dateString));							/* 하유리: 텍스트 수정(23.08.02.) */
+	                    commentList.append(newComment);
 	                }
-
 	            },
 	            error: function() {
 	            	alert('비회원 상태입니다.\n로그인 창으로 넘어갑니다.');
@@ -335,18 +444,11 @@
                 for (var i = 0; i < response.length; i++) {
                     var comment = response[i];
                     var newComment = $('<div class="line">');
-                    newComment.append($('<div class="line-title">').text([i+1]+'번째 댓글 : ' + comment.ac_content));
-                    newComment.append($('<div class="line-content">').text('아이디 : ' + comment.userId));
+                    newComment.append($('<img src="${contextPath }/resources/image/review/006.png"/>'));					/* 하유리: 이미지 추가(23.08.01.) */
+                    newComment.append($('<div class="line-userId">').text(comment.userId));											/* 하유리: '아이디' 텍스트 삭제(23.08.01.)' */
+                    newComment.append($('<div class="line-title">').text(comment.ac_content));											/* 하유리: x번째 댓글' 텍스트 삭제(23.08.02.) */
                     var dateString = new Date(comment.ac_writeDate).toISOString().split('T')[0];
-                    newComment.append($('<div class="line-content">').text([i+1]+'번째 날짜: ' + dateString));
-					<%--newComment.append($('<input type="button" id="name${i}" name="name${i}" value="댓글달기">'));--%>
-
-					// 댓글달기 버튼의 이름에 for 루프 변수인 i를 넣는 방법
-					var commentButton = $('<input type="button" value="댓글달기">');
-					commentButton.attr('id', 'name' + i);
-					commentButton.attr('name', 'name' + i);
-					newComment.append(commentButton);
-
+                    newComment.append($('<div class="line-content">').text('등록일자: ' + dateString));								/* 하유리: 텍스트 수정(23.08.02.) */
                     commentList.append(newComment);
                 }
 
