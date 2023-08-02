@@ -91,6 +91,7 @@
     <%--    </div>--%>
 </div>
 
+<%-- 스크립트 --%>
 <script>
     /* 주문 취소 버튼 스크립트 - 김동혁 추가(23.07.27) */
     function showConfirmation(orderNum) {
