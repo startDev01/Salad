@@ -134,8 +134,8 @@
 	<!-- 조상현: ajax 대댓글(23.08.01)  -->
 	<insert id="insertComment" parameterType="com.proj.salad.review.vo.ajaxCommentVO">
 		<![CDATA[
-			INSERT INTO re_ajaxComment(ac_commentNO, re_articleNO, userId, ac_content)
-			VALUES(re_accomment_seq.NEXTVAL, #{re_articleNO}, #{userId}, #{ac_content})
+			INSERT INTO re_ajaxComment(ac_commentNO, re_articleNO, ac_parentNO, userId, ac_content)
+			VALUES(re_accomment_seq.NEXTVAL, #{re_articleNO}, #{ac_parentNO}, #{userId}, #{ac_content})
 		]]>
 	</insert>
 	

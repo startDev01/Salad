@@ -161,6 +161,41 @@ public class ReviewController extends HttpServlet {
 	        System.out.println(jsonString);
 	        return jsonString;
 	    }
+		
+	@RequestMapping(value="/addReply" , method=RequestMethod.POST, produces ="application/text; charset=UTF-8")
+	@ResponseBody
+	 public String addReply(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		 	ajaxCommentVO ajaxCommentVO = new ajaxCommentVO();
+		 	int re_articleNO = (int)session.getAttribute("re_articleNO");	
+		 	String userId = null;
+		 	HttpSession session = request.getSession();
+
+			UserVO userVO = (UserVO) session.getAttribute("user");
+			userId = userVO.getUserId();
+			
+			String aa = request.getParameter("ac_parentNO");
+			
+			ajaxCommentVO.setRe_articleNO(re_articleNO);
+		 	ajaxCommentVO.setAc_parentNO(Integer.parseInt(aa));
+		 	ajaxCommentVO.setAc_content(request.getParameter("ac_content"));
+		 	ajaxCommentVO.setUserId(userId);
+		 	
+
+		 	reviewService.ajaxCommentInsert(ajaxCommentVO);
+
+		 	// 저장된 댓글을 다시 조회하여 반환
+	        List<ajaxCommentVO> ac = reviewService.ajaxComment(re_articleNO);
+			ObjectMapper objectMapper = new ObjectMapper();
+	        String jsonString;
+	        try {
+	            jsonString = objectMapper.writeValueAsString(ac);
+	        } catch (JsonProcessingException e) {
+	            e.printStackTrace();
+	            jsonString = "[]"; // 에러 발생 시 빈 배열을 반환하거나 다른 처리를 수행할 수 있습니다.
+	        }
+	        System.out.println(jsonString);
+	        return jsonString;
+	    }
 	//조상현:  대댓글 추가(23.08.01)
 	@RequestMapping(value="/getCommentList" , method=RequestMethod.POST, produces ="application/text; charset=UTF-8")
 	@ResponseBody

@@ -233,7 +233,7 @@
 		}
 
 		/* 댓글_id, 내용 입력 input */
-		.comment_id, .comment_text, #commentBt, #commentBt2 {
+		.comment_id, .comment_text, #commentBt, .reply-btn {
 			border: 1px solid #e3e3e3;									/* 하유리: 테두리 지정(23.08.01.) */
     		height: 35px;														/* 하유리: 높이 지정(23.08.01.) */
     		border-radius: 8px;											/* 하유리: 테두리 가장자리 둥글게 지정(23.08.01.) */
@@ -254,7 +254,7 @@
 		}
 
 		/* 댓글입력 버튼 */
-		 #commentBt, #commentBt2 {
+		 #commentBt, .reply-btn {
 			width: 105px;														/* 하유리: 너비 지정(23.08.01.) */
 			font-weight: 500;												/* 하유리: 폰트 굵기 지정(23.08.01.) */
 		}
@@ -434,11 +434,51 @@
 	$(document).on('click', '[id^="commentBt2_"]', function(event) {
 	    event.preventDefault();
 	    var commentIndex = $(this).attr('id').split('_')[1]; // 버튼의 id에서 댓글 인덱스를 추출합니다.
-	    var ac_commentNoValue = $('#reply-NO_' + commentIndex).val(); //부모넘버
-	    var replyInput = $('#reply-input_' + commentIndex).val(); //대댓글 내용
-	    console.log('댓글 번호: ' + ac_commentNoValue);
-	    console.log('대댓글 내용: ' + replyInput);
+	    var ac_parentNO = $('#reply-NO_' + commentIndex).val(); //부모넘버
+	    var ac_content = $('#reply-input_' + commentIndex).val(); //대댓글 내용
+	    console.log('댓글 번호: ' + ac_parentNO);
+	    console.log('대댓글 내용: ' + ac_content);
 	    // 댓글 데이터를 사용하여 원하는 동작을 수행합니다.
+	    
+	    
+	 // 댓글 추가를 위한 AJAX 요청 보내기
+        $.ajax({
+            url: '${contextPath}/review/addReply', // 실제 댓글을 추가하는 서버 URL로 대체해주세요
+            type: 'POST',
+            data: {ac_parentNO : ac_parentNO, ac_content : ac_content},
+            dataType: 'json',
+            success: function (response) {
+             // 서버에서 정상적으로 데이터를 받아왔을 때 실행되는 부분
+                var commentList = $('#commentList');
+                commentList.empty(); // 기존 목록을 비웁니다.
+
+                for (var i = 0; i < response.length; i++) {
+                    var comment = response[i];
+                    var newComment = $('<div class="line">');
+                    newComment.append($('<img src="${contextPath }/resources/image/review/006.png"/>'));					/* 하유리: 이미지 추가(23.08.01.) */
+                    newComment.append($('<div class="line-userId">').text(comment.userId));											/* 하유리: '아이디' 텍스트 삭제(23.08.01.)' */
+                    newComment.append($('<div class="line-title">').text(comment.ac_content));											/* 하유리: x번째 댓글' 텍스트 삭제(23.08.02.) */
+                    var dateString = new Date(comment.ac_writeDate).toISOString().split('T')[0];
+                    newComment.append($('<div class="line-content">').text('등록일자: ' + dateString));								/* 하유리: 텍스트 수정(23.08.02.) */
+                    
+                 // 인덱스를 이용하여 고유한 id 속성을 추가하여 폼 요소를 생성합니다.
+                    newComment.append($('<form id="comment_reply_Form_' + i + '" method="POST">'));
+                    var ac_commentNoValue = comment.ac_commentNO;
+                    console.log('넘버 내용: ' + ac_commentNoValue);
+                    newComment.append($('<input type="text" id="reply-NO_' + i + '" value="' + ac_commentNoValue + '" hidden>'));
+                    newComment.append($('<input type="text" class="comment_text" id="reply-input_' + i + '" placeholder="대댓글을 입력하세요...">'));
+                    newComment.append($('<button type="submit" id="commentBt2_' + i + '" class="reply-btn">대댓글달기</button>'));
+                    newComment.append($('</form>'));
+                    commentList.append(newComment);
+                }
+
+            },
+            error: function() {
+            	alert('비회원 상태입니다.\n로그인 창으로 넘어갑니다.');
+                location.href = '${contextPath}/user/loginForm.do';
+            }
+        });
+	    
 	    
 	});
 	
@@ -472,14 +512,13 @@
                     var dateString = new Date(comment.ac_writeDate).toISOString().split('T')[0];
                     newComment.append($('<div class="line-content">').text('등록일자: ' + dateString));								/* 하유리: 텍스트 수정(23.08.02.) */
                     
-                    newComment.append($('<form id="comment_reply_Form" method="POST">'));
-                    // ${comment.ac_commentNo} 값을 변수에 저장
+                 // 인덱스를 이용하여 고유한 id 속성을 추가하여 폼 요소를 생성합니다.
+                    newComment.append($('<form id="comment_reply_Form_' + i + '" method="POST">'));
                     var ac_commentNoValue = comment.ac_commentNO;
                     console.log('넘버 내용: ' + ac_commentNoValue);
-
-                    newComment.append($('<input type="text" id="reply-NO' + i +'" value="' + ac_commentNoValue + '" hidden>'));
-                    newComment.append($('<input type="text" class="comment_text" id="reply-input' + i +'" placeholder="대댓글을 입력하세요...">'));
-                    newComment.append($('<button type="submit" id="commentBt" class="reply-btn' + i +'">대댓글달기</button>'));
+                    newComment.append($('<input type="text" id="reply-NO_' + i + '" value="' + ac_commentNoValue + '" hidden>'));
+                    newComment.append($('<input type="text" class="comment_text" id="reply-input_' + i + '" placeholder="대댓글을 입력하세요...">'));
+                    newComment.append($('<button type="submit" id="commentBt2_' + i + '" class="reply-btn">대댓글달기</button>'));
                     newComment.append($('</form>'));
                     commentList.append(newComment);
                 }
