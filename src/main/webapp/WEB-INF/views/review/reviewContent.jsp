@@ -200,7 +200,7 @@
 		}
 
 		/* 댓글작성 폼 */
-		#commentForm {
+		#commentForm2 {
 			float: left;
 			margin-left: 139px;												/* 하유리: 좌측 여백 지정(23.08.01.) */
 			margin-bottom: 100px;										/* 하유리: 하단 여백 지정(23.08.01.) */
@@ -210,7 +210,7 @@
 		}
 
 		/* 댓글작성폼 상단 '댓글' 텍스트' */
-		#commentForm p {
+		#commentForm2 p {
 			text-align: left;													/* 하유리: 좌측 정렬(23.08.01.) */
 			font-size: 20px;													/* 하유리: 폰트 크기 지정(23.08.01.) */
     		font-weight: 700;												/* 하유리: 폰트 굵기 지정(23.08.01.) */
@@ -228,12 +228,12 @@
     	}
 
 		/* 댓글 적는 사람 아이콘 */
-		#commentForm img {
+		#commentForm2 img {
 			height: 28px;														/* 하유리: 크기 지정(23.08.01.) */
 		}
 
 		/* 댓글_id, 내용 입력 input */
-		.comment_id, .comment_text, #commentBt {
+		.comment_id, .comment_text, #commentBt, #commentBt2 {
 			border: 1px solid #e3e3e3;									/* 하유리: 테두리 지정(23.08.01.) */
     		height: 35px;														/* 하유리: 높이 지정(23.08.01.) */
     		border-radius: 8px;											/* 하유리: 테두리 가장자리 둥글게 지정(23.08.01.) */
@@ -254,7 +254,7 @@
 		}
 
 		/* 댓글입력 버튼 */
-		 #commentBt {
+		 #commentBt, #commentBt2 {
 			width: 105px;														/* 하유리: 너비 지정(23.08.01.) */
 			font-weight: 500;												/* 하유리: 폰트 굵기 지정(23.08.01.) */
 		}
@@ -365,14 +365,11 @@
 				</div>
 <!-- 			</form> -->
 		</div>
-		<%-- <form id="commentForm">
-					<input type="text" name="userId" id="userId" placeholder="로그인 후 이용 가능" value="${userVO.userId}" required>
-					<input type="text" name="ac_content" id="ac_content" placeholder="댓글 내용" required>
-					<button type="submit">댓글 작성</button>
-				</form> --%>
+
 
 		<!-- 댓글 작성 폼 -->
-		<div class="comment_wrap">																								<!-- 하유리: <div> 추가(23.08.01.) -->
+		<div class="comment_wrap">
+		<div id="commentForm2">																						<!-- 하유리: <div> 추가(23.08.01.) -->
 			<form id="commentForm" method="POST">
 				<p>댓글<p>
 				<div class="comment_input">																						<!-- 하유리: 댓글 입력 부분 <div> 추가(23.08.01.) -->
@@ -384,8 +381,11 @@
 					<button type="submit" id="commentBt">댓글 입력</button>									<!-- 하유리: 오타 및 텍스트 수정(23.08.01.) -->
 				</div>
 				<!-- 댓글 목록 테이블 -->
-				<div id="commentList"></div>
 			</form>
+				<div id="commentList">
+				
+				</div>
+		</div>		
 		</div>
 
 	</div>
@@ -411,6 +411,15 @@
 	                    newComment.append($('<div class="line-title">').text(comment.ac_content));										/* 하유리: x번째 댓글' 텍스트 삭제(23.08.02.) */
 	                    var dateString = new Date(comment.ac_writeDate).toISOString().split('T')[0];
 	                    newComment.append($('<div class="line-content">').text('등록일자: ' + dateString));							/* 하유리: 텍스트 수정(23.08.02.) */
+	                    
+	                    // 인덱스를 이용하여 고유한 id 속성을 추가하여 폼 요소를 생성합니다.
+	                    newComment.append($('<form id="comment_reply_Form_' + i + '" method="POST">'));
+	                    var ac_commentNoValue = comment.ac_commentNO;
+	                    console.log('넘버 내용: ' + ac_commentNoValue);
+	                    newComment.append($('<input type="text" id="reply-NO_' + i + '" value="' + ac_commentNoValue + '" hidden>'));
+	                    newComment.append($('<input type="text" class="comment_text" id="reply-input_' + i + '" placeholder="대댓글을 입력하세요...">'));
+	                    newComment.append($('<button type="submit" id="commentBt2_' + i + '" class="reply-btn">대댓글달기</button>'));
+	                    newComment.append($('</form>'));
 	                    commentList.append(newComment);
 	                }
 	            },
@@ -420,6 +429,19 @@
 	            }
 	        });
 	    });
+	
+	// 인덱스를 이용하여 적절한 폼 요소를 선택하기 위해 click 이벤트를 수정합니다.
+	$(document).on('click', '[id^="commentBt2_"]', function(event) {
+	    event.preventDefault();
+	    var commentIndex = $(this).attr('id').split('_')[1]; // 버튼의 id에서 댓글 인덱스를 추출합니다.
+	    var ac_commentNoValue = $('#reply-NO_' + commentIndex).val(); //부모넘버
+	    var replyInput = $('#reply-input_' + commentIndex).val(); //대댓글 내용
+	    console.log('댓글 번호: ' + ac_commentNoValue);
+	    console.log('대댓글 내용: ' + replyInput);
+	    // 댓글 데이터를 사용하여 원하는 동작을 수행합니다.
+	    
+	});
+	
 
 
 
@@ -449,6 +471,16 @@
                     newComment.append($('<div class="line-title">').text(comment.ac_content));											/* 하유리: x번째 댓글' 텍스트 삭제(23.08.02.) */
                     var dateString = new Date(comment.ac_writeDate).toISOString().split('T')[0];
                     newComment.append($('<div class="line-content">').text('등록일자: ' + dateString));								/* 하유리: 텍스트 수정(23.08.02.) */
+                    
+                    newComment.append($('<form id="comment_reply_Form" method="POST">'));
+                    // ${comment.ac_commentNo} 값을 변수에 저장
+                    var ac_commentNoValue = comment.ac_commentNO;
+                    console.log('넘버 내용: ' + ac_commentNoValue);
+
+                    newComment.append($('<input type="text" id="reply-NO' + i +'" value="' + ac_commentNoValue + '" hidden>'));
+                    newComment.append($('<input type="text" class="comment_text" id="reply-input' + i +'" placeholder="대댓글을 입력하세요...">'));
+                    newComment.append($('<button type="submit" id="commentBt" class="reply-btn' + i +'">대댓글달기</button>'));
+                    newComment.append($('</form>'));
                     commentList.append(newComment);
                 }
 
@@ -459,6 +491,8 @@
             }
         });
     });
+	
+	
 </script>
 </body>
 </html>
