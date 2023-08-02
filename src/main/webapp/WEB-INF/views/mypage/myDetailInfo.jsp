@@ -72,7 +72,7 @@
 								</td>
 								<td><input class="join_input" name="userPwd" id="userPwd" type="password" minlength="4" maxlength="12" required  value="${user.userPwd }" /></td>	<!-- 하유리: align속성, size 삭제(23.07.25.) -->
 								<td  class="btn_modify"><!-- 23.07.31 수정하기 아이콘으로 변경 서승희 -->
-								<button type="button" onClick="fn_modify_user_info('userPwd')">
+								<button class="btn-cursor-pointer" type="button" onClick="fn_modify_user_info('userPwd')">
 								<img src="${contextPath}/resources/image/mypage/modify1.png" alt="userPwd" width="27px;" height="27px;">
 								</button>
 						<!-- 	<input id="btn_modify" name="input" type="button"  value="수정하기" onClick="fn_modify_user_info('userPwd')"/> -->
@@ -93,7 +93,7 @@
 								</td>
 								<td><input class="join_input" name="userName" type="text" minlength="2" maxlength="10" required  value="${user.userName }" /></td>				<!-- 하유리: align속성, size 삭제(23.07.25.) -->
 								<td  class="btn_modify"><!-- 23.07.31 수정하기 아이콘으로 변경 서승희 -->
-								<button type="button" onClick="fn_modify_user_info('userName')">
+								<button class="btn-cursor-pointer" type="button" onClick="fn_modify_user_info('userName')">
 								<img src="${contextPath}/resources/image/mypage/modify1.png" alt="userName" width="27px;" height="27px;">
 								</button>
 								<!-- <input type="button" value="수정하기" onClick="fn_modify_user_info('userName')"/> 
@@ -119,7 +119,7 @@
 								 </c:choose>
 								</td>
 								<td  class="btn_modify"><!-- 23.07.31 수정하기 아이콘으로 변경 서승희 -->
-								<button type="button" onClick="fn_modify_user_info('userGender')">
+								<button class="btn-cursor-pointer" type="button" onClick="fn_modify_user_info('userGender')">
 								<img src="${contextPath}/resources/image/mypage/modify1.png" alt="userGender" width="27px;" height="27px;">
 								</button>
 								<!-- <input type="button" value="수정하기" onClick="fn_modify_user_info('userGender')"/> -->
@@ -140,7 +140,7 @@
 					 			</c:choose>
 								</td>
 								<td  class="btn_modify"><!-- 23.07.31 수정하기 아이콘으로 변경 서승희 -->
-								<button class="btn_modify_email" type="button" onClick="fn_modify_user_info('email')">
+								<button class="btn_modify_email btn-cursor-pointer" type="button" onClick="fn_modify_user_info('email')">
 								<img src="${contextPath}/resources/image/mypage/modify1.png" alt="email" width="27px;" height="27px;">
 								</button>
 								<!-- <input type="button" value="수정하기" onClick="fn_modify_user_info('email')"/> -->
@@ -152,7 +152,7 @@
 								</td>
 								<td><input class="join_input" name="userBirth" type="text"  maxlength="8" required  value="${user.userBirth }" /></td>	<!-- 하유리: align속성, size, <br>(e-mail) 삭제(23.07.25.) -->
 								<td  class="btn_modify"><!-- 23.07.31 수정하기 아이콘으로 변경 서승희 -->
-								<button type="button" onClick="fn_modify_user_info('userBirth')">
+								<button class="btn-cursor-pointer" type="button" onClick="fn_modify_user_info('userBirth')">
 								<img src="${contextPath}/resources/image/mypage/modify1.png" alt="userBirth" width="27px;" height="27px;">
 								</button>
 								<!-- <input type="button" value="수정하기" onClick="fn_modify_user_info('userBirth')"/> -->
@@ -202,7 +202,7 @@
 					 	</c:choose>	
 					 	</td>
 						<td  class="btn_modify"><!-- 23.07.31 수정하기 아이콘으로 변경 서승희 -->
-						<button class="btn_modify_phone" type="button" onClick="fn_modify_user_info('phone')">
+						<button class="btn_modify_phone btn-cursor-pointer" type="button" onClick="fn_modify_user_info('phone')">
 						<img src="${contextPath}/resources/image/mypage/modify1.png" alt="phone" width="27px;" height="27px;">
 						</button>
 						<!-- <input type="button" value="수정하기" onClick="fn_modify_user_info('phone')"/> -->
@@ -221,7 +221,7 @@
 								   </p>
 								  </td>
 								<td  class="btn_modify"><!-- 23.07.31 수정하기 아이콘으로 변경 서승희 -->
-								<button class="btn_modify_address" type="button" onClick="fn_modify_user_info('address')">
+								<button class="btn_modify_address btn-cursor-pointer" type="button" onClick="fn_modify_user_info('address')">
 								<img src="${contextPath}/resources/image/mypage/modify1.png" alt="address" width="27px;" height="27px;">
 								</button>
 								<!-- <input type="button" value="수정하기" onClick="fn_modify_user_info('address')"/> -->
@@ -234,10 +234,10 @@
 						<input type="hidden" name="command"  value="modify_my_info" /> 
 						<!-- <input name="btn_cancel_member" type="button"  value="수정 취소"> -->
 						<%-- <input name="btn_modify_user" type="button" onclick="fn_modify_user_info('modify_all')"  value="수정하기"> --%>
-						<input name="btn_cancel_user" type="reset"  value="수정취소">
+						<input class="btn-cancel" name="btn_cancel_user" type="reset"  value="수정취소">
 						<%-- <input type="button" onclick="location.href='${contextPath}/mypage/removeUser.do?userId=${user.userId}'" value="회원탈퇴"/> --%>
 						<!-- 23.07.31 서승희 회원탈퇴 수정 -->
-						<input type="button" onclick="removeMember();" value="회원탈퇴"/>
+						<input class="btn-delete-user" type="button" onclick="removeMember();" value="회원탈퇴"/>
 						<br><br>
 					</div>
 				</form>

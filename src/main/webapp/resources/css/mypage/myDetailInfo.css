@@ -193,7 +193,8 @@ td {
    	border-radius: 5px;
    	color: #128853;	
    	background-color: rgb(255, 255, 255);
-   	border: 1px solid #128853;	
+   	border: 1px solid #128853;
+	cursor: pointer;
 }
 
 /* 하단 버튼(회원가입, 다시입력, 메인) */
@@ -237,3 +238,17 @@ td {
    	margin-top: -10px;
 }
 
+/* 취소버튼 css 추가 - 김동혁(23.08.02) */
+.btn-cancel {
+	cursor: pointer;
+}
+
+/* 탈퇴버튼 css 추가 - 김동혁(23.08.02) */
+.btn-delete-user {
+	cursor: pointer;
+}
+
+/* 이미지 커서 표시 - 김동혁(23.08.02) */
+.btn-cursor-pointer {
+	cursor: pointer;
+}

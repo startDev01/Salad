@@ -40,13 +40,13 @@
     <div class="odl-container">
         <table class="order-info-table" align="center">
             <tr>
-                <td class="order-info-td-title" colspan="2">주문번호</td>
+                <td class="order-info-td-title oi-border-top" colspan="2">주문번호</td>
                 <td class="order-info-td" colspan="2">${orderInfo.fakeOrderNum}</td>
             </tr>
             <tr>
                 <td class="order-info-td-title">주문일자</td>
                 <td class="order-info-td">${orderInfo.orderCreateTimestamp}</td>
-                <td class="order-info-td-title">배송 예정 일자</td>
+                <td class="order-info-td-title oi-border-top">배송 예정 일자</td>
                 <td class="order-info-td">${orderInfo.prodDeliveryDate}</td>
             </tr>
             <tr>
@@ -65,7 +65,7 @@
                 </td>
             </tr>
         </table>
-        <c:if test="${orderInfo.orderStatus == '결제완료'}">
+        <c:if test="${orderInfo.orderStatus == '결제완료' and orderInfo.reviewStatus == 0}">
             <button class="orderInfo-review-btn" data-orderNum="${orderNum}" onclick="redirectToReviewPage()">리뷰작성</button>
         </c:if>
     </div>
@@ -74,7 +74,7 @@
     function redirectToReviewPage() {
         var orderNum = event.target.getAttribute('data-orderNum'); // orderNum 변수에 값을 할당 (서버에서 렌더링할 때 해당 값으로 대체됩니다.)
         const contextPath = '${contextPath}'; // contextPath 변수에 값을 할당 (서버에서 렌더링할 때 해당 값으로 대체됩니다.)
-        const url = contextPath + '/review/insert/?orderNum=' + orderNum; // URL에 orderNum 파라미터를 추가하여 완성
+        const url = contextPath + '/review/insert?orderNum=' + orderNum; // URL에 orderNum 파라미터를 추가하여 완성
 
         // 리뷰 작성 페이지로 이동
         window.location.href = url;

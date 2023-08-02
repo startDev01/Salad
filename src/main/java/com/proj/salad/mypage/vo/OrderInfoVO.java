@@ -24,6 +24,7 @@ public class OrderInfoVO {
     private int totalPrice; // 총 가격
     private Date prodDeliveryDate; // 배송일자
     private String memo; // 배송 요청사항
+    private int reviewStatus; // 리뷰 작성상태
 
     public int getOrderNum() {
         return orderNum;
@@ -145,6 +146,14 @@ public class OrderInfoVO {
         this.memo = memo;
     }
 
+    public int getReviewStatus() {
+        return reviewStatus;
+    }
+
+    public void setReviewStatus(int reviewStatus) {
+        this.reviewStatus = reviewStatus;
+    }
+
     @Override
     public String toString() {
         return "OrderInfoVO{" +
@@ -163,6 +172,7 @@ public class OrderInfoVO {
                 ", totalPrice=" + totalPrice +
                 ", prodDeliveryDate=" + prodDeliveryDate +
                 ", memo='" + memo + '\'' +
+                ", reviewStatus=" + reviewStatus +
                 '}';
     }
 }

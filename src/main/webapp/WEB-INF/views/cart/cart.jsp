@@ -84,7 +84,7 @@
             </span>
               <span> + </span>
                 <span>3,000</span>
-              <span> + </span>
+              <span> = </span>
               <span>
               <fmt:formatNumber value="${sum + 2500}" pattern="#,###" /> 원
               </span>

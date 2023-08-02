@@ -22,6 +22,8 @@ head { /* 마이페이지 글씨체 폰트 맞추기 23.07.30 서승희 추가*/
 .order-info-table {
     /*border: 1px solid black;*/
       font-size:13px;  /* jsp에 있던 css 옮김 23.07.30 서승희 */
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 .order-info-table > tr > td {
@@ -44,6 +46,10 @@ head { /* 마이페이지 글씨체 폰트 맞추기 23.07.30 서승희 추가*/
     border-bottom: 1px solid gray;
 }
 
+.oi-border-top {
+    border-top: 1px solid gray;
+}
+
 .order-info-td {
     font-weight: 300;
 }
@@ -61,6 +67,7 @@ head { /* 마이페이지 글씨체 폰트 맞추기 23.07.30 서승희 추가*/
     background: #128853;
     color: white;
     border-radius: 5px;
+    margin-top: 20px;
 }
 
 .orderInfo-review-btn:hover {
