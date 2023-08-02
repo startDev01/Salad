@@ -152,6 +152,12 @@
 		.line-content {
 			flex-grow: 1;
 		}
+		.comment-reply{				
+			display: flex;
+			align-items: center;
+			margin-bottom: 10px;
+			flex-direction: row;
+		}
 	</style>
 </head>
 
@@ -251,13 +257,7 @@
 				</div>
 <!-- 			</form> -->
 		</div>
-		<%-- <form id="commentForm">
-					<input type="text" name="userId" id="userId" placeholder="로그인 후 이용 가능" value="${userVO.userId}" required>
-					<input type="text" name="ac_content" id="ac_content" placeholder="댓글 내용" required>
-					<button type="submit">댓글 작성</button>
-				</form> --%>
 
-		<!-- 댓글 작성 폼 -->
 		<form id="commentForm" method="POST">
 			<input type="text" name="userId" id="userId"
 				placeholder="로그인 후 이용 가능" value="${userVO.userId}" required>
@@ -265,16 +265,15 @@
 				placeholder="댓글 내용" required>
 			<button type="submit" id="commnetBt">댓글 작성</button>
 
+		</form>
 		<!-- 댓글 목록 테이블 -->
 		<div id="commentList">
+		
+
 
 		</div>
-		</form>
-
-	</div>
 
 	<script type="text/javascript">
-
 	$(document).ready(function () {
 		 $.ajax({
 	            url: '${contextPath}/review/getCommentList', // 실제 댓글을 추가하는 서버 URL로 대체해주세요
@@ -293,6 +292,17 @@
 	                    newComment.append($('<div class="line-content">').text('아이디 : ' + comment.userId));
 	                    var dateString = new Date(comment.ac_writeDate).toISOString().split('T')[0];
 	                    newComment.append($('<div class="line-content">').text([i+1]+'번째 날짜: ' + dateString));
+	                    newComment.append($('<form id="comment_reply_Form" method="POST">'));
+	                    // ${comment.ac_commentNo} 값을 변수에 저장
+	                    var ac_commentNoValue = comment.ac_commentNO;
+	                    console.log('넘버 내용: ' + ac_commentNoValue);
+
+	                    newComment.append($('<input type="text" id="reply-NO" value="' + ac_commentNoValue + '">'));
+	                    newComment.append($('<input type="text" id="reply-input" placeholder="대댓글을 입력하세요...">'));
+	                    newComment.append($('<button type="submit" id="reply-btn">대댓글달기</button>'));
+	                    newComment.append($('</form>'));
+	                    
+	                    
 	                    commentList.append(newComment);
 	                }
 
@@ -326,11 +336,20 @@
 
                 for (var i = 0; i < response.length; i++) {
                     var comment = response[i];
-                    var newComment = $('<div class="line">');
+                    var newComment = $('<div id="" class="line">');
                     newComment.append($('<div class="line-title">').text([i+1]+'번째 댓글 : ' + comment.ac_content));
                     newComment.append($('<div class="line-content">').text('아이디 : ' + comment.userId));
                     var dateString = new Date(comment.ac_writeDate).toISOString().split('T')[0];
                     newComment.append($('<div class="line-content">').text([i+1]+'번째 날짜: ' + dateString));
+                    newComment.append($('<form id="comment_reply_Form" method="POST">'));
+                    // ${comment.ac_commentNo} 값을 변수에 저장
+                    var ac_commentNoValue = comment.ac_commentNO;
+                    console.log('넘버 내용: ' + ac_commentNoValue);
+
+                    newComment.append($('<input type="text" id="reply-NO" value="' + ac_commentNoValue + '">'));
+                    newComment.append($('<input type="text" id="reply-input" placeholder="대댓글을 입력하세요...">'));
+                    newComment.append($('<button type="submit" id="reply-btn">대댓글달기</button>'));
+                    newComment.append($('</form>'));
                     commentList.append(newComment);
                 }
 
@@ -341,6 +360,18 @@
             }
         });
     });
+	
+	$(document).on('click', '#reply-btn', function(event) {
+	    event.preventDefault(); // 폼의 기본 동작인 제출을 막습니다.
+	    console.log('대댓글달기 버튼 클릭 이벤트 발생');
+	    var ac_commentNoValue = $('#reply-NO').val(); // input 요소에 입력된 댓글 번호 값을 가져옵니다.
+	    console.log('댓글 번호: ' + ac_commentNoValue);
+	    var replyInput = $('#reply-input').val(); // 입력된 대댓글 내용을 가져옵니다.
+	    console.log('대댓글 내용: ' + replyInput);
+	    // 이제 대댓글을 서버에 전송하거나 원하는 동작을 수행할 수 있습니다.
+	    // ...
+	});
+	
 </script>
 </body>
 </html>
