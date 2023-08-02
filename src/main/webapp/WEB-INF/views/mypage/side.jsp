@@ -52,15 +52,15 @@
 							<%-- <c:forEach  var="i" begin="1" end="3" step="1"> --%>
 							<li><p>
 								<%-- <a href="${contextPath}/notice/list">[안내] 샐러드다이소 시스템 점검 안내${ i}</a> --%>
-								<a href="${contextPath}/notice/content?articleNO=204">- 6월 서비스 점검 안내</a>
+								<a href="${contextPath}/notice/content?articleNO=205">- 6월 서비스 점검 안내</a>						<!-- 하유리: 글 번호 수정(23.08.02.) -->
 								</p></li>
 								<li><p>
 								<%-- <a href="${contextPath}/notice/list">[안내] 샐러드다이소 시스템 점검 안내${ i}</a> --%>
-									<a href="${contextPath}/notice/content?articleNO=203">- 인스타 이벤트 당첨안내</a>
+									<a href="${contextPath}/notice/content?articleNO=204">- 인스타 이벤트 당첨안내</a>
 									</p></li>
 								<li><p>
 								<%-- <a href="${contextPath}/notice/list">[안내] 샐러드다이소 시스템 점검 안내${ i}</a> --%>
-									<a href="${contextPath}/notice/content?articleNO=202">- 5월 배송 휴무 안내</a>
+									<a href="${contextPath}/notice/content?articleNO=203">- 5월 배송 휴무 안내</a>
 									</p></li>
 									<%-- 	</c:forEach> --%>
 						</ul>

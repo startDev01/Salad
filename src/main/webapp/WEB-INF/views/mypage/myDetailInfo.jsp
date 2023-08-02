@@ -63,7 +63,7 @@
 									<p class="join_label">아이디<span class="essential">*</span>	<!-- 하유리: <span> 추가, align속성 삭제(23.07.25.) -->
 								</td>	
 								<td align="left"><!-- 하유리: class, </td> 추가(23.07.25.) -->
-									<input class="join_input" style="width: 65%;" type="text" name="userId"  id="userId"   minlength="2" maxlength="10" required  value="${user.userId }" disabled/>								
+									<input class="join_input" type="text" name="userId"  id="userId"   minlength="2" maxlength="10" required  value="${user.userId }" disabled/>					<!-- 서승희: <style> 삭제(23.08.01.) -->					
 								</td>
 							</tr>
 							<tr class="dot_line">
@@ -238,7 +238,7 @@
 						<%-- <input type="button" onclick="location.href='${contextPath}/mypage/removeUser.do?userId=${user.userId}'" value="회원탈퇴"/> --%>
 						<!-- 23.07.31 서승희 회원탈퇴 수정 -->
 						<input class="btn-delete-user" type="button" onclick="removeMember();" value="회원탈퇴"/>
-						<br><br>
+						<!-- <br><br> -->					<!-- 하유리: <br> 주석처리(23.08.02.) -->
 					</div>
 				</form>
 			</div>

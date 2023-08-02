@@ -14,9 +14,9 @@ head {
 .odl-container {
     /* display: flex; */			/* 하유리: 주석 처리(23.07.31.) */
     flex-direction: row;
-    width: 1097px;			 	/* 하유리: 너비 수정(23.07.31.) */
+    width: 1072px;			 	/* 하유리: 너비 수정(23.07.31.) */	/* 하유리: 너비 수정(23.08.02.) */
     padding-top: 178px;   	/* 하유리: 헤더 영역만큼 아래로 내림(23.07.27.) */
-    padding-left:50px; 	 	/* 23.07.29 서승희 추가 */
+    padding-left:70px; 	 	/* 23.07.29 서승희 추가 */				/* 하유리: 여백 수정(23.08.02.) */
     text-align: left;			 	/* 하유리: 왼쪽 맞춤(23.07.31.) */
 }
 
@@ -32,7 +32,7 @@ head {
 .odl-box {
     /*border: 5px solid indianred;*/
     /*height: 1000px;*/
-    width: 900px;
+    width: 1072px;							/* 하유리: 너비 수정(23.08.02.) */
  	
 }
 

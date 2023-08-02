@@ -26,7 +26,7 @@
 
 </head>
 <body>
-<div class=mymain_total">
+<div class="mymain_total">							<!-- 하유리: 클래스에 따옴표 없어서 수정(23.08.02.) -->
 <div class="myinfo_container">
 <h1 class="myinfo">#나의 정보</h1><br>
 <table class="myinfo_table">
@@ -186,7 +186,7 @@
 </table>
 </div>
 </div>
-<br><br>	
+<!-- <br><br> -->				<!-- 하유리: 주석 처리(23.08.02.) -->	
 <!-- <h1>계좌내역</h1><br>
 <div class="pay_form" align="center">
 <table border=1  width=70%  cellpadding=10 cellspacing=10>

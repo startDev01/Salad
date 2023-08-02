@@ -37,9 +37,9 @@ button{  /* 23.07.31 수정하기 아이콘으로 변경 서승희 */
 	font-family: 'Noto Sans KR', sans-serif;
 	/* margin: 50px 0; */	
 	/* padding-top: 178px;	 */	/* 헤더 영역만큼 아래로 내림 */ /* 23.08.01 서승희 주석 */
-	padding-top: 210px;	 /* 23.08.01 서승희 수정 */
+	padding-top: 210px;	 		/* 23.08.01 서승희 수정 */
 	margin-bottom: 100px;
-	margin-left:20px;
+	/* margin-left:20px; */		/* 하유리: 주석 처리() */
 }
 
 /* 하유리: 테이블(23.07.25.) */
@@ -78,7 +78,7 @@ td {
 /* 하유리: '회원가입' 텍스트를 제외한 회원가입폼(23.07.25.) */
 .lineAndForm {
 	width: 640px;
-	margin: 0px auto;
+	margin: 0px 70px;							/* 하유리: 좌측 여백너비 수정(23.08.02.) */
 	
 	border: 1px solid #e2e2e2;
 	padding: 80px 100px;

@@ -13,7 +13,8 @@ head { /* 마이페이지 글씨체 폰트 맞추기 23.07.30 서승희 추가*/
 .mymain_total{  /* 마이페이지 전체 23.08.01 서승희 추가 */
 	width:100%;
 	margin: 0px auto;
-   	padding: 80px 100px;
+   	/* padding: 80px 100px; */			/* 하유리: 주석 처리(23.08.02.) */
+   	margin-bottom: 100px;
 }
 
 .myinfo_container{
