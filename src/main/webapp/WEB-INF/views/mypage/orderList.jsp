@@ -74,7 +74,12 @@
                 <td class="odl-table-td">
                     <c:if test="${list.orderStatus == '결제완료'}">
                         <c:set var="orderNum" value="${list.orderNum}"/>
-                        <button class="odl-table-del" data-orderNum="${orderNum}" onclick="redirectToReviewPage()">리뷰작성</button>
+                        <c:if test="${list.reviewStatus == 0}">
+                            <button class="odl-table-del" data-orderNum="${orderNum}" onclick="redirectToReviewPage()">리뷰작성</button>
+                        </c:if>
+                        <c:if test="${list.reviewStatus == 1}">
+                            <button class="odl-table-review-done" data-orderNum="${orderNum}" onclick="redirectToReviewPage()" disabled>작성완료</button>
+                        </c:if>
                     </c:if>
                 </td>		<!-- 하유리: <td> 추가(23.07.31.) -->
             </tr>

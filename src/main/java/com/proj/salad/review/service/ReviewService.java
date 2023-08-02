@@ -23,6 +23,9 @@ public interface ReviewService {
 	
 	//하유리: 2. 글쓰기(23.07.16.)
 	public void insertReview(ReviewVO reviewVO, HttpServletRequest request, MultipartHttpServletRequest mRequest) throws Exception;
+
+	//김동혁: 2-1-1. order 테이블 reviewStatus -> 1로 수정(23.08.02)
+	public void updateReviewStatus(ReviewVO reviewVO);
 	
 	//하유리: 3-1. 게시물 상세보기(23.07.16.)
 	public ReviewVO detailReview(int re_articleNO);

@@ -293,7 +293,15 @@
 	                    newComment.append($('<div class="line-content">').text('아이디 : ' + comment.userId));
 	                    var dateString = new Date(comment.ac_writeDate).toISOString().split('T')[0];
 	                    newComment.append($('<div class="line-content">').text([i+1]+'번째 날짜: ' + dateString));
-	                    commentList.append(newComment);
+						<%--newComment.append($('<input type="button" id="name${i}" name="name${i}" value="댓글달기">'));--%>
+
+						// 댓글달기 버튼의 이름에 for 루프 변수인 i를 넣는 방법
+						var commentButton = $('<input type="button" value="댓글달기">');
+						commentButton.attr('id', 'name' + i);
+						commentButton.attr('name', 'name' + i);
+						newComment.append(commentButton);
+
+						commentList.append(newComment);
 	                }
 
 	            },
@@ -331,6 +339,14 @@
                     newComment.append($('<div class="line-content">').text('아이디 : ' + comment.userId));
                     var dateString = new Date(comment.ac_writeDate).toISOString().split('T')[0];
                     newComment.append($('<div class="line-content">').text([i+1]+'번째 날짜: ' + dateString));
+					<%--newComment.append($('<input type="button" id="name${i}" name="name${i}" value="댓글달기">'));--%>
+
+					// 댓글달기 버튼의 이름에 for 루프 변수인 i를 넣는 방법
+					var commentButton = $('<input type="button" value="댓글달기">');
+					commentButton.attr('id', 'name' + i);
+					commentButton.attr('name', 'name' + i);
+					newComment.append(commentButton);
+
                     commentList.append(newComment);
                 }
 

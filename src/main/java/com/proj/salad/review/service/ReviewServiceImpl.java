@@ -59,6 +59,14 @@ public class ReviewServiceImpl implements ReviewService {
 		}
 	}
 
+	//김동혁: 2-1-1. order 테이블 reviewStatus -> 1로 수정(23.08.02)
+
+
+	@Override
+	public void updateReviewStatus(ReviewVO reviewVO) {
+		reviewDao.updateReviewStatus(reviewVO);
+	}
+
 	//하유리: 3-1. 게시물 상세보기(23.07.16.)
 	@Override
 	public ReviewVO detailReview(int re_articleNO) {

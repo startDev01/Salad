@@ -42,7 +42,13 @@ public class ReviewDAOImpl implements ReviewDAO {
 	public void insertReview(ReviewVO reviewVO) {
 		sqlSession.insert("review.insertReview", reviewVO);
 	}
-	
+
+	//김동혁: 2-1-1. order 테이블 reviewStatus -> 1로 수정(23.08.02)
+	@Override
+	public void updateReviewStatus(ReviewVO reviewVO) {
+		sqlSession.update("review.updateOrderReviewStatus", reviewVO);
+	}
+
 	//하유리: 게시물 번호 가져오기(23.07.20.)
 	@Override
 	public String selectReview(ReviewVO reviewVO) {

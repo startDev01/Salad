@@ -28,6 +28,7 @@ public class OrderVO {
     private int totalPrice; // 총 가격
     private Date prodDeliveryDate; // 배송일자
     private String memo; // 배송 요청사항
+    private int reviewStatus; // 리뷰 작성 유무
 
     /* 주문 메뉴 테이블(order-menu) */
 //    private int orderMenuNum; // 주문 메뉴 번호
@@ -162,6 +163,14 @@ public class OrderVO {
         this.memo = memo;
     }
 
+    public int getReviewStatus() {
+        return reviewStatus;
+    }
+
+    public void setReviewStatus(int reviewStatus) {
+        this.reviewStatus = reviewStatus;
+    }
+
     @Override
     public String toString() {
         return "OrderVO{" +
@@ -180,6 +189,7 @@ public class OrderVO {
                 ", totalPrice=" + totalPrice +
                 ", prodDeliveryDate=" + prodDeliveryDate +
                 ", memo='" + memo + '\'' +
+                ", reviewStatus=" + reviewStatus +
                 '}';
     }
 }

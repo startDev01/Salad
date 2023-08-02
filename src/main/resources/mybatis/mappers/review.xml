@@ -44,6 +44,13 @@
 			(SELECT MAX(re_articleNO)+1 from shop_review), 0, #{re_title}, #{userId}, #{re_content}, SYSDATE, #{re_viewCnt}, #{re_fakeOrderNum}, #{re_orderNum})
 		]]>
 	</insert>
+
+	<!-- 2-1-1. 리뷰게시판 글쓰기시 reviewStatus - 김동혁 수정(23.08.02) -->
+	<update id="updateOrderReviewStatus" parameterType="com.proj.salad.review.vo.ReviewVO">
+		UPDATE shop_order
+		SET reviewStatus = 1
+		WHERE ORDERNUM = #{re_orderNum}
+	</update>
 	
    <!-- 2-2. 파일 업로드(23.07.20.) -->
    <insert id="insertReviewImg" parameterType="java.util.Map">

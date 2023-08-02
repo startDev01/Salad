@@ -24,6 +24,8 @@
         <result column="orderMenuNum" property="orderMenuNum" />
         <result column="menuName" property="menuName" />
         <result column="menuCount" property="menuCount" />
+
+        <result column="reviewStatus" property="reviewStatus" />
     </resultMap>
 
     <!-- 주문 상세 결과 -->
@@ -42,6 +44,8 @@
         <result column="destLoc2" property="destLoc2" />
         <result column="totalPrice" property="totalPrice" />
         <result column="prodDeliveryDate" property="prodDeliveryDate" />
+
+        <result column="reviewStatus" property="reviewStatus" />
     </resultMap>
 
     <!-- 주문 상세 메뉴 결과 -->

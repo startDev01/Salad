@@ -68,7 +68,7 @@
               <span>상품 가격</span>
               <span> + </span>
               <span>배송비</span>
-              <span> + </span>
+              <span> = </span>
               <span>총 가격</span>
             </div>
           </c:if>

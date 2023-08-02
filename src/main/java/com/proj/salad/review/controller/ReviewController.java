@@ -104,6 +104,7 @@ public class ReviewController extends HttpServlet {
 
         // 파일 업로드(23.07.20.)
     	reviewService.insertReview(reviewVO, request, mRequest);    				//글 작성
+		reviewService.updateReviewStatus(reviewVO);
     	ModelAndView mav = new ModelAndView("redirect:/review/list");		//페이지 이동
     	return mav;
     }

@@ -22,6 +22,9 @@ public interface ReviewDAO {
 	
 	//하유리: 2-1. 리뷰게시판 글쓰기(23.07.16.)
 	public void insertReview(ReviewVO reviewVO);
+
+	//김동혁: 2-1-1. order 테이블 reviewStatus -> 1로 수정(23.08.02)
+	public void updateReviewStatus(ReviewVO reviewVO);
 	
 	//하유리: 게시물 번호 가져오기(23.07.20.)
 	public String selectReview(ReviewVO reviewVO);
