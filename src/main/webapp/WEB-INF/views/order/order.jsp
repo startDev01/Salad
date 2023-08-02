@@ -74,7 +74,7 @@
             </div>
             <div class="line">
                 <div class="line-title"><label for="memo">배송시 요청사항</label></div>
-                <div class="line-content"><input type="text" name="memo" id="memo" placeholder="요청사항을 입력해주세요" required>
+                <div class="line-content"><input type="text" name="memo" id="memo" placeholder="요청사항을 입력해주세요" required autocomplete="none">		<!-- 하유리: 자동완성기능 끄기(23.08.02.) -->
                 </div>
             </div>
         </div>

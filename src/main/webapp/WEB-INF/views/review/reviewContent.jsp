@@ -14,265 +14,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link href="../resources/css/header.css" rel="stylesheet" type="text/css">
 	<link href="../resources/css/footer.css" rel="stylesheet" type="text/css">
-	<style>
-		/* 폰트 */
-		@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
-
-		/* 하유리: 리뷰페이지 제목 수정(23.07.29.) */
-		.review_sub {
-			margin: 50px 0;
-			padding: 178px 0 24px 0;                           /* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
-		}                                                         /* 하유리: 제목 주변 여백 수정(23.07.29.)  */
-
-		/* 하유리: 이벤트페이지 제목 수정(23.07.29.)  */
-		.review_text1 {
-			font-family: 'Noto Sans KR', sans-serif;
-			font-size: 32px;                                       /* 하유리: 폰트 크기 수정(23.07.29.) */
-			font-weight: 700;
-			line-height: 1.2;
-			letter-spacing: -1px;                                 /* 하유리: 제목 자간 수정(23.07.29.) */
-		}
-
-		.container {
-			width: 100%;
-			/*         display: flex;
-                     justify-content: center; */
-			text-align: center;
-			font-family: 'Noto Sans KR', sans-serif;
-			font-size: 14px;
-			margin: 0 auto;
-			padding-bottom: 10px;                              /* 하유리: 버튼-footer 사이 여백 추가(23.07.30.) */
-		}
-
-		/* 중앙정렬 */
-		.content_table {
-			width: 100%;
-			/* display: flex; */                                    /* 하유리: 주석 처리(23.08.01.) */
-			justify-content: center;
-		}
-
-		/* 하유리: 행 간격 띄우기(23.07.17.) */
-		.content_table table {
-			text-align: left;   /* th 왼쪽정렬 */
-			border-collapse: separate;
-			border-spacing: 10px 20px;
-			margin-top: -21px;                                    /* 하유리: 테이블 위쪽 여백 줄이기(23.07.30.) */
-			margin: 0 auto;                                       /* 하유리: 테이블 중앙 정렬(23.08.01.) */
-		}
-
-		/* 하유리: 글자-input박스 간 간격(23.07.17.) */
-		.content_table th {
-			font-weight: normal;
-			flex: left;
-			padding-right: 100px;
-		}
-
-		.content_table input, textarea, .review_preview {
-			padding: 5px 5px;
-		}
-
-		.review_preview {
-			margin-top: -5px;
-		}
-
-		/* input, textarea 스타일 지정 */
-		.content_table .content_input {
-			border: 1px solid #e3e3e3;
-			border-radius: 5px;
-			width: 640px;
-			height: 44px;
-		}
-
-		.content_table .content_text {
-			border: 1px solid #e3e3e3;
-			border-radius: 5px;
-			width: 640px;
-			height: 250px;
-		}
-
-		.content_table .content_input_file {
-			border: 1px solid #e3e3e3;
-			border-radius: 5px;
-			width: 640px;
-		}
-
-		/* input, textarea 클릭 시 생기는 테두리 스타일 지정(23.07.17.)  */
-		.content_text:focus{
-			outline: 1px solid #000;
-		}
-
-		.content_input_file:focus {
-			outline: 1px solid #000;
-		}
-
-		/* 업로드 이미지 파일이름 뜨는 input박스 */
-		.review_imgName {
-			border: none;   /* 테두리 없애기 */
-		}
-
-		/* 버튼 */
-
-		/* 버튼 <div> */
-		.btn_wrap {
-			display: flex;                                          /* 하유리: 버튼 테이블 아래쪽에 배치(23.08.01.) */
-			justify-content: space-between;                     /* 하유리: 버튼 테이블 아래쪽에 배치(23.08.01.) */
-			margin: 0 139px;                                    /* 하유리: 버튼 좌우 여백 지정(23.08.01.) */
-		}
-
-		/* 좌측 버튼 2개<div> */
-		.content_btn1 {
-			float: left;                                             /* 하유리: 버튼 왼쪽 정렬 */
-			/* margin-left: 10px; */                              /* 하유리: 주석 처리(23.08.01.) */
-		}
-
-		/* 우측 버튼 3개<div> */
-		.content_btn2 {
-			float: right;                                          /* 하유리: 버튼 우측 정렬 */
-			/* margin-right: 10px; */                           /* 하유리: 주석 처리(23.08.01.) */
-		}
-
-		.contentBtn{
-			margin: 0px 0px 60px 0px;
-			padding: 5px 10px;
-			border-radius: 5px;
-			border-style: none;
-			background-color:#128853;
-			color: #fff;
-		}
-
-		.contentBtn:focus {
-			outline: none;                                       /* 하유리: 버튼 클릭 시 생기는 테두리 없애기(23..07.31.) */
-		}
-
-		/*       .line {
-                 display: flex;
-                 align-items: center;
-                 margin-bottom: 10px;
-                 flex-direction: row;
-              } */
-
-		.img img, .line .line-userId {
-			display: inline-block;                                 /* 하유리: 지금 댓글 틀 맞추려면 필수(23.08.02.) */
-		}
-
-		.img img {
-			display: flex;
-		}
-
-
-		/* 입력댓글 전체<div> */
-		.line {
-			text-align: left;                                       /* 하유리: 왼쪽 정렬(23.08.01.) */
-			/* margin-bottom: 30px; */                        /* 하유리: 하단 여백 추가(23.08.01.) */
-			margin-top: 30px;                                    /* 하유리: 상단 여백 추가(23.08.02.) */
-		}
-
-		/* !!! 자식 댓글 들여쓰기 */
-		.line-child {
-			margin-left: 20px; /* 들여쓰기할 크기를 지정합니다. */
-			padding-left: 20px;
-		}
-
-		/* 입력된 댓글_id */
-		.line-userId {
-			flex-grow: 1;
-			text-align: left;                                       /* 하유리: 좌측 정렬(23.08.01.) */
-			font-weight: 700;                                    /* 하유리: 폰트 굵기 지정(23.08.01.) */
-			vertical-align: 9.3px;                                 /* 하유리: 아이콘-id 세로 중앙정렬(23.08.02.) */
-			margin-left: 10px;                                    /* 하유리: 좌측 여백 지정(23.08.02.) */
-			color: #000;                                          /* 하유리: 폰트 색상 지정(23.08.02.) */
-		}
-
-		/* 입력된 댓글_내용 */
-		.line-title {
-			width: 800px;                                          /* 하유리: 댓글 너비 지정(23.08.01.) */
-			/* font-weight: bold; */                              /* 하유리: 주석 처리(23.08.01.) */
-			/* margin-right: 10px; */                           /* 하유리: 주석 처리(23.08.01.) */
-			padding:7px 0;                                       /* 하유리: 상하 여백만 주도록 변경(23.08.01.) */
-			/* background-color: #128853; */                  /* 하유리: 배경색 주석 처리(23.08.01.) */
-			color: #333;                                          /* 하유리: 폰트 색상 변경(23.08.01.) */
-			margin-left: 37px;                                    /* 하유리: 좌측 여백 지정(23.08.02.) */
-			margin-top: -10px;                                    /* 하유리: 아이디-댓글 내용 사이 여백 지정(23.08.02.) */
-		}
-
-		/* 입력된 댓글_날짜 부분 */
-		.line-content {
-			flex-grow: 1;
-			color: #b8b8b8;                                       /* 하유리: 폰트 색상 지정(23.08.02.) */
-			font-weight: 500;                                    /* 하유리: 폰트 굵기 지정(23.08.02.) */
-			font-size: 13px;                                       /* 하유리: 폰트 크기 지정(23.08.02.) */
-			margin-left: 37px;                                    /* 하유리: 좌측 여백 지정(23.08.02.) */
-			letter-spacing: -0.3px;                              /* 하유리: 자간 지정(23.08.02.) */
-		}
-
-		/* 댓글작성 폼 */
-		#commentForm2 {
-			float: left;
-			margin-left: 139px;                                    /* 하유리: 좌측 여백 지정(23.08.01.) */
-			margin-bottom: 100px;                              /* 하유리: 하단 여백 지정(23.08.01.) */
-			border-top: 7px solid #eeeeee;                     /* 하유리: 글쓰기 테이블 - 댓글 작성폼 사이의 구분선(23.08.01.) */
-			padding-top: 50px;                                 /* 하유리: 구분선 - 댓글 작성폼 사이의 여백(23.08.01.) */
-			width: 832px;                                          /* 하유리: 너비 지정(23.08.01.) */
-		}
-
-		/* 댓글작성폼 상단 '댓글' 텍스트' */
-		#commentForm2 p {
-			text-align: left;                                       /* 하유리: 좌측 정렬(23.08.01.) */
-			font-size: 20px;                                       /* 하유리: 폰트 크기 지정(23.08.01.) */
-			font-weight: 700;                                    /* 하유리: 폰트 굵기 지정(23.08.01.) */
-			letter-spacing: -1px;                                 /* 하유리: 자간 지정(23.08.01.) */
-		}
-
-		/* 댓글 입력 부분 */
-		.comment_input {
-			height: 61px;                                          /* 하유리: 높이(23.08.01.) */
-			border-radius: 10px;                                 /* 하유리: 테두리 가장자리 둥글게 지정(23.08.01.) */
-			display: flex;                                          /* 하유리: 요소 일정간격으로 배열(23.08.01.) */
-			justify-content: space-between;
-			align-items: center;                                 /* 하유리: 세로 중앙 배열(23.08.01.) */
-			margin-bottom: 10px;                              /* 하유리: input 외부에 여백 지정(23.08.01.) */
-		}
-
-		/* 댓글 적는 사람 아이콘 */
-		#commentForm2 img {
-			height: 28px;                                          /* 하유리: 크기 지정(23.08.01.) */
-		}
-
-		/* 댓글_id, 내용 입력 input */
-		.comment_id, .comment_text, #commentBt, .reply-btn {
-			border: 1px solid #e3e3e3;                           /* 하유리: 테두리 지정(23.08.01.) */
-			height: 35px;                                          /* 하유리: 높이 지정(23.08.01.) */
-			border-radius: 8px;                                 /* 하유리: 테두리 가장자리 둥글게 지정(23.08.01.) */
-			font-weight: 300;                                    /* 하유리: 폰트 크기 지정(23.08.01.) */
-			outline: none;                                       /* 하유리: 클릭 시 생기는 테두리 없애기(23.08.01.) */
-		}
-
-		/* 댓글_id 입력 input */
-		.comment_id {
-			width: 150px;                                          /* 하유리: 너비 지정(23.08.01.) */
-			padding: 10px;                                       /* 하유리: input 내부 여백 지정(23.08.01.) */
-		}
-
-		/* 댓글_내용 입력 input */
-		.comment_text {
-			width: 530px;                                          /* 하유리: 너비 지정(23.08.01.) */
-			padding: 10px;                                       /* 하유리: input 내부 여백 지정(23.08.01.) */
-		}
-
-		/* 댓글입력 버튼 */
-		#commentBt, .reply-btn {
-			width: 105px;                                          /* 하유리: 너비 지정(23.08.01.) */
-			font-weight: 500;                                    /* 하유리: 폰트 굵기 지정(23.08.01.) */
-		}
-
-		/* 입력된 댓글 전체<div> */
-		#commentList {
-			border: 1px solid #e2e2e2;                           /* 하유리: 테두리 지정(23.08.02.) */
-			border-radius: 15px;                                 /* 하유리: 모서리 둥글게 지정(23.08.02.) */
-			padding: 0 20px 30px 20px;                        /* 하유리: 안쪽 여백 지정(23.08.02.) */
-		}
-
-	</style>
+	<link href="../resources/css/review/reviewContent.css" rel="stylesheet" type="text/css">		<!-- 하유리: <style>태그 css파일로 이동(23.08.02.) -->
 </head>
 
 <body>
@@ -411,24 +153,32 @@
 
 				for (var i = 0; i < response.length; i++) {
 					var comment = response[i];
-					var newComment = $('<div class="line">');                                                                  /* 하유리 변수명 변경(23.08.02.) */
+					var newComment = $('<div class="line">');                                                                  					/* 하유리 변수명 변경(23.08.02.) */
 					if (comment.ac_parentNO !== 0) {
 						newComment.addClass('line-child');
 					}
-					newComment.append($('<img src="${contextPath }/resources/image/review/006.png"/>'));            /* 하유리: 이미지 추가(23.08.01.) */
-					newComment.append($('<div class="line-userId">').text(comment.userId));                                     /* 하유리: 변수명+클래스명 변경, '아이디' 텍스트 삭제(23.08.02.) */
-					newComment.append($('<div class="line-title">').text(comment.ac_content));                              /* 하유리: x번째 댓글' 텍스트 삭제(23.08.02.) */
+					newComment.append($('<img src="${contextPath }/resources/image/review/006.png"/>'));			/* 하유리: 이미지 추가(23.08.01.) */
+					newComment.append($('<div class="line-userId">').text(comment.userId));                    				/* 하유리: 변수명+클래스명 변경, '아이디' 텍스트 삭제(23.08.02.) */
+					newComment.append($('<div class="line-title">').text(comment.ac_content));                              	/* 하유리: x번째 댓글' 텍스트 삭제(23.08.02.) */
 					var dateString = new Date(comment.ac_writeDate).toISOString().split('T')[0];
 					newComment.append($('<div class="line-content">').text('등록일자: ' + dateString));                     /* 하유리: 텍스트 수정(23.08.02.) */
+					newComment.append($('<button class="line-comment" name="reply" onclick="showCommentForm('+i+')">・ 대댓글</button>'));			/* 하유리: 대댓글 버튼 추가(23.08.02.) */
 
+					/* 하유리: 주석 처리(23.08.02.) */
 					// 인덱스를 이용하여 고유한 id 속성을 추가하여 폼 요소를 생성합니다.
-					newComment.append($('<form id="comment_reply_Form_' + i + '" method="POST">'));
+					/* newComment.append($('<form id="comment_reply_Form_' + i + '" method="POST" style="display:none;">'));
 					var ac_commentNoValue = comment.ac_commentNO;
 					console.log('넘버 내용: ' + ac_commentNoValue);
 					newComment.append($('<input type="text" id="reply-NO_' + i + '" value="' + ac_commentNoValue + '" hidden>'));
-					newComment.append($('<input type="text" class="comment_text" id="reply-input_' + i + '" placeholder="대댓글을 입력하세요...">'));
+					newComment.append($('<input type="text" class="comment_text2" id="reply-input_' + i + '" placeholder="대댓글을 입력하세요...">'));
 					newComment.append($('<button type="submit" id="commentBt2_' + i + '" class="reply-btn">대댓글달기</button>'));
-					newComment.append($('</form>'));
+					newComment.append($('</form>')); */
+					
+					/* 하유리: 자꾸 <form>태그가 바로 닫혀서, 위의 코드를 1줄로 작성(23.08.02.) */
+					/* 하유리: 댓글 입력 input 클래스명, placeholder, 버튼 텍스트 변경(23.08.02.) */
+					var ac_commentNoValue = comment.ac_commentNO;
+					newComment.append($('<form id="comment_reply_Form_' + i + '" method="POST" style="display:none;"><input type="text" id="reply-NO_' + i + '" value="' + ac_commentNoValue + '" hidden><input type="text" class="comment_text2" id="reply-input_' + i + '" placeholder="대댓글을 입력해주세요" autocomplete="off"><button type="submit" id="commentBt2_' + i + '" class="reply-btn">대댓글 입력</button></form>'));
+					console.log('넘버 내용: ' + ac_commentNoValue);
 					commentList.append(newComment);
 				}
 			},
@@ -438,6 +188,15 @@
 			}
 		});
 	});
+	
+	/* 하유리: '대댓글' 버튼 클릭 시, 대댓글 작성폼 보이기/숨기기(23.08.02.) */
+	function showCommentForm(i) {
+		if($('#comment_reply_Form_' + i + '').css('display')=='block') {
+			$('#comment_reply_Form_' + i + '').css('display','none');
+		} else {
+			$('#comment_reply_Form_' + i + '').css('display','block');			
+		}
+	}
 
 	// 인덱스를 이용하여 적절한 폼 요소를 선택하기 위해 click 이벤트를 수정합니다.
 	$(document).on('click', '[id^="commentBt2_"]', function(event) {
@@ -449,8 +208,7 @@
 	    console.log('대댓글 내용: ' + ac_content);
 	    // 댓글 데이터를 사용하여 원하는 동작을 수행합니다.
 
-
-	 // 댓글 추가를 위한 AJAX 요청 보내기
+	 	// 댓글 추가를 위한 AJAX 요청 보내기
         $.ajax({
             url: '${contextPath}/review/addReply', // 실제 댓글을 추가하는 서버 URL로 대체해주세요
             type: 'POST',
@@ -472,32 +230,35 @@
                     newComment.append($('<div class="line-title">').text(comment.ac_content));											/* 하유리: x번째 댓글' 텍스트 삭제(23.08.02.) */
                     var dateString = new Date(comment.ac_writeDate).toISOString().split('T')[0];
                     newComment.append($('<div class="line-content">').text('등록일자: ' + dateString));								/* 하유리: 텍스트 수정(23.08.02.) */
-
-                 // 인덱스를 이용하여 고유한 id 속성을 추가하여 폼 요소를 생성합니다.
-                    newComment.append($('<form id="comment_reply_Form_' + i + '" method="POST">'));
+                    newComment.append($('<button class="line-comment" name="reply"  onclick="showCommentForm('+i+')">・ 대댓글</button>'));				/* 하유리: 대댓글 버튼 추가(23.08.02.) */
+                    
+                 	// 인덱스를 이용하여 고유한 id 속성을 추가하여 폼 요소를 생성합니다.
+                 	/* 하유리: 주석 처리(23.08.02.) */
+                 	/* 하유리: 댓글 입력 input 클래스명, placeholder, 버튼 텍스트 변경(23.08.02.) */
+/*                     newComment.append($('<form id="comment_reply_Form_' + i + '" method="POST">'));
                     var ac_commentNoValue = comment.ac_commentNO;
                     console.log('넘버 내용: ' + ac_commentNoValue);
                     newComment.append($('<input type="text" id="reply-NO_' + i + '" value="' + ac_commentNoValue + '" hidden>'));
-                    newComment.append($('<input type="text" class="comment_text" id="reply-input_' + i + '" placeholder="대댓글을 입력하세요...">'));
-                    newComment.append($('<button type="submit" id="commentBt2_' + i + '" class="reply-btn">대댓글달기</button>'));
+                    newComment.append($('<input type="text" class="comment_text2" id="reply-input_' + i + '" placeholder="대댓글을 입력해주세요">'));
+                    newComment.append($('<button type="submit" id="commentBt2_' + i + '" class="reply-btn">대댓글 입력</button>'));
                     newComment.append($('</form>'));
-                    commentList.append(newComment);
+                    commentList.append(newComment); */
+                    
+					/* 하유리: 자꾸 <form>태그가 바로 닫혀서, 위의 코드를 1줄로 작성(23.08.02.) */
+					/* 하유리: 댓글 입력 input 클래스명, placeholder, 버튼 텍스트 변경(23.08.02.) */
+					var ac_commentNoValue = comment.ac_commentNO;
+					newComment.append($('<form id="comment_reply_Form_' + i + '" method="POST" style="display:none;"><input type="text" id="reply-NO_' + i + '" value="' + ac_commentNoValue + '" hidden><input type="text" class="comment_text2" id="reply-input_' + i + '" placeholder="대댓글을 입력해주세요" autocomplete="off"><button type="submit" id="commentBt2_' + i + '" class="reply-btn">대댓글 입력</button></form>'));
+					console.log('넘버 내용: ' + ac_commentNoValue);
+					commentList.append(newComment);
                 }
-
             },
             error: function() {
             	alert('비회원 상태입니다.\n로그인 창으로 넘어갑니다.');
                 location.href = '${contextPath}/user/loginForm.do';
             }
-        });
-
-	    
+        });    
 	});
-
-
-
-
-
+	
 	$('#commentForm').on('submit', function(event) {
 		event.preventDefault(); // 폼의 기본 동작인 제출을 막습니다.
 
@@ -521,31 +282,40 @@
 					if (comment.ac_parentNO !== 0) {
 						newComment.addClass('line-child');
 					}
-					newComment.append($('<img src="${contextPath }/resources/image/review/006.png"/>'));               /* 하유리: 이미지 추가(23.08.01.) */
-					newComment.append($('<div class="line-userId">').text(comment.userId));                                 /* 하유리: '아이디' 텍스트 삭제(23.08.01.)' */
-					newComment.append($('<div class="line-title">').text(comment.ac_content));                                 /* 하유리: x번째 댓글' 텍스트 삭제(23.08.02.) */
+					newComment.append($('<img src="${contextPath }/resources/image/review/006.png"/>'));				/* 하유리: 이미지 추가(23.08.01.) */
+					newComment.append($('<div class="line-userId">').text(comment.userId));                                 		/* 하유리: '아이디' 텍스트 삭제(23.08.01.)' */
+					newComment.append($('<div class="line-title">').text(comment.ac_content));                                 	/* 하유리: x번째 댓글' 텍스트 삭제(23.08.02.) */
 					var dateString = new Date(comment.ac_writeDate).toISOString().split('T')[0];
-					newComment.append($('<div class="line-content">').text('등록일자: ' + dateString));                        /* 하유리: 텍스트 수정(23.08.02.) */
+					newComment.append($('<div class="line-content">').text('등록일자: ' + dateString));							/* 하유리: 텍스트 수정(23.08.02.) */
 
+					newComment.append($('<button class="line-comment" name="reply"  onclick="showCommentForm('+i+')">・ 대댓글</button>'));				/* 하유리: 대댓글 버튼 추가(23.08.02.) */
+					
+					/* 하유리: 주석 처리(23.08.02.) */
 					// 인덱스를 이용하여 고유한 id 속성을 추가하여 폼 요소를 생성합니다.
-					newComment.append($('<form id="comment_reply_Form_' + i + '" method="POST">'));
+					/* newComment.append($('<form id="comment_reply_Form_' + i + '" method="POST">'));
 					var ac_commentNoValue = comment.ac_commentNO;
 					console.log('넘버 내용: ' + ac_commentNoValue);
 					newComment.append($('<input type="text" id="reply-NO_' + i + '" value="' + ac_commentNoValue + '" hidden>'));
-					newComment.append($('<input type="text" class="comment_text" id="reply-input_' + i + '" placeholder="대댓글을 입력하세요...">'));
+					newComment.append($('<input type="text" class="comment_text2" id="reply-input_' + i + '" placeholder="대댓글을 입력하세요...">'));
 					newComment.append($('<button type="submit" id="commentBt2_' + i + '" class="reply-btn">대댓글달기</button>'));
-					newComment.append($('</form>'));
+					newComment.append($('</form>')); */
+					
+					/* 하유리: 자꾸 <form>태그가 바로 닫혀서, 위의 코드를 1줄로 작성(23.08.02.) */
+					/* 하유리: 댓글 입력 input 클래스명, placeholder, 버튼 텍스트 변경(23.08.02.) */
+					var ac_commentNoValue = comment.ac_commentNO;
+					newComment.append($('<form id="comment_reply_Form_' + i + '" method="POST" style="display:none;"><input type="text" id="reply-NO_' + i + '" value="' + ac_commentNoValue + '" hidden><input type="text" class="comment_text2" id="reply-input_' + i + '" placeholder="대댓글을 입력해주세요" autocomplete="off"><button type="submit" id="commentBt2_' + i + '" class="reply-btn">대댓글 입력</button></form>'));
+					console.log('넘버 내용: ' + ac_commentNoValue);
 					commentList.append(newComment);
+					
+					$('#ac_content').val('');		/* 하유리: '댓글 입력' 버튼 클릭 후 입력이 완료되면 input에 작성한 내용 지우기(23.08.02.) */
 				}
-
 			},
 			error: function() {
 				alert('비회원 상태입니다.\n로그인 창으로 넘어갑니다.');
 				location.href = '${contextPath}/user/loginForm.do';
 			}
 		});
-	});
-
+	});	
 
 </script>
 </body>
