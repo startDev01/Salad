@@ -96,12 +96,16 @@
 			<div class="content_btn1">
 				<button type="button" class="contentBtn"
 						onClick="location.href='${contextPath}/review/list'">목록</button>
-				<button type="button" class="contentBtn"
-						onClick="location.href='${contextPath}/review/insert'">글쓰기</button>
+				<%-- 김동혁: 글쓰기 버튼 비활성화(23.08.03) --%>
+				<%--<button type="button" class="contentBtn"
+						onClick="location.href='${contextPath}/review/insert'">글쓰기</button>--%>
 			</div>
 			<div class="content_btn2">
-				<button type="button" class="contentBtn"
-						onClick="location.href='${contextPath}/review/reply?re_articleNO=${review.re_articleNO }'">답글</button>
+				<%-- 김동혁: 답글 버튼 admin만 사용 가능 --%>
+				<c:if test="${user.userId == 'admin'}">
+					<button type="button" class="contentBtn"
+							onClick="location.href='${contextPath}/review/reply?re_articleNO=${review.re_articleNO }'">답글</button>
+				</c:if>
 				<!-- 하유리: 본인 게시글만 수정, 삭제할 수 있도록 처리(23.07.18.) -->
 				<c:if test="${user.userId == review.userId }">
 					<button type="button" class="contentBtn"

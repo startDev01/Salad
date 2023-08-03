@@ -32,6 +32,9 @@ public class MyPageOrderController {
     public ModelAndView orderList(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
 
+        // 사이드 메뉴 세션 설정
+        session.setAttribute("side_menu", "my_page"); //마이페이지 사이드 메뉴로 설정한다.
+
         String userName = null;
         List<OrderListVO> orderList = new ArrayList<>();
 
