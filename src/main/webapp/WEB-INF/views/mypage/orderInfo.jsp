@@ -28,7 +28,6 @@
         /* css 적용 부분 */
 	/*.odl-container{    임시 */
         /* padding-top: 178px;    하유리: 헤더 영역만큼 아래로 내림(23.07.27.) */
-      }
    /*    .order-info-table{
       font-size:13px;
       } */
@@ -38,36 +37,57 @@
 </head>
 <body>
     <div class="odl-container">
+        <div class="odl-sub">
+            <p class="odl-text1">주문정보</p>
+        </div>
         <table class="order-info-table" align="center">
             <tr>
-                <td class="order-info-td-title oi-border-top" colspan="2">주문번호</td>
-                <td class="order-info-td" colspan="2">${orderInfo.fakeOrderNum}</td>
+                <td class="order-info-td-title oi-border-top" colspan="1">주문번호</td>
+                <td class="order-info-td" colspan="1"><input class="content_input" type="text" value="${orderInfo.fakeOrderNum}" disabled/>
+                    </td>
             </tr>
             <tr>
                 <td class="order-info-td-title">주문일자</td>
-                <td class="order-info-td">${orderInfo.orderCreateTimestamp}</td>
+                <td class="order-info-td"><input class="content_input" type="text" value="${orderInfo.orderCreateTimestamp}" disabled/>
+                    </td>
+
+            </tr>
+            <tr>
                 <td class="order-info-td-title oi-border-top">배송 예정 일자</td>
-                <td class="order-info-td">${orderInfo.prodDeliveryDate}</td>
+                <td class="order-info-td"><input class="content_input" type="text" value="${orderInfo.prodDeliveryDate}" disabled/>
+                    </td>
             </tr>
             <tr>
                 <td class="order-info-td-title">주문자 이름</td>
-                <td class="order-info-td">${orderInfo.ordererName}</td>
+                <td class="order-info-td"><input class="content_input" type="text" value="${orderInfo.ordererName}" disabled/>
+                    </td>
+
+            </tr>
+            <tr>
                 <td class="order-info-td-title">주문 상태</td>
-                <td class="order-info-td">${orderInfo.orderStatus}</td>
+                <td class="order-info-td"><input class="content_input" type="text" value="${orderInfo.orderStatus}" disabled/>
+                    </td>
             </tr>
             <tr>
                 <td class="order-info-td-title length">상품 목록</td>
                 <td class="order-info-td" colspan="3">
-                    <c:forEach var="menuList" items="${infoMenuList}" varStatus="listStatus">
+                    <div class="order-info-menuList">
+                        <c:forEach var="menuList" items="${infoMenuList}" varStatus="listStatus">
 
-                        ${menuList.menuName} x ${menuList.menuCount} 개<br>
-                    </c:forEach>
+                            ${menuList.menuName} x ${menuList.menuCount} 개<br>
+                        </c:forEach>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="order-info-td-title odl-last" colspan="2">
+                    <c:if test="${orderInfo.orderStatus == '결제완료' and orderInfo.reviewStatus == 0}">
+                        <button class="orderInfo-review-btn" data-orderNum="${orderNum}" onclick="redirectToReviewPage()">리뷰작성</button>
+                    </c:if>
                 </td>
             </tr>
         </table>
-        <c:if test="${orderInfo.orderStatus == '결제완료' and orderInfo.reviewStatus == 0}">
-            <button class="orderInfo-review-btn" data-orderNum="${orderNum}" onclick="redirectToReviewPage()">리뷰작성</button>
-        </c:if>
+
     </div>
 
 <script>
