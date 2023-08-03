@@ -5,9 +5,10 @@
    
       <mapper namespace="mapper.mypage"> <!-- DAOImpl에 매퍼 가져올때 사용할 고유이름 -->
   	    	 
-  	 <!-- 제품 주문 Map 정의 -->
+  	 
   	 <!-- 반환값 Map(shop_order, order_menu을 Join 한 데이터) 지정 -->
 	<resultMap id="orderGoodsResult" type="mypageVO">
+		<!-- 제품 주문 Map 정의 -->
     	<result property="orderNum" column="orderNum" />
     	<result property="fakeOrderNum" column="fakeOrderNum" />
 		<result property="userId" column="userId" />

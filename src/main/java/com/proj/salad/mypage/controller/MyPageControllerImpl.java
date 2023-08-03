@@ -181,7 +181,7 @@ public class MyPageControllerImpl implements MyPageController {
 		return mav;
 	}
 		  
-	//주문검색 년월일 계산코드
+	//주문검색 년월일 함수 코드
 	protected String calcSearchPeriod(String fixedSearchPeriod){ 
 		String beginDate=null; 
 		String endDate=null; 
@@ -191,7 +191,9 @@ public class MyPageControllerImpl implements MyPageController {
 		String beginYear=null; 
 		String beginMonth=null; 
 		String beginDay=null; 
-			  
+		
+		//DecimalFormat은 패키지의 일부 java.text이며 소수 자릿수 지정 또는 사용자 지정 기호 추가와 같은 다양한 방법으로 소수점 형식을 지정하는 데 사용됩니다.
+		//"00"생성자 인수로 사용되는 패턴은 사용할 형식을 지정 합니다 DecimalFormat. 이 경우 패턴은 "00"숫자가 2자리 형식으로 지정되고 필요한 경우 선행 0으로 채워짐을 의미
 		DecimalFormat df = new DecimalFormat("00"); 
 			  
 		Calendar cal=Calendar.getInstance();
@@ -201,17 +203,17 @@ public class MyPageControllerImpl implements MyPageController {
 		endDay =df.format(cal.get(Calendar.DATE)); 
 		endDate = endYear +"-"+ endMonth+"-"+endDay;
 		  
-		  if(fixedSearchPeriod == null) { 
-			  cal.add(cal.MONTH,-4); 
-		  }else if(fixedSearchPeriod.equals("three_day")) { 
+		  if(fixedSearchPeriod == null) { //당일 //null이면 검색 기간이 현재 날짜임을 의미
+			  cal.add(cal.MONTH,-6); 
+		  }else if(fixedSearchPeriod.equals("three_day")) { //3일
 			  cal.add(Calendar.DAY_OF_YEAR, -3);
-		  }else if(fixedSearchPeriod.equals("one_week")) {
+		  }else if(fixedSearchPeriod.equals("one_week")) {  //1주일
 			  cal.add(Calendar.DAY_OF_YEAR, -7); 
-		  }else if(fixedSearchPeriod.equals("one_month")) { 
+		  }else if(fixedSearchPeriod.equals("one_month")) { //1개월
 			  cal.add(cal.MONTH,-1); 
-		  }else if(fixedSearchPeriod.equals("three_month")) { 
+		  }else if(fixedSearchPeriod.equals("three_month")) { //3개월
 			  cal.add(cal.MONTH,-3); 
-		  }else if(fixedSearchPeriod.equals("six_month")) { 
+		  }else if(fixedSearchPeriod.equals("six_month")) { //6개월
 			  cal.add(cal.MONTH,-6); 
 		} 
 		  beginYear = Integer.toString(cal.get(Calendar.YEAR)); 

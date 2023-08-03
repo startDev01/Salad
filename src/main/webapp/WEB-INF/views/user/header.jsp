@@ -10,8 +10,8 @@
 <head>
 	<!-- 	<link href="/css/header.css" rel="stylesheet" type="text/css" > -->
 	<!-- css 적용 -->
-	<link href="resources/css/style.css" rel="stylesheet" type="text/css" >
-	<link href="resources/css/header.css" rel="stylesheet" type="text/css" >
+	<link href="../resources/css/style.css" rel="stylesheet" type="text/css" >
+	<link href="../resources/css/header.css" rel="stylesheet" type="text/css" >
 	<style>
 	/* 서승희 로그인,회원가입 헤더부분 css 추가 수정(23.07.18)*/
 	.header_inside{

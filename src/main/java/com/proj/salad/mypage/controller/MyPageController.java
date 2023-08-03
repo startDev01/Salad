@@ -27,7 +27,4 @@ public interface MyPageController {
 	//주문취소
 	public ModelAndView cancelMyOrder(@RequestParam("orderNum")  int orderNum,HttpServletRequest request, HttpServletResponse response)  throws Exception;
 	
-	
-	
-	
 }
