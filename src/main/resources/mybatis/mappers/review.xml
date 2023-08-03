@@ -132,7 +132,8 @@
 			   re_articleNO,
 			   userId,
 			   ac_content,
-			   ac_writeDate
+			   ac_writeDate,
+			   level
 		FROM re_ajaxComment
 		WHERE re_articleNO = #{re_articleNO}
 		CONNECT BY PRIOR ac_commentNO = ac_parentNO

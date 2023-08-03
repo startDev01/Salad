@@ -79,7 +79,7 @@
 		#{destPhone},
 		#{destLoc},
 		#{totalPrice},
-		SYSDATE + 3,
+		SYSDATE + 1,
 		#{memo}
 		)
 	</insert>

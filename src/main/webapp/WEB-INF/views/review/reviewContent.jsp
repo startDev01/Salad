@@ -158,8 +158,15 @@
 				for (var i = 0; i < response.length; i++) {
 					var comment = response[i];
 					var newComment = $('<div class="line">');                                                                  					/* 하유리 변수명 변경(23.08.02.) */
+					var levelSum = 0;
+
 					if (comment.ac_parentNO !== 0) {
-						newComment.addClass('line-child');
+						for(var j = 1; j < comment.level; j++) {
+							levelSum += 40;
+							console.log('레벨 : '+ comment.level);
+						}
+						newComment = $('<div class="line">').css('padding-left', levelSum + 'px');
+						// newComment.addClass('line-child');
 					}
 					newComment.append($('<img src="${contextPath }/resources/image/review/006.png"/>'));			/* 하유리: 이미지 추가(23.08.01.) */
 					newComment.append($('<div class="line-userId">').text(comment.userId));                    				/* 하유리: 변수명+클래스명 변경, '아이디' 텍스트 삭제(23.08.02.) */
@@ -226,8 +233,15 @@
                 for (var i = 0; i < response.length; i++) {
                     var comment = response[i];
                     var newComment = $('<div class="line">');
+					var levelSum = 0;
+
 					if (comment.ac_parentNO !== 0) {
-						newComment.addClass('line-child');
+						for(var j = 1; j < comment.level; j++) {
+							levelSum += 40;
+							console.log('레벨 : '+ comment.level);
+						}
+						newComment = $('<div class="line">').css('padding-left', levelSum + 'px');
+						// newComment.addClass('line-child');
 					}
                     newComment.append($('<img src="${contextPath }/resources/image/review/006.png"/>'));					/* 하유리: 이미지 추가(23.08.01.) */
                     newComment.append($('<div class="line-userId">').text(comment.userId));											/* 하유리: '아이디' 텍스트 삭제(23.08.01.)' */
@@ -280,11 +294,18 @@
 				var commentList = $('#commentList');
 				commentList.empty(); // 기존 목록을 비웁니다.
 
-				for (var i = 0; i < response.length; i++) {
+				for (var i = 1; i < response.length; i++) {
 					var comment = response[i];
 					var newComment = $('<div class="line">');
+					var levelSum = 0;
+
 					if (comment.ac_parentNO !== 0) {
-						newComment.addClass('line-child');
+						for(var j = 0; j < comment.level; j++) {
+							levelSum += 40;
+							console.log('레벨 : '+ comment.level);
+						}
+						newComment = $('<div class="line">').css('padding-left', levelSum + 'px');
+						// newComment.addClass('line-child');
 					}
 					newComment.append($('<img src="${contextPath }/resources/image/review/006.png"/>'));				/* 하유리: 이미지 추가(23.08.01.) */
 					newComment.append($('<div class="line-userId">').text(comment.userId));                                 		/* 하유리: '아이디' 텍스트 삭제(23.08.01.)' */
