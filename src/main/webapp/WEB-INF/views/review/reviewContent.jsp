@@ -283,6 +283,8 @@
 		var ac_content = $('#ac_content').val(); // 댓글 내용을 가져옵니다.
 		var userId = $('#userId').val();
 
+        console.log('클릭!');
+
 		// 댓글 추가를 위한 AJAX 요청 보내기
 		$.ajax({
 			url: '${contextPath}/review/addComment', // 실제 댓글을 추가하는 서버 URL로 대체해주세요
@@ -294,13 +296,14 @@
 				var commentList = $('#commentList');
 				commentList.empty(); // 기존 목록을 비웁니다.
 
-				for (var i = 1; i < response.length; i++) {
+				for (var i = 0; i < response.length; i++) {
 					var comment = response[i];
 					var newComment = $('<div class="line">');
 					var levelSum = 0;
 
 					if (comment.ac_parentNO !== 0) {
-						for(var j = 0; j < comment.level; j++) {
+						for(var j = 1; j < comment.level; j++) {
+                            console.log('levelSum : ' + levelSum);
 							levelSum += 40;
 							console.log('레벨 : '+ comment.level);
 						}
