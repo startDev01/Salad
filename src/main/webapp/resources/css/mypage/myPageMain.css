@@ -180,6 +180,10 @@ head { /* 마이페이지 글씨체 폰트 맞추기 23.07.30 서승희 추가*/
     background: #36DDA6;
     color: white;
   }
+
+.td-bold {
+    text-decoration: underline;
+}
  	
 /*  .myinfo{   하유리: 헤더 영역만큼 아래로 내림(23.07.25.)
      padding-top: 178px;   

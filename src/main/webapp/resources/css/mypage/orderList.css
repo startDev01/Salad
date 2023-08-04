@@ -86,6 +86,10 @@ head {
     font-weight: 300;								/* 하유리: 폰트 굵기(23.07.31.) */
 }
 
+.odl-td-pointer {
+    text-decoration: underline;
+}
+
 .odl-td-pointer:hover {
     cursor: pointer;
     color: #128853;

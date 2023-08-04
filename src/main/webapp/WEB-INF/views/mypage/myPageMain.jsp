@@ -144,8 +144,8 @@
 <table class="list_order_view">
 		<tbody align="center" >
 			<tr style="background:lightgray" >
-				<td class="list_order_title"  width="120px">주문번호</td>
 				<td class="list_order_title"   width="120px">주문일자</td>
+				<td class="list_order_title"  width="120px">주문번호</td>
 				<!-- <td  width="120px">주문상품/수량</td> -->
 				<td class="list_order_title"  width="120px">주문자</td>
 				<td class="list_order_title"  width="120px">주문가격</td>
@@ -165,8 +165,8 @@
         <c:otherwise>
 	      <c:forEach var="item" items="${myOrderHistList }"  varStatus="i">
 	        <tr>
-               <td class="my_page_td"><a href='${contextPath}/mypage/orderInfo/${item.orderNum}'">${item.fakeOrderNum } </a> </td>
                <td class="my_page_td">${item.orderCreateTimestamp}</td>
+				<td class="my_page_td td-bold"><a href='${contextPath}/mypage/orderInfo/${item.orderNum}'>${item.fakeOrderNum } </a> </td>
                <td class="my_page_td">${item.ordererName}</td>
                <td class="my_page_td"><p class="my_page_price"><fmt:formatNumber value="${item.totalPrice}" pattern="#,###" /> 원</p></td>
                <td class="my_page_td">
