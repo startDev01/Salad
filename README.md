@@ -52,6 +52,11 @@
   <h2>E-R 다이어그램</h2><br>
   <img src="https://github.com/startDev01/Salad/assets/97159362/c8aea799-8e4a-4738-9c8e-51008326b0c1">
 </div>
+<br><br>
+<div align='center'>
+  <h2>주요 기능</h2>
+  ![장바구니1](https://github.com/startDev01/Salad/assets/97159362/c2f27482-c738-4ba2-8cb3-29364e74c0a1)
+  <br>
+  
 
-![장바구니1](https://github.com/startDev01/Salad/assets/97159362/c2f27482-c738-4ba2-8cb3-29364e74c0a1)
-
+</div>
