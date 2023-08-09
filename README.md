@@ -55,8 +55,6 @@
 <br><br>
 <div align='center'>
   <h2>주요 기능</h2>
-  ![장바구니1](https://github.com/startDev01/Salad/assets/97159362/c2f27482-c738-4ba2-8cb3-29364e74c0a1)
   <br>
-  
-
 </div>
+![장바구니1](https://github.com/startDev01/Salad/assets/97159362/c2f27482-c738-4ba2-8cb3-29364e74c0a1)
