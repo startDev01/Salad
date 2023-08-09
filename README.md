@@ -52,5 +52,21 @@
   <h2>E-R 다이어그램</h2><br>
   <img src="https://github.com/startDev01/Salad/assets/97159362/c8aea799-8e4a-4738-9c8e-51008326b0c1">
 </div>
-<h2>2.0.0</h2>
+<br><br>
+<div align='center'>
+  <h2>주요 기능</h2>
+  <br><br>
+  <h3>장바구니</h3>
+  <br>
+  ![장바구니1](https://github.com/startDev01/Salad/assets/97159362/c2f27482-c738-4ba2-8cb3-29364e74c0a1)
+  <br><br>
+  <h3>주문</h3>
+  <br>
+  ![주문구매1](https://github.com/startDev01/Salad/assets/97159362/6a70a94b-f8df-4129-a41c-25f44ac82ac7)
+  <br><br>
+  <h3>리뷰, 비동기 Ajax 댓글</h3>
+  <br>
+  ![리뷰작성1](https://github.com/startDev01/Salad/assets/97159362/cee53271-ea99-4603-a73e-d0f513f7b866)
+  <br>
+</div>
 
