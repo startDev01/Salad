@@ -157,7 +157,7 @@
 		<div class="pagination">
 			<!-- 이전 버튼 -->
 			<c:if test="${pageMaker.prev}">
-            	<a href="${pageMaker.makeQuery(pageMaker.startPage-1)}">&laquo;</a></li>
+            	<a href="search${pageMaker.makeSearchQuery(pageMaker.startPage-1, s_title)}">&laquo;</a></li>
             </c:if>
               	
 			<!-- 각 번호 페이지 버튼 -->				
@@ -172,7 +172,7 @@
 			
 			<!-- 다음페이지 버튼 -->
             <c:if test="${pageMaker.next && pageMaker.endPage>0}">
-                <a href="${pageMaker.makeQuery(pageMaker.endPage+1)}">&raquo;</a>
+                <a href="search${pageMaker.makeSearchQuery(pageMaker.endPage+1, s_title)}">&raquo;</a>
             </c:if>  
 			<form id="moveForm" method="get">
 				<input type="hidden" name="curPage" value="${pageMaker.criteria.curPage }">
