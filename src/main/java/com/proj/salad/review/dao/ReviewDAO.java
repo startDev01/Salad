@@ -54,4 +54,8 @@ public interface ReviewDAO {
 
 	public void insertCommnet(ajaxCommentVO ajaxCommentVO);
 
+	public List<ReviewVO> selectSearchReviewList(Criteria criteria);
+
+	public int getSearchTotal(String s_title);
+
 }

@@ -20,6 +20,7 @@
     <link href="../resources/css/header.css" rel="stylesheet" type="text/css">
     <link href="../resources/css/footer.css" rel="stylesheet" type="text/css">
 	<link href="../resources/css/review.css" rel="stylesheet" type="text/css">
+	<link href="../resources/css/review/reviewSearch" rel="stylesheet" type="text/css">
 
 	<style>
 		.search-bar {
@@ -78,7 +79,9 @@
 				    			<th scope="row">	
 				    				<c:choose>
 				    					<c:when test="${reviewStatus.count<=3}">	<!-- 최다조회수 게시글 3개 상위노출 및 이미지 출력  -->
-				    						<span><img width="20px" src="${contextPath}/resources/image/review/bestCnt.png"/></span>
+<%--				    						<span><img width="20px" src="${contextPath}/resources/image/review/bestCnt.png"/></span>--%>
+											<span>${review.re_articleNO }</span>
+
 				    					</c:when>
 				    					<c:otherwise>	<!-- 일반글 -->
 				    						<span>${review.re_articleNO }</span>
@@ -90,7 +93,7 @@
 				    			<td class="re_title" align="left">
 					    			<c:choose>
 					    				<c:when test="${reviewStatus.count<=3}"><!-- 베스트글 표시 -->
-					    					<span style="font-size:15px; color:#128853"> [베스트]</span>
+<%--					    					<span style="font-size:15px; color:#128853"> [베스트]</span>--%>
 					    					<a href="${contextPath}/review/content?re_articleNO=${review.re_articleNO }"><c:out value="${review.re_title }"/></a>
 					    				</c:when>
 					    				
@@ -160,10 +163,10 @@
 			<!-- 각 번호 페이지 버튼 -->				
 			<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage}" var="curPage">
 				<c:if test="${select != curPage }">
-					<a href="${pageMaker.makeQuery(curPage)}">${curPage}</a>
+					<a href="search${pageMaker.makeSearchQuery(curPage, s_title)}">${curPage}</a>
 				</c:if>
 				<c:if test="${select == curPage }">
-					<a class="active" href="${pageMaker.makeQuery(curPage)}">${curPage}</a>
+					<a class="active" href="search${pageMaker.makeSearchQuery(curPage, s_title)}">${curPage}</a>
 				</c:if>
 			</c:forEach>
 			

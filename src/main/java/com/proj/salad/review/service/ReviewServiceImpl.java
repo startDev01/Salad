@@ -172,6 +172,13 @@ public class ReviewServiceImpl implements ReviewService {
 		
 	}
 
+	@Override
+	public List<ReviewVO> selectSearchReviewList(Criteria criteria) {
+		return reviewDao.selectSearchReviewList(criteria);
+	}
 
-
+	@Override
+	public int getSearchTotal(String s_title) {
+		return reviewDao.getSearchTotal(s_title);
+	}
 }

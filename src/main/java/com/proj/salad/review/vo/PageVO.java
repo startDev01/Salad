@@ -108,6 +108,17 @@ public class PageVO {
 	   
 	 return uriComponents.toUriString();
 	}
+
+	public String makeSearchQuery(int curPage, String s_title){
+		UriComponents uriComponents =
+				UriComponentsBuilder.newInstance()
+						.queryParam("s_title", s_title)
+						.queryParam("curPage", curPage)
+						.queryParam("perPageNum", criteria.getPostsPerPage())
+						.build();
+
+		return uriComponents.toUriString();
+	}
 	
 	//toString
 	@Override

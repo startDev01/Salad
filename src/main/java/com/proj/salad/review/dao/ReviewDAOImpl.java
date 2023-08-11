@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -107,5 +108,14 @@ public class ReviewDAOImpl implements ReviewDAO {
 		sqlSession.insert("review.insertComment",ajaxCommentVO);
 		
 	}
-	
+
+	@Override
+	public List<ReviewVO> selectSearchReviewList(Criteria criteria) {
+		return sqlSession.selectList("review.selectSearchReviewList", criteria);
+	}
+
+	@Override
+	public int getSearchTotal(String s_title) {
+		return sqlSession.selectOne("review.getSearchTotal", s_title);
+	}
 }

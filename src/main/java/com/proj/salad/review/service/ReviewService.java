@@ -52,4 +52,8 @@ public interface ReviewService {
 
 	public void ajaxCommentInsert(ajaxCommentVO ajaxCommentVO);
 
+	public List<ReviewVO> selectSearchReviewList(Criteria criteria);
+
+	public int getSearchTotal(String s_title);
+
 }
