@@ -16,6 +16,11 @@
       <put-attribute name="title" value="샐러드다이소: 리뷰게시판" />
       <put-attribute name="body" value="/WEB-INF/views/review/reviewList.jsp" />
    </definition>
+    <!-- 김동혁: 검색 페이지 추가(23.08.11) -->
+    <definition name="/review/search" extends="baseLayout">
+        <put-attribute name="title" value="샐러드다이소: 리뷰게시판 검색" />
+        <put-attribute name="body" value="/WEB-INF/views/review/reviewSearchList.jsp" />
+    </definition>
    
    <!-- 하유리: 글쓰기 페이지 추가(23.07.31.) -->
    <definition name="/review/insertReview" extends="baseLayout">

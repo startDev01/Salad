@@ -270,6 +270,25 @@ public class ReviewController extends HttpServlet {
 		return "redirect:/review/list";
 	}
 
+	// 김동혁: 7-1. 검색어 기능(23.08.11) 추가
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public String selectSearchReviewList(@RequestParam String s_title,
+			Model model, HttpServletRequest request, HttpServletResponse response, Criteria criteria) throws Exception {
+		// criteria에 검색할 제목 넣기
+		criteria.setS_title(s_title);
+
+		// 여기 SQL문, DAO, Service 다 수정해야 함 -> 수정완료!!
+		List<ReviewVO> list = reviewService.selectSearchReviewList(criteria);
+		model.addAttribute("reviewList", list);
+
+		PageVO paging = new PageVO();
+		paging.setCriteria(criteria);
+		paging.setTotalPost(reviewService.getSearchTotal(s_title));
+		model.addAttribute("pageMaker", paging);
+		model.addAttribute("select", criteria.getCurPage());
+		model.addAttribute("s_title", s_title);
+		return "/review/search";
+	}
 
 	// getViewName 추가 - 김동혁
 	private String getViewName(HttpServletRequest request) throws Exception {
