@@ -127,5 +127,4 @@ public class PageVO {
 				+ realEnd + ", prev=" + prev + ", next=" + next + ", displayPage=" + displayPage + ", criteria="
 				+ criteria + "]";
 	}
-	
 }
