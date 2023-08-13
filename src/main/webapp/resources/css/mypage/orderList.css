@@ -139,3 +139,8 @@ head {
     border: 1px solid #999999;					/* 하유리: 테두리 지정(23.07.31.) */
     border-radius: 21px;
 }
+
+/* 아이디(23.08.12.) */
+.memberMenu>ul>.userMenu p {
+	font-weight: 300;
+}

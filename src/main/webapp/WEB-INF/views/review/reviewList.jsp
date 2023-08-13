@@ -20,26 +20,7 @@
     <link href="../resources/css/header.css" rel="stylesheet" type="text/css">
     <link href="../resources/css/footer.css" rel="stylesheet" type="text/css">
 	<link href="../resources/css/review.css" rel="stylesheet" type="text/css">
-
-	<style>
-		.search-bar {
-			border: none;
-			border-bottom: 1px solid black;
-		}
-
-		.search-bar:focus {
-			outline: none;
-		}
-
-		.search-btn {
-			border: none;
-			height: 28px;
-			width: 50px;
-			font-size: 12px;
-			background: #128853;
-			color: white;
-		}
-	</style>
+	<!-- <style>태그 review.css로 이동(23.08.11.) -->
 </head>
 
 <body>
@@ -47,17 +28,34 @@
 	<div class="review_sub">
 		<p class="review_text">REVIEW</p>		<!-- 하유리: 텍스트 수정(23.07.29.) -->
 	</div>
+	<!-- 광고(23.08.11.) -->
+	<div class="ad">
+		<a href="${contextPath}/event">
+			<img class="ad_img" src="${contextPath}/resources/image/common/side/ad.png"/>
+		</a>
+		<div class="ad_div">
+			<a href="${contextPath }/menu"><p>구매하기</p></a>
+			<a href="${contextPath }/notice/list"><p style="border-top: 1px solid #e2e2e2;">공지확인</p></a>
+		</div>
+	</div>
 
-	<%-- 검색: 추가(23.08.11) --%>
-	<div class="review_search">
+	<%-- 검색: 추가(23.08.11) --%><!-- 주석처리(23.08.11.) -->
+	<%-- <div class="review_search">
 		<form action="${contextPath}/review/search" method="get">
 			<input type="text" class="search-bar" name="s_title">
 			<input type="submit" class="search-btn" value="검색">
 		</form>
-	</div>
+	</div> --%>
 	
 	<!-- 게시판 -->
 	<div class="container mt-3">
+		<%-- 검색: 추가(23.08.11.) / 이동(23.08.11.) --%>
+		<div class="review_search">
+			<form class="search-form" action="${contextPath}/review/search" method="get">		<!-- class명 추가(23.08.11.) -->
+				<input type="text" class="search-bar" name="s_title" placeholder="검색" autocomplete="off">				<!-- placeholder 추가, 자동완성기능 해제(23.08.11.) -->
+				<button type="submit" class="search-btn" value=""><img src="${contextPath}/resources/image/common/footer/magnifier.png"/></button>	<!-- button태그로 변경, value값 제거, 이미지 추가(23.08.11.) -->			
+			</form>
+		</div>
 		<table class="table table-hover">
 			<thead class="table_tread" style="text-align: center;">
 	    		<tr style="border-top: 1px solid #000; border-bottom: 1px solid #000;"> 
