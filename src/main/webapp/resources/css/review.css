@@ -31,6 +31,7 @@
 	text-align: center;
 	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 14px;
+	padding-bottom: 100px;						/* 추가(23.08.14.) */
 }
 
 /* 하유리: 테이블 */
